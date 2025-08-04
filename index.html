@@ -51,12 +51,12 @@
             overflow-x: hidden;
         }
 
-        /* Master Control Panel Styles */
+        /* Enhanced Master Control Panel Styles */
         .master-control-panel {
             position: fixed;
             top: 0;
-            left: -400px;
-            width: 400px;
+            left: -450px;
+            width: 450px;
             height: 100vh;
             background: #1a1a1a;
             color: white;
@@ -158,285 +158,464 @@
             background: #229954;
         }
 
-        /* Edit Mode Indicators */
-        .editable {
+        /* Enhanced Media Upload Zone */
+        .media-upload-zone {
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .edit-mode .editable {
-            outline: 2px dashed #3498db;
-            outline-offset: 2px;
-            cursor: pointer;
-        }
-
-        .edit-mode .editable:hover {
-            outline-color: #e74c3c;
-            background: rgba(52, 152, 219, 0.1);
-        }
-
-        .edit-indicator {
-            position: absolute;
-            top: -25px;
-            right: -25px;
-            background: #3498db;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: none;
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            border: 3px dashed #3498db;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .edit-mode .editable .edit-indicator {
-            display: flex;
-        }
-
-        /* API Configuration Panel */
-        .api-config-panel {
-            background: #2c3e50;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .api-config-panel h4 {
-            color: #3498db;
-            margin-bottom: 1rem;
-        }
-
-        .api-endpoint {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .api-endpoint input {
-            flex: 1;
-        }
-
-        .api-endpoint button {
-            padding: 0.5rem 1rem;
-            background: #27ae60;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Mobile Master Control Toggle */
-        .mcp-mobile-toggle {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background: #3498db;
-            color: white;
-            border-radius: 50%;
-            border: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            cursor: pointer;
-            z-index: 9999;
-            font-size: 1.2rem;
-        }
-
-        /* Enhanced Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .master-control-panel {
-                width: 100%;
-                left: -100%;
-            }
-
-            .master-control-panel.active {
-                left: 0;
-            }
-
-            .mcp-mobile-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .edit-mode .mcp-mobile-toggle {
-                display: flex;
-            }
-
-            /* Mobile-optimized sections */
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 0 20px;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .hero-text .tagline {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .services-container,
-            .values-grid,
-            .process-steps {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .portfolio-filters {
-                overflow-x: auto;
-                white-space: nowrap;
-                padding-bottom: 10px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .chat-window {
-                width: 100%;
-                right: 0;
-                left: 0;
-                height: 100vh;
-                border-radius: 0;
-            }
-
-            .upload-area {
-                padding: 2rem 1rem;
-            }
-
-            .modal-content {
-                margin: 20px;
-                max-height: calc(100vh - 40px);
-                overflow-y: auto;
-            }
-
-            /* Touch-friendly buttons */
-            .btn {
-                min-height: 48px;
-                font-size: 1rem;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                transition: var(--transition);
-                z-index: 998;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            /* Mobile forms */
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 16px; /* Prevents zoom on iOS */
-                padding: 1rem;
-            }
-
-            /* Mobile-optimized tables */
-            .quotation-table,
-            .document-table {
-                font-size: 0.9rem;
-                overflow-x: auto;
-                display: block;
-            }
-
-            .quotation-table td,
-            .quotation-table th {
-                padding: 0.5rem;
-                white-space: nowrap;
-            }
-        }
-
-        /* Ultra-mobile optimization */
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .btn {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .dashboard-tabs {
-                flex-wrap: wrap;
-            }
-
-            .dashboard-tab {
-                flex: 1 0 45%;
-                margin-bottom: 0.5rem;
-                font-size: 0.9rem;
-                padding: 0.6rem 1rem;
-            }
-        }
-
-        /* Content Editable Styles */
-        [contenteditable="true"] {
-            outline: 2px dashed #3498db;
-            outline-offset: 2px;
-            min-height: 20px;
-        }
-
-        [contenteditable="true"]:focus {
-            outline-color: #e74c3c;
-            background: rgba(52, 152, 219, 0.05);
-        }
-
-        /* File Upload Indicator */
-        .file-upload-zone {
-            border: 2px dashed #3498db;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(52, 152, 219, 0.05);
+            overflow: hidden;
         }
 
-        .file-upload-zone:hover {
+        .media-upload-zone:hover {
             background: rgba(52, 152, 219, 0.1);
             border-color: #2980b9;
         }
 
-        .file-upload-zone.dragging {
+        .media-upload-zone.dragging {
             background: rgba(52, 152, 219, 0.2);
             border-color: #e74c3c;
+            transform: scale(1.02);
+        }
+
+        .media-upload-zone input[type="file"] {
+            display: none;
+        }
+
+        .upload-prompt {
+            text-align: center;
+            padding: 2rem;
+            pointer-events: none;
+        }
+
+        .upload-prompt-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .upload-prompt h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-prompt p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .supported-formats {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .format-badge {
+            background: #ecf0f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #2c3e50;
+        }
+
+        /* Universal Media Container */
+        .universal-media-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .universal-media-container img,
+        .universal-media-container video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .universal-media-container.cover img,
+        .universal-media-container.cover video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .universal-media-container .media-placeholder {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        /* Media Controls Overlay */
+        .media-controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 0 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .universal-media-container:hover .media-controls {
+            opacity: 1;
+        }
+
+        .media-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .media-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Media Settings Panel */
+        .media-settings-panel {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            width: 250px;
+            display: none;
+            z-index: 100;
+        }
+
+        .media-settings-panel.active {
+            display: block;
+        }
+
+        .media-setting {
+            margin-bottom: 1rem;
+        }
+
+        .media-setting label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .media-setting select,
+        .media-setting input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Edit Mode Enhanced */
+        .edit-mode .editable-media {
+            position: relative;
+            cursor: pointer;
+            outline: 2px dashed transparent;
+            outline-offset: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .edit-mode .editable-media:hover {
+            outline-color: #3498db;
+            transform: scale(1.02);
+        }
+
+        .edit-mode .editable-media::after {
+            content: '📷 Click to change media';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .edit-mode .editable-media:hover::after {
+            opacity: 1;
+        }
+
+        /* Enhanced Slider with Media Support */
+        .enhanced-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            background: #000;
+        }
+
+        .enhanced-slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .enhanced-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .enhanced-slide img,
+        .enhanced-slide video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .enhanced-slide.cover img,
+        .enhanced-slide.cover video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Slide Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        /* Add/Remove Slide Controls */
+        .slider-edit-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: none;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .edit-mode .slider-edit-controls {
+            display: flex;
+        }
+
+        .add-slide-btn,
+        .remove-slide-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .add-slide-btn {
+            color: #27ae60;
+        }
+
+        .remove-slide-btn {
+            color: #e74c3c;
+        }
+
+        .add-slide-btn:hover,
+        .remove-slide-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Media Library Enhanced */
+        .media-library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #34495e;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .media-library-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #2c3e50;
+        }
+
+        .media-library-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .media-library-item img,
+        .media-library-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-library-item .media-type-indicator {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .media-library-item .remove-media {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .media-library-item:hover .remove-media {
+            display: flex;
+        }
+
+        /* Quick Actions Bar */
+        .quick-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .quick-action-btn {
+            background: var(--gradient-pink);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-action-btn.edit-toggle {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .quick-action-btn.edit-toggle.active {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
         /* Header Styles */
@@ -502,39 +681,6 @@
 
         .logo-text.hidden {
             display: none;
-        }
-
-        /* Logo Color Picker */
-        .logo-color-picker {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
-            padding: 1rem;
-            display: none;
-            gap: 0.5rem;
-            z-index: 1001;
-            flex-wrap: wrap;
-        }
-
-        .logo-color-picker.active {
-            display: flex;
-        }
-
-        .logo-color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: var(--transition);
-        }
-
-        .logo-color-option:hover {
-            border-color: var(--text-dark);
-            transform: scale(1.1);
         }
 
         .nav-menu {
@@ -695,96 +841,6 @@
             animation: fadeIn 1s ease 0.8s both;
         }
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Image Slider */
-        .image-slider {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .slider-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .slide img,
-        .slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slider-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-nav:hover {
-            background: white;
-            box-shadow: var(--shadow);
-        }
-
-        .slider-nav.prev {
-            left: 20px;
-        }
-
-        .slider-nav.next {
-            right: 20px;
-        }
-
         /* Section Styles */
         section {
             padding: 5rem 5%;
@@ -931,21 +987,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .service-card.interactive::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        .service-card.interactive:hover::before {
-            left: 100%;
-        }
-
         .service-image {
             height: 200px;
             background: var(--gradient-pink);
@@ -958,10 +999,6 @@
             overflow: hidden;
         }
 
-        .service-card:hover .service-image {
-            animation: float 2s ease-in-out infinite;
-        }
-
         .service-content {
             padding: 2rem;
         }
@@ -971,10 +1008,6 @@
             margin-bottom: 1rem;
             color: var(--primary-dark-pink);
             transition: color 0.3s ease;
-        }
-
-        .service-card:hover .service-content h4 {
-            color: var(--primary-pink);
         }
 
         /* Process Steps */
@@ -1051,18 +1084,12 @@
             box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--transition);
+            height: 250px;
         }
 
         .portfolio-item:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
         }
 
         .portfolio-overlay {
@@ -1094,48 +1121,6 @@
             font-size: 0.9rem;
         }
 
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            cursor: pointer;
-        }
-
-        .lightbox.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .lightbox-content img,
-        .lightbox-content video {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: white;
-            font-size: 3rem;
-            cursor: pointer;
-            z-index: 3001;
-        }
-
         /* Enhanced Get Quote Section */
         .quote-section {
             background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
@@ -1147,15 +1132,6 @@
         .quote-form {
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .form-step {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .form-step.active {
-            display: block;
         }
 
         .form-group {
@@ -1189,530 +1165,185 @@
             border-color: var(--primary-pink);
         }
 
-        .form-group input.error,
-        .form-group select.error,
-        .form-group textarea.error {
-            border-color: #ff6b6b;
-            animation: shake 0.5s ease;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: block;
-            animation: fadeInUp 0.3s ease;
-        }
-
-        /* Enhanced Upload Area */
-        .upload-area {
-            border: 2px dashed var(--primary-pink);
-            border-radius: 15px;
-            padding: 3rem;
+        /* Contact Section */
+        .contact-info {
             text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            background: rgba(232, 160, 191, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .upload-area:hover {
-            background: rgba(232, 160, 191, 0.2);
-        }
-
-        .upload-area.dragging {
-            background: rgba(232, 160, 191, 0.3);
-            border-color: var(--primary-dark-pink);
-        }
-
-        .upload-icon {
-            font-size: 3rem;
-            color: var(--primary-pink);
-            margin-bottom: 1rem;
-        }
-
-        .file-type-info {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .file-type-info span {
-            display: inline-block;
-            background: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            margin: 0.2rem;
-            font-size: 0.8rem;
-        }
-
-        /* Media Preview Grid */
-        .media-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        .social-links {
+            display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            justify-content: center;
         }
 
-        .media-preview-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: var(--white);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .media-preview-item img,
-        .media-preview-item video {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .media-preview-item .file-preview {
-            width: 100%;
-            height: 150px;
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(232, 160, 191, 0.2);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: var(--bg-light);
-        }
-
-        .file-icon {
-            font-size: 3rem;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
-        }
-
-        .file-name {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            padding: 0 0.5rem;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 100%;
-            text-align: center;
-        }
-
-        .media-remove-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #ff4444;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-weight: bold;
             transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
         }
 
-        .media-remove-btn:hover {
-            background: #ff4444;
-            color: white;
-        }
-
-        /* AI Quotation Generation */
-        .ai-quote-container {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: var(--shadow);
-            display: none;
-        }
-
-        .ai-quote-container.active {
-            display: block;
-        }
-
-        .ai-processing {
-            text-align: center;
-            padding: 3rem;
-        }
-
-        .ai-processing-icon {
-            font-size: 4rem;
-            color: var(--primary-pink);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(100px); }
-        }
-
-        .quotation-document {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
-            margin: 2rem 0;
-        }
-
-        .quotation-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid var(--primary-pink);
-        }
-
-        .company-info {
-            text-align: left;
-        }
-
-        .company-info .logo {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .company-info p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .quotation-title {
-            text-align: right;
-        }
-
-        .quotation-title h1 {
-            font-size: 2.5rem;
-            color: var(--primary-dark-pink);
-            font-weight: 700;
-        }
-
-        .quotation-number {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        .quotation-details {
-            margin-bottom: 3rem;
-        }
-
-        .quotation-details h3 {
-            color: var(--primary-dark-pink);
-            margin-bottom: 1rem;
-        }
-
-        .quotation-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-        }
-
-        .quotation-table th {
+        .social-links a:hover {
             background: var(--gradient-pink);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
             color: white;
-            padding: 1rem;
-            text-align: left;
+            padding: 3rem 5%;
+            margin-top: 5rem;
         }
 
-        .quotation-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #e0e0e0;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        .quotation-table tr:hover {
-            background: var(--bg-light);
-        }
-
-        .quotation-footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid #e0e0e0;
-        }
-
-        .total-section {
-            text-align: right;
-            margin-bottom: 2rem;
-        }
-
-        .total-amount {
-            font-size: 2rem;
-            color: var(--primary-dark-pink);
-            font-weight: 700;
-        }
-
-        .terms-conditions {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .terms-conditions h4 {
-            color: var(--primary-dark-pink);
+        .footer-section h4 {
             margin-bottom: 1rem;
+            color: var(--primary-pink);
         }
 
-        .terms-conditions ul {
+        .footer-section ul {
             list-style: none;
-            padding: 0;
         }
 
-        .terms-conditions li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
         }
 
-        .terms-conditions li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
             color: var(--primary-pink);
-            font-weight: bold;
         }
 
-        /* Download Buttons */
-        .quotation-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .master-control-panel {
+                width: 100%;
+                left: -100%;
+            }
+
+            .master-control-panel.active {
+                left: 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-container,
+            .values-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-filters {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+                z-index: 998;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .enhanced-slider {
+                height: 300px;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .quick-actions {
+                bottom: 10px;
+                right: 10px;
+                gap: 0.5rem;
+            }
+
+            .quick-action-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
 
-        .quotation-actions button {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .download-pdf {
-            background: var(--gradient-pink);
-            color: white;
-        }
-
-        .email-quote {
-            background: transparent;
-            color: var(--primary-dark-pink);
-            border: 2px solid var(--primary-dark-pink);
-        }
-
-        /* Enhanced Upload Progress */
-        .upload-progress {
-            margin-top: 1rem;
-            display: none;
-        }
-
-        .upload-progress.active {
-            display: block;
-        }
-
-        .progress-container {
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 8px;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--gradient-pink);
-            transition: width 0.3s ease;
-            border-radius: 10px;
-        }
-
-        .upload-status {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Advanced Upload Features */
-        .upload-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .upload-feature {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .upload-feature-icon {
-            font-size: 2rem;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-feature h4 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-feature p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Portfolio Management Styles */
-        .portfolio-manager {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2500;
-            display: none;
-            overflow-y: auto;
-        }
-
-        .portfolio-manager.active {
-            display: block;
-        }
-
-        .portfolio-manager-content {
-            background: var(--white);
-            max-width: 1200px;
-            margin: 50px auto;
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .portfolio-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .portfolio-tab {
-            padding: 1rem 2rem;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--text-light);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .portfolio-tab.active {
-            color: var(--primary-dark-pink);
-        }
-
-        .portfolio-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-pink);
-        }
-
-        .portfolio-upload-zone {
-            border: 3px dashed var(--primary-pink);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            background: rgba(232, 160, 191, 0.05);
-            transition: var(--transition);
-        }
-
-        .portfolio-upload-zone.dragging {
-            background: rgba(232, 160, 191, 0.2);
-            transform: scale(1.02);
-        }
-
-        .portfolio-items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .portfolio-edit-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: var(--white);
-            transition: var(--transition);
-        }
-
-        .portfolio-edit-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .portfolio-edit-item img,
-        .portfolio-edit-item video {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .portfolio-item-info {
-            padding: 1rem;
-        }
-
-        .portfolio-item-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .portfolio-item-actions button {
-            flex: 1;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .edit-btn {
-            background: #4ecdc4;
-            color: white;
-        }
-
-        .delete-btn {
-            background: #ff6b6b;
-            color: white;
-        }
-
-        .portfolio-item-actions button:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Chat Widget */
@@ -1720,7 +1351,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000;
+            z-index: 999;
         }
 
         .chat-button {
@@ -1881,75 +1512,61 @@
             color: var(--text-light);
         }
 
-        /* Customer Dashboard Styles */
-        .dashboard-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 5%;
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
         }
 
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-pink);
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .dashboard-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .dashboard-tab {
-            padding: 0.8rem 1.5rem;
-            background: none;
-            border: 2px solid var(--primary-pink);
-            border-radius: 25px;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
             cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
         }
 
-        .dashboard-tab.active {
-            background: var(--gradient-pink);
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
             color: white;
-            border-color: transparent;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .dashboard-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-dark-pink);
-            margin: 0.5rem 0;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 3001;
         }
 
         /* Modal Styles */
@@ -1994,27 +1611,6 @@
             color: var(--text-dark);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes slideUp {
             from {
                 transform: translateY(50px);
@@ -2024,378 +1620,6 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        /* Loading States */
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 1000px 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Parallax Effects */
-        .parallax {
-            transition: transform 0.5s ease;
-        }
-
-        /* Hover Effects */
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Loading Spinner */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Performance Optimizations */
-        img, video {
-            loading: lazy;
-        }
-
-        img[data-src] {
-            opacity: 0;
-            transition: opacity 0.5s ease, filter 0.5s ease;
-            filter: blur(5px);
-        }
-
-        img.loaded, img:not([data-src]) {
-            opacity: 1;
-            filter: blur(0);
-        }
-
-        /* Accessibility Improvements */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus Styles */
-        *:focus {
-            outline: 2px solid var(--primary-pink);
-            outline-offset: 2px;
-        }
-
-        button:focus, a:focus {
-            outline: 2px solid var(--primary-pink);
-            outline-offset: 2px;
-        }
-
-        /* Tooltip Styles */
-        .tooltip {
-            position: relative;
-        }
-
-        .tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            margin-bottom: 5px;
-        }
-
-        .tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Improved Card Hover Effects */
-        .card-3d {
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-        }
-
-        .card-3d:hover {
-            transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
-        }
-
-        /* Gradient Text Animation */
-        .gradient-text-animated {
-            background: linear-gradient(90deg, var(--primary-pink), var(--primary-dark-pink), var(--primary-pink));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientFlow 3s ease infinite;
-        }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Improved Button Styles */
-        .btn {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Improved Input Focus Effects */
-        input:focus, textarea:focus, select:focus {
-            box-shadow: 0 0 0 4px rgba(232, 160, 191, 0.2);
-        }
-
-        /* Sticky Header with Shadow */
-        header.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Improved Service Card Animation */
-        .service-card {
-            perspective: 1000px;
-        }
-
-        .service-card:hover .service-image {
-            transform: translateZ(20px);
-        }
-
-        /* Number Counter Animation */
-        .counter {
-            display: inline-block;
-        }
-
-        /* Improved Chat Widget Animation */
-        .chat-window {
-            transform-origin: bottom right;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .chat-window:not(.active) {
-            transform: scale(0);
-            opacity: 0;
-        }
-
-        /* Improved Modal Animation */
-        .modal {
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            animation: modalSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: scale(0.8) translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Improved Portfolio Filter Animation */
-        .portfolio-item {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .portfolio-item.hiding {
-            transform: scale(0.8);
-            opacity: 0;
-        }
-
-        /* Cursor Effects */
-        .interactive {
-            cursor: pointer;
-            position: relative;
-        }
-
-        .interactive::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(232, 160, 191, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .interactive:active::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Custom Cursor (optional) */
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="%23E8A0BF" opacity="0.3"/><circle cx="10" cy="10" r="3" fill="%23BA5B7D"/></svg>') 10 10, auto;
-            }
-            
-            a, button, .interactive {
-                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="%23E8A0BF" opacity="0.5"/><circle cx="12" cy="12" r="5" fill="%23BA5B7D"/></svg>') 12 12, pointer;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 5%;
-            margin-top: 5rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: var(--primary-pink);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-section a:hover {
-            color: var(--primary-pink);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--gradient-pink);
         }
     </style>
 </head>
@@ -2446,9 +1670,6 @@
             <div class="mcp-control" id="logoImageControl" style="display: none;">
                 <label>Logo Image</label>
                 <input type="file" id="logoImageInput" accept="image/*">
-                <div class="file-upload-zone" style="margin-top: 1rem;">
-                    <p>Drop logo image here or click to upload</p>
-                </div>
             </div>
             <button class="mcp-button" onclick="updateLogo()">Update Logo</button>
         </div>
@@ -2456,13 +1677,6 @@
         <!-- Content Management -->
         <div class="mcp-section">
             <h3>Content Management</h3>
-            <div class="mcp-control">
-                <label>Edit Mode</label>
-                <select id="editMode" onchange="toggleEditMode()">
-                    <option value="off">Off</option>
-                    <option value="on">On</option>
-                </select>
-            </div>
             <div class="mcp-control">
                 <label>Hero Title</label>
                 <input type="text" id="heroTitle" value="FROM CONCEPT TO COMPLETION">
@@ -2478,52 +1692,15 @@
             <button class="mcp-button" onclick="updateHeroContent()">Update Hero Section</button>
         </div>
 
-        <!-- AI Quotation API Configuration -->
+        <!-- Media Library -->
         <div class="mcp-section">
-            <h3>AI Quotation Configuration</h3>
-            <div class="api-config-panel">
-                <h4>API Settings</h4>
-                <div class="mcp-control">
-                    <label>API Endpoint</label>
-                    <input type="text" id="apiEndpoint" placeholder="https://api.yourservice.com/quotation">
-                </div>
-                <div class="mcp-control">
-                    <label>API Key</label>
-                    <input type="password" id="apiKey" placeholder="Enter your API key">
-                </div>
-                <div class="mcp-control">
-                    <label>AI Model</label>
-                    <select id="aiModel">
-                        <option value="gpt-4">GPT-4</option>
-                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
-                        <option value="custom">Custom Model</option>
-                    </select>
-                </div>
-                <div class="mcp-control">
-                    <label>Base Rate (RM per sqft)</label>
-                    <input type="number" id="baseRate" value="50" step="0.01">
-                </div>
-                <div class="mcp-control">
-                    <label>Markup Percentage (%)</label>
-                    <input type="number" id="markupPercentage" value="20" step="0.1">
-                </div>
-                <button class="mcp-button success" onclick="testAPIConnection()">Test Connection</button>
-                <button class="mcp-button" onclick="saveAPIConfig()">Save Configuration</button>
-            </div>
-        </div>
-
-        <!-- Media Manager -->
-        <div class="mcp-section">
-            <h3>Media Manager</h3>
+            <h3>Media Library</h3>
             <div class="mcp-control">
-                <label>Upload Media</label>
-                <input type="file" id="mediaUpload" multiple accept="image/*,video/*,.gif,.webm">
+                <label>Upload Media Files</label>
+                <input type="file" id="mediaUpload" multiple accept="image/*,video/*,.gif,.webm,.mp4,.mov">
             </div>
-            <div class="mcp-control">
-                <label>Media Library</label>
-                <div class="media-preview-grid" id="mediaLibrary" style="max-height: 300px; overflow-y: auto;">
-                    <!-- Media items will be displayed here -->
-                </div>
+            <div class="media-library-grid" id="mediaLibrary">
+                <!-- Media items will be displayed here -->
             </div>
             <button class="mcp-button danger" onclick="clearMediaLibrary()">Clear All Media</button>
         </div>
@@ -2532,70 +1709,56 @@
         <div class="mcp-section">
             <h3>Advanced Settings</h3>
             <div class="mcp-control">
-                <label>Enable Analytics</label>
-                <select id="enableAnalytics">
+                <label>Default Image Fit</label>
+                <select id="defaultImageFit">
+                    <option value="contain">Contain (Show full image)</option>
+                    <option value="cover">Cover (Fill space)</option>
+                </select>
+            </div>
+            <div class="mcp-control">
+                <label>Animation Speed (ms)</label>
+                <input type="number" id="animationSpeed" value="300" min="0" max="2000">
+            </div>
+            <div class="mcp-control">
+                <label>Enable Auto-play for Videos</label>
+                <select id="videoAutoplay">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
-            <div class="mcp-control">
-                <label>Google Analytics ID</label>
-                <input type="text" id="gaId" placeholder="G-XXXXXXXXXX">
-            </div>
-            <div class="mcp-control">
-                <label>SEO Meta Description</label>
-                <textarea id="metaDescription" rows="3">Professional maintenance and renovation services in Malaysia. From concept to completion, we deliver quality with passion.</textarea>
-            </div>
-            <div class="mcp-control">
-                <label>Contact Email</label>
-                <input type="email" id="contactEmail" value="info@refitservices.com">
-            </div>
             <button class="mcp-button" onclick="saveAdvancedSettings()">Save Advanced Settings</button>
-        </div>
-
-        <!-- Backup & Restore -->
-        <div class="mcp-section">
-            <h3>Backup & Restore</h3>
-            <button class="mcp-button success" onclick="exportSettings()">Export Settings</button>
-            <button class="mcp-button" onclick="document.getElementById('importSettings').click()">Import Settings</button>
-            <input type="file" id="importSettings" accept=".json" style="display: none;" onchange="importSettingsFile(event)">
-            <button class="mcp-button danger" onclick="resetToDefaults()">Reset to Defaults</button>
         </div>
     </div>
 
-    <!-- Mobile Master Control Toggle -->
-    <button class="mcp-mobile-toggle" onclick="toggleMasterPanel()" style="display: none;">
-        ⚙️
-    </button>
+    <!-- Quick Actions Bar -->
+    <div class="quick-actions">
+        <button class="quick-action-btn edit-toggle" id="editModeToggle" onclick="toggleEditMode()" title="Toggle Edit Mode">
+            ✏️
+        </button>
+        <button class="quick-action-btn" onclick="toggleMasterPanel()" title="Open Master Panel">
+            ⚙️
+        </button>
+    </div>
 
     <!-- Header -->
     <header>
         <nav>
             <div class="logo-container">
                 <img src="" alt="REFIT Logo" class="logo-image" id="logoImage">
-                <div class="logo logo-text editable" id="logoText" onclick="toggleLogoColorPicker()">refit</div>
-                <div class="logo-color-picker" id="logoColorPicker">
-                    <div class="logo-color-option" style="background: #E8A0BF;" onclick="changeLogoColor('#E8A0BF', '#BA5B7D')"></div>
-                    <div class="logo-color-option" style="background: #4ecdc4;" onclick="changeLogoColor('#4ecdc4', '#45b7d1')"></div>
-                    <div class="logo-color-option" style="background: #ff6b6b;" onclick="changeLogoColor('#ff6b6b', '#ee5a6f')"></div>
-                    <div class="logo-color-option" style="background: #6c5ce7;" onclick="changeLogoColor('#6c5ce7', '#5f3dc4')"></div>
-                    <div class="logo-color-option" style="background: #f39c12;" onclick="changeLogoColor('#f39c12', '#e67e22')"></div>
-                </div>
+                <div class="logo logo-text" id="logoText">refit</div>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="editable">Home</a></li>
-                <li><a href="#about" class="editable">About</a></li>
-                <li><a href="#services" class="editable">Services</a></li>
-                <li><a href="#process" class="editable">Process</a></li>
-                <li><a href="#portfolio" class="editable">Portfolio</a></li>
-                <li><a href="#contact" class="editable">Contact</a></li>
-                <li id="dashboardNavLink" style="display: none;"><a href="#" onclick="showDashboard()">Dashboard</a></li>
-                <li id="adminNavLink" style="display: none;"><a href="#" onclick="toggleAdminPanel()">Admin</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-controls">
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-                <button class="lang-toggle" onclick="toggleLanguageMenu()">EN</button>
-                <button class="login-btn" id="loginBtn" onclick="showLoginModal()">Login</button>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="login-btn" onclick="showLoginModal()">Login</button>
                 <div class="menu-toggle" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -2606,29 +1769,53 @@
     </header>
 
     <!-- Hero Section -->
-    <main id="main-content">
     <section class="hero" id="home">
-        <div class="hero-content">>
+        <div class="hero-content">
             <div class="hero-text">
                 <h1 class="editable" id="heroTitleElement">FROM CONCEPT TO COMPLETION</h1>
                 <p class="tagline editable" id="heroTaglineElement">WE GROW WITH PASSION, WE DO IT ALL</p>
                 <p class="editable" id="heroDescElement">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
                 <div class="hero-buttons">
-                    <a href="#quote" class="btn btn-primary editable">Get Quote</a>
-                    <a href="#portfolio" class="btn btn-secondary editable">View Portfolio</a>
+                    <a href="#quote" class="btn btn-primary">Get Quote</a>
+                    <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="image-slider" id="heroSlider">
-                    <div class="slider-container" id="heroSliderContainer">
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="REFIT Services" class="editable-media">
+                <div class="enhanced-slider" id="heroSlider">
+                    <div class="slider-edit-controls">
+                        <button class="add-slide-btn" onclick="addSlide('hero')">+ Add Slide</button>
+                        <button class="remove-slide-btn" onclick="removeCurrentSlide('hero')">- Remove</button>
+                    </div>
+                    <div class="enhanced-slider-container" id="heroSliderContainer">
+                        <div class="enhanced-slide cover editable-media" data-slide-id="hero-1">
+                            <div class="universal-media-container cover">
+                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="REFIT Services">
+                                <div class="media-controls">
+                                    <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                                    <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
+                                    <button class="media-control-btn" onclick="toggleFitMode(this)" title="Toggle Fit">🔄</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+Design" alt="Interior Design" class="editable-media">
+                        <div class="enhanced-slide cover editable-media" data-slide-id="hero-2">
+                            <div class="universal-media-container cover">
+                                <img src="https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+Design" alt="Interior Design">
+                                <div class="media-controls">
+                                    <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                                    <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
+                                    <button class="media-control-btn" onclick="toggleFitMode(this)" title="Toggle Fit">🔄</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Renovation+Projects" alt="Renovation Projects" class="editable-media">
+                        <div class="enhanced-slide cover editable-media" data-slide-id="hero-3">
+                            <div class="universal-media-container cover">
+                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Renovation+Projects" alt="Renovation Projects">
+                                <div class="media-controls">
+                                    <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                                    <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
+                                    <button class="media-control-btn" onclick="toggleFitMode(this)" title="Toggle Fit">🔄</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="slider-nav prev" onclick="changeSlide('hero', -1)">‹</button>
@@ -2685,22 +1872,43 @@
     <section id="services">
         <h2 class="section-title editable">What We Do</h2>
         <div class="services-container">
-            <div class="service-card interactive">
-                <div class="service-image editable">🔧</div>
+            <div class="service-card">
+                <div class="service-image editable-media">
+                    <div class="universal-media-container">
+                        <span style="font-size: 3rem;">🔧</span>
+                        <div class="media-controls">
+                            <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="service-content">
                     <h4 class="editable">Maintenance Services</h4>
                     <p class="editable">Comprehensive maintenance solutions for commercial and residential properties with professional quality and reliability.</p>
                 </div>
             </div>
-            <div class="service-card interactive">
-                <div class="service-image editable">🏗️</div>
+            <div class="service-card">
+                <div class="service-image editable-media">
+                    <div class="universal-media-container">
+                        <span style="font-size: 3rem;">🏗️</span>
+                        <div class="media-controls">
+                            <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="service-content">
                     <h4 class="editable">Interior Construction & Renovation</h4>
                     <p class="editable">Expert interior construction and renovation services transforming spaces with innovative design and quality craftsmanship.</p>
                 </div>
             </div>
-            <div class="service-card interactive">
-                <div class="service-image editable">🎨</div>
+            <div class="service-card">
+                <div class="service-image editable-media">
+                    <div class="universal-media-container">
+                        <span style="font-size: 3rem;">🎨</span>
+                        <div class="media-controls">
+                            <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="service-content">
                     <h4 class="editable">Designing & Interior Illustration</h4>
                     <p class="editable">Creative design solutions and detailed interior illustrations bringing your vision to life with professional expertise.</p>
@@ -2755,85 +1963,60 @@
     <section id="quote" class="quote-section">
         <h2 class="section-title editable">Get Your Quote</h2>
         <div class="quote-form">
-            <form id="quoteForm">
-                <div class="form-step active">
-                    <h3 class="editable">Upload Your Project Files</h3>
-                    <div class="upload-area" id="quoteUploadArea">
-                        <div class="upload-icon">📁</div>
-                        <h4 class="editable">Drop files here or click to upload</h4>
-                        <p class="editable">Upload images, videos, documents, and more</p>
-                        <div class="file-type-info">
-                            <span>📷 Images</span>
-                            <span>🎥 Videos</span>
-                            <span>📄 Documents</span>
-                            <span>🎞️ Animations</span>
-                            <span>📊 Slides</span>
-                        </div>
-                        <input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.gif,.webm" style="display: none;">
-                    </div>
-                    
-                    <div class="upload-progress" id="uploadProgress">
-                        <div class="progress-container">
-                            <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
-                        </div>
-                        <div class="upload-status">
-                            <span class="upload-filename" id="uploadFileName">Uploading...</span>
-                            <span class="upload-percentage" id="uploadPercentage">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="media-preview-grid" id="quoteMediaPreview"></div>
-
-                    <div class="form-group" style="margin-top: 2rem;">
-                        <label class="editable">Describe Your Project Requirements</label>
-                        <textarea id="projectDescription" rows="6" placeholder="Please describe what you would like us to do..."></textarea>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
-                        <div class="form-group">
-                            <label class="editable">Full Name</label>
-                            <input type="text" id="quoteName" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="editable">Email Address</label>
-                            <input type="email" id="quoteEmail" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="editable">Phone Number</label>
-                            <input type="tel" id="quotePhone" placeholder="Enter your phone number" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="editable">Property Type</label>
-                            <select id="propertyType">
-                                <option value="">Select property type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
-                                <option value="office">Office</option>
-                                <option value="retail">Retail</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 3rem;">
-                        <button type="button" class="btn btn-primary" onclick="generateAIQuote()" style="font-size: 1.2rem; padding: 1rem 3rem;">
-                            🤖 Generate AI-Powered Quote
-                        </button>
+            <h3 class="editable">Upload Your Project Files</h3>
+            <div class="media-upload-zone" id="quoteUploadZone" onclick="document.getElementById('quoteFileInput').click()">
+                <div class="upload-prompt">
+                    <div class="upload-prompt-icon">📁</div>
+                    <h4>Drop files here or click to upload</h4>
+                    <p>Upload images, videos, documents, and more</p>
+                    <div class="supported-formats">
+                        <span class="format-badge">JPG/PNG</span>
+                        <span class="format-badge">MP4/MOV</span>
+                        <span class="format-badge">GIF</span>
+                        <span class="format-badge">PDF</span>
+                        <span class="format-badge">DOC/DOCX</span>
                     </div>
                 </div>
-            </form>
+                <input type="file" id="quoteFileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx,.gif,.webm" style="display: none;" onchange="handleFileUpload(event, 'quote')">
+            </div>
+            
+            <div id="quoteMediaPreview" style="margin-top: 2rem;"></div>
 
-            <!-- AI Quotation Container -->
-            <div class="ai-quote-container" id="aiQuoteContainer">
-                <div class="ai-processing" id="aiProcessing">
-                    <div class="ai-processing-icon">🤖</div>
-                    <h3>AI is analyzing your project...</h3>
-                    <p>Our AI is reviewing your files and requirements to generate an accurate quotation</p>
-                </div>
+            <div class="form-group" style="margin-top: 2rem;">
+                <label class="editable">Describe Your Project Requirements</label>
+                <textarea id="projectDescription" rows="6" placeholder="Please describe what you would like us to do..."></textarea>
+            </div>
 
-                <div class="quotation-document" id="quotationDocument" style="display: none;">
-                    <!-- Quotation content will be dynamically generated -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                <div class="form-group">
+                    <label class="editable">Full Name</label>
+                    <input type="text" id="quoteName" placeholder="Enter your full name" required>
                 </div>
+                <div class="form-group">
+                    <label class="editable">Email Address</label>
+                    <input type="email" id="quoteEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label class="editable">Phone Number</label>
+                    <input type="tel" id="quotePhone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label class="editable">Property Type</label>
+                    <select id="propertyType">
+                        <option value="">Select property type</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="office">Office</option>
+                        <option value="retail">Retail</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button type="button" class="btn btn-primary" onclick="generateQuote()">
+                    Generate Quote
+                </button>
             </div>
         </div>
     </section>
@@ -2841,19 +2024,18 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title editable">Get In Touch</h2>
-        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <div class="contact-info">
             <p style="font-size: 1.1rem; margin-bottom: 2rem;" class="editable">Ready to transform your space? Contact us today!</p>
             <div style="margin-bottom: 2rem;">
                 <p class="editable"><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
             </div>
-            <div class="social-links" style="justify-content: center;">
+            <div class="social-links">
                 <a href="https://www.instagram.com/refit_mntserv?igsh=dHloODZta3VsZWRy&utm_source=qr" target="_blank">📷</a>
                 <a href="https://www.facebook.com/share/19C5RB3hAL/?mibextid=wwXIfr" target="_blank">📘</a>
                 <a href="https://www.tiktok.com/@refit.mntserv?_t=ZS-8yUVBpC5xm4&_r=1" target="_blank">🎵</a>
             </div>
         </div>
     </section>
-    </main>
 
     <!-- Footer -->
     <footer>
@@ -2870,19 +2052,19 @@
             <div class="footer-section">
                 <h4 class="editable">Quick Links</h4>
                 <ul>
-                    <li><a href="#about" class="editable">About Us</a></li>
-                    <li><a href="#services" class="editable">Services</a></li>
-                    <li><a href="#portfolio" class="editable">Portfolio</a></li>
-                    <li><a href="#quote" class="editable">Get Quote</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#quote">Get Quote</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4 class="editable">Services</h4>
                 <ul>
-                    <li><a href="#" class="editable">Maintenance Services</a></li>
-                    <li><a href="#" class="editable">Interior Construction</a></li>
-                    <li><a href="#" class="editable">Renovation</a></li>
-                    <li><a href="#" class="editable">3D Design</a></li>
+                    <li><a href="#">Maintenance Services</a></li>
+                    <li><a href="#">Interior Construction</a></li>
+                    <li><a href="#">Renovation</a></li>
+                    <li><a href="#">3D Design</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -2902,28 +2084,6 @@
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-content" id="lightboxContent"></div>
-    </div>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password">
-                </div>
-                <button type="button" class="btn btn-primary" style="width: 100%;" onclick="login()">Login</button>
-                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
-                    Demo: Use <strong>admin@refitservices.com</strong> / <strong>refit2024master</strong> for master admin access
-                </p>
-            </form>
-        </div>
     </div>
 
     <!-- Chat Widget -->
@@ -2950,57 +2110,26 @@
         </div>
     </div>
 
+    <!-- Hidden file input for media changes -->
+    <input type="file" id="hiddenMediaInput" style="display: none;" accept="image/*,video/*,.gif,.webm,.mp4,.mov" onchange="handleMediaChange(event)">
+
     <script>
         // Global Variables
-        let currentUser = null;
-        let isAdmin = false;
-        let isMasterAdmin = false;
-        let editModeEnabled = false;
+        let editMode = false;
         let currentSlide = { hero: 0 };
         let portfolioItems = [];
         let uploadedFiles = [];
-        let apiConfig = {
-            endpoint: '',
-            key: '',
-            model: 'gpt-4',
-            baseRate: 50,
-            markup: 20
-        };
-
-        // Master Admin Credentials
-        const MASTER_ADMIN = {
-            email: 'admin@refitservices.com',
-            password: 'refit2024master'
-        };
+        let mediaLibrary = [];
+        let currentMediaElement = null;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeWebsite();
             loadSettings();
-            checkLoginStatus();
             setupEventListeners();
             initializePortfolio();
             initializeSliders();
-            initializeScrollEffects();
-            initializePerformanceOptimizations();
-            initializeAccessibility();
-            
-            // Check for mobile
-            if (window.innerWidth <= 768) {
-                document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
-            }
-            
-            // Initialize AOS-like scroll animations
-            observeScrollElements();
-            
-            // Initialize number counters
-            initializeCounters();
-            
-            // Preload critical images
-            preloadImages();
-            
-            // Implement lazy loading
-            // implementLazyLoading(); // Uncomment to enable lazy loading
+            loadMediaLibrary();
         });
 
         // Initialize Website
@@ -3025,6 +2154,16 @@
                     }
                 });
             });
+
+            // Handle scroll effects
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
         }
 
         // Load Settings
@@ -3034,14 +2173,16 @@
             // Apply saved colors
             if (settings.primaryColor) {
                 document.documentElement.style.setProperty('--primary-pink', settings.primaryColor);
+                document.getElementById('primaryColor').value = settings.primaryColor;
             }
             if (settings.darkPrimaryColor) {
                 document.documentElement.style.setProperty('--primary-dark-pink', settings.darkPrimaryColor);
+                document.getElementById('darkPrimaryColor').value = settings.darkPrimaryColor;
             }
             
-            // Apply API configuration
-            if (settings.apiConfig) {
-                apiConfig = settings.apiConfig;
+            // Apply other settings
+            if (settings.defaultImageFit) {
+                document.getElementById('defaultImageFit').value = settings.defaultImageFit;
             }
         }
 
@@ -3049,148 +2190,51 @@
         function applySettings(settings) {
             if (settings.siteTitle) {
                 document.title = settings.siteTitle;
+                document.getElementById('siteTitle').value = settings.siteTitle;
             }
             
             if (settings.logoText) {
                 document.getElementById('logoText').textContent = settings.logoText;
+                document.getElementById('logoTextInput').value = settings.logoText;
             }
             
             if (settings.heroTitle) {
                 document.getElementById('heroTitleElement').textContent = settings.heroTitle;
+                document.getElementById('heroTitle').value = settings.heroTitle;
             }
             
             if (settings.heroTagline) {
                 document.getElementById('heroTaglineElement').textContent = settings.heroTagline;
+                document.getElementById('heroTagline').value = settings.heroTagline;
             }
             
             if (settings.heroDescription) {
                 document.getElementById('heroDescElement').textContent = settings.heroDescription;
+                document.getElementById('heroDescription').value = settings.heroDescription;
             }
         }
 
         // Toggle Master Control Panel
         function toggleMasterPanel() {
-            if (!isMasterAdmin) {
-                showNotification('Access Denied', 'Master admin access required', 'error');
-                return;
-            }
-            
             const panel = document.getElementById('masterControlPanel');
             panel.classList.toggle('active');
         }
 
-        // Toggle Theme
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.body.setAttribute('data-theme', newTheme);
-            
-            // Update theme toggle icon
-            const themeToggle = document.querySelector('.theme-toggle');
-            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-            
-            // Save preference
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Show Login Modal
-        function showLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
-
-        // Close Modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        // Login Function
-        function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email === MASTER_ADMIN.email && password === MASTER_ADMIN.password) {
-                currentUser = { email: email, name: 'Master Admin' };
-                isMasterAdmin = true;
-                isAdmin = true;
-                loginSuccess();
-                
-                // Show mobile toggle for master admin
-                document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
-                
-                showNotification('Welcome', 'Master Admin access granted', 'success');
-            } else if (email && password) {
-                currentUser = { email: email, name: 'Customer' };
-                isAdmin = false;
-                isMasterAdmin = false;
-                loginSuccess();
-                showNotification('Welcome', 'Logged in successfully', 'success');
-            } else {
-                showNotification('Error', 'Please enter valid credentials', 'error');
-            }
-        }
-
-        // Login Success
-        function loginSuccess() {
-            closeModal('loginModal');
-            document.getElementById('loginBtn').textContent = currentUser.name;
-            document.getElementById('loginBtn').onclick = logout;
-            
-            // Save to localStorage
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            
-            if (isAdmin && !isMasterAdmin) {
-                document.getElementById('adminNavLink').style.display = 'block';
-            }
-            
-            if (!isAdmin) {
-                document.getElementById('dashboardNavLink').style.display = 'block';
-            }
-        }
-
-        // Logout Function
-        function logout() {
-            currentUser = null;
-            isAdmin = false;
-            isMasterAdmin = false;
-            
-            document.getElementById('loginBtn').textContent = 'Login';
-            document.getElementById('loginBtn').onclick = showLoginModal;
-            document.getElementById('dashboardNavLink').style.display = 'none';
-            document.getElementById('adminNavLink').style.display = 'none';
-            document.querySelector('.mcp-mobile-toggle').style.display = 'none';
-            
-            localStorage.removeItem('currentUser');
-            showNotification('Logged Out', 'You have been logged out successfully', 'info');
-        }
-
-        // Check Login Status
-        function checkLoginStatus() {
-            const savedUser = localStorage.getItem('currentUser');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                if (currentUser.email === MASTER_ADMIN.email) {
-                    isMasterAdmin = true;
-                    isAdmin = true;
-                    document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
-                }
-                document.getElementById('loginBtn').textContent = currentUser.name;
-                document.getElementById('loginBtn').onclick = logout;
-            }
-        }
-
         // Toggle Edit Mode
         function toggleEditMode() {
-            const editModeSelect = document.getElementById('editMode');
-            editModeEnabled = editModeSelect.value === 'on';
+            editMode = !editMode;
+            document.body.classList.toggle('edit-mode', editMode);
             
-            document.body.classList.toggle('edit-mode', editModeEnabled);
+            const editToggle = document.getElementById('editModeToggle');
+            editToggle.classList.toggle('active', editMode);
+            editToggle.innerHTML = editMode ? '✅' : '✏️';
             
-            if (editModeEnabled) {
+            if (editMode) {
                 enableContentEditing();
-                showNotification('Edit Mode', 'Content editing enabled. Click on any element to edit.', 'info');
+                showNotification('Edit Mode Enabled', 'Click on any text or media to edit', 'info');
             } else {
                 disableContentEditing();
-                showNotification('Edit Mode', 'Content editing disabled', 'info');
+                showNotification('Edit Mode Disabled', 'Changes saved automatically', 'success');
             }
         }
 
@@ -3200,19 +2244,15 @@
             editables.forEach(element => {
                 element.setAttribute('contenteditable', 'true');
                 element.addEventListener('blur', saveEditedContent);
-                
-                // Add edit indicator
-                const indicator = document.createElement('div');
-                indicator.className = 'edit-indicator';
-                indicator.innerHTML = '✏️';
-                element.appendChild(indicator);
             });
-            
+
             // Enable media editing
             const editableMedia = document.querySelectorAll('.editable-media');
             editableMedia.forEach(media => {
                 media.style.cursor = 'pointer';
-                media.addEventListener('click', replaceMedia);
+                if (!media.querySelector('.universal-media-container')) {
+                    setupMediaContainer(media);
+                }
             });
         }
 
@@ -3222,19 +2262,6 @@
             editables.forEach(element => {
                 element.setAttribute('contenteditable', 'false');
                 element.removeEventListener('blur', saveEditedContent);
-                
-                // Remove edit indicator
-                const indicator = element.querySelector('.edit-indicator');
-                if (indicator) {
-                    indicator.remove();
-                }
-            });
-            
-            // Disable media editing
-            const editableMedia = document.querySelectorAll('.editable-media');
-            editableMedia.forEach(media => {
-                media.style.cursor = 'default';
-                media.removeEventListener('click', replaceMedia);
             });
         }
 
@@ -3247,32 +2274,93 @@
             const elementId = element.id || element.className;
             localStorage.setItem(`content_${elementId}`, content);
             
-            showNotification('Saved', 'Content updated successfully', 'success');
+            // Update corresponding input in master panel if exists
+            if (element.id === 'heroTitleElement') {
+                document.getElementById('heroTitle').value = content;
+            } else if (element.id === 'heroTaglineElement') {
+                document.getElementById('heroTagline').value = content;
+            } else if (element.id === 'heroDescElement') {
+                document.getElementById('heroDescription').value = content;
+            }
         }
 
-        // Replace Media
-        function replaceMedia(event) {
-            if (!editModeEnabled) return;
-            
-            const media = event.target;
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*,video/*';
-            
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        media.src = e.target.result;
-                        localStorage.setItem(`media_${media.alt}`, e.target.result);
-                        showNotification('Media Updated', 'Media replaced successfully', 'success');
-                    };
-                    reader.readAsDataURL(file);
+        // Setup Media Container
+        function setupMediaContainer(element) {
+            if (!element.querySelector('.universal-media-container')) {
+                const container = document.createElement('div');
+                container.className = 'universal-media-container';
+                container.innerHTML = element.innerHTML + `
+                    <div class="media-controls">
+                        <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
+                        <button class="media-control-btn" onclick="toggleFitMode(this)" title="Toggle Fit">🔄</button>
+                    </div>
+                `;
+                element.innerHTML = '';
+                element.appendChild(container);
+            }
+        }
+
+        // Change Media
+        function changeMedia(button) {
+            currentMediaElement = button.closest('.universal-media-container');
+            document.getElementById('hiddenMediaInput').click();
+        }
+
+        // Handle Media Change
+        function handleMediaChange(event) {
+            const file = event.target.files[0];
+            if (!file || !currentMediaElement) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const url = e.target.result;
+                const isVideo = file.type.startsWith('video');
+                
+                // Clear current content
+                const mediaContent = currentMediaElement.querySelector('img, video, span');
+                if (mediaContent) mediaContent.remove();
+                
+                // Add new media
+                if (isVideo) {
+                    const video = document.createElement('video');
+                    video.src = url;
+                    video.controls = true;
+                    video.autoplay = document.getElementById('videoAutoplay')?.value === 'yes';
+                    video.muted = true;
+                    video.loop = true;
+                    currentMediaElement.insertBefore(video, currentMediaElement.querySelector('.media-controls'));
+                } else {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.alt = file.name;
+                    currentMediaElement.insertBefore(img, currentMediaElement.querySelector('.media-controls'));
                 }
+                
+                // Add to media library
+                addToMediaLibrary(file, url);
+                
+                showNotification('Media Updated', 'Media changed successfully', 'success');
             };
+            reader.readAsDataURL(file);
             
-            input.click();
+            // Reset input
+            event.target.value = '';
+        }
+
+        // Toggle Media Settings
+        function toggleMediaSettings(button) {
+            // This would open a settings panel for the specific media
+            showNotification('Settings', 'Media settings panel coming soon!', 'info');
+        }
+
+        // Toggle Fit Mode
+        function toggleFitMode(button) {
+            const container = button.closest('.universal-media-container');
+            container.classList.toggle('cover');
+            
+            const mode = container.classList.contains('cover') ? 'Cover' : 'Contain';
+            showNotification('Fit Mode', `Changed to ${mode} mode`, 'info');
         }
 
         // Update Theme Color
@@ -3384,378 +2472,226 @@
             showNotification('Settings Saved', 'Site settings have been updated', 'success');
         }
 
-        // Save API Configuration
-        function saveAPIConfig() {
-            apiConfig = {
-                endpoint: document.getElementById('apiEndpoint').value,
-                key: document.getElementById('apiKey').value,
-                model: document.getElementById('aiModel').value,
-                baseRate: parseFloat(document.getElementById('baseRate').value),
-                markup: parseFloat(document.getElementById('markupPercentage').value)
+        // Save Advanced Settings
+        function saveAdvancedSettings() {
+            const settings = {
+                defaultImageFit: document.getElementById('defaultImageFit').value,
+                animationSpeed: document.getElementById('animationSpeed').value,
+                videoAutoplay: document.getElementById('videoAutoplay').value
             };
             
-            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
-            settings.apiConfig = apiConfig;
-            localStorage.setItem('refitSettings', JSON.stringify(settings));
+            const allSettings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            Object.assign(allSettings, settings);
+            localStorage.setItem('refitSettings', JSON.stringify(allSettings));
             
-            showNotification('API Configuration Saved', 'AI quotation settings have been updated', 'success');
+            // Apply animation speed
+            document.documentElement.style.setProperty('--transition', `all ${settings.animationSpeed}ms ease`);
+            
+            showNotification('Advanced Settings Saved', 'Settings have been updated', 'success');
         }
 
-        // Test API Connection
-        async function testAPIConnection() {
-            const endpoint = document.getElementById('apiEndpoint').value;
-            const key = document.getElementById('apiKey').value;
-            
-            if (!endpoint || !key) {
-                showNotification('Error', 'Please enter API endpoint and key', 'error');
-                return;
+        // Media Library Functions
+        function loadMediaLibrary() {
+            const saved = localStorage.getItem('mediaLibrary');
+            if (saved) {
+                mediaLibrary = JSON.parse(saved);
+                displayMediaLibrary();
             }
+        }
+
+        function addToMediaLibrary(file, url) {
+            const mediaItem = {
+                id: Date.now(),
+                name: file.name,
+                type: file.type,
+                url: url,
+                size: file.size,
+                date: new Date().toISOString()
+            };
             
-            try {
-                // Simulate API test (replace with actual API call)
-                showNotification('Testing Connection', 'Testing API connection...', 'info');
+            mediaLibrary.push(mediaItem);
+            localStorage.setItem('mediaLibrary', JSON.stringify(mediaLibrary));
+            displayMediaLibrary();
+        }
+
+        function displayMediaLibrary() {
+            const container = document.getElementById('mediaLibrary');
+            container.innerHTML = '';
+            
+            mediaLibrary.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'media-library-item';
+                div.innerHTML = `
+                    ${item.type.startsWith('video') ? 
+                        `<video src="${item.url}" muted></video>` : 
+                        `<img src="${item.url}" alt="${item.name}">`
+                    }
+                    <div class="media-type-indicator">${item.type.split('/')[0]}</div>
+                    <button class="remove-media" onclick="removeFromLibrary(${item.id})">×</button>
+                `;
+                div.onclick = (e) => {
+                    if (!e.target.classList.contains('remove-media')) {
+                        selectMediaFromLibrary(item);
+                    }
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function removeFromLibrary(id) {
+            mediaLibrary = mediaLibrary.filter(item => item.id !== id);
+            localStorage.setItem('mediaLibrary', JSON.stringify(mediaLibrary));
+            displayMediaLibrary();
+        }
+
+        function clearMediaLibrary() {
+            if (confirm('Are you sure you want to clear all media?')) {
+                mediaLibrary = [];
+                localStorage.setItem('mediaLibrary', JSON.stringify(mediaLibrary));
+                displayMediaLibrary();
+                showNotification('Media Cleared', 'All media files have been removed', 'success');
+            }
+        }
+
+        function selectMediaFromLibrary(item) {
+            if (currentMediaElement) {
+                // Clear current content
+                const mediaContent = currentMediaElement.querySelector('img, video, span');
+                if (mediaContent) mediaContent.remove();
                 
-                // In production, make actual API call here
-                setTimeout(() => {
-                    showNotification('Success', 'API connection successful!', 'success');
-                }, 2000);
-            } catch (error) {
-                showNotification('Error', 'API connection failed: ' + error.message, 'error');
-            }
-        }
-
-        // Toggle Logo Color Picker
-        function toggleLogoColorPicker() {
-            const picker = document.getElementById('logoColorPicker');
-            picker.classList.toggle('active');
-        }
-
-        // Change Logo Color
-        function changeLogoColor(color1, color2) {
-            document.documentElement.style.setProperty('--primary-pink', color1);
-            document.documentElement.style.setProperty('--primary-dark-pink', color2);
-            document.documentElement.style.setProperty('--gradient-pink', `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`);
-            
-            // Update color inputs
-            document.getElementById('primaryColor').value = color1;
-            document.getElementById('darkPrimaryColor').value = color2;
-            
-            // Hide picker
-            document.getElementById('logoColorPicker').classList.remove('active');
-            
-            // Save settings
-            updateThemeColor();
-        }
-
-        // Toggle Menu
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        }
-
-        // Generate AI Quote
-        async function generateAIQuote() {
-            const name = document.getElementById('quoteName').value;
-            const email = document.getElementById('quoteEmail').value;
-            const phone = document.getElementById('quotePhone').value;
-            const propertyType = document.getElementById('propertyType').value;
-            const description = document.getElementById('projectDescription').value;
-            
-            // Validate form
-            if (!validateForm('quoteForm')) {
-                showNotification('Validation Error', 'Please fill in all required fields correctly', 'error');
-                return;
-            }
-            
-            if (!name || !email || !phone || !propertyType || !description) {
-                showNotification('Error', 'Please fill in all required fields', 'error');
-                return;
-            }
-            
-            // Add loading state to button
-            const button = event.target;
-            showLoadingState(button, 'Generating Quote...');
-            
-            // Show AI processing
-            document.getElementById('aiQuoteContainer').classList.add('active');
-            document.getElementById('aiProcessing').style.display = 'block';
-            document.getElementById('quotationDocument').style.display = 'none';
-            
-            // Smooth scroll to AI container
-            document.getElementById('aiQuoteContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Simulate AI processing (replace with actual API call)
-            setTimeout(async () => {
-                try {
-                    // Generate quotation with AI
-                    const quotation = await generateQuotationWithAI({
-                        name,
-                        email,
-                        phone,
-                        propertyType,
-                        description,
-                        files: uploadedFiles
-                    });
-                    
-                    displayQuotation(quotation);
-                    hideLoadingState(button);
-                    showNotification('Quote Generated', 'Your AI-powered quotation is ready!', 'success');
-                } catch (error) {
-                    showNotification('Error', 'Failed to generate quotation: ' + error.message, 'error');
-                    document.getElementById('aiProcessing').style.display = 'none';
-                    hideLoadingState(button);
+                // Add selected media
+                if (item.type.startsWith('video')) {
+                    const video = document.createElement('video');
+                    video.src = item.url;
+                    video.controls = true;
+                    video.autoplay = document.getElementById('videoAutoplay')?.value === 'yes';
+                    video.muted = true;
+                    video.loop = true;
+                    currentMediaElement.insertBefore(video, currentMediaElement.querySelector('.media-controls'));
+                } else {
+                    const img = document.createElement('img');
+                    img.src = item.url;
+                    img.alt = item.name;
+                    currentMediaElement.insertBefore(img, currentMediaElement.querySelector('.media-controls'));
                 }
-            }, 3000);
+                
+                showNotification('Media Selected', 'Media applied from library', 'success');
+            }
         }
 
-        // Generate Quotation with AI
-        async function generateQuotationWithAI(data) {
-            // This is where you would integrate with your AI API
-            // For demo purposes, we'll generate a sample quotation
-            
-            const quoteNumber = 'RQ-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            const today = new Date();
-            const validity = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
-            
-            // AI-based line item generation
-            const items = generateQuoteItems(data.description, data.propertyType);
-            
-            let subtotal = 0;
-            items.forEach(item => {
-                subtotal += item.total;
+        // Handle Media Upload
+        document.getElementById('mediaUpload').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    addToMediaLibrary(file, event.target.result);
+                };
+                reader.readAsDataURL(file);
             });
-            
-            const sst = subtotal * 0.1;
-            const total = subtotal + sst;
-            
-            return {
-                quoteNumber,
-                date: formatDate(today),
-                validity: formatDate(validity),
-                client: {
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    propertyType: data.propertyType
-                },
-                description: data.description,
-                items,
-                subtotal,
-                sst,
-                total
-            };
+            e.target.value = '';
+        });
+
+        // Initialize Sliders
+        function initializeSliders() {
+            updateSliderDots('hero');
         }
 
-        // Generate Quote Items
-        function generateQuoteItems(description, propertyType) {
-            const items = [];
-            const baseRate = apiConfig.baseRate || 50;
-            const markup = apiConfig.markup || 20;
+        // Update Slider Dots
+        function updateSliderDots(sliderId) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const slides = container.querySelectorAll('.enhanced-slide');
+            const dotsContainer = document.getElementById(sliderId + 'SliderDots');
             
-            // Base consultation
-            items.push({
-                description: 'Site Survey & Consultation',
-                quantity: 1,
-                unitPrice: 500,
-                total: 500
+            dotsContainer.innerHTML = '';
+            
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (index === currentSlide[sliderId] ? ' active' : '');
+                dot.onclick = () => goToSlide(sliderId, index);
+                dotsContainer.appendChild(dot);
             });
-            
-            // AI-based analysis (simplified for demo)
-            const keywords = description.toLowerCase();
-            
-            if (keywords.includes('renovation')) {
-                const sqft = Math.floor(Math.random() * 1000) + 500;
-                const price = sqft * baseRate * (1 + markup / 100);
-                items.push({
-                    description: 'Interior Renovation Works',
-                    quantity: sqft,
-                    unitPrice: baseRate * (1 + markup / 100),
-                    total: price
-                });
-            }
-            
-            if (keywords.includes('design')) {
-                items.push({
-                    description: '3D Design & Conceptualization',
-                    quantity: 1,
-                    unitPrice: 3000,
-                    total: 3000
-                });
-            }
-            
-            if (keywords.includes('paint')) {
-                items.push({
-                    description: 'Painting Works (Labor & Materials)',
-                    quantity: 1,
-                    unitPrice: 4500,
-                    total: 4500
-                });
-            }
-            
-            if (keywords.includes('flooring')) {
-                const sqft = Math.floor(Math.random() * 800) + 400;
-                items.push({
-                    description: 'Flooring Installation',
-                    quantity: sqft,
-                    unitPrice: 20,
-                    total: sqft * 20
-                });
-            }
-            
-            // Property type specific
-            if (propertyType === 'commercial') {
-                items.push({
-                    description: 'Commercial Grade Finishes',
-                    quantity: 1,
-                    unitPrice: 5000,
-                    total: 5000
-                });
-            }
-            
-            // Project management
-            items.push({
-                description: 'Project Management & Coordination',
-                quantity: 1,
-                unitPrice: 2000,
-                total: 2000
-            });
-            
-            return items;
         }
 
-        // Display Quotation
-        function displayQuotation(quotation) {
-            const quotationDoc = document.getElementById('quotationDocument');
+        // Change Slide
+        function changeSlide(sliderId, direction) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const slides = container.querySelectorAll('.enhanced-slide');
             
-            quotationDoc.innerHTML = `
-                <div class="quotation-header">
-                    <div class="company-info">
-                        <div class="logo">${document.getElementById('logoText').textContent}</div>
-                        <p><strong>REFIT MAINTENANCE SERVICES</strong></p>
-                        <p>C-08-34, Centum @ Oasis Corporate Park</p>
-                        <p>Oasis Damansara, No.2 Jalan PJU 1A/2</p>
-                        <p>Ara Damansara, 47301 Petaling Jaya, Selangor</p>
-                        <p>📞 +60 3-1234 5678 | 📧 info@refitservices.com</p>
+            currentSlide[sliderId] = (currentSlide[sliderId] + direction + slides.length) % slides.length;
+            
+            container.style.transform = `translateX(-${currentSlide[sliderId] * 100}%)`;
+            updateSliderDots(sliderId);
+        }
+
+        // Go to Specific Slide
+        function goToSlide(sliderId, index) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            currentSlide[sliderId] = index;
+            container.style.transform = `translateX(-${index * 100}%)`;
+            updateSliderDots(sliderId);
+        }
+
+        // Add Slide
+        function addSlide(sliderId) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const slideCount = container.querySelectorAll('.enhanced-slide').length;
+            
+            const newSlide = document.createElement('div');
+            newSlide.className = 'enhanced-slide cover editable-media';
+            newSlide.setAttribute('data-slide-id', `${sliderId}-${slideCount + 1}`);
+            newSlide.innerHTML = `
+                <div class="universal-media-container cover">
+                    <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=New+Slide" alt="New Slide">
+                    <div class="media-controls">
+                        <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
+                        <button class="media-control-btn" onclick="toggleFitMode(this)" title="Toggle Fit">🔄</button>
                     </div>
-                    <div class="quotation-title">
-                        <h1>QUOTATION</h1>
-                        <p class="quotation-number">Quote #: ${quotation.quoteNumber}</p>
-                        <p>Date: ${quotation.date}</p>
-                        <p>Valid Until: ${quotation.validity}</p>
-                    </div>
-                </div>
-
-                <div class="quotation-details">
-                    <h3>Client Information</h3>
-                    <p><strong>Name:</strong> ${quotation.client.name}</p>
-                    <p><strong>Email:</strong> ${quotation.client.email}</p>
-                    <p><strong>Phone:</strong> ${quotation.client.phone}</p>
-                    <p><strong>Property Type:</strong> ${quotation.client.propertyType}</p>
-                </div>
-
-                <div class="quotation-details">
-                    <h3>Project Details</h3>
-                    <p>${quotation.description}</p>
-                </div>
-
-                <table class="quotation-table">
-                    <thead>
-                        <tr>
-                            <th>Item Description</th>
-                            <th>Quantity</th>
-                            <th>Unit Price (RM)</th>
-                            <th>Total (RM)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${quotation.items.map(item => `
-                            <tr>
-                                <td>${item.description}</td>
-                                <td>${item.quantity}</td>
-                                <td>${item.unitPrice.toFixed(2)}</td>
-                                <td>${item.total.toFixed(2)}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-
-                <div class="total-section">
-                    <p>Subtotal: RM ${quotation.subtotal.toFixed(2)}</p>
-                    <p>SST (10%): RM ${quotation.sst.toFixed(2)}</p>
-                    <h3 class="total-amount">Total: RM ${quotation.total.toFixed(2)}</h3>
-                </div>
-
-                <div class="terms-conditions">
-                    <h4>Terms & Conditions</h4>
-                    <ul>
-                        <li>30% deposit required upon confirmation</li>
-                        <li>Balance payment upon project completion</li>
-                        <li>Quotation valid for 30 days</li>
-                        <li>Prices subject to site inspection</li>
-                        <li>Warranty: 12 months for workmanship</li>
-                    </ul>
-                </div>
-
-                <div class="quotation-footer">
-                    <p style="text-align: center; color: var(--text-light);">
-                        Thank you for choosing REFIT Maintenance Services. We look forward to working with you!
-                    </p>
-                </div>
-
-                <div class="quotation-actions">
-                    <button class="download-pdf" onclick="downloadQuotation()">📥 Download PDF</button>
-                    <button class="email-quote" onclick="emailQuotation()">📧 Email Quote</button>
-                    <button class="btn btn-primary" onclick="proceedToPayment()">💳 Proceed with Payment</button>
                 </div>
             `;
             
-            document.getElementById('aiProcessing').style.display = 'none';
-            quotationDoc.style.display = 'block';
+            container.appendChild(newSlide);
+            updateSliderDots(sliderId);
+            goToSlide(sliderId, slideCount);
+            
+            showNotification('Slide Added', 'New slide added successfully', 'success');
         }
 
-        // Format Date
-        function formatDate(date) {
-            const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
+        // Remove Current Slide
+        function removeCurrentSlide(sliderId) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const slides = container.querySelectorAll('.enhanced-slide');
+            
+            if (slides.length <= 1) {
+                showNotification('Cannot Remove', 'Must have at least one slide', 'error');
+                return;
+            }
+            
+            if (confirm('Are you sure you want to remove this slide?')) {
+                slides[currentSlide[sliderId]].remove();
+                currentSlide[sliderId] = Math.max(0, currentSlide[sliderId] - 1);
+                updateSliderDots(sliderId);
+                changeSlide(sliderId, 0);
+                
+                showNotification('Slide Removed', 'Slide removed successfully', 'success');
+            }
         }
-
-        // Download Quotation
-        function downloadQuotation() {
-            showNotification('Download Started', 'Your quotation PDF is being generated...', 'info');
-            // In production, implement PDF generation
-            setTimeout(() => {
-                showNotification('Download Complete', 'Quotation downloaded successfully', 'success');
-            }, 2000);
-        }
-
-        // Email Quotation
-        function emailQuotation() {
-            showNotification('Email Sent', 'Quotation has been sent to your email', 'success');
-        }
-
-        // Proceed to Payment
-        function proceedToPayment() {
-            showNotification('Redirecting', 'Redirecting to payment gateway...', 'info');
-            // In production, redirect to payment gateway
-        }
-
-        // Portfolio Data
-        const samplePortfolio = [
-            { id: 1, title: 'Cath Kidston Store', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Cath+Kidston', media: ['https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Store+Front', 'https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+View'] },
-            { id: 2, title: 'Pie Face Restaurant', category: 'commercial', image: 'https://via.placeholder.com/400x300/BA5B7D/ffffff?text=Pie+Face', media: ['https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Kitchen+Area'] },
-            { id: 3, title: 'Tusan Ice Cream', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Tusan', media: ['https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Display+Counter'] },
-            { id: 4, title: 'Modern Living Room', category: 'residential', image: 'https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Living+Room', media: ['https://via.placeholder.com/600x400/4ecdc4/ffffff?text=TV+Area'] },
-            { id: 5, title: 'Master Bedroom', category: 'residential', image: 'https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Bedroom', media: ['https://via.placeholder.com/600x400/6c5ce7/ffffff?text=Bedroom+View'] },
-            { id: 6, title: 'TopShop Maintenance', category: 'maintenance', image: 'https://via.placeholder.com/400x300/ff6b6b/ffffff?text=TopShop', media: ['https://via.placeholder.com/600x400/ff6b6b/ffffff?text=Store+Maintenance'] },
-            { id: 7, title: '3D Kitchen Concept', category: '3d', image: 'https://via.placeholder.com/400x300/f39c12/ffffff?text=3D+Kitchen', media: ['https://via.placeholder.com/600x400/f39c12/ffffff?text=Kitchen+Render'] },
-            { id: 8, title: 'Backhaus Bakery', category: 'commercial', image: 'https://via.placeholder.com/400x300/2ecc71/ffffff?text=Backhaus', media: ['https://via.placeholder.com/600x400/2ecc71/ffffff?text=Bakery+Interior'] }
-        ];
 
         // Initialize Portfolio
         function initializePortfolio() {
-            portfolioItems = [...samplePortfolio];
+            // Sample portfolio data
+            portfolioItems = [
+                { id: 1, title: 'Cath Kidston Store', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Cath+Kidston' },
+                { id: 2, title: 'Pie Face Restaurant', category: 'commercial', image: 'https://via.placeholder.com/400x300/BA5B7D/ffffff?text=Pie+Face' },
+                { id: 3, title: 'Tusan Ice Cream', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Tusan' },
+                { id: 4, title: 'Modern Living Room', category: 'residential', image: 'https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Living+Room' },
+                { id: 5, title: 'Master Bedroom', category: 'residential', image: 'https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Bedroom' },
+                { id: 6, title: 'TopShop Maintenance', category: 'maintenance', image: 'https://via.placeholder.com/400x300/ff6b6b/ffffff?text=TopShop' },
+                { id: 7, title: '3D Kitchen Concept', category: '3d', image: 'https://via.placeholder.com/400x300/f39c12/ffffff?text=3D+Kitchen' },
+                { id: 8, title: 'Backhaus Bakery', category: 'commercial', image: 'https://via.placeholder.com/400x300/2ecc71/ffffff?text=Backhaus' }
+            ];
+            
             displayPortfolio('all');
         }
 
@@ -3768,9 +2704,14 @@
             
             filtered.forEach(item => {
                 const portfolioItem = document.createElement('div');
-                portfolioItem.className = 'portfolio-item';
+                portfolioItem.className = 'portfolio-item editable-media';
                 portfolioItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}" class="editable-media">
+                    <div class="universal-media-container cover">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="media-controls">
+                            <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                        </div>
+                    </div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
                             <h4 class="editable">${item.title}</h4>
@@ -3778,7 +2719,11 @@
                         </div>
                     </div>
                 `;
-                portfolioItem.onclick = () => openLightbox(item);
+                portfolioItem.onclick = (e) => {
+                    if (!e.target.closest('.media-controls') && !editMode) {
+                        openLightbox(item);
+                    }
+                };
                 grid.appendChild(portfolioItem);
             });
         }
@@ -3809,30 +2754,7 @@
             const lightbox = document.getElementById('lightbox');
             const content = document.getElementById('lightboxContent');
             
-            if (item.media && item.media.length > 0) {
-                let currentMediaIndex = 0;
-                
-                function showMedia(index) {
-                    content.innerHTML = `<img src="${item.media[index]}" alt="${item.title}">`;
-                }
-                
-                showMedia(currentMediaIndex);
-                
-                if (item.media.length > 1) {
-                    content.innerHTML += `
-                        <button class="slider-nav prev" onclick="event.stopPropagation(); changeLightboxMedia(-1)" style="position: absolute; left: 20px;">‹</button>
-                        <button class="slider-nav next" onclick="event.stopPropagation(); changeLightboxMedia(1)" style="position: absolute; right: 20px;">›</button>
-                    `;
-                    
-                    window.changeLightboxMedia = function(direction) {
-                        currentMediaIndex = (currentMediaIndex + direction + item.media.length) % item.media.length;
-                        showMedia(currentMediaIndex);
-                    };
-                }
-            } else {
-                content.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
-            }
-            
+            content.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
             lightbox.classList.add('active');
         }
 
@@ -3841,254 +2763,150 @@
             document.getElementById('lightbox').classList.remove('active');
         }
 
-        // Initialize Sliders
-        function initializeSliders() {
-            const heroSlider = document.getElementById('heroSlider');
-            const heroContainer = document.getElementById('heroSliderContainer');
-            const heroSlides = heroContainer.querySelectorAll('.slide');
-            const heroDots = document.getElementById('heroSliderDots');
-            
-            heroSlides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide('hero', index);
-                heroDots.appendChild(dot);
-            });
-            
-            setInterval(() => changeSlide('hero', 1), 5000);
-        }
-
-        // Change Slide
-        function changeSlide(sliderId, direction) {
-            const container = document.getElementById(sliderId + 'SliderContainer');
-            const slides = container.querySelectorAll('.slide');
-            const dots = document.getElementById(sliderId + 'SliderDots').querySelectorAll('.slider-dot');
-            
-            currentSlide[sliderId] = (currentSlide[sliderId] + direction + slides.length) % slides.length;
-            
-            container.style.transform = `translateX(-${currentSlide[sliderId] * 100}%)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide[sliderId]);
-            });
-        }
-
-        // Go to Specific Slide
-        function goToSlide(sliderId, index) {
-            const container = document.getElementById(sliderId + 'SliderContainer');
-            const dots = document.getElementById(sliderId + 'SliderDots').querySelectorAll('.slider-dot');
-            
-            currentSlide[sliderId] = index;
-            container.style.transform = `translateX(-${index * 100}%)`;
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
         // Setup Event Listeners
         function setupEventListeners() {
-            // Upload Area
-            const uploadArea = document.getElementById('quoteUploadArea');
-            const fileInput = document.getElementById('fileInput');
-            
-            uploadArea.addEventListener('click', () => fileInput.click());
-            fileInput.addEventListener('change', (e) => handleFileUpload(e, 'quote'));
-            
-            // Drag and Drop
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('dragging');
-            });
-            
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragging');
-            });
-            
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('dragging');
-                handleFileUpload({ target: { files: e.dataTransfer.files } }, 'quote');
-            });
-            
-            // Media Upload in Master Panel
-            const mediaUpload = document.getElementById('mediaUpload');
-            if (mediaUpload) {
-                mediaUpload.addEventListener('change', handleMediaLibraryUpload);
-            }
-            
-            // Window resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768 && isMasterAdmin) {
-                    document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
-                } else if (window.innerWidth > 768) {
-                    document.querySelector('.mcp-mobile-toggle').style.display = 'none';
-                }
+            // Drag and Drop for upload zones
+            const uploadZones = document.querySelectorAll('.media-upload-zone');
+            uploadZones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('dragging');
+                });
+                
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('dragging');
+                });
+                
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('dragging');
+                    const files = Array.from(e.dataTransfer.files);
+                    handleDroppedFiles(files, zone.id);
+                });
             });
 
-            // Click outside to close dropdowns
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.logo-container')) {
-                    document.getElementById('logoColorPicker').classList.remove('active');
+            // Auto-play slider
+            setInterval(() => {
+                if (!editMode) {
+                    changeSlide('hero', 1);
                 }
+            }, 5000);
+        }
+
+        // Handle Dropped Files
+        function handleDroppedFiles(files, zoneId) {
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    addToMediaLibrary(file, e.target.result);
+                    
+                    if (zoneId === 'quoteUploadZone') {
+                        displayUploadedFile(file, e.target.result, 'quoteMediaPreview');
+                    }
+                };
+                reader.readAsDataURL(file);
             });
+            
+            showNotification('Files Uploaded', `${files.length} file(s) uploaded successfully`, 'success');
         }
 
         // Handle File Upload
         function handleFileUpload(event, context) {
             const files = Array.from(event.target.files);
-            const previewGrid = document.getElementById(context + 'MediaPreview');
-            const uploadProgress = document.getElementById('uploadProgress');
-            
-            files.forEach((file, index) => {
-                uploadProgress.classList.add('active');
-                
-                let progress = 0;
-                const progressBar = document.getElementById('progressBar');
-                const fileName = document.getElementById('uploadFileName');
-                const percentage = document.getElementById('uploadPercentage');
-                
-                fileName.textContent = file.name;
-                
-                const interval = setInterval(() => {
-                    progress += 10;
-                    progressBar.style.width = progress + '%';
-                    percentage.textContent = progress + '%';
-                    
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        setTimeout(() => {
-                            uploadProgress.classList.remove('active');
-                            createMediaPreview(file, previewGrid);
-                            uploadedFiles.push(file);
-                        }, 500);
-                    }
-                }, 100);
-            });
-        }
-
-        // Create Media Preview
-        function createMediaPreview(file, container) {
-            const preview = document.createElement('div');
-            preview.className = 'media-preview-item';
-            
-            const removeBtn = document.createElement('button');
-            removeBtn.className = 'media-remove-btn';
-            removeBtn.innerHTML = '×';
-            removeBtn.onclick = () => {
-                preview.remove();
-                uploadedFiles = uploadedFiles.filter(f => f !== file);
-            };
-            
-            if (file.type.startsWith('image/')) {
-                const img = document.createElement('img');
-                img.src = URL.createObjectURL(file);
-                preview.appendChild(img);
-            } else if (file.type.startsWith('video/')) {
-                const video = document.createElement('video');
-                video.src = URL.createObjectURL(file);
-                video.controls = true;
-                preview.appendChild(video);
-            } else {
-                const filePreview = document.createElement('div');
-                filePreview.className = 'file-preview';
-                filePreview.innerHTML = `
-                    <div class="file-icon">📄</div>
-                    <div class="file-name">${file.name}</div>
-                `;
-                preview.appendChild(filePreview);
-            }
-            
-            preview.appendChild(removeBtn);
-            container.appendChild(preview);
-        }
-
-        // Handle Media Library Upload
-        function handleMediaLibraryUpload(event) {
-            const files = Array.from(event.target.files);
-            const mediaLibrary = document.getElementById('mediaLibrary');
             
             files.forEach(file => {
-                createMediaPreview(file, mediaLibrary);
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    addToMediaLibrary(file, e.target.result);
+                    
+                    if (context === 'quote') {
+                        displayUploadedFile(file, e.target.result, 'quoteMediaPreview');
+                    }
+                };
+                reader.readAsDataURL(file);
             });
         }
 
-        // Clear Media Library
-        function clearMediaLibrary() {
-            if (confirm('Are you sure you want to clear all media?')) {
-                document.getElementById('mediaLibrary').innerHTML = '';
-                showNotification('Media Cleared', 'All media files have been removed', 'success');
+        // Display Uploaded File
+        function displayUploadedFile(file, url, containerId) {
+            const container = document.getElementById(containerId);
+            
+            const div = document.createElement('div');
+            div.className = 'media-library-item';
+            div.style.display = 'inline-block';
+            div.style.margin = '0.5rem';
+            
+            if (file.type.startsWith('video')) {
+                div.innerHTML = `<video src="${url}" controls style="width: 200px; height: 150px; object-fit: cover;"></video>`;
+            } else if (file.type.startsWith('image')) {
+                div.innerHTML = `<img src="${url}" alt="${file.name}" style="width: 200px; height: 150px; object-fit: cover;">`;
+            } else {
+                div.innerHTML = `
+                    <div style="width: 200px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <span style="font-size: 2rem;">📄</span>
+                        <span style="font-size: 0.8rem; margin-top: 0.5rem;">${file.name}</span>
+                    </div>
+                `;
             }
+            
+            container.appendChild(div);
+            uploadedFiles.push(file);
         }
 
-        // Export Settings
-        function exportSettings() {
-            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
-            const dataStr = JSON.stringify(settings, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
+        // Generate Quote
+        function generateQuote() {
+            // Validate form
+            const name = document.getElementById('quoteName').value;
+            const email = document.getElementById('quoteEmail').value;
+            const phone = document.getElementById('quotePhone').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const description = document.getElementById('projectDescription').value;
             
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'refit-settings-' + new Date().toISOString().split('T')[0] + '.json';
-            a.click();
-            
-            URL.revokeObjectURL(url);
-            showNotification('Settings Exported', 'Settings have been exported successfully', 'success');
-        }
-
-        // Import Settings File
-        function importSettingsFile(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const settings = JSON.parse(e.target.result);
-                    localStorage.setItem('refitSettings', JSON.stringify(settings));
-                    applySettings(settings);
-                    loadSettings();
-                    showNotification('Settings Imported', 'Settings have been imported successfully', 'success');
-                    
-                    // Reload to apply all settings
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000);
-                } catch (error) {
-                    showNotification('Error', 'Invalid settings file', 'error');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // Reset to Defaults
-        function resetToDefaults() {
-            if (confirm('Are you sure you want to reset all settings to defaults? This action cannot be undone.')) {
-                localStorage.clear();
-                location.reload();
+            if (!name || !email || !phone || !propertyType || !description) {
+                showNotification('Error', 'Please fill in all required fields', 'error');
+                return;
             }
+            
+            showNotification('Quote Generated', 'Your quote has been generated and sent to your email', 'success');
+            
+            // Reset form
+            document.getElementById('quoteName').value = '';
+            document.getElementById('quoteEmail').value = '';
+            document.getElementById('quotePhone').value = '';
+            document.getElementById('propertyType').value = '';
+            document.getElementById('projectDescription').value = '';
+            document.getElementById('quoteMediaPreview').innerHTML = '';
+            uploadedFiles = [];
         }
 
-        // Save Advanced Settings
-        function saveAdvancedSettings() {
-            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+        // Toggle Theme
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
             
-            settings.analytics = {
-                enabled: document.getElementById('enableAnalytics').value === 'yes',
-                gaId: document.getElementById('gaId').value
-            };
+            // Update theme toggle icon
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
             
-            settings.seo = {
-                metaDescription: document.getElementById('metaDescription').value
-            };
-            
-            settings.contact = {
-                email: document.getElementById('contactEmail').value
-            };
-            
-            localStorage.setItem('refitSettings', JSON.stringify(settings));
-            showNotification('Advanced Settings Saved', 'Settings have been updated successfully', 'success');
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Toggle Language
+        function toggleLanguage() {
+            showNotification('Language', 'Language selection coming soon!', 'info');
+        }
+
+        // Show Login Modal
+        function showLoginModal() {
+            showNotification('Login', 'Login functionality coming soon!', 'info');
+        }
+
+        // Toggle Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
         }
 
         // Chat Functions
@@ -4140,7 +2958,7 @@
         function generateBotResponse(message) {
             const responses = {
                 'services': 'We offer maintenance services, interior construction & renovation, and designing & interior illustration services.',
-                'quote': 'You can get a quote by clicking the "Get Quote" button or visiting our quote section. We use AI to generate accurate quotations!',
+                'quote': 'You can get a quote by clicking the "Get Quote" button or visiting our quote section.',
                 'contact': 'You can reach us at C-08-34, Centum @ Oasis Corporate Park, Ara Damansara. Email: info@refitservices.com',
                 'price': 'Our prices vary based on project requirements. Please get a personalized quote for accurate pricing.',
                 'portfolio': 'Check out our portfolio section to see our completed projects across commercial, residential, and maintenance categories.'
@@ -4187,594 +3005,11 @@
             }, 5000);
         }
 
-        // Dashboard Functions
-        function showDashboard() {
-            if (!currentUser) {
-                showNotification('Access Denied', 'Please login to access dashboard', 'error');
-                return;
-            }
-            
-            // Create dashboard modal
-            const modal = document.createElement('div');
-            modal.className = 'modal active';
-            modal.innerHTML = `
-                <div class="modal-content" style="max-width: 1000px;">
-                    <span class="modal-close" onclick="this.closest('.modal').remove()">×</span>
-                    <div class="dashboard-container">
-                        <div class="dashboard-header">
-                            <h2>Customer Dashboard</h2>
-                            <p>Welcome back, ${currentUser.name}!</p>
-                        </div>
-                        
-                        <div class="dashboard-tabs">
-                            <button class="dashboard-tab active" onclick="showDashboardTab('overview')">Overview</button>
-                            <button class="dashboard-tab" onclick="showDashboardTab('projects')">My Projects</button>
-                            <button class="dashboard-tab" onclick="showDashboardTab('quotes')">Quotations</button>
-                            <button class="dashboard-tab" onclick="showDashboardTab('documents')">Documents</button>
-                        </div>
-                        
-                        <div class="dashboard-content" id="dashboardContent">
-                            <div class="dashboard-grid">
-                                <div class="dashboard-card">
-                                    <h3>Active Projects</h3>
-                                    <p class="stat-number">3</p>
-                                    <p class="stat-label">Ongoing projects</p>
-                                </div>
-                                <div class="dashboard-card">
-                                    <h3>Total Quotes</h3>
-                                    <p class="stat-number">12</p>
-                                    <p class="stat-label">Quotations received</p>
-                                </div>
-                                <div class="dashboard-card">
-                                    <h3>Completed</h3>
-                                    <p class="stat-number">8</p>
-                                    <p class="stat-label">Projects completed</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-        }
-
-        function showDashboardTab(tab) {
-            // Update active tab
-            document.querySelectorAll('.dashboard-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update content based on tab
-            const content = document.getElementById('dashboardContent');
-            
-            switch(tab) {
-                case 'overview':
-                    content.innerHTML = `
-                        <div class="dashboard-grid">
-                            <div class="dashboard-card">
-                                <h3>Active Projects</h3>
-                                <p class="stat-number">3</p>
-                                <p class="stat-label">Ongoing projects</p>
-                            </div>
-                            <div class="dashboard-card">
-                                <h3>Total Quotes</h3>
-                                <p class="stat-number">12</p>
-                                <p class="stat-label">Quotations received</p>
-                            </div>
-                            <div class="dashboard-card">
-                                <h3>Completed</h3>
-                                <p class="stat-number">8</p>
-                                <p class="stat-label">Projects completed</p>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                case 'projects':
-                    content.innerHTML = `
-                        <div style="text-align: center; padding: 3rem;">
-                            <h3>My Projects</h3>
-                            <p>No active projects at the moment.</p>
-                            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="location.href='#quote'">Start New Project</button>
-                        </div>
-                    `;
-                    break;
-                case 'quotes':
-                    content.innerHTML = `
-                        <div style="text-align: center; padding: 3rem;">
-                            <h3>My Quotations</h3>
-                            <p>No quotations available.</p>
-                            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="location.href='#quote'">Request Quote</button>
-                        </div>
-                    `;
-                    break;
-                case 'documents':
-                    content.innerHTML = `
-                        <div style="text-align: center; padding: 3rem;">
-                            <h3>My Documents</h3>
-                            <p>No documents uploaded yet.</p>
-                        </div>
-                    `;
-                    break;
-            }
-        }
-
-        // Admin Panel Functions
-        function toggleAdminPanel() {
-            if (!isAdmin) {
-                showNotification('Access Denied', 'Admin access required', 'error');
-                return;
-            }
-            
-            // For demo, redirect to master control panel
-            toggleMasterPanel();
-        }
-
-        // Language Toggle
-        function toggleLanguageMenu() {
-            showNotification('Language', 'Language selection coming soon!', 'info');
-        }
-
         // Initialize theme from saved preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
             document.querySelector('.theme-toggle').textContent = '☀️';
-        }
-
-        // Initialize Scroll Effects
-        function initializeScrollEffects() {
-            let lastScroll = 0;
-            const header = document.querySelector('header');
-            
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                
-                // Sticky header shadow
-                if (currentScroll > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-                
-                // Hide/show header on scroll
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
-                
-                lastScroll = currentScroll;
-                
-                // Parallax effects
-                updateParallax();
-            });
-        }
-
-        // Parallax Effects
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.parallax');
-            
-            parallaxElements.forEach(element => {
-                const speed = element.dataset.speed || 0.5;
-                const yPos = -(scrolled * speed);
-                element.style.transform = `translateY(${yPos}px)`;
-            });
-        }
-
-        // Observe Scroll Elements
-        function observeScrollElements() {
-            const elements = document.querySelectorAll('.value-card, .service-card, .process-step, .portfolio-item');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('scroll-reveal', 'active');
-                            entry.target.style.animation = `fadeInUp 0.6s ease forwards`;
-                        }, index * 100);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            });
-            
-            elements.forEach(element => {
-                element.classList.add('scroll-reveal');
-                observer.observe(element);
-            });
-        }
-
-        // Initialize Counters
-        function initializeCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            const observerOptions = {
-                threshold: 0.5
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                        animateCounter(entry.target);
-                        entry.target.classList.add('counted');
-                    }
-                });
-            }, observerOptions);
-            
-            counters.forEach(counter => observer.observe(counter));
-        }
-
-        // Animate Counter
-        function animateCounter(element) {
-            const target = parseInt(element.textContent);
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        }
-
-        // Performance Optimizations
-        function initializePerformanceOptimizations() {
-            // Debounce resize events
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    handleResize();
-                }, 250);
-            });
-            
-            // Lazy load images
-            const images = document.querySelectorAll('img[data-src]');
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
-
-        // Handle Resize
-        function handleResize() {
-            if (window.innerWidth <= 768 && isMasterAdmin) {
-                document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
-            } else if (window.innerWidth > 768) {
-                document.querySelector('.mcp-mobile-toggle').style.display = 'none';
-            }
-        }
-
-        // Preload Critical Images
-        function preloadImages() {
-            const criticalImages = [
-                '/images/hero-bg.jpg',
-                '/images/logo.png'
-            ];
-            
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-        }
-
-        // Initialize Accessibility
-        function initializeAccessibility() {
-            // Skip to content link
-            const skipLink = document.createElement('a');
-            skipLink.href = '#main-content';
-            skipLink.className = 'sr-only';
-            skipLink.textContent = 'Skip to main content';
-            skipLink.style.position = 'absolute';
-            skipLink.style.left = '-9999px';
-            
-            skipLink.addEventListener('focus', () => {
-                skipLink.style.left = '50%';
-                skipLink.style.transform = 'translateX(-50%)';
-                skipLink.style.top = '10px';
-                skipLink.style.zIndex = '9999';
-            });
-            
-            skipLink.addEventListener('blur', () => {
-                skipLink.style.left = '-9999px';
-            });
-            
-            document.body.insertBefore(skipLink, document.body.firstChild);
-            
-            // Add ARIA labels
-            document.querySelector('.menu-toggle').setAttribute('aria-label', 'Toggle navigation menu');
-            document.querySelector('.theme-toggle').setAttribute('aria-label', 'Toggle dark mode');
-            document.querySelector('.chat-button').setAttribute('aria-label', 'Open chat');
-        }
-
-        // Enhanced Filter Portfolio with Animation
-        function filterPortfolio(category) {
-            const items = document.querySelectorAll('.portfolio-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Animate items
-            items.forEach((item, index) => {
-                const itemCategory = portfolioItems[index]?.category;
-                
-                if (category === 'all' || itemCategory === category) {
-                    item.classList.remove('hiding');
-                    setTimeout(() => {
-                        item.style.display = 'block';
-                        item.style.animation = 'fadeInUp 0.5s ease forwards';
-                    }, 100);
-                } else {
-                    item.classList.add('hiding');
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 500);
-                }
-            });
-        }
-
-        // Enhanced Notification with Sound
-        function showNotification(title, message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type} show`;
-            
-            const icons = {
-                'success': '✅',
-                'error': '❌',
-                'info': 'ℹ️'
-            };
-            
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <span class="notification-icon">${icons[type]}</span>
-                    <div>
-                        <strong>${title}</strong>
-                        <p>${message}</p>
-                    </div>
-                </div>
-                <span class="notification-close" onclick="this.parentElement.remove()">×</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Play notification sound (if implemented)
-            playNotificationSound(type);
-            
-            // Auto remove with fade out
-            setTimeout(() => {
-                notification.style.animation = 'fadeOut 0.5s ease forwards';
-                setTimeout(() => notification.remove(), 500);
-            }, 5000);
-        }
-
-        // Play Notification Sound (placeholder)
-        function playNotificationSound(type) {
-            // In production, implement actual sound playback
-            // const audio = new Audio(`/sounds/${type}.mp3`);
-            // audio.play();
-        }
-
-        // Enhanced Chat with Typing Indicator
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            
-            if (!message) return;
-            
-            // Add user message
-            addChatMessage(message, 'user');
-            
-            // Clear input
-            input.value = '';
-            
-            // Show typing indicator
-            showTypingIndicator();
-            
-            // Simulate bot response with variable delay
-            const responseDelay = Math.random() * 2000 + 1000;
-            setTimeout(() => {
-                hideTypingIndicator();
-                const response = generateBotResponse(message);
-                addChatMessage(response, 'bot');
-            }, responseDelay);
-        }
-
-        // Show Typing Indicator
-        function showTypingIndicator() {
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'chat-message bot typing-indicator';
-            typingDiv.innerHTML = `
-                <div class="message-bubble">
-                    <span class="typing-dot"></span>
-                    <span class="typing-dot"></span>
-                    <span class="typing-dot"></span>
-                </div>
-            `;
-            document.getElementById('chatMessages').appendChild(typingDiv);
-            
-            // Add CSS for typing dots animation
-            if (!document.querySelector('#typing-styles')) {
-                const style = document.createElement('style');
-                style.id = 'typing-styles';
-                style.textContent = `
-                    .typing-dot {
-                        display: inline-block;
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background: var(--text-light);
-                        margin: 0 2px;
-                        animation: typing 1.4s infinite ease-in-out;
-                    }
-                    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-                    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-                    @keyframes typing {
-                        0%, 80%, 100% {
-                            transform: scale(0.8);
-                            opacity: 0.5;
-                        }
-                        40% {
-                            transform: scale(1);
-                            opacity: 1;
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        }
-
-        // Hide Typing Indicator
-        function hideTypingIndicator() {
-            const typingIndicator = document.querySelector('.typing-indicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
-        }
-
-        // Add Smooth Page Transitions
-        document.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A' && e.target.href.includes('#')) {
-                e.preventDefault();
-                const targetId = e.target.href.split('#')[1];
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    // Close mobile menu if open
-                    document.getElementById('navMenu').classList.remove('active');
-                    
-                    // Smooth scroll with offset for fixed header
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-
-        // Add Loading States for Async Operations
-        function showLoadingState(element, text = 'Loading...') {
-            const originalContent = element.innerHTML;
-            element.disabled = true;
-            element.innerHTML = `<span class="loading-spinner"></span> ${text}`;
-            element.dataset.originalContent = originalContent;
-        }
-
-        function hideLoadingState(element) {
-            element.disabled = false;
-            element.innerHTML = element.dataset.originalContent || element.innerHTML;
-        }
-
-        // Enhanced Form Validation
-        function validateForm(formId) {
-            const form = document.getElementById(formId);
-            const inputs = form.querySelectorAll('input, textarea, select');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    input.classList.add('error');
-                    isValid = false;
-                    
-                    // Add error message
-                    if (!input.nextElementSibling?.classList.contains('error-message')) {
-                        const error = document.createElement('span');
-                        error.className = 'error-message';
-                        error.textContent = 'This field is required';
-                        error.style.color = 'var(--error-color, #ff6b6b)';
-                        error.style.fontSize = '0.875rem';
-                        error.style.marginTop = '0.25rem';
-                        error.style.display = 'block';
-                        input.parentNode.insertBefore(error, input.nextSibling);
-                    }
-                } else {
-                    input.classList.remove('error');
-                    const error = input.nextElementSibling;
-                    if (error?.classList.contains('error-message')) {
-                        error.remove();
-                    }
-                }
-            });
-            
-            return isValid;
-        }
-
-        // Add Keyboard Navigation
-        document.addEventListener('keydown', (e) => {
-            // ESC key closes modals and panels
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal.active').forEach(modal => {
-                    modal.classList.remove('active');
-                });
-                document.getElementById('masterControlPanel').classList.remove('active');
-                document.getElementById('chatWindow').classList.remove('active');
-                document.getElementById('lightbox').classList.remove('active');
-            }
-            
-            // Ctrl/Cmd + K opens search (if implemented)
-            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                e.preventDefault();
-                // Open search functionality
-            }
-        });
-
-        // Lazy Loading Implementation
-        function implementLazyLoading() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                if (!img.dataset.src && img.src) {
-                    img.dataset.src = img.src;
-                    img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23999" font-family="sans-serif" font-size="16"%3ELoading...%3C/text%3E%3C/svg%3E';
-                }
-            });
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            img.classList.add('loaded');
-                            observer.unobserve(img);
-                        }
-                    }
-                });
-            }, {
-                rootMargin: '50px 0px',
-                threshold: 0.01
-            });
-            
-            images.forEach(img => {
-                if (img.dataset.src) {
-                    imageObserver.observe(img);
-                }
-            });
         }
     </script>
 </body>
