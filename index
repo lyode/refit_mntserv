@@ -1,0 +1,3521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REFIT Maintenance Services - From Concept to Completion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #E8A0BF;
+            --primary-dark-pink: #BA5B7D;
+            --gradient-pink: linear-gradient(135deg, #E8A0BF 0%, #BA5B7D 100%);
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f8f8;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --text-dark: #ffffff;
+            --text-light: #cccccc;
+            --bg-light: #1a1a1a;
+            --white: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Master Control Panel Styles */
+        .master-control-panel {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 400px;
+            height: 100vh;
+            background: #1a1a1a;
+            color: white;
+            z-index: 10000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .master-control-panel.active {
+            left: 0;
+        }
+
+        .mcp-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .mcp-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mcp-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .mcp-section h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .mcp-control {
+            margin-bottom: 1rem;
+        }
+
+        .mcp-control label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ecf0f1;
+        }
+
+        .mcp-control input,
+        .mcp-control select,
+        .mcp-control textarea {
+            width: 100%;
+            padding: 0.5rem;
+            background: #2c3e50;
+            border: 1px solid #34495e;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .mcp-control input[type="color"] {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .mcp-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .mcp-button:hover {
+            background: #2980b9;
+        }
+
+        .mcp-button.danger {
+            background: #e74c3c;
+        }
+
+        .mcp-button.danger:hover {
+            background: #c0392b;
+        }
+
+        .mcp-button.success {
+            background: #27ae60;
+        }
+
+        .mcp-button.success:hover {
+            background: #229954;
+        }
+
+        /* Edit Mode Indicators */
+        .editable {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .edit-mode .editable {
+            outline: 2px dashed #3498db;
+            outline-offset: 2px;
+            cursor: pointer;
+        }
+
+        .edit-mode .editable:hover {
+            outline-color: #e74c3c;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .edit-indicator {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .edit-mode .editable .edit-indicator {
+            display: flex;
+        }
+
+        /* API Configuration Panel */
+        .api-config-panel {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .api-config-panel h4 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .api-endpoint {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .api-endpoint input {
+            flex: 1;
+        }
+
+        .api-endpoint button {
+            padding: 0.5rem 1rem;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Mobile Master Control Toggle */
+        .mcp-mobile-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 1.2rem;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .master-control-panel {
+                width: 100%;
+                left: -100%;
+            }
+
+            .master-control-panel.active {
+                left: 0;
+            }
+
+            .mcp-mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .edit-mode .mcp-mobile-toggle {
+                display: flex;
+            }
+
+            /* Mobile-optimized sections */
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-container,
+            .values-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-filters {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-window {
+                width: 100%;
+                right: 0;
+                left: 0;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .upload-area {
+                padding: 2rem 1rem;
+            }
+
+            .modal-content {
+                margin: 20px;
+                max-height: calc(100vh - 40px);
+                overflow-y: auto;
+            }
+
+            /* Touch-friendly buttons */
+            .btn {
+                min-height: 48px;
+                font-size: 1rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+                z-index: 998;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Mobile forms */
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 1rem;
+            }
+
+            /* Swipe-friendly portfolio */
+            .portfolio-item {
+                touch-action: manipulation;
+            }
+
+            /* Mobile-optimized tables */
+            .quotation-table,
+            .document-table {
+                font-size: 0.9rem;
+                overflow-x: auto;
+                display: block;
+            }
+
+            .quotation-table td,
+            .quotation-table th {
+                padding: 0.5rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* Ultra-mobile optimization */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .dashboard-tabs {
+                flex-wrap: wrap;
+            }
+
+            .dashboard-tab {
+                flex: 1 0 45%;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+            }
+        }
+
+        /* Content Editable Styles */
+        [contenteditable="true"] {
+            outline: 2px dashed #3498db;
+            outline-offset: 2px;
+            min-height: 20px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline-color: #e74c3c;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        /* File Upload Indicator */
+        .file-upload-zone {
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-zone:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: #2980b9;
+        }
+
+        .file-upload-zone.dragging {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: #e74c3c;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 2.5rem;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .logo-image {
+            max-height: 50px;
+            width: auto;
+            display: none;
+        }
+
+        .logo-image.active {
+            display: block;
+        }
+
+        .logo-text {
+            display: block;
+        }
+
+        .logo-text.hidden {
+            display: none;
+        }
+
+        /* Logo Color Picker */
+        .logo-color-picker {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            display: none;
+            gap: 0.5rem;
+            z-index: 1001;
+            flex-wrap: wrap;
+        }
+
+        .logo-color-picker.active {
+            display: flex;
+        }
+
+        .logo-color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .logo-color-option:hover {
+            border-color: var(--text-dark);
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-pink);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .lang-toggle, .login-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .login-btn {
+            background: var(--gradient-pink);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.5rem;
+            color: var(--primary-dark-pink);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-pink);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-dark-pink);
+            border: 2px solid var(--primary-dark-pink);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Image Slider */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img,
+        .slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-pink);
+            border-radius: 2px;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .mv-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mv-card h3 {
+            font-size: 2rem;
+            color: var(--primary-dark-pink);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .value-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary-dark-pink);
+            margin-bottom: 1rem;
+        }
+
+        /* Services */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card.interactive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card.interactive:hover::before {
+            left: 100%;
+        }
+
+        .service-image {
+            height: 200px;
+            background: var(--gradient-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark-pink);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-pink);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h4 {
+            font-size: 1.3rem;
+            color: var(--primary-dark-pink);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Gallery */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: none;
+            border: 2px solid var(--primary-dark-pink);
+            color: var(--primary-dark-pink);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--gradient-pink);
+            color: white;
+            border-color: transparent;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(186, 91, 125, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 3001;
+        }
+
+        /* Enhanced Get Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-top: 5rem;
+        }
+
+        .quote-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+        }
+
+        /* Enhanced Upload Area */
+        .upload-area {
+            border: 2px dashed var(--primary-pink);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(232, 160, 191, 0.1);
+        }
+
+        .upload-area:hover {
+            background: rgba(232, 160, 191, 0.2);
+        }
+
+        .upload-area.dragging {
+            background: rgba(232, 160, 191, 0.3);
+            border-color: var(--primary-dark-pink);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+
+        .file-type-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .file-type-info span {
+            display: inline-block;
+            background: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.2rem;
+            font-size: 0.8rem;
+        }
+
+        /* Media Preview Grid */
+        .media-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .media-preview-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--white);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .media-preview-item img,
+        .media-preview-item video {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .media-preview-item .file-preview {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+        }
+
+        .file-icon {
+            font-size: 3rem;
+            color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-name {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            padding: 0 0.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+        }
+
+        .media-remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff4444;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .media-remove-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        /* AI Quotation Generation */
+        .ai-quote-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .ai-quote-container.active {
+            display: block;
+        }
+
+        .ai-processing {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .ai-processing-icon {
+            font-size: 4rem;
+            color: var(--primary-pink);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .quotation-document {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            margin: 2rem 0;
+        }
+
+        .quotation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-pink);
+        }
+
+        .company-info {
+            text-align: left;
+        }
+
+        .company-info .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .quotation-title {
+            text-align: right;
+        }
+
+        .quotation-title h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark-pink);
+            font-weight: 700;
+        }
+
+        .quotation-number {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .quotation-details {
+            margin-bottom: 3rem;
+        }
+
+        .quotation-details h3 {
+            color: var(--primary-dark-pink);
+            margin-bottom: 1rem;
+        }
+
+        .quotation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .quotation-table th {
+            background: var(--gradient-pink);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .quotation-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .quotation-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        .quotation-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .total-section {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+
+        .total-amount {
+            font-size: 2rem;
+            color: var(--primary-dark-pink);
+            font-weight: 700;
+        }
+
+        .terms-conditions {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .terms-conditions h4 {
+            color: var(--primary-dark-pink);
+            margin-bottom: 1rem;
+        }
+
+        .terms-conditions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .terms-conditions li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .terms-conditions li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-pink);
+            font-weight: bold;
+        }
+
+        /* Download Buttons */
+        .quotation-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .quotation-actions button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .download-pdf {
+            background: var(--gradient-pink);
+            color: white;
+        }
+
+        .email-quote {
+            background: transparent;
+            color: var(--primary-dark-pink);
+            border: 2px solid var(--primary-dark-pink);
+        }
+
+        /* Enhanced Upload Progress */
+        .upload-progress {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .upload-progress.active {
+            display: block;
+        }
+
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--gradient-pink);
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .upload-status {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Advanced Upload Features */
+        .upload-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .upload-feature {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .upload-feature-icon {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-feature h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-feature p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Portfolio Management Styles */
+        .portfolio-manager {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2500;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .portfolio-manager.active {
+            display: block;
+        }
+
+        .portfolio-manager-content {
+            background: var(--white);
+            max-width: 1200px;
+            margin: 50px auto;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .portfolio-tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-tab.active {
+            color: var(--primary-dark-pink);
+        }
+
+        .portfolio-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-pink);
+        }
+
+        .portfolio-upload-zone {
+            border: 3px dashed var(--primary-pink);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: rgba(232, 160, 191, 0.05);
+            transition: var(--transition);
+        }
+
+        .portfolio-upload-zone.dragging {
+            background: rgba(232, 160, 191, 0.2);
+            transform: scale(1.02);
+        }
+
+        .portfolio-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-edit-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .portfolio-edit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-edit-item img,
+        .portfolio-edit-item video {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .portfolio-item-info {
+            padding: 1rem;
+        }
+
+        .portfolio-item-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .portfolio-item-actions button {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .edit-btn {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .portfolio-item-actions button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--gradient-pink);
+            color: white;
+            padding: 1rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-message.bot {
+            text-align: left;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .user .message-bubble {
+            background: var(--gradient-pink);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot .message-bubble {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--gradient-pink);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Customer Dashboard Styles */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-pink);
+        }
+
+        .dashboard-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-tab {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: 2px solid var(--primary-pink);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .dashboard-tab.active {
+            background: var(--gradient-pink);
+            color: white;
+            border-color: transparent;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark-pink);
+            margin: 0.5rem 0;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-pink);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-pink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-pink);
+        }
+    </style>
+</head>
+<body>
+    <!-- Master Control Panel -->
+    <div class="master-control-panel" id="masterControlPanel">
+        <div class="mcp-header">
+            <h2>Master Control Panel</h2>
+            <button class="mcp-close" onclick="toggleMasterPanel()">×</button>
+        </div>
+        
+        <!-- Site Settings -->
+        <div class="mcp-section">
+            <h3>Site Settings</h3>
+            <div class="mcp-control">
+                <label>Site Title</label>
+                <input type="text" id="siteTitle" value="REFIT Maintenance Services">
+            </div>
+            <div class="mcp-control">
+                <label>Tagline</label>
+                <input type="text" id="siteTagline" value="From Concept to Completion">
+            </div>
+            <div class="mcp-control">
+                <label>Primary Color</label>
+                <input type="color" id="primaryColor" value="#E8A0BF" onchange="updateThemeColor()">
+            </div>
+            <div class="mcp-control">
+                <label>Dark Primary Color</label>
+                <input type="color" id="darkPrimaryColor" value="#BA5B7D" onchange="updateThemeColor()">
+            </div>
+            <button class="mcp-button" onclick="saveSiteSettings()">Save Settings</button>
+        </div>
+
+        <!-- Logo Management -->
+        <div class="mcp-section">
+            <h3>Logo Management</h3>
+            <div class="mcp-control">
+                <label>Logo Type</label>
+                <select id="logoType" onchange="toggleLogoType()">
+                    <option value="text">Text Logo</option>
+                    <option value="image">Image Logo</option>
+                </select>
+            </div>
+            <div class="mcp-control" id="logoTextControl">
+                <label>Logo Text</label>
+                <input type="text" id="logoTextInput" value="refit">
+            </div>
+            <div class="mcp-control" id="logoImageControl" style="display: none;">
+                <label>Logo Image</label>
+                <input type="file" id="logoImageInput" accept="image/*">
+                <div class="file-upload-zone" style="margin-top: 1rem;">
+                    <p>Drop logo image here or click to upload</p>
+                </div>
+            </div>
+            <button class="mcp-button" onclick="updateLogo()">Update Logo</button>
+        </div>
+
+        <!-- Content Management -->
+        <div class="mcp-section">
+            <h3>Content Management</h3>
+            <div class="mcp-control">
+                <label>Edit Mode</label>
+                <select id="editMode" onchange="toggleEditMode()">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            </div>
+            <div class="mcp-control">
+                <label>Hero Title</label>
+                <input type="text" id="heroTitle" value="FROM CONCEPT TO COMPLETION">
+            </div>
+            <div class="mcp-control">
+                <label>Hero Tagline</label>
+                <input type="text" id="heroTagline" value="WE GROW WITH PASSION, WE DO IT ALL">
+            </div>
+            <div class="mcp-control">
+                <label>Hero Description</label>
+                <textarea id="heroDescription" rows="3">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</textarea>
+            </div>
+            <button class="mcp-button" onclick="updateHeroContent()">Update Hero Section</button>
+        </div>
+
+        <!-- AI Quotation API Configuration -->
+        <div class="mcp-section">
+            <h3>AI Quotation Configuration</h3>
+            <div class="api-config-panel">
+                <h4>API Settings</h4>
+                <div class="mcp-control">
+                    <label>API Endpoint</label>
+                    <input type="text" id="apiEndpoint" placeholder="https://api.yourservice.com/quotation">
+                </div>
+                <div class="mcp-control">
+                    <label>API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your API key">
+                </div>
+                <div class="mcp-control">
+                    <label>AI Model</label>
+                    <select id="aiModel">
+                        <option value="gpt-4">GPT-4</option>
+                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        <option value="custom">Custom Model</option>
+                    </select>
+                </div>
+                <div class="mcp-control">
+                    <label>Base Rate (RM per sqft)</label>
+                    <input type="number" id="baseRate" value="50" step="0.01">
+                </div>
+                <div class="mcp-control">
+                    <label>Markup Percentage (%)</label>
+                    <input type="number" id="markupPercentage" value="20" step="0.1">
+                </div>
+                <button class="mcp-button success" onclick="testAPIConnection()">Test Connection</button>
+                <button class="mcp-button" onclick="saveAPIConfig()">Save Configuration</button>
+            </div>
+        </div>
+
+        <!-- Media Manager -->
+        <div class="mcp-section">
+            <h3>Media Manager</h3>
+            <div class="mcp-control">
+                <label>Upload Media</label>
+                <input type="file" id="mediaUpload" multiple accept="image/*,video/*,.gif,.webm">
+            </div>
+            <div class="mcp-control">
+                <label>Media Library</label>
+                <div class="media-preview-grid" id="mediaLibrary" style="max-height: 300px; overflow-y: auto;">
+                    <!-- Media items will be displayed here -->
+                </div>
+            </div>
+            <button class="mcp-button danger" onclick="clearMediaLibrary()">Clear All Media</button>
+        </div>
+
+        <!-- Advanced Settings -->
+        <div class="mcp-section">
+            <h3>Advanced Settings</h3>
+            <div class="mcp-control">
+                <label>Enable Analytics</label>
+                <select id="enableAnalytics">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mcp-control">
+                <label>Google Analytics ID</label>
+                <input type="text" id="gaId" placeholder="G-XXXXXXXXXX">
+            </div>
+            <div class="mcp-control">
+                <label>SEO Meta Description</label>
+                <textarea id="metaDescription" rows="3">Professional maintenance and renovation services in Malaysia. From concept to completion, we deliver quality with passion.</textarea>
+            </div>
+            <div class="mcp-control">
+                <label>Contact Email</label>
+                <input type="email" id="contactEmail" value="info@refitservices.com">
+            </div>
+            <button class="mcp-button" onclick="saveAdvancedSettings()">Save Advanced Settings</button>
+        </div>
+
+        <!-- Backup & Restore -->
+        <div class="mcp-section">
+            <h3>Backup & Restore</h3>
+            <button class="mcp-button success" onclick="exportSettings()">Export Settings</button>
+            <button class="mcp-button" onclick="document.getElementById('importSettings').click()">Import Settings</button>
+            <input type="file" id="importSettings" accept=".json" style="display: none;" onchange="importSettingsFile(event)">
+            <button class="mcp-button danger" onclick="resetToDefaults()">Reset to Defaults</button>
+        </div>
+    </div>
+
+    <!-- Mobile Master Control Toggle -->
+    <button class="mcp-mobile-toggle" onclick="toggleMasterPanel()" style="display: none;">
+        ⚙️
+    </button>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="" alt="REFIT Logo" class="logo-image" id="logoImage">
+                <div class="logo logo-text editable" id="logoText" onclick="toggleLogoColorPicker()">refit</div>
+                <div class="logo-color-picker" id="logoColorPicker">
+                    <div class="logo-color-option" style="background: #E8A0BF;" onclick="changeLogoColor('#E8A0BF', '#BA5B7D')"></div>
+                    <div class="logo-color-option" style="background: #4ecdc4;" onclick="changeLogoColor('#4ecdc4', '#45b7d1')"></div>
+                    <div class="logo-color-option" style="background: #ff6b6b;" onclick="changeLogoColor('#ff6b6b', '#ee5a6f')"></div>
+                    <div class="logo-color-option" style="background: #6c5ce7;" onclick="changeLogoColor('#6c5ce7', '#5f3dc4')"></div>
+                    <div class="logo-color-option" style="background: #f39c12;" onclick="changeLogoColor('#f39c12', '#e67e22')"></div>
+                </div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="editable">Home</a></li>
+                <li><a href="#about" class="editable">About</a></li>
+                <li><a href="#services" class="editable">Services</a></li>
+                <li><a href="#process" class="editable">Process</a></li>
+                <li><a href="#portfolio" class="editable">Portfolio</a></li>
+                <li><a href="#contact" class="editable">Contact</a></li>
+                <li id="dashboardNavLink" style="display: none;"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                <li id="adminNavLink" style="display: none;"><a href="#" onclick="toggleAdminPanel()">Admin</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="lang-toggle" onclick="toggleLanguageMenu()">EN</button>
+                <button class="login-btn" id="loginBtn" onclick="showLoginModal()">Login</button>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="editable" id="heroTitleElement">FROM CONCEPT TO COMPLETION</h1>
+                <p class="tagline editable" id="heroTaglineElement">WE GROW WITH PASSION, WE DO IT ALL</p>
+                <p class="editable" id="heroDescElement">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
+                <div class="hero-buttons">
+                    <a href="#quote" class="btn btn-primary editable">Get Quote</a>
+                    <a href="#portfolio" class="btn btn-secondary editable">View Portfolio</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-slider" id="heroSlider">
+                    <div class="slider-container" id="heroSliderContainer">
+                        <div class="slide">
+                            <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="REFIT Services" class="editable-media">
+                        </div>
+                        <div class="slide">
+                            <img src="https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+Design" alt="Interior Design" class="editable-media">
+                        </div>
+                        <div class="slide">
+                            <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Renovation+Projects" alt="Renovation Projects" class="editable-media">
+                        </div>
+                    </div>
+                    <button class="slider-nav prev" onclick="changeSlide('hero', -1)">‹</button>
+                    <button class="slider-nav next" onclick="changeSlide('hero', 1)">›</button>
+                    <div class="slider-controls" id="heroSliderDots"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section id="about">
+        <h2 class="section-title editable">Our Mission & Vision</h2>
+        <div class="mission-vision">
+            <div class="mv-card">
+                <h3 class="editable">Mission</h3>
+                <p class="editable">To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
+            </div>
+            <div class="mv-card">
+                <h3 class="editable">Vision</h3>
+                <p class="editable">To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section>
+        <h2 class="section-title editable">Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon editable">❤️</div>
+                <h4 class="editable">PASSION</h4>
+                <p class="editable">Knowledge, experience and constant learning process. Unconditional commitment to work and striving for innovations.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon editable">🛡️</div>
+                <h4 class="editable">RESPONSIBILITY</h4>
+                <p class="editable">Respectable and honest treatment to clients. Trust-based collaboration with partners. Social responsibility for society and environment.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon editable">💡</div>
+                <h4 class="editable">INNOVATIVE</h4>
+                <p class="editable">Constant desire to improve. Permanent search for advanced business tools and methods. Innovation is our fundamental competitive advantage.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon editable">🤝</div>
+                <h4 class="editable">RESPECT</h4>
+                <p class="editable">Recognition that employees are the main reason of a successful business. Development of warm and respectful relationships with associates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <h2 class="section-title editable">What We Do</h2>
+        <div class="services-container">
+            <div class="service-card interactive">
+                <div class="service-image editable">🔧</div>
+                <div class="service-content">
+                    <h4 class="editable">Maintenance Services</h4>
+                    <p class="editable">Comprehensive maintenance solutions for commercial and residential properties with professional quality and reliability.</p>
+                </div>
+            </div>
+            <div class="service-card interactive">
+                <div class="service-image editable">🏗️</div>
+                <div class="service-content">
+                    <h4 class="editable">Interior Construction & Renovation</h4>
+                    <p class="editable">Expert interior construction and renovation services transforming spaces with innovative design and quality craftsmanship.</p>
+                </div>
+            </div>
+            <div class="service-card interactive">
+                <div class="service-image editable">🎨</div>
+                <div class="service-content">
+                    <h4 class="editable">Designing & Interior Illustration</h4>
+                    <p class="editable">Creative design solutions and detailed interior illustrations bringing your vision to life with professional expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+        <h2 class="section-title editable">Our Process</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number editable">1</div>
+                <h4 class="editable">PLANNING</h4>
+                <p class="editable">Setting performance objectives & developing decisions on how to achieve them</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number editable">2</div>
+                <h4 class="editable">ORGANIZING</h4>
+                <p class="editable">Creating structure: Setting tasks, arranging resources & coordinating activities</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number editable">3</div>
+                <h4 class="editable">IMPLEMENTING</h4>
+                <p class="editable">Executing the plans to meet the set performance objectives</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number editable">4</div>
+                <h4 class="editable">CONTROLLING</h4>
+                <p class="editable">Measuring performance & taking preventive & corrective actions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2 class="section-title editable">Our Portfolio</h2>
+        <div class="portfolio-filters">
+            <button class="filter-btn active" onclick="filterPortfolio('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterPortfolio('commercial')">Commercial</button>
+            <button class="filter-btn" onclick="filterPortfolio('residential')">Residential</button>
+            <button class="filter-btn" onclick="filterPortfolio('maintenance')">Maintenance</button>
+            <button class="filter-btn" onclick="filterPortfolio('3d')">3D Concepts</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Portfolio items will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Enhanced Get Quote Section -->
+    <section id="quote" class="quote-section">
+        <h2 class="section-title editable">Get Your Quote</h2>
+        <div class="quote-form">
+            <form id="quoteForm">
+                <div class="form-step active">
+                    <h3 class="editable">Upload Your Project Files</h3>
+                    <div class="upload-area" id="quoteUploadArea">
+                        <div class="upload-icon">📁</div>
+                        <h4 class="editable">Drop files here or click to upload</h4>
+                        <p class="editable">Upload images, videos, documents, and more</p>
+                        <div class="file-type-info">
+                            <span>📷 Images</span>
+                            <span>🎥 Videos</span>
+                            <span>📄 Documents</span>
+                            <span>🎞️ Animations</span>
+                            <span>📊 Slides</span>
+                        </div>
+                        <input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.gif,.webm" style="display: none;">
+                    </div>
+                    
+                    <div class="upload-progress" id="uploadProgress">
+                        <div class="progress-container">
+                            <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <div class="upload-status">
+                            <span class="upload-filename" id="uploadFileName">Uploading...</span>
+                            <span class="upload-percentage" id="uploadPercentage">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="media-preview-grid" id="quoteMediaPreview"></div>
+
+                    <div class="form-group" style="margin-top: 2rem;">
+                        <label class="editable">Describe Your Project Requirements</label>
+                        <textarea id="projectDescription" rows="6" placeholder="Please describe what you would like us to do..."></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                        <div class="form-group">
+                            <label class="editable">Full Name</label>
+                            <input type="text" id="quoteName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="editable">Email Address</label>
+                            <input type="email" id="quoteEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="editable">Phone Number</label>
+                            <input type="tel" id="quotePhone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="editable">Property Type</label>
+                            <select id="propertyType">
+                                <option value="">Select property type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="office">Office</option>
+                                <option value="retail">Retail</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button type="button" class="btn btn-primary" onclick="generateAIQuote()" style="font-size: 1.2rem; padding: 1rem 3rem;">
+                            🤖 Generate AI-Powered Quote
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- AI Quotation Container -->
+            <div class="ai-quote-container" id="aiQuoteContainer">
+                <div class="ai-processing" id="aiProcessing">
+                    <div class="ai-processing-icon">🤖</div>
+                    <h3>AI is analyzing your project...</h3>
+                    <p>Our AI is reviewing your files and requirements to generate an accurate quotation</p>
+                </div>
+
+                <div class="quotation-document" id="quotationDocument" style="display: none;">
+                    <!-- Quotation content will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title editable">Get In Touch</h2>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;" class="editable">Ready to transform your space? Contact us today!</p>
+            <div style="margin-bottom: 2rem;">
+                <p class="editable"><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
+            </div>
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://www.instagram.com/refit_mntserv?igsh=dHloODZta3VsZWRy&utm_source=qr" target="_blank">📷</a>
+                <a href="https://www.facebook.com/share/19C5RB3hAL/?mibextid=wwXIfr" target="_blank">📘</a>
+                <a href="https://www.tiktok.com/@refit.mntserv?_t=ZS-8yUVBpC5xm4&_r=1" target="_blank">🎵</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="editable">REFIT</h4>
+                <p class="editable">Professional maintenance and renovation services from concept to completion.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/refit_mntserv?igsh=dHloODZta3VsZWRy&utm_source=qr" target="_blank">📷</a>
+                    <a href="https://www.facebook.com/share/19C5RB3hAL/?mibextid=wwXIfr" target="_blank">📘</a>
+                    <a href="https://www.tiktok.com/@refit.mntserv?_t=ZS-8yUVBpC5xm4&_r=1" target="_blank">🎵</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4 class="editable">Quick Links</h4>
+                <ul>
+                    <li><a href="#about" class="editable">About Us</a></li>
+                    <li><a href="#services" class="editable">Services</a></li>
+                    <li><a href="#portfolio" class="editable">Portfolio</a></li>
+                    <li><a href="#quote" class="editable">Get Quote</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="editable">Services</h4>
+                <ul>
+                    <li><a href="#" class="editable">Maintenance Services</a></li>
+                    <li><a href="#" class="editable">Interior Construction</a></li>
+                    <li><a href="#" class="editable">Renovation</a></li>
+                    <li><a href="#" class="editable">3D Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="editable">Contact Info</h4>
+                <p class="editable">C-08-34, Centum @ Oasis Corporate Park<br>
+                Oasis Damansara, No.2 Jalan PJU 1A/2<br>
+                Ara Damansara, 47301 Petaling Jaya<br>
+                Selangor, Malaysia</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
+            <p class="editable">&copy; 2024 REFIT Maintenance Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%;" onclick="login()">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" onclick="toggleChat()">
+            💬
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h4>REFIT Assistant</h4>
+                <span style="cursor: pointer;" onclick="toggleChat()">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="message-bubble">
+                        Hello! I'm your REFIT assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global Variables
+        let currentUser = null;
+        let isAdmin = false;
+        let isMasterAdmin = false;
+        let editModeEnabled = false;
+        let currentSlide = { hero: 0 };
+        let portfolioItems = [];
+        let uploadedFiles = [];
+        let apiConfig = {
+            endpoint: '',
+            key: '',
+            model: 'gpt-4',
+            baseRate: 50,
+            markup: 20
+        };
+
+        // Master Admin Credentials
+        const MASTER_ADMIN = {
+            email: 'admin@refitservices.com',
+            password: 'refit2024master'
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+            loadSettings();
+            checkLoginStatus();
+            setupEventListeners();
+            initializePortfolio();
+            initializeSliders();
+            
+            // Check for mobile
+            if (window.innerWidth <= 768) {
+                document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
+            }
+        });
+
+        // Initialize Website
+        function initializeWebsite() {
+            // Load saved settings from localStorage
+            const savedSettings = localStorage.getItem('refitSettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                applySettings(settings);
+            }
+        }
+
+        // Load Settings
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            
+            // Apply saved colors
+            if (settings.primaryColor) {
+                document.documentElement.style.setProperty('--primary-pink', settings.primaryColor);
+            }
+            if (settings.darkPrimaryColor) {
+                document.documentElement.style.setProperty('--primary-dark-pink', settings.darkPrimaryColor);
+            }
+            
+            // Apply API configuration
+            if (settings.apiConfig) {
+                apiConfig = settings.apiConfig;
+            }
+        }
+
+        // Apply Settings
+        function applySettings(settings) {
+            if (settings.siteTitle) {
+                document.title = settings.siteTitle;
+            }
+            
+            if (settings.logoText) {
+                document.getElementById('logoText').textContent = settings.logoText;
+            }
+            
+            if (settings.heroTitle) {
+                document.getElementById('heroTitleElement').textContent = settings.heroTitle;
+            }
+            
+            if (settings.heroTagline) {
+                document.getElementById('heroTaglineElement').textContent = settings.heroTagline;
+            }
+            
+            if (settings.heroDescription) {
+                document.getElementById('heroDescElement').textContent = settings.heroDescription;
+            }
+        }
+
+        // Toggle Master Control Panel
+        function toggleMasterPanel() {
+            if (!isMasterAdmin) {
+                showNotification('Access Denied', 'Master admin access required', 'error');
+                return;
+            }
+            
+            const panel = document.getElementById('masterControlPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Login Function
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email === MASTER_ADMIN.email && password === MASTER_ADMIN.password) {
+                currentUser = { email: email, name: 'Master Admin' };
+                isMasterAdmin = true;
+                isAdmin = true;
+                loginSuccess();
+                
+                // Show mobile toggle for master admin
+                document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
+                
+                showNotification('Welcome', 'Master Admin access granted', 'success');
+            } else if (email && password) {
+                currentUser = { email: email, name: 'Customer' };
+                isAdmin = false;
+                isMasterAdmin = false;
+                loginSuccess();
+            } else {
+                showNotification('Error', 'Please enter valid credentials', 'error');
+            }
+        }
+
+        // Login Success
+        function loginSuccess() {
+            closeModal('loginModal');
+            document.getElementById('loginBtn').textContent = currentUser.name;
+            
+            if (isAdmin && !isMasterAdmin) {
+                document.getElementById('adminNavLink').style.display = 'block';
+            }
+        }
+
+        // Check Login Status
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                if (currentUser.email === MASTER_ADMIN.email) {
+                    isMasterAdmin = true;
+                    isAdmin = true;
+                    document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
+                }
+                document.getElementById('loginBtn').textContent = currentUser.name;
+            }
+        }
+
+        // Toggle Edit Mode
+        function toggleEditMode() {
+            const editModeSelect = document.getElementById('editMode');
+            editModeEnabled = editModeSelect.value === 'on';
+            
+            document.body.classList.toggle('edit-mode', editModeEnabled);
+            
+            if (editModeEnabled) {
+                enableContentEditing();
+                showNotification('Edit Mode', 'Content editing enabled. Click on any element to edit.', 'info');
+            } else {
+                disableContentEditing();
+                showNotification('Edit Mode', 'Content editing disabled', 'info');
+            }
+        }
+
+        // Enable Content Editing
+        function enableContentEditing() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(element => {
+                element.setAttribute('contenteditable', 'true');
+                element.addEventListener('blur', saveEditedContent);
+                
+                // Add edit indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'edit-indicator';
+                indicator.innerHTML = '✏️';
+                element.appendChild(indicator);
+            });
+            
+            // Enable media editing
+            const editableMedia = document.querySelectorAll('.editable-media');
+            editableMedia.forEach(media => {
+                media.style.cursor = 'pointer';
+                media.addEventListener('click', replaceMedia);
+            });
+        }
+
+        // Disable Content Editing
+        function disableContentEditing() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(element => {
+                element.setAttribute('contenteditable', 'false');
+                element.removeEventListener('blur', saveEditedContent);
+                
+                // Remove edit indicator
+                const indicator = element.querySelector('.edit-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            });
+            
+            // Disable media editing
+            const editableMedia = document.querySelectorAll('.editable-media');
+            editableMedia.forEach(media => {
+                media.style.cursor = 'default';
+                media.removeEventListener('click', replaceMedia);
+            });
+        }
+
+        // Save Edited Content
+        function saveEditedContent(event) {
+            const element = event.target;
+            const content = element.textContent;
+            
+            // Save to localStorage
+            const elementId = element.id || element.className;
+            localStorage.setItem(`content_${elementId}`, content);
+            
+            showNotification('Saved', 'Content updated successfully', 'success');
+        }
+
+        // Replace Media
+        function replaceMedia(event) {
+            if (!editModeEnabled) return;
+            
+            const media = event.target;
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*,video/*';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        media.src = e.target.result;
+                        localStorage.setItem(`media_${media.alt}`, e.target.result);
+                        showNotification('Media Updated', 'Media replaced successfully', 'success');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        // Update Theme Color
+        function updateThemeColor() {
+            const primaryColor = document.getElementById('primaryColor').value;
+            const darkPrimaryColor = document.getElementById('darkPrimaryColor').value;
+            
+            document.documentElement.style.setProperty('--primary-pink', primaryColor);
+            document.documentElement.style.setProperty('--primary-dark-pink', darkPrimaryColor);
+            document.documentElement.style.setProperty('--gradient-pink', `linear-gradient(135deg, ${primaryColor} 0%, ${darkPrimaryColor} 100%)`);
+            
+            // Save to settings
+            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            settings.primaryColor = primaryColor;
+            settings.darkPrimaryColor = darkPrimaryColor;
+            localStorage.setItem('refitSettings', JSON.stringify(settings));
+        }
+
+        // Toggle Logo Type
+        function toggleLogoType() {
+            const logoType = document.getElementById('logoType').value;
+            const textControl = document.getElementById('logoTextControl');
+            const imageControl = document.getElementById('logoImageControl');
+            
+            if (logoType === 'text') {
+                textControl.style.display = 'block';
+                imageControl.style.display = 'none';
+                document.getElementById('logoText').style.display = 'block';
+                document.getElementById('logoImage').style.display = 'none';
+            } else {
+                textControl.style.display = 'none';
+                imageControl.style.display = 'block';
+                document.getElementById('logoText').style.display = 'none';
+                document.getElementById('logoImage').style.display = 'block';
+            }
+        }
+
+        // Update Logo
+        function updateLogo() {
+            const logoType = document.getElementById('logoType').value;
+            
+            if (logoType === 'text') {
+                const logoText = document.getElementById('logoTextInput').value;
+                document.getElementById('logoText').textContent = logoText;
+                
+                // Save to settings
+                const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+                settings.logoText = logoText;
+                localStorage.setItem('refitSettings', JSON.stringify(settings));
+            } else {
+                const fileInput = document.getElementById('logoImageInput');
+                const file = fileInput.files[0];
+                
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('logoImage').src = e.target.result;
+                        document.getElementById('logoImage').classList.add('active');
+                        document.getElementById('logoText').classList.add('hidden');
+                        
+                        // Save to settings
+                        const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+                        settings.logoImage = e.target.result;
+                        localStorage.setItem('refitSettings', JSON.stringify(settings));
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+            
+            showNotification('Logo Updated', 'Logo has been updated successfully', 'success');
+        }
+
+        // Update Hero Content
+        function updateHeroContent() {
+            const heroTitle = document.getElementById('heroTitle').value;
+            const heroTagline = document.getElementById('heroTagline').value;
+            const heroDescription = document.getElementById('heroDescription').value;
+            
+            document.getElementById('heroTitleElement').textContent = heroTitle;
+            document.getElementById('heroTaglineElement').textContent = heroTagline;
+            document.getElementById('heroDescElement').textContent = heroDescription;
+            
+            // Save to settings
+            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            settings.heroTitle = heroTitle;
+            settings.heroTagline = heroTagline;
+            settings.heroDescription = heroDescription;
+            localStorage.setItem('refitSettings', JSON.stringify(settings));
+            
+            showNotification('Hero Updated', 'Hero section content updated successfully', 'success');
+        }
+
+        // Save Site Settings
+        function saveSiteSettings() {
+            const settings = {
+                siteTitle: document.getElementById('siteTitle').value,
+                siteTagline: document.getElementById('siteTagline').value,
+                primaryColor: document.getElementById('primaryColor').value,
+                darkPrimaryColor: document.getElementById('darkPrimaryColor').value
+            };
+            
+            document.title = settings.siteTitle + ' - ' + settings.siteTagline;
+            updateThemeColor();
+            
+            const allSettings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            Object.assign(allSettings, settings);
+            localStorage.setItem('refitSettings', JSON.stringify(allSettings));
+            
+            showNotification('Settings Saved', 'Site settings have been updated', 'success');
+        }
+
+        // Save API Configuration
+        function saveAPIConfig() {
+            apiConfig = {
+                endpoint: document.getElementById('apiEndpoint').value,
+                key: document.getElementById('apiKey').value,
+                model: document.getElementById('aiModel').value,
+                baseRate: parseFloat(document.getElementById('baseRate').value),
+                markup: parseFloat(document.getElementById('markupPercentage').value)
+            };
+            
+            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            settings.apiConfig = apiConfig;
+            localStorage.setItem('refitSettings', JSON.stringify(settings));
+            
+            showNotification('API Configuration Saved', 'AI quotation settings have been updated', 'success');
+        }
+
+        // Test API Connection
+        async function testAPIConnection() {
+            const endpoint = document.getElementById('apiEndpoint').value;
+            const key = document.getElementById('apiKey').value;
+            
+            if (!endpoint || !key) {
+                showNotification('Error', 'Please enter API endpoint and key', 'error');
+                return;
+            }
+            
+            try {
+                // Simulate API test (replace with actual API call)
+                showNotification('Testing Connection', 'Testing API connection...', 'info');
+                
+                // In production, make actual API call here
+                setTimeout(() => {
+                    showNotification('Success', 'API connection successful!', 'success');
+                }, 2000);
+            } catch (error) {
+                showNotification('Error', 'API connection failed: ' + error.message, 'error');
+            }
+        }
+
+        // Generate AI Quote
+        async function generateAIQuote() {
+            const name = document.getElementById('quoteName').value;
+            const email = document.getElementById('quoteEmail').value;
+            const phone = document.getElementById('quotePhone').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const description = document.getElementById('projectDescription').value;
+            
+            if (!name || !email || !phone || !propertyType || !description) {
+                showNotification('Error', 'Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Show AI processing
+            document.getElementById('aiQuoteContainer').classList.add('active');
+            document.getElementById('aiProcessing').style.display = 'block';
+            document.getElementById('quotationDocument').style.display = 'none';
+            
+            // Simulate AI processing (replace with actual API call)
+            setTimeout(async () => {
+                try {
+                    // Generate quotation with AI
+                    const quotation = await generateQuotationWithAI({
+                        name,
+                        email,
+                        phone,
+                        propertyType,
+                        description,
+                        files: uploadedFiles
+                    });
+                    
+                    displayQuotation(quotation);
+                } catch (error) {
+                    showNotification('Error', 'Failed to generate quotation: ' + error.message, 'error');
+                    document.getElementById('aiProcessing').style.display = 'none';
+                }
+            }, 3000);
+        }
+
+        // Generate Quotation with AI
+        async function generateQuotationWithAI(data) {
+            // This is where you would integrate with your AI API
+            // For demo purposes, we'll generate a sample quotation
+            
+            const quoteNumber = 'RQ-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            const today = new Date();
+            const validity = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+            
+            // AI-based line item generation
+            const items = generateQuoteItems(data.description, data.propertyType);
+            
+            let subtotal = 0;
+            items.forEach(item => {
+                subtotal += item.total;
+            });
+            
+            const sst = subtotal * 0.1;
+            const total = subtotal + sst;
+            
+            return {
+                quoteNumber,
+                date: formatDate(today),
+                validity: formatDate(validity),
+                client: {
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    propertyType: data.propertyType
+                },
+                description: data.description,
+                items,
+                subtotal,
+                sst,
+                total
+            };
+        }
+
+        // Generate Quote Items
+        function generateQuoteItems(description, propertyType) {
+            const items = [];
+            const baseRate = apiConfig.baseRate || 50;
+            const markup = apiConfig.markup || 20;
+            
+            // Base consultation
+            items.push({
+                description: 'Site Survey & Consultation',
+                quantity: 1,
+                unitPrice: 500,
+                total: 500
+            });
+            
+            // AI-based analysis (simplified for demo)
+            const keywords = description.toLowerCase();
+            
+            if (keywords.includes('renovation')) {
+                const sqft = Math.floor(Math.random() * 1000) + 500;
+                const price = sqft * baseRate * (1 + markup / 100);
+                items.push({
+                    description: 'Interior Renovation Works',
+                    quantity: sqft,
+                    unitPrice: baseRate * (1 + markup / 100),
+                    total: price
+                });
+            }
+            
+            if (keywords.includes('design')) {
+                items.push({
+                    description: '3D Design & Conceptualization',
+                    quantity: 1,
+                    unitPrice: 3000,
+                    total: 3000
+                });
+            }
+            
+            if (keywords.includes('paint')) {
+                items.push({
+                    description: 'Painting Works (Labor & Materials)',
+                    quantity: 1,
+                    unitPrice: 4500,
+                    total: 4500
+                });
+            }
+            
+            if (keywords.includes('flooring')) {
+                const sqft = Math.floor(Math.random() * 800) + 400;
+                items.push({
+                    description: 'Flooring Installation',
+                    quantity: sqft,
+                    unitPrice: 20,
+                    total: sqft * 20
+                });
+            }
+            
+            // Property type specific
+            if (propertyType === 'commercial') {
+                items.push({
+                    description: 'Commercial Grade Finishes',
+                    quantity: 1,
+                    unitPrice: 5000,
+                    total: 5000
+                });
+            }
+            
+            // Project management
+            items.push({
+                description: 'Project Management & Coordination',
+                quantity: 1,
+                unitPrice: 2000,
+                total: 2000
+            });
+            
+            return items;
+        }
+
+        // Display Quotation
+        function displayQuotation(quotation) {
+            const quotationDoc = document.getElementById('quotationDocument');
+            
+            quotationDoc.innerHTML = `
+                <div class="quotation-header">
+                    <div class="company-info">
+                        <div class="logo">${document.getElementById('logoText').textContent}</div>
+                        <p><strong>REFIT MAINTENANCE SERVICES</strong></p>
+                        <p>C-08-34, Centum @ Oasis Corporate Park</p>
+                        <p>Oasis Damansara, No.2 Jalan PJU 1A/2</p>
+                        <p>Ara Damansara, 47301 Petaling Jaya, Selangor</p>
+                        <p>📞 +60 3-1234 5678 | 📧 info@refitservices.com</p>
+                    </div>
+                    <div class="quotation-title">
+                        <h1>QUOTATION</h1>
+                        <p class="quotation-number">Quote #: ${quotation.quoteNumber}</p>
+                        <p>Date: ${quotation.date}</p>
+                        <p>Valid Until: ${quotation.validity}</p>
+                    </div>
+                </div>
+
+                <div class="quotation-details">
+                    <h3>Client Information</h3>
+                    <p><strong>Name:</strong> ${quotation.client.name}</p>
+                    <p><strong>Email:</strong> ${quotation.client.email}</p>
+                    <p><strong>Phone:</strong> ${quotation.client.phone}</p>
+                    <p><strong>Property Type:</strong> ${quotation.client.propertyType}</p>
+                </div>
+
+                <div class="quotation-details">
+                    <h3>Project Details</h3>
+                    <p>${quotation.description}</p>
+                </div>
+
+                <table class="quotation-table">
+                    <thead>
+                        <tr>
+                            <th>Item Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Price (RM)</th>
+                            <th>Total (RM)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${quotation.items.map(item => `
+                            <tr>
+                                <td>${item.description}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.unitPrice.toFixed(2)}</td>
+                                <td>${item.total.toFixed(2)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+
+                <div class="total-section">
+                    <p>Subtotal: RM ${quotation.subtotal.toFixed(2)}</p>
+                    <p>SST (10%): RM ${quotation.sst.toFixed(2)}</p>
+                    <h3 class="total-amount">Total: RM ${quotation.total.toFixed(2)}</h3>
+                </div>
+
+                <div class="terms-conditions">
+                    <h4>Terms & Conditions</h4>
+                    <ul>
+                        <li>30% deposit required upon confirmation</li>
+                        <li>Balance payment upon project completion</li>
+                        <li>Quotation valid for 30 days</li>
+                        <li>Prices subject to site inspection</li>
+                        <li>Warranty: 12 months for workmanship</li>
+                    </ul>
+                </div>
+
+                <div class="quotation-footer">
+                    <p style="text-align: center; color: var(--text-light);">
+                        Thank you for choosing REFIT Maintenance Services. We look forward to working with you!
+                    </p>
+                </div>
+
+                <div class="quotation-actions">
+                    <button class="download-pdf" onclick="downloadQuotation()">📥 Download PDF</button>
+                    <button class="email-quote" onclick="emailQuotation()">📧 Email Quote</button>
+                    <button class="btn btn-primary" onclick="proceedToPayment()">💳 Proceed with Payment</button>
+                </div>
+            `;
+            
+            document.getElementById('aiProcessing').style.display = 'none';
+            quotationDoc.style.display = 'block';
+        }
+
+        // Format Date
+        function formatDate(date) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // Portfolio Data
+        const samplePortfolio = [
+            { id: 1, title: 'Cath Kidston Store', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Cath+Kidston', media: ['https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Store+Front', 'https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+View'] },
+            { id: 2, title: 'Pie Face Restaurant', category: 'commercial', image: 'https://via.placeholder.com/400x300/BA5B7D/ffffff?text=Pie+Face', media: ['https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Kitchen+Area'] },
+            { id: 3, title: 'Tusan Ice Cream', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Tusan', media: ['https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Display+Counter'] },
+            { id: 4, title: 'Modern Living Room', category: 'residential', image: 'https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Living+Room', media: ['https://via.placeholder.com/600x400/4ecdc4/ffffff?text=TV+Area'] },
+            { id: 5, title: 'Master Bedroom', category: 'residential', image: 'https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Bedroom', media: ['https://via.placeholder.com/600x400/6c5ce7/ffffff?text=Bedroom+View'] },
+            { id: 6, title: 'TopShop Maintenance', category: 'maintenance', image: 'https://via.placeholder.com/400x300/ff6b6b/ffffff?text=TopShop', media: ['https://via.placeholder.com/600x400/ff6b6b/ffffff?text=Store+Maintenance'] },
+            { id: 7, title: '3D Kitchen Concept', category: '3d', image: 'https://via.placeholder.com/400x300/f39c12/ffffff?text=3D+Kitchen', media: ['https://via.placeholder.com/600x400/f39c12/ffffff?text=Kitchen+Render'] },
+            { id: 8, title: 'Backhaus Bakery', category: 'commercial', image: 'https://via.placeholder.com/400x300/2ecc71/ffffff?text=Backhaus', media: ['https://via.placeholder.com/600x400/2ecc71/ffffff?text=Bakery+Interior'] }
+        ];
+
+        // Initialize Portfolio
+        function initializePortfolio() {
+            portfolioItems = [...samplePortfolio];
+            displayPortfolio('all');
+        }
+
+        // Display Portfolio Items
+        function displayPortfolio(category) {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+            
+            const filtered = category === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === category);
+            
+            filtered.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="editable-media">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4 class="editable">${item.title}</h4>
+                            <p class="editable">${getCategoryName(item.category)}</p>
+                        </div>
+                    </div>
+                `;
+                portfolioItem.onclick = () => openLightbox(item);
+                grid.appendChild(portfolioItem);
+            });
+        }
+
+        // Get Category Name
+        function getCategoryName(category) {
+            const names = {
+                'commercial': 'Commercial Project',
+                'residential': 'Residential Project',
+                'maintenance': 'Maintenance Project',
+                '3d': '3D Concept Design'
+            };
+            return names[category] || category;
+        }
+
+        // Filter Portfolio
+        function filterPortfolio(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            displayPortfolio(category);
+        }
+
+        // Open Lightbox
+        function openLightbox(item) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightboxContent');
+            
+            if (item.media && item.media.length > 0) {
+                let currentMediaIndex = 0;
+                
+                function showMedia(index) {
+                    content.innerHTML = `<img src="${item.media[index]}" alt="${item.title}">`;
+                }
+                
+                showMedia(currentMediaIndex);
+                
+                if (item.media.length > 1) {
+                    content.innerHTML += `
+                        <button class="slider-nav prev" onclick="event.stopPropagation(); changeLightboxMedia(-1)" style="position: absolute; left: 20px;">‹</button>
+                        <button class="slider-nav next" onclick="event.stopPropagation(); changeLightboxMedia(1)" style="position: absolute; right: 20px;">›</button>
+                    `;
+                    
+                    window.changeLightboxMedia = function(direction) {
+                        currentMediaIndex = (currentMediaIndex + direction + item.media.length) % item.media.length;
+                        showMedia(currentMediaIndex);
+                    };
+                }
+            } else {
+                content.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
+            }
+            
+            lightbox.classList.add('active');
+        }
+
+        // Close Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Initialize Sliders
+        function initializeSliders() {
+            const heroSlider = document.getElementById('heroSlider');
+            const heroContainer = document.getElementById('heroSliderContainer');
+            const heroSlides = heroContainer.querySelectorAll('.slide');
+            const heroDots = document.getElementById('heroSliderDots');
+            
+            heroSlides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide('hero', index);
+                heroDots.appendChild(dot);
+            });
+            
+            setInterval(() => changeSlide('hero', 1), 5000);
+        }
+
+        // Change Slide
+        function changeSlide(sliderId, direction) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const slides = container.querySelectorAll('.slide');
+            const dots = document.getElementById(sliderId + 'SliderDots').querySelectorAll('.slider-dot');
+            
+            currentSlide[sliderId] = (currentSlide[sliderId] + direction + slides.length) % slides.length;
+            
+            container.style.transform = `translateX(-${currentSlide[sliderId] * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide[sliderId]);
+            });
+        }
+
+        // Go to Specific Slide
+        function goToSlide(sliderId, index) {
+            const container = document.getElementById(sliderId + 'SliderContainer');
+            const dots = document.getElementById(sliderId + 'SliderDots').querySelectorAll('.slider-dot');
+            
+            currentSlide[sliderId] = index;
+            container.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Upload Area
+            const uploadArea = document.getElementById('quoteUploadArea');
+            const fileInput = document.getElementById('fileInput');
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => handleFileUpload(e, 'quote'));
+            
+            // Drag and Drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragging');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragging');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragging');
+                handleFileUpload({ target: { files: e.dataTransfer.files } }, 'quote');
+            });
+            
+            // Media Upload in Master Panel
+            const mediaUpload = document.getElementById('mediaUpload');
+            if (mediaUpload) {
+                mediaUpload.addEventListener('change', handleMediaLibraryUpload);
+            }
+            
+            // Window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768 && isMasterAdmin) {
+                    document.querySelector('.mcp-mobile-toggle').style.display = 'flex';
+                } else if (window.innerWidth > 768) {
+                    document.querySelector('.mcp-mobile-toggle').style.display = 'none';
+                }
+            });
+        }
+
+        // Handle File Upload
+        function handleFileUpload(event, context) {
+            const files = Array.from(event.target.files);
+            const previewGrid = document.getElementById(context + 'MediaPreview');
+            const uploadProgress = document.getElementById('uploadProgress');
+            
+            files.forEach((file, index) => {
+                uploadProgress.classList.add('active');
+                
+                let progress = 0;
+                const progressBar = document.getElementById('progressBar');
+                const fileName = document.getElementById('uploadFileName');
+                const percentage = document.getElementById('uploadPercentage');
+                
+                fileName.textContent = file.name;
+                
+                const interval = setInterval(() => {
+                    progress += 10;
+                    progressBar.style.width = progress + '%';
+                    percentage.textContent = progress + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            uploadProgress.classList.remove('active');
+                            createMediaPreview(file, previewGrid);
+                            uploadedFiles.push(file);
+                        }, 500);
+                    }
+                }, 100);
+            });
+        }
+
+        // Create Media Preview
+        function createMediaPreview(file, container) {
+            const preview = document.createElement('div');
+            preview.className = 'media-preview-item';
+            
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'media-remove-btn';
+            removeBtn.innerHTML = '×';
+            removeBtn.onclick = () => {
+                preview.remove();
+                uploadedFiles = uploadedFiles.filter(f => f !== file);
+            };
+            
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                preview.appendChild(img);
+            } else if (file.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.src = URL.createObjectURL(file);
+                video.controls = true;
+                preview.appendChild(video);
+            } else {
+                const filePreview = document.createElement('div');
+                filePreview.className = 'file-preview';
+                filePreview.innerHTML = `
+                    <div class="file-icon">📄</div>
+                    <div class="file-name">${file.name}</div>
+                `;
+                preview.appendChild(filePreview);
+            }
+            
+            preview.appendChild(removeBtn);
+            container.appendChild(preview);
+        }
+
+        // Handle Media Library Upload
+        function handleMediaLibraryUpload(event) {
+            const files = Array.from(event.target.files);
+            const mediaLibrary = document.getElementById('mediaLibrary');
+            
+            files.forEach(file => {
+                createMediaPreview(file, mediaLibrary);
+            });
+        }
+
+        // Clear Media Library
+        function clearMediaLibrary() {
+            if (confirm('Are you sure you want to clear all media?')) {
+                document.getElementById('mediaLibrary').innerHTML = '';
+                showNotification('Media Cleared', 'All media files have been removed', 'success');
+            }
+        }
+
+        // Export Settings
+        function exportSettings() {
+            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
+            const dataStr = JSON.stringify(settings, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'refit-settings-' + new Date().toISOString().split('T')[0] + '.json';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            showNotification('Settings Exported', 'Settings have been exported successfully', 'success');
+        }
+
+        // Import Settings File
+        function importSettingsFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const settings = JSON.parse(e.target.result);
+                    localStorage.setItem('refitSettings', JSON.stringify(settings));
+                    applySettings(settings);
+                    loadSettings();
+                    showNotification('Settings Imported', 'Settings have been imported successfully', 'success');
+                    
+                    // Reload to apply all settings
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                } catch (error) {
+                    showNotification('Error', 'Invalid settings file', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Reset to Defaults
+        function resetToDefaults() {
+            if (confirm('Are you sure you want to reset all
