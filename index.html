@@ -27,6 +27,9 @@
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+        .portfolio-control-btn.media-type {
+            background: #f39c12;
+            color: white;
         }
 
         /* Dark mode variables */
@@ -372,6 +375,15 @@
 
         .edit-mode .editable-media:hover::after {
             opacity: 1;
+        }
+
+        /* Edit Mode Instructions */
+        .edit-mode-instructions {
+            display: none !important;
+        }
+
+        .edit-mode .edit-mode-instructions {
+            display: block !important;
         }
 
         /* Enhanced Slider with Media Support */
@@ -1085,6 +1097,7 @@
             cursor: pointer;
             transition: var(--transition);
             height: 250px;
+            background: #000;
         }
 
         .portfolio-item:hover {
@@ -1092,6 +1105,114 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Portfolio Media Container */
+        .portfolio-media-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+        }
+
+        .portfolio-media-container img,
+        .portfolio-media-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-media-container.contain img,
+        .portfolio-media-container.contain video {
+            object-fit: contain;
+        }
+
+        /* Portfolio Media Controls */
+        .portfolio-media-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .portfolio-item:hover .portfolio-media-controls {
+            opacity: 1;
+        }
+
+        .portfolio-control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: #333;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-control-btn:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-control-btn.change-media {
+            background: #3498db;
+            color: white;
+        }
+
+        .portfolio-control-btn.toggle-fit {
+            background: #27ae60;
+            color: white;
+        }
+
+        .portfolio-control-btn.delete-item {
+            background: #e74c3c;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+        }
+
+        /* Media Count Badge */
+        .media-count-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            z-index: 5;
+        }
+
+        .media-count-badge.video {
+            background: rgba(231, 76, 60, 0.9);
+        }
+
+        .media-count-badge.mixed {
+            background: rgba(52, 152, 219, 0.9);
+        }
+
+        /* Portfolio Overlay */
         .portfolio-overlay {
             position: absolute;
             top: 0;
@@ -1104,6 +1225,7 @@
             padding: 1.5rem;
             opacity: 0;
             transition: var(--transition);
+            pointer-events: none;
         }
 
         .portfolio-item:hover .portfolio-overlay {
@@ -1119,6 +1241,87 @@
         .portfolio-info p {
             color: rgba(255, 255, 255, 0.9);
             font-size: 0.9rem;
+        }
+
+        /* Portfolio Multi-Media Indicator */
+        .portfolio-media-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 5;
+        }
+
+        .media-indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .media-indicator-dot.active {
+            background: white;
+            transform: scale(1.5);
+        }
+
+        .media-indicator-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        /* Portfolio Edit Mode */
+        .edit-mode .portfolio-item {
+            outline: 2px dashed #3498db;
+            outline-offset: -2px;
+        }
+
+        .edit-mode .portfolio-item:hover {
+            outline-color: #e74c3c;
+            outline-width: 3px;
+        }
+
+        .edit-mode .portfolio-media-controls {
+            opacity: 1;
+        }
+
+        /* Portfolio Add Button */
+        .portfolio-add-btn {
+            grid-column: span 1;
+            height: 250px;
+            border: 3px dashed #3498db;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .edit-mode .portfolio-add-btn {
+            display: flex;
+        }
+
+        .portfolio-add-btn:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: scale(1.02);
+        }
+
+        .portfolio-add-btn-content {
+            text-align: center;
+            color: #3498db;
+        }
+
+        .portfolio-add-btn-content .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-add-btn-content p {
+            font-weight: 600;
         }
 
         /* Enhanced Get Quote Section */
@@ -1947,6 +2150,11 @@
     <!-- Portfolio -->
     <section id="portfolio">
         <h2 class="section-title editable">Our Portfolio</h2>
+        <div style="text-align: center; margin-bottom: 2rem; display: none;" class="edit-mode-instructions">
+            <p style="color: #3498db; font-size: 0.9rem;">
+                <strong>Edit Mode Active:</strong> Click 🖼️ to change media, 🔄 to toggle fit, ➕ to add multiple media to create slideshows
+            </p>
+        </div>
         <div class="portfolio-filters">
             <button class="filter-btn active" onclick="filterPortfolio('all')">All Projects</button>
             <button class="filter-btn" onclick="filterPortfolio('commercial')">Commercial</button>
@@ -2113,6 +2321,9 @@
     <!-- Hidden file input for media changes -->
     <input type="file" id="hiddenMediaInput" style="display: none;" accept="image/*,video/*,.gif,.webm,.mp4,.mov" onchange="handleMediaChange(event)">
 
+    <!-- Hidden file input for portfolio media -->
+    <input type="file" id="portfolioMediaInput" style="display: none;" accept="image/*,video/*,.gif,.webm,.mp4,.mov" multiple>
+
     <script>
         // Global Variables
         let editMode = false;
@@ -2121,6 +2332,7 @@
         let uploadedFiles = [];
         let mediaLibrary = [];
         let currentMediaElement = null;
+        let currentPortfolioItemId = null;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -2236,6 +2448,11 @@
                 disableContentEditing();
                 showNotification('Edit Mode Disabled', 'Changes saved automatically', 'success');
             }
+            
+            // Refresh portfolio to show/hide add button
+            const activeFilter = document.querySelector('.filter-btn.active');
+            const category = activeFilter ? activeFilter.textContent.toLowerCase().replace(' projects', '').replace(' ', '') : 'all';
+            displayPortfolio(category === 'all' ? 'all' : category);
         }
 
         // Enable Content Editing
@@ -2680,17 +2897,87 @@
 
         // Initialize Portfolio
         function initializePortfolio() {
-            // Sample portfolio data
+            // Enhanced portfolio data with media arrays
             portfolioItems = [
-                { id: 1, title: 'Cath Kidston Store', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Cath+Kidston' },
-                { id: 2, title: 'Pie Face Restaurant', category: 'commercial', image: 'https://via.placeholder.com/400x300/BA5B7D/ffffff?text=Pie+Face' },
-                { id: 3, title: 'Tusan Ice Cream', category: 'commercial', image: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Tusan' },
-                { id: 4, title: 'Modern Living Room', category: 'residential', image: 'https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Living+Room' },
-                { id: 5, title: 'Master Bedroom', category: 'residential', image: 'https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Bedroom' },
-                { id: 6, title: 'TopShop Maintenance', category: 'maintenance', image: 'https://via.placeholder.com/400x300/ff6b6b/ffffff?text=TopShop' },
-                { id: 7, title: '3D Kitchen Concept', category: '3d', image: 'https://via.placeholder.com/400x300/f39c12/ffffff?text=3D+Kitchen' },
-                { id: 8, title: 'Backhaus Bakery', category: 'commercial', image: 'https://via.placeholder.com/400x300/2ecc71/ffffff?text=Backhaus' }
+                { 
+                    id: 1, 
+                    title: 'Cath Kidston Store', 
+                    category: 'commercial', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Cath+Kidston' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 2, 
+                    title: 'Pie Face Restaurant', 
+                    category: 'commercial', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/BA5B7D/ffffff?text=Pie+Face' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 3, 
+                    title: 'Tusan Ice Cream', 
+                    category: 'commercial', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Tusan' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 4, 
+                    title: 'Modern Living Room', 
+                    category: 'residential', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Living+Room' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 5, 
+                    title: 'Master Bedroom', 
+                    category: 'residential', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Bedroom' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 6, 
+                    title: 'TopShop Maintenance', 
+                    category: 'maintenance', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/ff6b6b/ffffff?text=TopShop' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 7, 
+                    title: '3D Kitchen Concept', 
+                    category: '3d', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/f39c12/ffffff?text=3D+Kitchen' }
+                    ],
+                    currentMediaIndex: 0
+                },
+                { 
+                    id: 8, 
+                    title: 'Backhaus Bakery', 
+                    category: 'commercial', 
+                    media: [
+                        { type: 'image', url: 'https://via.placeholder.com/400x300/2ecc71/ffffff?text=Backhaus' }
+                    ],
+                    currentMediaIndex: 0
+                }
             ];
+            
+            // Load saved portfolio data
+            const savedPortfolio = localStorage.getItem('portfolioItems');
+            if (savedPortfolio) {
+                portfolioItems = JSON.parse(savedPortfolio);
+            }
             
             displayPortfolio('all');
         }
@@ -2704,13 +2991,53 @@
             
             filtered.forEach(item => {
                 const portfolioItem = document.createElement('div');
-                portfolioItem.className = 'portfolio-item editable-media';
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.setAttribute('data-item-id', item.id);
+                
+                const currentMedia = item.media[item.currentMediaIndex || 0];
+                let mediaContent = '';
+                
+                if (currentMedia.type === 'video') {
+                    mediaContent = `<video src="${currentMedia.url}" muted loop autoplay></video>`;
+                } else {
+                    mediaContent = `<img src="${currentMedia.url}" alt="${item.title}">`;
+                }
+                
+                // Check media types
+                const hasVideo = item.media.some(m => m.type === 'video');
+                const hasImage = item.media.some(m => m.type === 'image');
+                const mediaTypeClass = hasVideo && hasImage ? 'mixed' : hasVideo ? 'video' : '';
+                
                 portfolioItem.innerHTML = `
-                    <div class="universal-media-container cover">
-                        <img src="${item.image}" alt="${item.title}">
-                        <div class="media-controls">
-                            <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
+                    <div class="portfolio-media-container" id="portfolio-media-${item.id}">
+                        ${mediaContent}
+                        ${item.media.length > 1 ? `
+                            <div class="media-count-badge ${mediaTypeClass}">
+                                ${hasVideo ? '🎬' : '🖼️'} ${item.media.length}
+                            </div>
+                        ` : ''}
+                        <button class="portfolio-control-btn delete-item" onclick="deletePortfolioItem(${item.id})" title="Delete Project">
+                            🗑️
+                        </button>
+                        <div class="portfolio-media-controls">
+                            <button class="portfolio-control-btn change-media" onclick="changePortfolioMedia(${item.id})" title="Change Media">
+                                🖼️
+                            </button>
+                            <button class="portfolio-control-btn toggle-fit" onclick="togglePortfolioFit(${item.id})" title="Toggle Fit">
+                                🔄
+                            </button>
+                            <button class="portfolio-control-btn media-type" onclick="addPortfolioMedia(${item.id})" title="Add Media">
+                                ➕
+                            </button>
                         </div>
+                        ${item.media.length > 1 ? `
+                            <div class="portfolio-media-indicator">
+                                ${item.media.map((_, index) => `
+                                    <div class="media-indicator-dot ${index === item.currentMediaIndex ? 'active' : ''}" 
+                                         onclick="switchPortfolioMedia(${item.id}, ${index})"></div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
                     </div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
@@ -2719,13 +3046,296 @@
                         </div>
                     </div>
                 `;
+                
                 portfolioItem.onclick = (e) => {
-                    if (!e.target.closest('.media-controls') && !editMode) {
-                        openLightbox(item);
+                    if (!e.target.closest('.portfolio-media-controls') && 
+                        !e.target.closest('.portfolio-media-indicator') && 
+                        !e.target.closest('.portfolio-info') &&
+                        !editMode) {
+                        openPortfolioLightbox(item);
                     }
                 };
+                
+                // Add blur event listeners for editable content in portfolio
+                if (editMode) {
+                    setTimeout(() => {
+                        const titleEl = portfolioItem.querySelector('.portfolio-info h4');
+                        const categoryEl = portfolioItem.querySelector('.portfolio-info p');
+                        
+                        if (titleEl) {
+                            titleEl.addEventListener('blur', () => {
+                                item.title = titleEl.textContent;
+                                savePortfolioData();
+                            });
+                        }
+                        
+                        if (categoryEl) {
+                            categoryEl.addEventListener('blur', () => {
+                                // Parse category from display name
+                                const categoryText = categoryEl.textContent.toLowerCase();
+                                if (categoryText.includes('commercial')) item.category = 'commercial';
+                                else if (categoryText.includes('residential')) item.category = 'residential';
+                                else if (categoryText.includes('maintenance')) item.category = 'maintenance';
+                                else if (categoryText.includes('3d')) item.category = '3d';
+                                savePortfolioData();
+                            });
+                        }
+                    }, 100);
+                }
+                
                 grid.appendChild(portfolioItem);
             });
+            
+            // Add the "Add New" button in edit mode
+            if (editMode) {
+                const addBtn = document.createElement('div');
+                addBtn.className = 'portfolio-add-btn';
+                addBtn.innerHTML = `
+                    <div class="portfolio-add-btn-content">
+                        <div class="icon">➕</div>
+                        <p>Add New Project</p>
+                    </div>
+                `;
+                addBtn.onclick = addNewPortfolioItem;
+                grid.appendChild(addBtn);
+            }
+        }
+
+        // Change Portfolio Media
+        function changePortfolioMedia(itemId) {
+            currentPortfolioItemId = itemId;
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*,video/*,.gif,.webm,.mp4,.mov';
+            input.onchange = (e) => handlePortfolioMediaChange(e, itemId);
+            input.click();
+        }
+
+        // Handle Portfolio Media Change
+        function handlePortfolioMediaChange(event, itemId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const url = e.target.result;
+                const isVideo = file.type.startsWith('video');
+                
+                // Find the portfolio item
+                const itemIndex = portfolioItems.findIndex(item => item.id === itemId);
+                if (itemIndex !== -1) {
+                    const mediaItem = {
+                        type: isVideo ? 'video' : 'image',
+                        url: url,
+                        name: file.name
+                    };
+                    
+                    // Replace current media or add if shift key is held
+                    if (event.shiftKey) {
+                        portfolioItems[itemIndex].media.push(mediaItem);
+                        portfolioItems[itemIndex].currentMediaIndex = portfolioItems[itemIndex].media.length - 1;
+                    } else {
+                        portfolioItems[itemIndex].media[portfolioItems[itemIndex].currentMediaIndex] = mediaItem;
+                    }
+                    
+                    // Save and refresh
+                    savePortfolioData();
+                    updatePortfolioItemDisplay(itemId);
+                    
+                    showNotification('Media Updated', 'Portfolio media changed successfully', 'success');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Add Portfolio Media
+        function addPortfolioMedia(itemId) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*,video/*,.gif,.webm,.mp4,.mov';
+            input.multiple = true;
+            input.onchange = (e) => {
+                const files = Array.from(e.target.files);
+                files.forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const url = event.target.result;
+                        const isVideo = file.type.startsWith('video');
+                        
+                        const itemIndex = portfolioItems.findIndex(item => item.id === itemId);
+                        if (itemIndex !== -1) {
+                            portfolioItems[itemIndex].media.push({
+                                type: isVideo ? 'video' : 'image',
+                                url: url,
+                                name: file.name
+                            });
+                            
+                            savePortfolioData();
+                            updatePortfolioItemDisplay(itemId);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
+                
+                showNotification('Media Added', `${files.length} media file(s) added`, 'success');
+            };
+            input.click();
+        }
+
+        // Switch Portfolio Media
+        function switchPortfolioMedia(itemId, mediaIndex) {
+            const itemIndex = portfolioItems.findIndex(item => item.id === itemId);
+            if (itemIndex !== -1) {
+                portfolioItems[itemIndex].currentMediaIndex = mediaIndex;
+                savePortfolioData();
+                updatePortfolioItemDisplay(itemId);
+            }
+        }
+
+        // Toggle Portfolio Fit
+        function togglePortfolioFit(itemId) {
+            const container = document.getElementById(`portfolio-media-${itemId}`);
+            container.classList.toggle('contain');
+            
+            const mode = container.classList.contains('contain') ? 'Contain' : 'Cover';
+            showNotification('Fit Mode', `Changed to ${mode} mode`, 'info');
+        }
+
+        // Update Portfolio Item Display
+        function updatePortfolioItemDisplay(itemId) {
+            const item = portfolioItems.find(p => p.id === itemId);
+            if (!item) return;
+            
+            const container = document.getElementById(`portfolio-media-${itemId}`);
+            const currentMedia = item.media[item.currentMediaIndex || 0];
+            
+            // Clear current content
+            const existingMedia = container.querySelector('img, video');
+            if (existingMedia) existingMedia.remove();
+            
+            // Add new media
+            let mediaElement;
+            if (currentMedia.type === 'video') {
+                mediaElement = document.createElement('video');
+                mediaElement.src = currentMedia.url;
+                mediaElement.muted = true;
+                mediaElement.loop = true;
+                mediaElement.autoplay = true;
+            } else {
+                mediaElement = document.createElement('img');
+                mediaElement.src = currentMedia.url;
+                mediaElement.alt = item.title;
+            }
+            
+            container.insertBefore(mediaElement, container.firstChild);
+            
+            // Update indicators
+            if (item.media.length > 1) {
+                let indicatorHtml = '<div class="portfolio-media-indicator">';
+                item.media.forEach((_, index) => {
+                    indicatorHtml += `<div class="media-indicator-dot ${index === item.currentMediaIndex ? 'active' : ''}" 
+                                          onclick="switchPortfolioMedia(${item.id}, ${index})"></div>`;
+                });
+                indicatorHtml += '</div>';
+                
+                const existingIndicator = container.querySelector('.portfolio-media-indicator');
+                if (existingIndicator) {
+                    existingIndicator.outerHTML = indicatorHtml;
+                } else {
+                    container.insertAdjacentHTML('beforeend', indicatorHtml);
+                }
+            }
+        }
+
+        // Add New Portfolio Item
+        function addNewPortfolioItem() {
+            const newId = Math.max(...portfolioItems.map(item => item.id)) + 1;
+            const newItem = {
+                id: newId,
+                title: 'New Project ' + newId,
+                category: 'commercial',
+                media: [
+                    { type: 'image', url: 'https://via.placeholder.com/400x300/cccccc/666666?text=New+Project' }
+                ],
+                currentMediaIndex: 0
+            };
+            
+            portfolioItems.push(newItem);
+            savePortfolioData();
+            displayPortfolio('all');
+            
+            showNotification('Project Added', 'New portfolio project added', 'success');
+            
+            // Automatically open media picker for the new item
+            setTimeout(() => changePortfolioMedia(newId), 100);
+        }
+
+        // Save Portfolio Data
+        function savePortfolioData() {
+            localStorage.setItem('portfolioItems', JSON.stringify(portfolioItems));
+        }
+
+        // Open Portfolio Lightbox
+        function openPortfolioLightbox(item) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightboxContent');
+            
+            const currentMedia = item.media[item.currentMediaIndex || 0];
+            
+            if (currentMedia.type === 'video') {
+                content.innerHTML = `<video src="${currentMedia.url}" controls autoplay style="max-width: 100%; max-height: 90vh;"></video>`;
+            } else {
+                content.innerHTML = `<img src="${currentMedia.url}" alt="${item.title}">`;
+            }
+            
+            // Add navigation if multiple media
+            if (item.media.length > 1) {
+                content.innerHTML += `
+                    <button class="slider-nav prev" onclick="event.stopPropagation(); navigateLightbox(${item.id}, -1)" 
+                            style="position: absolute; left: 20px;">‹</button>
+                    <button class="slider-nav next" onclick="event.stopPropagation(); navigateLightbox(${item.id}, 1)" 
+                            style="position: absolute; right: 20px;">›</button>
+                `;
+            }
+            
+            lightbox.classList.add('active');
+            lightbox.setAttribute('data-item-id', item.id);
+        }
+
+        // Delete Portfolio Item
+        function deletePortfolioItem(itemId) {
+            if (confirm('Are you sure you want to delete this project?')) {
+                portfolioItems = portfolioItems.filter(item => item.id !== itemId);
+                savePortfolioData();
+                
+                // Refresh display
+                const activeFilter = document.querySelector('.filter-btn.active');
+                const category = activeFilter ? activeFilter.textContent.toLowerCase().replace(' projects', '').replace(' ', '') : 'all';
+                displayPortfolio(category === 'all' ? 'all' : category);
+                
+                showNotification('Project Deleted', 'Portfolio project removed successfully', 'success');
+            }
+        }
+
+        // Navigate Lightbox
+        function navigateLightbox(itemId, direction) {
+            const item = portfolioItems.find(p => p.id === itemId);
+            if (!item) return;
+            
+            item.currentMediaIndex = (item.currentMediaIndex + direction + item.media.length) % item.media.length;
+            savePortfolioData();
+            
+            // Update lightbox content
+            const content = document.getElementById('lightboxContent');
+            const currentMedia = item.media[item.currentMediaIndex];
+            
+            if (currentMedia.type === 'video') {
+                content.querySelector('img, video').outerHTML = 
+                    `<video src="${currentMedia.url}" controls autoplay style="max-width: 100%; max-height: 90vh;"></video>`;
+            } else {
+                content.querySelector('img, video').outerHTML = 
+                    `<img src="${currentMedia.url}" alt="${item.title}">`;
+            }
         }
 
         // Get Category Name
@@ -2747,15 +3357,6 @@
             event.target.classList.add('active');
             
             displayPortfolio(category);
-        }
-
-        // Open Lightbox
-        function openLightbox(item) {
-            const lightbox = document.getElementById('lightbox');
-            const content = document.getElementById('lightboxContent');
-            
-            content.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
-            lightbox.classList.add('active');
         }
 
         // Close Lightbox
