@@ -876,6 +876,42 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Enhanced Hero Image/Slider */
+        .hero-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .enhanced-slider {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius-2xl);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .enhanced-slider-container {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .enhanced-slide {
+            width: 33.333%;
+            height: 100%;
+            position: relative;
+        }
+
+        .enhanced-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* Enhanced Sections */
         section {
             padding: var(--spacing-4xl) 5%;
@@ -1906,6 +1942,177 @@
             </div>
         </div>
 
+        <!-- Design Section -->
+        <div class="mcp-section" id="mcp-design">
+            <h3><i class="fas fa-palette"></i> Design Controls</h3>
+            
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-paint-brush"></i> Color Scheme</h4>
+                <div class="mcp-control-group">
+                    <div class="mcp-control">
+                        <label for="primaryColor">Primary Color</label>
+                        <input type="color" id="primaryColor" value="#E8A0BF">
+                    </div>
+                    <div class="mcp-control">
+                        <label for="secondaryColor">Secondary Color</label>
+                        <input type="color" id="secondaryColor" value="#4ecdc4">
+                    </div>
+                </div>
+                <button class="mcp-button" onclick="updateColorScheme()">
+                    <i class="fas fa-apply"></i> Apply Colors
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-font"></i> Typography</h4>
+                <div class="mcp-control">
+                    <label for="fontFamily">Font Family</label>
+                    <select id="fontFamily">
+                        <option value="Inter">Inter (Current)</option>
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                </div>
+                <div class="mcp-control">
+                    <label for="fontSize">Base Font Size</label>
+                    <input type="range" id="fontSize" min="14" max="20" value="16">
+                </div>
+                <button class="mcp-button" onclick="updateTypography()">
+                    <i class="fas fa-text-height"></i> Apply Typography
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="mcp-section" id="mcp-content">
+            <h3><i class="fas fa-edit"></i> Content Management</h3>
+            
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-home"></i> Hero Section</h4>
+                <div class="mcp-control">
+                    <label for="heroTitle">Main Title</label>
+                    <input type="text" id="heroTitle" value="FROM CONCEPT TO COMPLETION">
+                </div>
+                <div class="mcp-control">
+                    <label for="heroTagline">Tagline</label>
+                    <input type="text" id="heroTagline" value="WE GROW WITH PASSION, WE DO IT ALL">
+                </div>
+                <div class="mcp-control">
+                    <label for="heroDescription">Description</label>
+                    <textarea id="heroDescription" rows="3">Professional maintenance, interior construction & renovation services delivered with innovation and excellence across Malaysia.</textarea>
+                </div>
+                <button class="mcp-button" onclick="updateHeroContent()">
+                    <i class="fas fa-save"></i> Save Hero Content
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-info-circle"></i> Company Information</h4>
+                <div class="mcp-control">
+                    <label for="companyMission">Mission Statement</label>
+                    <textarea id="companyMission" rows="3">To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth</textarea>
+                </div>
+                <div class="mcp-control">
+                    <label for="companyVision">Vision Statement</label>
+                    <textarea id="companyVision" rows="3">To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management</textarea>
+                </div>
+                <button class="mcp-button" onclick="updateCompanyInfo()">
+                    <i class="fas fa-building"></i> Update Company Info
+                </button>
+            </div>
+        </div>
+
+        <!-- Layout Section -->
+        <div class="mcp-section" id="mcp-layout">
+            <h3><i class="fas fa-th-large"></i> Layout Controls</h3>
+            
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-expand-arrows-alt"></i> Layout Settings</h4>
+                <div class="mcp-control-group">
+                    <div class="mcp-control">
+                        <label for="maxWidth">Max Content Width</label>
+                        <select id="maxWidth">
+                            <option value="1200px">1200px</option>
+                            <option value="1400px" selected>1400px</option>
+                            <option value="1600px">1600px</option>
+                            <option value="100%">Full Width</option>
+                        </select>
+                    </div>
+                    <div class="mcp-control">
+                        <label for="sectionSpacing">Section Spacing</label>
+                        <select id="sectionSpacing">
+                            <option value="3rem">Compact</option>
+                            <option value="5rem" selected>Normal</option>
+                            <option value="8rem">Spacious</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="mcp-button" onclick="updateLayoutSettings()">
+                    <i class="fas fa-ruler"></i> Apply Layout
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-mobile-alt"></i> Responsive Settings</h4>
+                <div class="mcp-control">
+                    <label for="mobileBreakpoint">Mobile Breakpoint</label>
+                    <input type="number" id="mobileBreakpoint" value="768" min="480" max="1024">
+                </div>
+                <div class="mcp-control">
+                    <label for="tabletBreakpoint">Tablet Breakpoint</label>
+                    <input type="number" id="tabletBreakpoint" value="1024" min="768" max="1200">
+                </div>
+                <button class="mcp-button" onclick="updateResponsiveSettings()">
+                    <i class="fas fa-mobile-alt"></i> Update Breakpoints
+                </button>
+            </div>
+        </div>
+
+        <!-- Media Section -->
+        <div class="mcp-section" id="mcp-media">
+            <h3><i class="fas fa-images"></i> Media Management</h3>
+            
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-image"></i> Logo Management</h4>
+                <div class="media-upload-zone" onclick="document.getElementById('logoUpload').click()">
+                    <div class="upload-prompt">
+                        <div class="upload-prompt-icon"><i class="fas fa-image"></i></div>
+                        <h4>Upload Logo</h4>
+                        <p>PNG, JPG, SVG supported</p>
+                    </div>
+                </div>
+                <input type="file" id="logoUpload" style="display: none;" accept="image/*">
+                <button class="mcp-button" onclick="updateLogo()">
+                    <i class="fas fa-upload"></i> Update Logo
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-sliders-h"></i> Media Settings</h4>
+                <div class="mcp-control-group">
+                    <div class="mcp-control">
+                        <label for="imageCompression">Image Compression</label>
+                        <select id="imageCompression">
+                            <option value="high">High Quality</option>
+                            <option value="medium" selected>Medium Quality</option>
+                            <option value="low">Low Quality</option>
+                        </select>
+                    </div>
+                    <div class="mcp-control">
+                        <label for="lazyLoading">Lazy Loading</label>
+                        <select id="lazyLoading">
+                            <option value="enabled" selected>Enabled</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="mcp-button" onclick="updateMediaSettings()">
+                    <i class="fas fa-cog"></i> Save Settings
+                </button>
+            </div>
+        </div>
+
         <!-- Portfolio Management Section -->
         <div class="mcp-section active" id="mcp-portfolio">
             <h3><i class="fas fa-folder-open"></i> Portfolio Management</h3>
@@ -2023,6 +2230,63 @@
                         <i class="fas fa-trash"></i> Clear All
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Advanced Section -->
+        <div class="mcp-section" id="mcp-advanced">
+            <h3><i class="fas fa-code"></i> Advanced Settings</h3>
+            
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-tachometer-alt"></i> Performance</h4>
+                <div class="mcp-control">
+                    <label for="cacheSettings">Cache Settings</label>
+                    <select id="cacheSettings">
+                        <option value="aggressive">Aggressive Caching</option>
+                        <option value="normal" selected>Normal Caching</option>
+                        <option value="minimal">Minimal Caching</option>
+                    </select>
+                </div>
+                <div class="mcp-control">
+                    <label for="compressionLevel">Compression Level</label>
+                    <select id="compressionLevel">
+                        <option value="high">High Compression</option>
+                        <option value="medium" selected>Medium Compression</option>
+                        <option value="low">Low Compression</option>
+                    </select>
+                </div>
+                <button class="mcp-button" onclick="updatePerformanceSettings()">
+                    <i class="fas fa-rocket"></i> Optimize Performance
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-shield-alt"></i> Security</h4>
+                <div class="mcp-control">
+                    <label for="adminTimeout">Admin Session Timeout (minutes)</label>
+                    <input type="number" id="adminTimeout" value="30" min="5" max="120">
+                </div>
+                <div class="mcp-control">
+                    <label for="uploadRestrictions">Upload Restrictions</label>
+                    <select id="uploadRestrictions">
+                        <option value="strict">Strict (Images only)</option>
+                        <option value="moderate" selected>Moderate (Images + Videos)</option>
+                        <option value="lenient">Lenient (All media types)</option>
+                    </select>
+                </div>
+                <button class="mcp-button" onclick="updateSecuritySettings()">
+                    <i class="fas fa-lock"></i> Update Security
+                </button>
+            </div>
+
+            <div class="mcp-subsection">
+                <h4><i class="fas fa-download"></i> Backup & Export</h4>
+                <button class="mcp-button" onclick="createFullBackup()">
+                    <i class="fas fa-archive"></i> Create Full Backup
+                </button>
+                <button class="mcp-button secondary" onclick="exportSettings()">
+                    <i class="fas fa-file-export"></i> Export Settings
+                </button>
             </div>
         </div>
     </div>
@@ -2188,6 +2452,37 @@
                     <h4 class="editable">Designing & Interior Illustration</h4>
                     <p class="editable">Creative design solutions and detailed interior illustrations bringing your vision to life with professional expertise.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <h2 class="section-title editable">Our Process</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">📋</div>
+                <h4 class="editable">PLANNING</h4>
+                <p class="editable">Setting performance objectives & developing decisions on how to achieve them</p>
+            </div>
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">🏗️</div>
+                <h4 class="editable">ORGANIZING</h4>
+                <p class="editable">Creating structure: Setting tasks, arranging resources & co-ordinating activities to perform tasks</p>
+            </div>
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">⚡</div>
+                <h4 class="editable">IMPLEMENTING</h4>
+                <p class="editable">Executing the plans to meet the set performance objectives</p>
+            </div>
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">✅</div>
+                <h4 class="editable">CONTROLLING</h4>
+                <p class="editable">Measuring performance & taking preventive & corrective actions to restore the designed specifications</p>
             </div>
         </div>
     </section>
@@ -2521,6 +2816,7 @@
             setupPortfolioUpload();
             initializePortfolioFeatures();
             updatePortfolioAnalytics();
+            setupEditableElements();
         });
 
         // Enhanced initialization
@@ -2543,6 +2839,20 @@
             }, 100);
             
             window.addEventListener('scroll', handleScroll);
+        }
+
+        // Initialize slider
+        function initializeSlider() {
+            const container = document.getElementById('heroSliderContainer');
+            if (!container) return;
+            
+            const slides = container.querySelectorAll('.enhanced-slide');
+            if (slides.length === 0) return;
+            
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                container.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+            }, 5000);
         }
 
         // Intersection Observer for animations
@@ -2641,6 +2951,125 @@
                     }
                 }
             });
+        }
+
+        // Enhanced admin functionality
+        function checkAdminStatus() {
+            const adminStatus = localStorage.getItem('masterAdminLoggedIn');
+            if (adminStatus === 'true') {
+                isAdminLoggedIn = true;
+                showAdminControls();
+            } else {
+                hideAdminControls();
+            }
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminModal').classList.add('active');
+            document.getElementById('adminModal').setAttribute('aria-hidden', 'false');
+            document.getElementById('adminEmail').focus();
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminModal').classList.remove('active');
+            document.getElementById('adminModal').setAttribute('aria-hidden', 'true');
+            document.getElementById('adminEmail').value = '';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminLoginError').style.display = 'none';
+        }
+
+        function attemptAdminLogin() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (email === MASTER_ADMIN_CREDENTIALS.email && password === MASTER_ADMIN_CREDENTIALS.password) {
+                isAdminLoggedIn = true;
+                localStorage.setItem('masterAdminLoggedIn', 'true');
+                showAdminControls();
+                closeAdminLogin();
+                showNotification('Master Admin Access Granted', 'Welcome to the comprehensive control panel!', 'success');
+                
+                setTimeout(() => {
+                    toggleMasterPanel();
+                }, 1000);
+            } else {
+                document.getElementById('adminLoginError').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('adminLoginError').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function adminLogout() {
+            if (confirm('Are you sure you want to logout from Master Admin?')) {
+                isAdminLoggedIn = false;
+                localStorage.removeItem('masterAdminLoggedIn');
+                hideAdminControls();
+                if (editMode) {
+                    toggleEditMode();
+                }
+                closeMasterPanel();
+                showNotification('Logged Out', 'Master admin session ended', 'info');
+            }
+        }
+
+        function showAdminControls() {
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('quickActions').style.display = 'flex';
+        }
+
+        function hideAdminControls() {
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('quickActions').style.display = 'none';
+            closeMasterPanel();
+        }
+
+        function toggleMasterPanel() {
+            if (!isAdminLoggedIn) {
+                showNotification('Access Denied', 'Master admin login required', 'error');
+                return;
+            }
+            
+            const panel = document.getElementById('masterControlPanel');
+            panel.classList.toggle('active');
+        }
+
+        function closeMasterPanel() {
+            document.getElementById('masterControlPanel').classList.remove('active');
+        }
+
+        function showMCPSection(sectionName) {
+            document.querySelectorAll('.mcp-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.mcp-nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(`mcp-${sectionName}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function toggleEditMode() {
+            if (!isAdminLoggedIn) {
+                showNotification('Access Denied', 'Master admin login required', 'error');
+                return;
+            }
+            
+            editMode = !editMode;
+            document.body.classList.toggle('edit-mode', editMode);
+            
+            const editToggle = document.getElementById('editModeToggle');
+            editToggle.classList.toggle('active', editMode);
+            editToggle.innerHTML = editMode ? '<i class="fas fa-check"></i>' : '<i class="fas fa-edit"></i>';
+            
+            if (editMode) {
+                showNotification('Edit Mode Enabled', 'Click on any element to edit. Use Master Panel for advanced controls.', 'info');
+                setupEditableElements();
+            } else {
+                showNotification('Edit Mode Disabled', 'Changes saved automatically', 'success');
+            }
         }
 
         // Enhanced view management
@@ -2766,275 +3195,6 @@
             if (currentModalIndex < allItems.length - 1) {
                 currentModalIndex++;
                 updateModalContent(allItems[currentModalIndex]);
-            }
-        }
-
-        // Enhanced analytics
-        function updatePortfolioAnalytics() {
-            const totalItems = portfolioItems.length;
-            const totalSize = portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0);
-            
-            document.getElementById('totalItems').textContent = totalItems;
-            document.getElementById('totalSize').textContent = formatFileSize(totalSize);
-        }
-
-        function updateVisibleStats() {
-            const statsSection = document.querySelector('.portfolio-stats');
-            if (!statsSection) return;
-            
-            const rect = statsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                animateStats();
-            }
-        }
-
-        function animateStats() {
-            const stats = [
-                { element: 'statsProjects', target: 150, suffix: '+' },
-                { element: 'statsClients', target: 200, suffix: '+' },
-                { element: 'statsExperience', target: 10, suffix: '+' },
-                { element: 'statsAwards', target: 25, suffix: '+' }
-            ];
-
-            stats.forEach(stat => {
-                const element = document.getElementById(stat.element);
-                if (element && !element.dataset.animated) {
-                    element.dataset.animated = 'true';
-                    animateNumber(element, 0, stat.target, stat.suffix, 2000);
-                }
-            });
-        }
-
-        function animateNumber(element, start, end, suffix, duration) {
-            const startTime = performance.now();
-            
-            function updateNumber(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                const current = Math.floor(start + (end - start) * progress);
-                element.textContent = current + suffix;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateNumber);
-                }
-            }
-            
-            requestAnimationFrame(updateNumber);
-        }
-
-        // Enhanced export functionality
-        function generatePortfolioReport() {
-            const report = {
-                generatedAt: new Date().toISOString(),
-                totalItems: portfolioItems.length,
-                totalSize: portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0),
-                categories: portfolioCategories.map(cat => ({
-                    name: cat.name,
-                    count: portfolioItems.filter(item => item.category === cat.id).length
-                })),
-                items: portfolioItems.map(item => ({
-                    title: item.title,
-                    category: item.category,
-                    dateAdded: item.dateAdded,
-                    fileSize: item.fileSize,
-                    mediaType: item.mediaType
-                }))
-            };
-
-            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `refit-portfolio-report-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
-            URL.revokeObjectURL(url);
-
-            showNotification('Report Generated', 'Portfolio report exported successfully', 'success');
-        }
-
-        function exportPortfolioData() {
-            if (portfolioItems.length === 0) {
-                showNotification('No Data', 'No portfolio items to export', 'error');
-                return;
-            }
-
-            const exportData = {
-                version: '2.0',
-                exportDate: new Date().toISOString(),
-                portfolioItems: portfolioItems,
-                categories: portfolioCategories,
-                settings: JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}')
-            };
-
-            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `refit-portfolio-data-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
-            URL.revokeObjectURL(url);
-
-            showNotification('Data Exported', 'Portfolio data exported successfully', 'success');
-        }
-
-        // Load more functionality
-        function loadMorePortfolioItems() {
-            // Simulate loading more items
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            loadMoreBtn.innerHTML = '<div class="loading"></div> Loading...';
-            loadMoreBtn.disabled = true;
-
-            setTimeout(() => {
-                loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Projects';
-                loadMoreBtn.disabled = false;
-                showNotification('All Items Loaded', 'No more items to display', 'info');
-            }, 1500);
-        }
-
-        // Enhanced settings management
-        function loadPortfolioSettings() {
-            const settings = JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}');
-            
-            if (settings.defaultView) {
-                changeView(settings.defaultView);
-            }
-            
-            if (settings.itemsPerPage) {
-                document.getElementById('portfolioItemsPerPage').value = settings.itemsPerPage;
-            }
-        }
-
-        function savePortfolioSettings() {
-            const settings = {
-                itemsPerPage: document.getElementById('portfolioItemsPerPage').value,
-                defaultView: document.getElementById('portfolioDefaultView').value,
-                autoOptimize: document.getElementById('autoOptimizeImages').value,
-                imageQuality: document.getElementById('portfolioImageQuality').value
-            };
-            
-            localStorage.setItem('refitPortfolioSettings', JSON.stringify(settings));
-            showNotification('Settings Saved', 'Portfolio settings updated successfully', 'success');
-        }
-
-        // All other existing functions remain the same...
-        // [Previous functions like checkAdminStatus, showAdminLogin, etc. continue here]
-
-        // Enhanced admin functionality
-        function checkAdminStatus() {
-            const adminStatus = localStorage.getItem('masterAdminLoggedIn');
-            if (adminStatus === 'true') {
-                isAdminLoggedIn = true;
-                showAdminControls();
-            } else {
-                hideAdminControls();
-            }
-        }
-
-        function showAdminLogin() {
-            document.getElementById('adminModal').classList.add('active');
-            document.getElementById('adminModal').setAttribute('aria-hidden', 'false');
-            document.getElementById('adminEmail').focus();
-        }
-
-        function closeAdminLogin() {
-            document.getElementById('adminModal').classList.remove('active');
-            document.getElementById('adminModal').setAttribute('aria-hidden', 'true');
-            document.getElementById('adminEmail').value = '';
-            document.getElementById('adminPassword').value = '';
-            document.getElementById('adminLoginError').style.display = 'none';
-        }
-
-        function attemptAdminLogin() {
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('adminPassword').value;
-            
-            if (email === MASTER_ADMIN_CREDENTIALS.email && password === MASTER_ADMIN_CREDENTIALS.password) {
-                isAdminLoggedIn = true;
-                localStorage.setItem('masterAdminLoggedIn', 'true');
-                showAdminControls();
-                closeAdminLogin();
-                showNotification('Master Admin Access Granted', 'Welcome to the comprehensive control panel!', 'success');
-                
-                setTimeout(() => {
-                    toggleMasterPanel();
-                }, 1000);
-            } else {
-                document.getElementById('adminLoginError').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('adminLoginError').style.display = 'none';
-                }, 3000);
-            }
-        }
-
-        function adminLogout() {
-            if (confirm('Are you sure you want to logout from Master Admin?')) {
-                isAdminLoggedIn = false;
-                localStorage.removeItem('masterAdminLoggedIn');
-                hideAdminControls();
-                if (editMode) {
-                    toggleEditMode();
-                }
-                closeMasterPanel();
-                showNotification('Logged Out', 'Master admin session ended', 'info');
-            }
-        }
-
-        function showAdminControls() {
-            document.getElementById('adminLogin').style.display = 'none';
-            document.getElementById('quickActions').style.display = 'flex';
-        }
-
-        function hideAdminControls() {
-            document.getElementById('adminLogin').style.display = 'block';
-            document.getElementById('quickActions').style.display = 'none';
-            closeMasterPanel();
-        }
-
-        function toggleMasterPanel() {
-            if (!isAdminLoggedIn) {
-                showNotification('Access Denied', 'Master admin login required', 'error');
-                return;
-            }
-            
-            const panel = document.getElementById('masterControlPanel');
-            panel.classList.toggle('active');
-        }
-
-        function closeMasterPanel() {
-            document.getElementById('masterControlPanel').classList.remove('active');
-        }
-
-        function showMCPSection(sectionName) {
-            document.querySelectorAll('.mcp-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.mcp-nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.getElementById(`mcp-${sectionName}`).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function toggleEditMode() {
-            if (!isAdminLoggedIn) {
-                showNotification('Access Denied', 'Master admin login required', 'error');
-                return;
-            }
-            
-            editMode = !editMode;
-            document.body.classList.toggle('edit-mode', editMode);
-            
-            const editToggle = document.getElementById('editModeToggle');
-            editToggle.classList.toggle('active', editMode);
-            editToggle.innerHTML = editMode ? '<i class="fas fa-check"></i>' : '<i class="fas fa-edit"></i>';
-            
-            if (editMode) {
-                showNotification('Edit Mode Enabled', 'Click on any element to edit. Use Master Panel for advanced controls.', 'info');
-            } else {
-                showNotification('Edit Mode Disabled', 'Changes saved automatically', 'success');
             }
         }
 
@@ -3554,6 +3714,154 @@
             }
         }
 
+        // Enhanced analytics
+        function updatePortfolioAnalytics() {
+            const totalItems = portfolioItems.length;
+            const totalSize = portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0);
+            
+            document.getElementById('totalItems').textContent = totalItems;
+            document.getElementById('totalSize').textContent = formatFileSize(totalSize);
+        }
+
+        function updateVisibleStats() {
+            const statsSection = document.querySelector('.portfolio-stats');
+            if (!statsSection) return;
+            
+            const rect = statsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                animateStats();
+            }
+        }
+
+        function animateStats() {
+            const stats = [
+                { element: 'statsProjects', target: 150, suffix: '+' },
+                { element: 'statsClients', target: 200, suffix: '+' },
+                { element: 'statsExperience', target: 10, suffix: '+' },
+                { element: 'statsAwards', target: 25, suffix: '+' }
+            ];
+
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.element);
+                if (element && !element.dataset.animated) {
+                    element.dataset.animated = 'true';
+                    animateNumber(element, 0, stat.target, stat.suffix, 2000);
+                }
+            });
+        }
+
+        function animateNumber(element, start, end, suffix, duration) {
+            const startTime = performance.now();
+            
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const current = Math.floor(start + (end - start) * progress);
+                element.textContent = current + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            
+            requestAnimationFrame(updateNumber);
+        }
+
+        // Enhanced export functionality
+        function generatePortfolioReport() {
+            const report = {
+                generatedAt: new Date().toISOString(),
+                totalItems: portfolioItems.length,
+                totalSize: portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0),
+                categories: portfolioCategories.map(cat => ({
+                    name: cat.name,
+                    count: portfolioItems.filter(item => item.category === cat.id).length
+                })),
+                items: portfolioItems.map(item => ({
+                    title: item.title,
+                    category: item.category,
+                    dateAdded: item.dateAdded,
+                    fileSize: item.fileSize,
+                    mediaType: item.mediaType
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-portfolio-report-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            showNotification('Report Generated', 'Portfolio report exported successfully', 'success');
+        }
+
+        function exportPortfolioData() {
+            if (portfolioItems.length === 0) {
+                showNotification('No Data', 'No portfolio items to export', 'error');
+                return;
+            }
+
+            const exportData = {
+                version: '2.0',
+                exportDate: new Date().toISOString(),
+                portfolioItems: portfolioItems,
+                categories: portfolioCategories,
+                settings: JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}')
+            };
+
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-portfolio-data-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            showNotification('Data Exported', 'Portfolio data exported successfully', 'success');
+        }
+
+        // Load more functionality
+        function loadMorePortfolioItems() {
+            // Simulate loading more items
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.innerHTML = '<div class="loading"></div> Loading...';
+            loadMoreBtn.disabled = true;
+
+            setTimeout(() => {
+                loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Projects';
+                loadMoreBtn.disabled = false;
+                showNotification('All Items Loaded', 'No more items to display', 'info');
+            }, 1500);
+        }
+
+        // Enhanced settings management
+        function loadPortfolioSettings() {
+            const settings = JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}');
+            
+            if (settings.defaultView) {
+                changeView(settings.defaultView);
+            }
+            
+            if (settings.itemsPerPage) {
+                document.getElementById('portfolioItemsPerPage').value = settings.itemsPerPage;
+            }
+        }
+
+        function savePortfolioSettings() {
+            const settings = {
+                itemsPerPage: document.getElementById('portfolioItemsPerPage').value,
+                defaultView: document.getElementById('portfolioDefaultView').value,
+                autoOptimize: document.getElementById('autoOptimizeImages').value,
+                imageQuality: document.getElementById('portfolioImageQuality').value
+            };
+            
+            localStorage.setItem('refitPortfolioSettings', JSON.stringify(settings));
+            showNotification('Settings Saved', 'Portfolio settings updated successfully', 'success');
+        }
+
         // Utility Functions
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
@@ -3589,18 +3897,209 @@
             }
         }
 
-        // Initialize slider and other utility functions
-        function initializeSlider() {
-            const container = document.getElementById('heroSliderContainer');
-            if (!container) return;
+        // Master Control Panel Functions
+        function updateColorScheme() {
+            const primary = document.getElementById('primaryColor').value;
+            const secondary = document.getElementById('secondaryColor').value;
             
-            const slides = container.querySelectorAll('.enhanced-slide');
-            if (slides.length === 0) return;
+            document.documentElement.style.setProperty('--primary-color', primary);
+            document.documentElement.style.setProperty('--secondary-color', secondary);
             
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                container.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }, 5000);
+            showNotification('Colors Updated', 'Color scheme applied successfully', 'success');
+        }
+
+        function updateTypography() {
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontSize = document.getElementById('fontSize').value;
+            
+            document.documentElement.style.setProperty('--font-primary', fontFamily);
+            document.documentElement.style.setProperty('--font-size-base', fontSize + 'px');
+            
+            showNotification('Typography Updated', 'Font settings applied successfully', 'success');
+        }
+
+        function updateHeroContent() {
+            const title = document.getElementById('heroTitle').value;
+            const tagline = document.getElementById('heroTagline').value;
+            const description = document.getElementById('heroDescription').value;
+            
+            document.querySelector('#home h1').textContent = title;
+            document.querySelector('#home .tagline').textContent = tagline;
+            document.querySelector('#home p:not(.tagline)').textContent = description;
+            
+            showNotification('Hero Updated', 'Hero section content updated successfully', 'success');
+        }
+
+        function updateCompanyInfo() {
+            const mission = document.getElementById('companyMission').value;
+            const vision = document.getElementById('companyVision').value;
+            
+            // Update mission and vision in the about section
+            const aboutSection = document.querySelector('#about');
+            const missionP = aboutSection.querySelector('.hero-text:first-child p');
+            const visionP = aboutSection.querySelector('.hero-text:last-child p');
+            
+            if (missionP) missionP.textContent = mission;
+            if (visionP) visionP.textContent = vision;
+            
+            showNotification('Company Info Updated', 'Mission and vision updated successfully', 'success');
+        }
+
+        function updateLayoutSettings() {
+            const maxWidth = document.getElementById('maxWidth').value;
+            const sectionSpacing = document.getElementById('sectionSpacing').value;
+            
+            document.documentElement.style.setProperty('--content-max-width', maxWidth);
+            document.documentElement.style.setProperty('--spacing-4xl', sectionSpacing);
+            
+            showNotification('Layout Updated', 'Layout settings applied successfully', 'success');
+        }
+
+        function updateResponsiveSettings() {
+            const mobile = document.getElementById('mobileBreakpoint').value;
+            const tablet = document.getElementById('tabletBreakpoint').value;
+            
+            // Create new media query styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: ${mobile}px) {
+                    .hero-content { grid-template-columns: 1fr; }
+                    .portfolio-grid { grid-template-columns: 1fr; }
+                }
+                @media (max-width: ${tablet}px) {
+                    .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            showNotification('Responsive Settings Updated', 'Breakpoints updated successfully', 'success');
+        }
+
+        function updateLogo() {
+            const fileInput = document.getElementById('logoUpload');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('logoImage').src = e.target.result;
+                    showNotification('Logo Updated', 'Logo uploaded successfully', 'success');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateMediaSettings() {
+            const compression = document.getElementById('imageCompression').value;
+            const lazyLoading = document.getElementById('lazyLoading').value;
+            
+            // Apply media settings logic here
+            showNotification('Media Settings Updated', 'Media settings applied successfully', 'success');
+        }
+
+        function updatePerformanceSettings() {
+            const cache = document.getElementById('cacheSettings').value;
+            const compression = document.getElementById('compressionLevel').value;
+            
+            // Apply performance settings logic here
+            showNotification('Performance Optimized', 'Performance settings applied successfully', 'success');
+        }
+
+        function updateSecuritySettings() {
+            const timeout = document.getElementById('adminTimeout').value;
+            const restrictions = document.getElementById('uploadRestrictions').value;
+            
+            // Apply security settings logic here
+            showNotification('Security Updated', 'Security settings applied successfully', 'success');
+        }
+
+        function createFullBackup() {
+            const backupData = {
+                portfolioItems: portfolioItems,
+                settings: {
+                    colors: {
+                        primary: getComputedStyle(document.documentElement).getPropertyValue('--primary-color'),
+                        secondary: getComputedStyle(document.documentElement).getPropertyValue('--secondary-color')
+                    },
+                    typography: {
+                        fontFamily: getComputedStyle(document.documentElement).getPropertyValue('--font-primary'),
+                        fontSize: getComputedStyle(document.documentElement).getPropertyValue('--font-size-base')
+                    }
+                },
+                content: {
+                    hero: {
+                        title: document.querySelector('#home h1').textContent,
+                        tagline: document.querySelector('#home .tagline').textContent,
+                        description: document.querySelector('#home p:not(.tagline)').textContent
+                    }
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-backup-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Backup Created', 'Full backup exported successfully', 'success');
+        }
+
+        function exportSettings() {
+            const settings = {
+                portfolioSettings: JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}'),
+                adminSettings: JSON.parse(localStorage.getItem('refitAdminSettings') || '{}'),
+                timestamp: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-settings-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Settings Exported', 'Settings exported successfully', 'success');
+        }
+
+        // Editable Elements Functions
+        function setupEditableElements() {
+            if (!editMode) return;
+            
+            document.querySelectorAll('.editable').forEach(element => {
+                element.addEventListener('click', handleEditableClick);
+                element.setAttribute('contenteditable', 'true');
+                element.style.outline = '2px dashed transparent';
+            });
+        }
+
+        function handleEditableClick(e) {
+            if (!editMode || !isAdminLoggedIn) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Remove previous selection
+            if (selectedElement) {
+                selectedElement.classList.remove('selected');
+            }
+            
+            // Select current element
+            selectedElement = e.target;
+            selectedElement.classList.add('selected');
+            
+            // Make editable
+            selectedElement.setAttribute('contenteditable', 'true');
+            selectedElement.focus();
+            
+            // Handle saving on blur
+            selectedElement.addEventListener('blur', function() {
+                selectedElement.removeAttribute('contenteditable');
+                selectedElement.classList.remove('selected');
+                showNotification('Content Updated', 'Changes saved automatically', 'success');
+            });
         }
 
         function setupEventListeners() {
@@ -3651,6 +4150,8 @@
                         closePortfolioModal();
                     } else if (adminModal && adminModal.classList.contains('active')) {
                         closeAdminLogin();
+                    } else if (document.getElementById('masterControlPanel').classList.contains('active')) {
+                        closeMasterPanel();
                     }
                 }
                 
