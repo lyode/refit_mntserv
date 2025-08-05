@@ -25,20 +25,27 @@
     
     <style>
         :root {
-            /* Color Palette */
+            /* Enhanced Color Palette */
             --primary-color: #E8A0BF;
             --primary-dark: #BA5B7D;
+            --primary-light: #F2C7DB;
             --secondary-color: #4ecdc4;
+            --secondary-dark: #36a99a;
             --accent-color: #f39c12;
+            --accent-dark: #e67e22;
             --text-primary: #1a1a1a;
             --text-secondary: #666;
             --text-light: #999;
+            --text-muted: #b3b3b3;
             --bg-primary: #ffffff;
             --bg-secondary: #f8f8f8;
+            --bg-tertiary: #f0f0f0;
             --bg-dark: #1a1a1a;
+            --border-color: #e0e0e0;
+            --border-light: #f0f0f0;
             
-            /* Typography */
-            --font-primary: 'Inter', sans-serif;
+            /* Enhanced Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-secondary: 'Poppins', sans-serif;
             --font-display: 'Abril Fatface', cursive;
             --font-size-xs: 0.75rem;
@@ -50,8 +57,9 @@
             --font-size-3xl: 2rem;
             --font-size-4xl: 2.5rem;
             --font-size-5xl: 3rem;
+            --font-size-6xl: 3.5rem;
             
-            /* Spacing */
+            /* Enhanced Spacing */
             --spacing-xs: 0.25rem;
             --spacing-sm: 0.5rem;
             --spacing-md: 1rem;
@@ -59,29 +67,49 @@
             --spacing-xl: 2rem;
             --spacing-2xl: 3rem;
             --spacing-3xl: 4rem;
+            --spacing-4xl: 5rem;
             
-            /* Layout */
+            /* Enhanced Layout */
+            --border-radius-xs: 2px;
             --border-radius-sm: 4px;
             --border-radius-md: 8px;
             --border-radius-lg: 12px;
             --border-radius-xl: 20px;
+            --border-radius-2xl: 24px;
             --border-radius-full: 50%;
             
-            /* Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Enhanced Shadows */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+            --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
             
-            /* Transitions */
+            /* Enhanced Transitions */
+            --transition-xs: 0.1s ease;
             --transition-fast: 0.15s ease;
             --transition-normal: 0.3s ease;
             --transition-slow: 0.5s ease;
+            --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             
-            /* Gradients */
+            /* Enhanced Gradients */
             --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #36a99a 100%);
-            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #e67e22 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            
+            /* Performance Variables */
+            --content-max-width: 1400px;
+            --sidebar-width: 320px;
+            --header-height: 80px;
+            --z-modal: 10000;
+            --z-tooltip: 9999;
+            --z-dropdown: 9998;
+            --z-sticky: 1000;
         }
 
         /* Dark mode variables */
@@ -89,14 +117,28 @@
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
             --text-light: #999999;
+            --text-muted: #666666;
             --bg-primary: #2a2a2a;
             --bg-secondary: #1a1a1a;
+            --bg-tertiary: #0f0f0f;
+            --border-color: #404040;
+            --border-light: #333333;
         }
 
-        * {
+        /* CSS Reset & Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -106,23 +148,75 @@
             transition: var(--transition-normal);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ==================== MASTER CONTROL PANEL ==================== */
+        /* Performance Optimizations */
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        input, textarea, select {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* Loading States */
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Enhanced Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: var(--border-radius-full);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ==================== ENHANCED MASTER CONTROL PANEL ==================== */
         .master-control-panel {
             position: fixed;
             top: 0;
             left: -100%;
             width: 100%;
-            max-width: 500px;
+            max-width: var(--sidebar-width);
             height: 100vh;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            z-index: 99999;
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: var(--z-modal);
+            transition: left var(--transition-smooth);
             overflow-y: auto;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            box-shadow: var(--shadow-2xl);
             border-right: 3px solid var(--primary-color);
+            backdrop-filter: blur(20px);
         }
 
         .master-control-panel.active {
@@ -173,11 +267,12 @@
             padding: 1rem;
             background: rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .mcp-nav-tabs {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 0.5rem;
         }
 
@@ -185,13 +280,13 @@
             background: rgba(255, 255, 255, 0.1);
             border: none;
             color: rgba(255, 255, 255, 0.7);
-            padding: 0.5rem 1rem;
+            padding: 0.75rem;
             border-radius: var(--border-radius-md);
             cursor: pointer;
             font-size: var(--font-size-sm);
             transition: var(--transition-normal);
-            flex: 1;
-            min-width: 100px;
+            text-align: center;
+            font-weight: 500;
         }
 
         .mcp-nav-tab.active,
@@ -199,6 +294,7 @@
             background: var(--primary-color);
             color: white;
             transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .mcp-section {
@@ -209,6 +305,7 @@
 
         .mcp-section.active {
             display: block;
+            animation: fadeInUp 0.3s ease;
         }
 
         .mcp-section h3 {
@@ -227,6 +324,7 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius-lg);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .mcp-subsection h4 {
@@ -234,6 +332,9 @@
             color: var(--secondary-color);
             font-size: var(--font-size-base);
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .mcp-control-group {
@@ -270,6 +371,7 @@
             border-radius: var(--border-radius-md);
             font-size: var(--font-size-sm);
             transition: var(--transition-normal);
+            backdrop-filter: blur(10px);
         }
 
         .mcp-control input:focus,
@@ -279,32 +381,7 @@
             border-color: var(--primary-color);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.3);
-        }
-
-        .mcp-control input[type="color"] {
-            height: 45px;
-            cursor: pointer;
-            border: none;
-            border-radius: var(--border-radius-md);
-        }
-
-        .mcp-control input[type="range"] {
-            background: transparent;
-            -webkit-appearance: none;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .mcp-control input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
         }
 
         .mcp-button {
@@ -323,6 +400,23 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mcp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .mcp-button:hover::before {
+            left: 100%;
         }
 
         .mcp-button:hover {
@@ -361,17 +455,20 @@
             transition: var(--transition-normal);
             background: rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .media-upload-zone:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .media-upload-zone.dragging {
             background: rgba(232, 160, 191, 0.2);
             border-color: var(--primary-color);
             transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
         }
 
         .upload-prompt {
@@ -384,9 +481,15 @@
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* ==================== ADMIN CONTROLS ==================== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ==================== ENHANCED ADMIN CONTROLS ==================== */
         .admin-login {
             position: fixed;
             bottom: 20px;
@@ -404,14 +507,34 @@
             cursor: pointer;
             font-size: 1.5rem;
             box-shadow: var(--shadow-lg);
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-login-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: var(--transition-normal);
+            transform: translate(-50%, -50%);
+        }
+
+        .admin-login-btn:hover::before {
+            width: 100px;
+            height: 100px;
         }
 
         .admin-login-btn:hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-5px) scale(1.1);
             box-shadow: var(--shadow-xl);
         }
 
@@ -435,10 +558,12 @@
             cursor: pointer;
             font-size: 1.2rem;
             box-shadow: var(--shadow-lg);
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .quick-action-btn:hover {
@@ -452,13 +577,20 @@
 
         .quick-action-btn.edit-toggle.active {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
         }
 
         .quick-action-btn.logout-btn {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
-        /* Admin Login Modal */
+        /* Enhanced Admin Login Modal */
         .admin-modal {
             display: none;
             position: fixed;
@@ -467,26 +599,28 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 99998;
+            backdrop-filter: blur(20px);
+            z-index: var(--z-modal);
             align-items: center;
             justify-content: center;
         }
 
         .admin-modal.active {
             display: flex;
+            animation: fadeIn 0.3s ease;
         }
 
         .admin-modal-content {
             background: var(--bg-primary);
             padding: 3rem;
-            border-radius: var(--border-radius-xl);
+            border-radius: var(--border-radius-2xl);
             max-width: 450px;
             width: 90%;
             position: relative;
             animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid var(--border-light);
         }
 
         .admin-modal-content h3 {
@@ -499,7 +633,7 @@
         .admin-input {
             width: 100%;
             padding: 1rem;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--border-color);
             border-radius: var(--border-radius-lg);
             font-size: var(--font-size-base);
             margin-bottom: 1rem;
@@ -511,6 +645,7 @@
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.3);
+            transform: translateY(-1px);
         }
 
         .admin-login-submit {
@@ -525,6 +660,8 @@
             width: 100%;
             margin-top: 1rem;
             transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
         }
 
         .admin-login-submit:hover {
@@ -532,44 +669,22 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .admin-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            width: 40px;
-            height: 40px;
-            border-radius: var(--border-radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-normal);
-        }
-
-        .admin-close:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        /* ==================== MAIN WEBSITE STYLES ==================== */
+        /* ==================== ENHANCED MAIN WEBSITE STYLES ==================== */
         
-        /* Header */
+        /* Enhanced Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             background: var(--bg-primary);
-            box-shadow: var(--shadow-md);
-            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            z-index: var(--z-sticky);
             transition: var(--transition-normal);
+            backdrop-filter: blur(20px);
         }
 
         header.scrolled {
             box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
         }
 
@@ -582,7 +697,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            max-width: 1400px;
+            max-width: var(--content-max-width);
             margin: 0 auto;
         }
 
@@ -601,34 +716,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             cursor: pointer;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
         }
 
         .logo:hover {
             transform: scale(1.05);
-        }
-
-        .logo-image {
-            max-height: 50px;
-            width: auto;
-            display: none;
-            transition: var(--transition-normal);
-        }
-
-        .logo-image.active {
-            display: block;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-text {
-            display: block;
-        }
-
-        .logo-text.hidden {
-            display: none;
         }
 
         .nav-menu {
@@ -675,7 +767,7 @@
             cursor: pointer;
             padding: 0.5rem;
             color: var(--text-primary);
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             border-radius: var(--border-radius-md);
         }
 
@@ -692,9 +784,11 @@
             font-size: var(--font-size-base);
             font-weight: 500;
             text-decoration: none;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .contact-btn:hover {
@@ -702,9 +796,9 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Hero Section */
+        /* Enhanced Hero Section */
         .hero {
-            margin-top: 80px;
+            margin-top: var(--header-height);
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -714,7 +808,7 @@
         }
 
         .hero-content {
-            max-width: 1400px;
+            max-width: var(--content-max-width);
             margin: 0 auto;
             padding: 0 5%;
             display: grid;
@@ -759,9 +853,11 @@
             font-size: var(--font-size-base);
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             text-decoration: none;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
@@ -780,59 +876,10 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .hero-image {
-            position: relative;
-            animation: fadeIn 1s ease 0.8s both;
-        }
-
-        /* Enhanced Slider */
-        .enhanced-slider {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-lg);
-            background: #000;
-        }
-
-        .enhanced-slider-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .enhanced-slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-        }
-
-        .enhanced-slide img,
-        .enhanced-slide video {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            transition: var(--transition-normal);
-        }
-
-        .enhanced-slide.cover img,
-        .enhanced-slide.cover video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Sections */
+        /* Enhanced Sections */
         section {
-            padding: var(--spacing-3xl) 5%;
-            max-width: 1400px;
+            padding: var(--spacing-4xl) 5%;
+            max-width: var(--content-max-width);
             margin: 0 auto;
         }
 
@@ -853,53 +900,180 @@
             width: 80px;
             height: 4px;
             background: var(--gradient-primary);
-            border-radius: 2px;
+            border-radius: var(--border-radius-sm);
         }
 
-        /* ==================== PORTFOLIO SECTION ==================== */
+        /* ==================== ENHANCED PORTFOLIO SECTION ==================== */
         .portfolio-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            animation: countUp 2s ease-out;
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-search {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            font-size: var(--font-size-base);
+            transition: var(--transition-normal);
+            background: var(--bg-primary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.3);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-md);
+            padding: 0.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-normal);
+            color: var(--text-secondary);
+        }
+
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .sort-select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
         }
 
         .portfolio-upload-section {
             background: var(--bg-primary);
-            border-radius: var(--border-radius-xl);
-            padding: 2rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow-md);
-            display: none; /* Hidden by default, shown in edit mode */
+            border-radius: var(--border-radius-2xl);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            border: 2px dashed var(--border-color);
+            transition: var(--transition-normal);
         }
 
         .edit-mode .portfolio-upload-section {
             display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .portfolio-upload-zone {
             border: 3px dashed var(--primary-color);
-            border-radius: var(--border-radius-lg);
-            padding: 3rem;
+            border-radius: var(--border-radius-xl);
+            padding: 4rem 2rem;
             text-align: center;
             cursor: pointer;
             transition: var(--transition-normal);
             background: rgba(232, 160, 191, 0.05);
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-upload-zone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(232, 160, 191, 0.1), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .portfolio-upload-zone:hover::before {
+            left: 100%;
         }
 
         .portfolio-upload-zone:hover {
             background: rgba(232, 160, 191, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .portfolio-upload-zone.dragging {
             background: rgba(232, 160, 191, 0.2);
             transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
         }
 
         .upload-icon {
             font-size: 4rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
         }
 
         .upload-text h3 {
@@ -929,6 +1103,7 @@
             border-radius: var(--border-radius-xl);
             font-size: var(--font-size-sm);
             font-weight: 500;
+            box-shadow: var(--shadow-sm);
         }
 
         .portfolio-controls {
@@ -947,10 +1122,12 @@
             font-size: var(--font-size-base);
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .portfolio-btn:hover {
@@ -966,40 +1143,73 @@
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
-        /* Portfolio Filters */
+        /* Enhanced Portfolio Filters */
         .portfolio-filters {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-sm);
         }
 
         .filter-btn {
             background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
             padding: 0.75rem 1.5rem;
             border-radius: var(--border-radius-xl);
             font-size: var(--font-size-base);
             font-weight: 500;
             cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
             transition: var(--transition-normal);
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            left: 0;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--gradient-primary);
             color: white;
+            border-color: var(--primary-color);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Portfolio Grid */
+        /* Enhanced Portfolio Grid */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
+        }
+
+        .portfolio-grid.masonry {
+            columns: 3;
+            column-gap: 2rem;
+        }
+
+        .portfolio-grid.list {
+            grid-template-columns: 1fr;
         }
 
         .portfolio-item {
@@ -1010,10 +1220,16 @@
             transition: var(--transition-normal);
             position: relative;
             cursor: pointer;
+            border: 1px solid var(--border-light);
+        }
+
+        .portfolio-grid.masonry .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-xl);
         }
 
@@ -1022,7 +1238,11 @@
             width: 100%;
             height: 250px;
             overflow: hidden;
-            background: #f0f0f0;
+            background: var(--bg-tertiary);
+        }
+
+        .portfolio-grid.list .portfolio-media {
+            height: 200px;
         }
 
         .portfolio-media img,
@@ -1030,28 +1250,63 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition-normal);
+            transition: var(--transition-slow);
         }
 
         .portfolio-item:hover .portfolio-media img,
         .portfolio-item:hover .portfolio-media video {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .media-type-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: var(--border-radius-xl);
-            font-size: var(--font-size-sm);
-            font-weight: 500;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
             backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-overlay);
+            opacity: 0;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: var(--transition-normal);
+        }
+
+        .portfolio-item:hover .portfolio-overlay-content {
+            transform: translateY(0);
         }
 
         .portfolio-info {
+            padding: 2rem;
+        }
+
+        .portfolio-grid.list .portfolio-info {
             padding: 1.5rem;
         }
 
@@ -1060,13 +1315,16 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
+            line-height: 1.3;
         }
 
         .portfolio-category {
             color: var(--primary-color);
             font-size: var(--font-size-sm);
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .portfolio-description {
@@ -1074,11 +1332,30 @@
             font-size: var(--font-size-sm);
             line-height: 1.6;
             margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
         }
 
         .portfolio-date {
-            color: var(--text-light);
-            font-size: var(--font-size-xs);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .portfolio-size {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .portfolio-actions {
@@ -1088,14 +1365,27 @@
             display: none;
             flex-direction: column;
             gap: 0.5rem;
+            z-index: 10;
         }
 
         .edit-mode .portfolio-actions {
             display: flex;
+            animation: slideInLeft 0.3s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .portfolio-action-btn {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             border: none;
             width: 40px;
@@ -1105,24 +1395,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             backdrop-filter: blur(10px);
+            font-size: var(--font-size-sm);
         }
 
         .portfolio-action-btn:hover {
             background: var(--primary-color);
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
         .portfolio-action-btn.delete {
-            background: rgba(231, 76, 60, 0.8);
+            background: rgba(231, 76, 60, 0.9);
         }
 
         .portfolio-action-btn.delete:hover {
             background: #e74c3c;
         }
 
-        /* Portfolio Modal */
+        /* Enhanced Portfolio Modal */
         .portfolio-modal {
             display: none;
             position: fixed;
@@ -1130,15 +1421,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: var(--z-modal);
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            backdrop-filter: blur(20px);
         }
 
         .portfolio-modal.active {
             display: flex;
+            animation: fadeIn 0.3s ease;
         }
 
         .portfolio-modal-content {
@@ -1146,34 +1439,40 @@
             max-height: 90vh;
             position: relative;
             background: var(--bg-primary);
-            border-radius: var(--border-radius-xl);
+            border-radius: var(--border-radius-2xl);
             overflow: hidden;
             animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-2xl);
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-modal-media {
-            width: 100%;
-            max-height: 70vh;
+            flex: 1;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
         }
 
         .portfolio-modal-media img,
         .portfolio-modal-media video {
-            width: 100%;
-            height: auto;
+            max-width: 100%;
             max-height: 70vh;
             object-fit: contain;
         }
 
         .portfolio-modal-info {
             padding: 2rem;
+            background: var(--bg-primary);
         }
 
         .portfolio-modal-close {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             border: none;
             width: 50px;
@@ -1184,8 +1483,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-normal);
+            transition: var(--transition-bounce);
             backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
         .portfolio-modal-close:hover {
@@ -1193,22 +1493,73 @@
             transform: scale(1.1);
         }
 
-        /* Portfolio Upload Progress */
+        .portfolio-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-full);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-bounce);
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-modal-nav:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .portfolio-modal-prev {
+            left: 1rem;
+        }
+
+        .portfolio-modal-next {
+            right: 1rem;
+        }
+
+        /* Upload Progress */
         .upload-progress {
             width: 100%;
-            background: rgba(0, 0, 0, 0.1);
+            background: var(--bg-tertiary);
             border-radius: var(--border-radius-full);
             overflow: hidden;
             margin-top: 1rem;
             display: none;
+            height: 8px;
         }
 
         .upload-progress-bar {
-            height: 8px;
+            height: 100%;
             background: var(--gradient-primary);
             border-radius: var(--border-radius-full);
             transition: width 0.3s ease;
             width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .upload-status {
@@ -1216,14 +1567,18 @@
             text-align: center;
             font-weight: 500;
             display: none;
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
         }
 
         .upload-status.success {
             color: #27ae60;
+            background: rgba(39, 174, 96, 0.1);
         }
 
         .upload-status.error {
             color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
         }
 
         /* Editable Elements */
@@ -1250,20 +1605,22 @@
             background: rgba(232, 160, 191, 0.1);
         }
 
-        /* Notifications */
+        /* Enhanced Notifications */
         .notification {
             position: fixed;
             top: 100px;
             right: 20px;
             background: var(--bg-primary);
             padding: 1.5rem 2rem;
-            border-radius: var(--border-radius-lg);
+            border-radius: var(--border-radius-xl);
             box-shadow: var(--shadow-xl);
             transform: translateX(400px);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 10000;
-            max-width: 350px;
+            transition: transform var(--transition-smooth);
+            z-index: var(--z-tooltip);
+            max-width: 400px;
             border-left: 4px solid var(--primary-color);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
         }
 
         .notification.show {
@@ -1282,15 +1639,43 @@
             border-left-color: var(--secondary-color);
         }
 
+        .notification::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -4px;
+            width: 4px;
+            height: 100%;
+            background: inherit;
+            animation: slideDown 0.3s ease;
+        }
+
         /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .portfolio-grid.masonry {
+                columns: 2;
+            }
+        }
+
         @media (max-width: 768px) {
-            .master-control-panel {
-                width: 100%;
-                left: -100%;
+            :root {
+                --font-size-5xl: 2.5rem;
+                --font-size-4xl: 2rem;
+                --font-size-3xl: 1.75rem;
+                --spacing-4xl: 3rem;
             }
 
-            .master-control-panel.active {
-                left: 0;
+            .master-control-panel {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .mcp-nav-tabs {
+                grid-template-columns: 1fr;
             }
 
             .mcp-control-group {
@@ -1301,49 +1686,99 @@
                 grid-template-columns: 1fr;
                 text-align: center;
                 padding: 0 20px;
-            }
-
-            .hero-text h1 {
-                font-size: var(--font-size-3xl);
-            }
-
-            .hero-text .tagline {
-                font-size: var(--font-size-xl);
-            }
-
-            .section-title {
-                font-size: var(--font-size-3xl);
+                gap: 2rem;
             }
 
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
+            .portfolio-grid.masonry {
+                columns: 1;
+            }
+
             .portfolio-filters {
                 justify-content: flex-start;
                 overflow-x: auto;
                 padding-bottom: 1rem;
+                scroll-snap-type: x mandatory;
             }
 
             .filter-btn {
                 flex-shrink: 0;
+                scroll-snap-align: start;
+            }
+
+            .portfolio-search {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input {
+                min-width: auto;
+            }
+
+            .search-controls {
+                justify-content: space-between;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: var(--header-height);
                 right: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: calc(100vh - var(--header-height));
                 background: var(--bg-primary);
                 flex-direction: column;
                 padding: 2rem;
-                transition: var(--transition-normal);
+                transition: var(--transition-smooth);
                 z-index: 998;
+                backdrop-filter: blur(20px);
             }
 
             .nav-menu.active {
                 right: 0;
+            }
+
+            .portfolio-modal-content {
+                margin: 1rem;
+                max-width: calc(100vw - 2rem);
+                max-height: calc(100vh - 2rem);
+            }
+
+            .portfolio-modal-info {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-upload-zone {
+                padding: 2rem 1rem;
+            }
+
+            .upload-icon {
+                font-size: 3rem;
+            }
+
+            .upload-text h3 {
+                font-size: var(--font-size-xl);
+            }
+
+            .supported-formats {
+                gap: 0.5rem;
+            }
+
+            .format-tag {
+                padding: 0.25rem 0.75rem;
+                font-size: var(--font-size-xs);
+            }
+
+            .portfolio-controls {
+                flex-direction: column;
+            }
+
+            .portfolio-btn {
+                padding: 0.75rem 1.5rem;
             }
         }
 
@@ -1375,7 +1810,18 @@
             }
         }
 
-        /* Loading Animation */
+        @keyframes countUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading States */
         .loading {
             display: inline-block;
             width: 20px;
@@ -1390,15 +1836,39 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Pulse Animation for Upload Zone */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
-        .portfolio-upload-zone.active {
-            animation: pulse 2s infinite;
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus States */
+        *:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -1407,7 +1877,7 @@
     <div class="master-control-panel" id="masterControlPanel">
         <div class="mcp-header">
             <h2><i class="fas fa-cogs"></i> Master Control Panel</h2>
-            <button class="mcp-close" onclick="toggleMasterPanel()">
+            <button class="mcp-close" onclick="toggleMasterPanel()" aria-label="Close control panel">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -1443,22 +1913,22 @@
             <!-- Portfolio Upload -->
             <div class="mcp-subsection">
                 <h4><i class="fas fa-cloud-upload-alt"></i> Upload Portfolio Items</h4>
-                <div class="media-upload-zone" onclick="document.getElementById('portfolioUpload').click()">
+                <div class="media-upload-zone" onclick="document.getElementById('portfolioUpload').click()" tabindex="0" role="button" aria-label="Upload portfolio media">
                     <div class="upload-prompt">
                         <div class="upload-prompt-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                         <h4>Upload Portfolio Media</h4>
                         <p>Images, Videos, Animations, Slides supported</p>
                     </div>
                 </div>
-                <input type="file" id="portfolioUpload" style="display: none;" multiple accept="image/*,video/*,.gif,.mp4,.mov,.avi,.mkv,.webm">
+                <input type="file" id="portfolioUpload" style="display: none;" multiple accept="image/*,video/*,.gif,.mp4,.mov,.avi,.mkv,.webm" aria-label="Select portfolio files">
                 
                 <div class="mcp-control-group" style="margin-top: 1rem;">
                     <div class="mcp-control">
-                        <label>Project Title</label>
+                        <label for="portfolioTitle">Project Title</label>
                         <input type="text" id="portfolioTitle" placeholder="Enter project title">
                     </div>
                     <div class="mcp-control">
-                        <label>Category</label>
+                        <label for="portfolioCategory">Category</label>
                         <select id="portfolioCategory">
                             <option value="commercial">Commercial Projects</option>
                             <option value="residential">Residential Projects</option>
@@ -1471,7 +1941,7 @@
                 </div>
                 
                 <div class="mcp-control">
-                    <label>Project Description</label>
+                    <label for="portfolioDescription">Project Description</label>
                     <textarea id="portfolioDescription" rows="3" placeholder="Describe the project details, scope, and achievements"></textarea>
                 </div>
                 
@@ -1480,21 +1950,21 @@
                 </button>
             </div>
 
-            <!-- Portfolio Categories Management -->
+            <!-- Portfolio Analytics -->
             <div class="mcp-subsection">
-                <h4><i class="fas fa-tags"></i> Category Management</h4>
-                <div class="mcp-control-group">
-                    <div class="mcp-control">
-                        <label>New Category Name</label>
-                        <input type="text" id="newCategoryName" placeholder="e.g., Office Renovations">
+                <h4><i class="fas fa-chart-bar"></i> Portfolio Analytics</h4>
+                <div id="portfolioAnalytics" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);" id="totalItems">0</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Total Items</div>
                     </div>
-                    <div class="mcp-control">
-                        <label>Category Color</label>
-                        <input type="color" id="newCategoryColor" value="#E8A0BF">
+                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--secondary-color);" id="totalSize">0 MB</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Total Size</div>
                     </div>
                 </div>
-                <button class="mcp-button secondary" onclick="addPortfolioCategory()">
-                    <i class="fas fa-plus"></i> Add Category
+                <button class="mcp-button secondary" onclick="generatePortfolioReport()">
+                    <i class="fas fa-file-export"></i> Export Report
                 </button>
             </div>
 
@@ -1503,7 +1973,7 @@
                 <h4><i class="fas fa-cog"></i> Portfolio Settings</h4>
                 <div class="mcp-control-group">
                     <div class="mcp-control">
-                        <label>Items Per Page</label>
+                        <label for="portfolioItemsPerPage">Items Per Page</label>
                         <select id="portfolioItemsPerPage">
                             <option value="6">6 items</option>
                             <option value="9" selected>9 items</option>
@@ -1512,7 +1982,7 @@
                         </select>
                     </div>
                     <div class="mcp-control">
-                        <label>Default View</label>
+                        <label for="portfolioDefaultView">Default View</label>
                         <select id="portfolioDefaultView">
                             <option value="grid" selected>Grid View</option>
                             <option value="masonry">Masonry Layout</option>
@@ -1522,14 +1992,14 @@
                 </div>
                 <div class="mcp-control-group">
                     <div class="mcp-control">
-                        <label>Auto-optimize Images</label>
+                        <label for="autoOptimizeImages">Auto-optimize Images</label>
                         <select id="autoOptimizeImages">
                             <option value="yes" selected>Yes</option>
                             <option value="no">No</option>
                         </select>
                     </div>
                     <div class="mcp-control">
-                        <label>Image Quality (%)</label>
+                        <label for="portfolioImageQuality">Image Quality (%)</label>
                         <input type="range" id="portfolioImageQuality" min="60" max="100" value="85" oninput="updateImageQualityDisplay()">
                         <span id="imageQualityDisplay">85%</span>
                     </div>
@@ -1545,51 +2015,53 @@
                 <div id="portfolioItemsList" style="max-height: 300px; overflow-y: auto;">
                     <!-- Portfolio items will be displayed here -->
                 </div>
-                <button class="mcp-button danger" onclick="clearAllPortfolioItems()">
-                    <i class="fas fa-trash"></i> Clear All Items
-                </button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                    <button class="mcp-button success" onclick="exportPortfolioData()">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button class="mcp-button danger" onclick="clearAllPortfolioItems()">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
             </div>
         </div>
-
-        <!-- Other existing sections (Design, Content, Layout, Media, Advanced) would go here -->
-        <!-- For brevity, I'm focusing on the Portfolio section -->
     </div>
 
     <!-- Admin Login Button -->
     <div class="admin-login" id="adminLogin">
-        <button class="admin-login-btn" onclick="showAdminLogin()" title="Master Admin Login">
+        <button class="admin-login-btn" onclick="showAdminLogin()" title="Master Admin Login" aria-label="Open admin login">
             <i class="fas fa-shield-alt"></i>
         </button>
     </div>
 
-    <!-- Quick Actions Bar (Hidden by default) -->
+    <!-- Quick Actions Bar -->
     <div class="quick-actions" id="quickActions">
-        <button class="quick-action-btn edit-toggle" id="editModeToggle" onclick="toggleEditMode()" title="Toggle Edit Mode">
+        <button class="quick-action-btn edit-toggle" id="editModeToggle" onclick="toggleEditMode()" title="Toggle Edit Mode" aria-label="Toggle edit mode">
             <i class="fas fa-edit"></i>
         </button>
-        <button class="quick-action-btn" onclick="toggleMasterPanel()" title="Open Master Panel">
+        <button class="quick-action-btn" onclick="toggleMasterPanel()" title="Open Master Panel" aria-label="Open control panel">
             <i class="fas fa-cogs"></i>
         </button>
-        <button class="quick-action-btn logout-btn" onclick="adminLogout()" title="Logout">
+        <button class="quick-action-btn logout-btn" onclick="adminLogout()" title="Logout" aria-label="Logout from admin">
             <i class="fas fa-sign-out-alt"></i>
         </button>
     </div>
 
     <!-- Admin Login Modal -->
-    <div class="admin-modal" id="adminModal">
+    <div class="admin-modal" id="adminModal" role="dialog" aria-labelledby="adminModalTitle" aria-hidden="true">
         <div class="admin-modal-content">
-            <button class="admin-close" onclick="closeAdminLogin()">
+            <button class="admin-close" onclick="closeAdminLogin()" aria-label="Close login modal">
                 <i class="fas fa-times"></i>
             </button>
-            <h3><i class="fas fa-shield-alt"></i> Master Admin Login</h3>
+            <h3 id="adminModalTitle"><i class="fas fa-shield-alt"></i> Master Admin Login</h3>
             <div>
-                <input type="email" id="adminEmail" class="admin-input" placeholder="Email Address" />
-                <input type="password" id="adminPassword" class="admin-input" placeholder="Password" />
+                <input type="email" id="adminEmail" class="admin-input" placeholder="Email Address" aria-label="Email address" />
+                <input type="password" id="adminPassword" class="admin-input" placeholder="Password" aria-label="Password" />
                 <button class="admin-login-submit" onclick="attemptAdminLogin()">
                     <i class="fas fa-sign-in-alt"></i> Login to Master Panel
                 </button>
             </div>
-            <div id="adminLoginError" style="color: #e74c3c; margin-top: 1rem; display: none;">
+            <div id="adminLoginError" style="color: #e74c3c; margin-top: 1rem; display: none;" role="alert">
                 <i class="fas fa-exclamation-triangle"></i> Invalid credentials. Please try again.
             </div>
         </div>
@@ -1611,10 +2083,10 @@
                 <li><a href="#contact" class="editable">Contact</a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" onclick="toggleTheme()">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language">EN</button>
                 <a href="#contact" class="contact-btn editable">Get Quote</a>
             </div>
         </nav>
@@ -1669,22 +2141,22 @@
     <section>
         <h2 class="section-title editable">Our Values</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
-            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div style="font-size: 3rem; margin-bottom: 1rem;">❤️</div>
                 <h4 class="editable">PASSION</h4>
                 <p class="editable">Knowledge, experience and constant learning process. Unconditional commitment to work and striving for innovations.</p>
             </div>
-            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div style="font-size: 3rem; margin-bottom: 1rem;">🛡️</div>
                 <h4 class="editable">RESPONSIBILITY</h4>
                 <p class="editable">Respectable and honest treatment to clients. Trust-based collaboration with partners. Social responsibility for society and environment.</p>
             </div>
-            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
                 <h4 class="editable">INNOVATIVE</h4>
                 <p class="editable">Constant desire to improve. Permanent search for advanced business tools and methods. Innovation is our fundamental competitive advantage.</p>
             </div>
-            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
                 <h4 class="editable">RESPECT</h4>
                 <p class="editable">Recognition that employees are the main reason of a successful business. Development of warm and respectful relationships with associates.</p>
@@ -1696,21 +2168,21 @@
     <section id="services">
         <h2 class="section-title editable">What We Do</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
-            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
                 <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">🔧</div>
                 <div style="padding: 2rem;">
                     <h4 class="editable">Maintenance Services</h4>
                     <p class="editable">Comprehensive maintenance solutions for commercial and residential properties with professional quality and reliability.</p>
                 </div>
             </div>
-            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
                 <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">🏗️</div>
                 <div style="padding: 2rem;">
                     <h4 class="editable">Interior Construction & Renovation</h4>
                     <p class="editable">Expert interior construction and renovation services transforming spaces with innovative design and quality craftsmanship.</p>
                 </div>
             </div>
-            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="background: var(--bg-primary); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
                 <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">🎨</div>
                 <div style="padding: 2rem;">
                     <h4 class="editable">Designing & Interior Illustration</h4>
@@ -1727,11 +2199,31 @@
             <p style="font-size: var(--font-size-lg); color: var(--text-secondary); max-width: 600px; margin: 0 auto;" class="editable">
                 Explore our diverse range of completed projects showcasing our expertise in maintenance, renovation, and interior design.
             </p>
+            
+            <!-- Portfolio Stats -->
+            <div class="portfolio-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="statsProjects">150+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statsClients">200+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statsExperience">10+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statsAwards">25+</span>
+                    <span class="stat-label">Awards Won</span>
+                </div>
+            </div>
         </div>
 
         <!-- Portfolio Upload Section (Admin Only) -->
         <div class="portfolio-upload-section">
-            <div class="portfolio-upload-zone" id="portfolioUploadZone">
+            <div class="portfolio-upload-zone" id="portfolioUploadZone" tabindex="0" role="button" aria-label="Upload portfolio content">
                 <div class="upload-icon">
                     <i class="fas fa-cloud-upload-alt"></i>
                 </div>
@@ -1753,7 +2245,7 @@
                 <div class="upload-progress-bar" id="uploadProgressBar"></div>
             </div>
             
-            <div class="upload-status" id="uploadStatus"></div>
+            <div class="upload-status" id="uploadStatus" role="status" aria-live="polite"></div>
             
             <div class="portfolio-controls">
                 <button class="portfolio-btn" onclick="document.getElementById('portfolioFileInput').click()">
@@ -1768,92 +2260,175 @@
             </div>
             
             <input type="file" id="portfolioFileInput" style="display: none;" multiple 
-                   accept="image/*,video/*,.gif,.mp4,.mov,.avi,.mkv,.webm,.jpg,.jpeg,.png,.webp">
+                   accept="image/*,video/*,.gif,.mp4,.mov,.avi,.mkv,.webm,.jpg,.jpeg,.png,.webp"
+                   aria-label="Select portfolio files">
+        </div>
+
+        <!-- Portfolio Search and Controls -->
+        <div class="portfolio-search">
+            <input type="search" class="search-input" placeholder="Search projects..." id="portfolioSearchInput" aria-label="Search portfolio">
+            <div class="search-controls">
+                <div class="view-toggle" role="tablist" aria-label="View options">
+                    <button class="view-btn active" onclick="changeView('grid')" role="tab" aria-selected="true" aria-label="Grid view">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" onclick="changeView('masonry')" role="tab" aria-selected="false" aria-label="Masonry view">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" onclick="changeView('list')" role="tab" aria-selected="false" aria-label="List view">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+                <select class="sort-select" id="portfolioSort" onchange="sortPortfolio()" aria-label="Sort portfolio">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">By Title</option>
+                    <option value="category">By Category</option>
+                </select>
+            </div>
         </div>
 
         <!-- Portfolio Filters -->
-        <div class="portfolio-filters">
-            <button class="filter-btn active" onclick="filterPortfolio('all')">All Projects</button>
-            <button class="filter-btn" onclick="filterPortfolio('commercial')">Commercial</button>
-            <button class="filter-btn" onclick="filterPortfolio('residential')">Residential</button>
-            <button class="filter-btn" onclick="filterPortfolio('maintenance')">Maintenance</button>
-            <button class="filter-btn" onclick="filterPortfolio('3d')">3D Concepts</button>
-            <button class="filter-btn" onclick="filterPortfolio('renovation')">Renovation</button>
+        <div class="portfolio-filters" role="tablist" aria-label="Portfolio categories">
+            <button class="filter-btn active" onclick="filterPortfolio('all')" role="tab" aria-selected="true">All Projects</button>
+            <button class="filter-btn" onclick="filterPortfolio('commercial')" role="tab" aria-selected="false">Commercial</button>
+            <button class="filter-btn" onclick="filterPortfolio('residential')" role="tab" aria-selected="false">Residential</button>
+            <button class="filter-btn" onclick="filterPortfolio('maintenance')" role="tab" aria-selected="false">Maintenance</button>
+            <button class="filter-btn" onclick="filterPortfolio('3d')" role="tab" aria-selected="false">3D Concepts</button>
+            <button class="filter-btn" onclick="filterPortfolio('renovation')" role="tab" aria-selected="false">Renovation</button>
         </div>
 
         <!-- Portfolio Grid -->
-        <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-grid" id="portfolioGrid" role="grid" aria-label="Portfolio items">
             <!-- Sample portfolio items -->
-            <div class="portfolio-item" data-category="commercial">
+            <div class="portfolio-item" data-category="commercial" data-date="2024-03-15" data-title="Modern Office Renovation" role="gridcell">
                 <div class="portfolio-actions">
-                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)">
+                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)" aria-label="Edit item">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)">
+                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)" aria-label="Delete item">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
                 <div class="portfolio-media">
-                    <img src="https://via.placeholder.com/400x250/E8A0BF/ffffff?text=Commercial+Project+1" alt="Commercial Project">
+                    <img src="https://via.placeholder.com/400x250/E8A0BF/ffffff?text=Commercial+Project+1" alt="Modern Office Renovation" loading="lazy">
                     <div class="media-type-badge">IMAGE</div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-overlay-content">
+                            <i class="fas fa-search-plus" style="font-size: 2rem;"></i>
+                            <p>View Project</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h4 class="portfolio-title">Modern Office Renovation</h4>
                     <div class="portfolio-category">Commercial Projects</div>
                     <p class="portfolio-description">Complete renovation of a 5000 sq ft office space with modern design elements and energy-efficient solutions.</p>
-                    <div class="portfolio-date">Completed: March 2024</div>
+                    <div class="portfolio-meta">
+                        <div class="portfolio-date">
+                            <i class="fas fa-calendar"></i>
+                            March 2024
+                        </div>
+                        <div class="portfolio-size">
+                            <i class="fas fa-file"></i>
+                            2.3 MB
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="portfolio-item" data-category="residential">
+            <div class="portfolio-item" data-category="residential" data-date="2024-02-28" data-title="Luxury Kitchen Design" role="gridcell">
                 <div class="portfolio-actions">
-                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)">
+                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)" aria-label="Edit item">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)">
+                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)" aria-label="Delete item">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
                 <div class="portfolio-media">
-                    <img src="https://via.placeholder.com/400x250/BA5B7D/ffffff?text=Residential+Kitchen" alt="Residential Kitchen">
+                    <img src="https://via.placeholder.com/400x250/BA5B7D/ffffff?text=Residential+Kitchen" alt="Luxury Kitchen Design" loading="lazy">
                     <div class="media-type-badge">IMAGE</div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-overlay-content">
+                            <i class="fas fa-search-plus" style="font-size: 2rem;"></i>
+                            <p>View Project</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h4 class="portfolio-title">Luxury Kitchen Design</h4>
                     <div class="portfolio-category">Residential Projects</div>
                     <p class="portfolio-description">High-end kitchen renovation featuring custom cabinetry, premium appliances, and elegant lighting design.</p>
-                    <div class="portfolio-date">Completed: February 2024</div>
+                    <div class="portfolio-meta">
+                        <div class="portfolio-date">
+                            <i class="fas fa-calendar"></i>
+                            February 2024
+                        </div>
+                        <div class="portfolio-size">
+                            <i class="fas fa-file"></i>
+                            1.8 MB
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="portfolio-item" data-category="3d">
+            <div class="portfolio-item" data-category="3d" data-date="2024-01-20" data-title="Living Room 3D Visualization" role="gridcell">
                 <div class="portfolio-actions">
-                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)">
+                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)" aria-label="Edit item">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)">
+                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)" aria-label="Delete item">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
                 <div class="portfolio-media">
-                    <img src="https://via.placeholder.com/400x250/4ecdc4/ffffff?text=3D+Concept+Drawing" alt="3D Concept">
+                    <img src="https://via.placeholder.com/400x250/4ecdc4/ffffff?text=3D+Concept+Drawing" alt="Living Room 3D Visualization" loading="lazy">
                     <div class="media-type-badge">3D RENDER</div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-overlay-content">
+                            <i class="fas fa-search-plus" style="font-size: 2rem;"></i>
+                            <p>View Project</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h4 class="portfolio-title">Living Room 3D Visualization</h4>
                     <div class="portfolio-category">3D Concept Drawings</div>
                     <p class="portfolio-description">Photorealistic 3D rendering showcasing proposed interior design for a contemporary living space.</p>
-                    <div class="portfolio-date">Created: January 2024</div>
+                    <div class="portfolio-meta">
+                        <div class="portfolio-date">
+                            <i class="fas fa-calendar"></i>
+                            January 2024
+                        </div>
+                        <div class="portfolio-size">
+                            <i class="fas fa-file"></i>
+                            3.7 MB
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="portfolio-btn" id="loadMoreBtn" onclick="loadMorePortfolioItems()" style="background: var(--gradient-secondary);">
+                <i class="fas fa-plus"></i> Load More Projects
+            </button>
         </div>
     </section>
 
     <!-- Portfolio Modal -->
-    <div class="portfolio-modal" id="portfolioModal">
+    <div class="portfolio-modal" id="portfolioModal" role="dialog" aria-labelledby="portfolioModalTitle" aria-hidden="true">
         <div class="portfolio-modal-content">
-            <button class="portfolio-modal-close" onclick="closePortfolioModal()">
+            <button class="portfolio-modal-close" onclick="closePortfolioModal()" aria-label="Close portfolio viewer">
                 <i class="fas fa-times"></i>
+            </button>
+            <button class="portfolio-modal-nav portfolio-modal-prev" onclick="previousPortfolioItem()" aria-label="Previous item">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="portfolio-modal-nav portfolio-modal-next" onclick="nextPortfolioItem()" aria-label="Next item">
+                <i class="fas fa-chevron-right"></i>
             </button>
             <div class="portfolio-modal-media" id="portfolioModalMedia">
                 <!-- Media will be inserted here -->
@@ -1870,7 +2445,7 @@
         <div style="text-align: center; max-width: 600px; margin: 0 auto;">
             <p style="font-size: var(--font-size-lg); margin-bottom: 2rem;" class="editable">Ready to transform your space? Contact us today!</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
+                <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">📍</div>
                     <h4 class="editable">Our Office</h4>
                     <p class="editable">C-08-34, Centum @ Oasis Corporate Park<br>
@@ -1878,7 +2453,7 @@
                     Ara Damansara, 47301 Petaling Jaya<br>
                     Selangor, Malaysia</p>
                 </div>
-                <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
+                <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); transition: var(--transition-normal);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">📞</div>
                     <h4 class="editable">Call Us</h4>
                     <p><strong>Email:</strong> <span class="editable">admin@refitservices.com</span></p>
@@ -1888,12 +2463,14 @@
     </section>
 
     <script>
-        // Global Variables
+        // Enhanced Global Variables
         let editMode = false;
         let isAdminLoggedIn = false;
         let selectedElement = null;
         let currentSlide = 0;
         let portfolioItems = [];
+        let currentPortfolioView = 'grid';
+        let currentModalIndex = 0;
         let portfolioCategories = [
             { id: 'commercial', name: 'Commercial Projects', color: '#E8A0BF' },
             { id: 'residential', name: 'Residential Projects', color: '#BA5B7D' },
@@ -1903,10 +2480,36 @@
             { id: 'interior', name: 'Interior Design', color: '#9b59b6' }
         ];
 
-        // Master Admin Credentials
+        // Enhanced Master Admin Credentials
         const MASTER_ADMIN_CREDENTIALS = {
             email: 'admin@refitservices.com',
             password: 'refit2024master'
+        };
+
+        // Performance optimizations
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
         };
 
         // Initialize Website
@@ -1916,24 +2519,408 @@
             checkAdminStatus();
             loadPortfolioItems();
             setupPortfolioUpload();
+            initializePortfolioFeatures();
+            updatePortfolioAnalytics();
         });
 
-        // Initialize Website
+        // Enhanced initialization
         function initializeWebsite() {
             initializeSlider();
+            setupIntersectionObserver();
+            setupLazyLoading();
             
-            // Setup scroll effects
-            window.addEventListener('scroll', () => {
+            // Enhanced scroll effects
+            const handleScroll = throttle(() => {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
+                
+                // Update portfolio stats on scroll
+                updateVisibleStats();
+            }, 100);
+            
+            window.addEventListener('scroll', handleScroll);
+        }
+
+        // Intersection Observer for animations
+        function setupIntersectionObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe portfolio items
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                observer.observe(item);
             });
         }
 
-        // Check Admin Status
+        // Lazy loading for images
+        function setupLazyLoading() {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('loading-skeleton');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                img.classList.add('loading-skeleton');
+                imageObserver.observe(img);
+            });
+        }
+
+        // Enhanced portfolio features
+        function initializePortfolioFeatures() {
+            setupPortfolioSearch();
+            setupKeyboardNavigation();
+            loadPortfolioSettings();
+        }
+
+        function setupPortfolioSearch() {
+            const searchInput = document.getElementById('portfolioSearchInput');
+            if (searchInput) {
+                const debouncedSearch = debounce((term) => {
+                    filterPortfolioBySearch(term);
+                }, 300);
+
+                searchInput.addEventListener('input', (e) => {
+                    debouncedSearch(e.target.value);
+                });
+            }
+        }
+
+        function filterPortfolioBySearch(searchTerm) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const term = searchTerm.toLowerCase();
+
+            items.forEach(item => {
+                const title = item.querySelector('.portfolio-title').textContent.toLowerCase();
+                const description = item.querySelector('.portfolio-description').textContent.toLowerCase();
+                const category = item.querySelector('.portfolio-category').textContent.toLowerCase();
+
+                if (title.includes(term) || description.includes(term) || category.includes(term)) {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
+            });
+        }
+
+        function setupKeyboardNavigation() {
+            document.addEventListener('keydown', (e) => {
+                if (document.getElementById('portfolioModal').classList.contains('active')) {
+                    switch(e.key) {
+                        case 'Escape':
+                            closePortfolioModal();
+                            break;
+                        case 'ArrowLeft':
+                            previousPortfolioItem();
+                            break;
+                        case 'ArrowRight':
+                            nextPortfolioItem();
+                            break;
+                    }
+                }
+            });
+        }
+
+        // Enhanced view management
+        function changeView(viewType) {
+            currentPortfolioView = viewType;
+            const grid = document.getElementById('portfolioGrid');
+            const viewBtns = document.querySelectorAll('.view-btn');
+
+            // Update active button
+            viewBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.view-btn').classList.add('active');
+
+            // Update grid class
+            grid.className = `portfolio-grid ${viewType}`;
+
+            // Save preference
+            localStorage.setItem('refitPortfolioView', viewType);
+            
+            showNotification('View Changed', `Switched to ${viewType} view`, 'info');
+        }
+
+        function sortPortfolio() {
+            const sortBy = document.getElementById('portfolioSort').value;
+            const grid = document.getElementById('portfolioGrid');
+            const items = Array.from(grid.querySelectorAll('.portfolio-item'));
+
+            items.sort((a, b) => {
+                switch(sortBy) {
+                    case 'newest':
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    case 'oldest':
+                        return new Date(a.dataset.date) - new Date(b.dataset.date);
+                    case 'title':
+                        return a.dataset.title.localeCompare(b.dataset.title);
+                    case 'category':
+                        return a.dataset.category.localeCompare(b.dataset.category);
+                    default:
+                        return 0;
+                }
+            });
+
+            // Re-append sorted items
+            items.forEach(item => grid.appendChild(item));
+            
+            showNotification('Portfolio Sorted', `Sorted by ${sortBy}`, 'info');
+        }
+
+        // Enhanced modal navigation
+        function openPortfolioModal(item) {
+            const modal = document.getElementById('portfolioModal');
+            const mediaContainer = document.getElementById('portfolioModalMedia');
+            const infoContainer = document.getElementById('portfolioModalInfo');
+            
+            // Find current item index
+            const allItems = Array.from(document.querySelectorAll('.portfolio-item[style*="block"], .portfolio-item:not([style*="none"])'));
+            currentModalIndex = allItems.findIndex(i => i === item.closest('.portfolio-item'));
+
+            updateModalContent(item);
+            
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus management
+            modal.querySelector('.portfolio-modal-close').focus();
+        }
+
+        function updateModalContent(item) {
+            const mediaContainer = document.getElementById('portfolioModalMedia');
+            const infoContainer = document.getElementById('portfolioModalInfo');
+            const mediaElement = item.querySelector('.portfolio-media img, .portfolio-media video');
+            const title = item.querySelector('.portfolio-title').textContent;
+            const category = item.querySelector('.portfolio-category').textContent;
+            const description = item.querySelector('.portfolio-description').textContent;
+            const date = item.querySelector('.portfolio-date').textContent;
+            const size = item.querySelector('.portfolio-size').textContent;
+
+            // Create media element
+            const isVideo = mediaElement.tagName === 'VIDEO';
+            const mediaHTML = isVideo ? 
+                `<video src="${mediaElement.src}" controls autoplay muted>
+                    Your browser does not support the video tag.
+                </video>` :
+                `<img src="${mediaElement.src}" alt="${title}">`;
+
+            mediaContainer.innerHTML = mediaHTML;
+
+            // Create info element
+            infoContainer.innerHTML = `
+                <h3 id="portfolioModalTitle">${title}</h3>
+                <div style="color: var(--primary-color); font-weight: 600; margin: 1rem 0;">
+                    ${category}
+                </div>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">${description}</p>
+                <div style="color: var(--text-light); font-size: var(--font-size-sm); display: flex; justify-content: space-between;">
+                    <span><i class="fas fa-calendar"></i> ${date}</span>
+                    <span><i class="fas fa-file"></i> ${size}</span>
+                </div>
+            `;
+        }
+
+        function closePortfolioModal() {
+            const modal = document.getElementById('portfolioModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            // Pause videos
+            const videos = modal.querySelectorAll('video');
+            videos.forEach(video => video.pause());
+        }
+
+        function previousPortfolioItem() {
+            const allItems = Array.from(document.querySelectorAll('.portfolio-item[style*="block"], .portfolio-item:not([style*="none"])'));
+            if (currentModalIndex > 0) {
+                currentModalIndex--;
+                updateModalContent(allItems[currentModalIndex]);
+            }
+        }
+
+        function nextPortfolioItem() {
+            const allItems = Array.from(document.querySelectorAll('.portfolio-item[style*="block"], .portfolio-item:not([style*="none"])'));
+            if (currentModalIndex < allItems.length - 1) {
+                currentModalIndex++;
+                updateModalContent(allItems[currentModalIndex]);
+            }
+        }
+
+        // Enhanced analytics
+        function updatePortfolioAnalytics() {
+            const totalItems = portfolioItems.length;
+            const totalSize = portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0);
+            
+            document.getElementById('totalItems').textContent = totalItems;
+            document.getElementById('totalSize').textContent = formatFileSize(totalSize);
+        }
+
+        function updateVisibleStats() {
+            const statsSection = document.querySelector('.portfolio-stats');
+            if (!statsSection) return;
+            
+            const rect = statsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                animateStats();
+            }
+        }
+
+        function animateStats() {
+            const stats = [
+                { element: 'statsProjects', target: 150, suffix: '+' },
+                { element: 'statsClients', target: 200, suffix: '+' },
+                { element: 'statsExperience', target: 10, suffix: '+' },
+                { element: 'statsAwards', target: 25, suffix: '+' }
+            ];
+
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.element);
+                if (element && !element.dataset.animated) {
+                    element.dataset.animated = 'true';
+                    animateNumber(element, 0, stat.target, stat.suffix, 2000);
+                }
+            });
+        }
+
+        function animateNumber(element, start, end, suffix, duration) {
+            const startTime = performance.now();
+            
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const current = Math.floor(start + (end - start) * progress);
+                element.textContent = current + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            
+            requestAnimationFrame(updateNumber);
+        }
+
+        // Enhanced export functionality
+        function generatePortfolioReport() {
+            const report = {
+                generatedAt: new Date().toISOString(),
+                totalItems: portfolioItems.length,
+                totalSize: portfolioItems.reduce((sum, item) => sum + (item.fileSize || 0), 0),
+                categories: portfolioCategories.map(cat => ({
+                    name: cat.name,
+                    count: portfolioItems.filter(item => item.category === cat.id).length
+                })),
+                items: portfolioItems.map(item => ({
+                    title: item.title,
+                    category: item.category,
+                    dateAdded: item.dateAdded,
+                    fileSize: item.fileSize,
+                    mediaType: item.mediaType
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-portfolio-report-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            showNotification('Report Generated', 'Portfolio report exported successfully', 'success');
+        }
+
+        function exportPortfolioData() {
+            if (portfolioItems.length === 0) {
+                showNotification('No Data', 'No portfolio items to export', 'error');
+                return;
+            }
+
+            const exportData = {
+                version: '2.0',
+                exportDate: new Date().toISOString(),
+                portfolioItems: portfolioItems,
+                categories: portfolioCategories,
+                settings: JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}')
+            };
+
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `refit-portfolio-data-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            showNotification('Data Exported', 'Portfolio data exported successfully', 'success');
+        }
+
+        // Load more functionality
+        function loadMorePortfolioItems() {
+            // Simulate loading more items
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.innerHTML = '<div class="loading"></div> Loading...';
+            loadMoreBtn.disabled = true;
+
+            setTimeout(() => {
+                loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Projects';
+                loadMoreBtn.disabled = false;
+                showNotification('All Items Loaded', 'No more items to display', 'info');
+            }, 1500);
+        }
+
+        // Enhanced settings management
+        function loadPortfolioSettings() {
+            const settings = JSON.parse(localStorage.getItem('refitPortfolioSettings') || '{}');
+            
+            if (settings.defaultView) {
+                changeView(settings.defaultView);
+            }
+            
+            if (settings.itemsPerPage) {
+                document.getElementById('portfolioItemsPerPage').value = settings.itemsPerPage;
+            }
+        }
+
+        function savePortfolioSettings() {
+            const settings = {
+                itemsPerPage: document.getElementById('portfolioItemsPerPage').value,
+                defaultView: document.getElementById('portfolioDefaultView').value,
+                autoOptimize: document.getElementById('autoOptimizeImages').value,
+                imageQuality: document.getElementById('portfolioImageQuality').value
+            };
+            
+            localStorage.setItem('refitPortfolioSettings', JSON.stringify(settings));
+            showNotification('Settings Saved', 'Portfolio settings updated successfully', 'success');
+        }
+
+        // All other existing functions remain the same...
+        // [Previous functions like checkAdminStatus, showAdminLogin, etc. continue here]
+
+        // Enhanced admin functionality
         function checkAdminStatus() {
             const adminStatus = localStorage.getItem('masterAdminLoggedIn');
             if (adminStatus === 'true') {
@@ -1944,21 +2931,20 @@
             }
         }
 
-        // Show Admin Login Modal
         function showAdminLogin() {
             document.getElementById('adminModal').classList.add('active');
+            document.getElementById('adminModal').setAttribute('aria-hidden', 'false');
             document.getElementById('adminEmail').focus();
         }
 
-        // Close Admin Login Modal
         function closeAdminLogin() {
             document.getElementById('adminModal').classList.remove('active');
+            document.getElementById('adminModal').setAttribute('aria-hidden', 'true');
             document.getElementById('adminEmail').value = '';
             document.getElementById('adminPassword').value = '';
             document.getElementById('adminLoginError').style.display = 'none';
         }
 
-        // Attempt Admin Login
         function attemptAdminLogin() {
             const email = document.getElementById('adminEmail').value;
             const password = document.getElementById('adminPassword').value;
@@ -1970,7 +2956,6 @@
                 closeAdminLogin();
                 showNotification('Master Admin Access Granted', 'Welcome to the comprehensive control panel!', 'success');
                 
-                // Auto-open master panel
                 setTimeout(() => {
                     toggleMasterPanel();
                 }, 1000);
@@ -1982,7 +2967,6 @@
             }
         }
 
-        // Admin Logout
         function adminLogout() {
             if (confirm('Are you sure you want to logout from Master Admin?')) {
                 isAdminLoggedIn = false;
@@ -1996,20 +2980,17 @@
             }
         }
 
-        // Show Admin Controls
         function showAdminControls() {
             document.getElementById('adminLogin').style.display = 'none';
             document.getElementById('quickActions').style.display = 'flex';
         }
 
-        // Hide Admin Controls
         function hideAdminControls() {
             document.getElementById('adminLogin').style.display = 'block';
             document.getElementById('quickActions').style.display = 'none';
             closeMasterPanel();
         }
 
-        // Toggle Master Control Panel
         function toggleMasterPanel() {
             if (!isAdminLoggedIn) {
                 showNotification('Access Denied', 'Master admin login required', 'error');
@@ -2020,31 +3001,23 @@
             panel.classList.toggle('active');
         }
 
-        // Close Master Panel
         function closeMasterPanel() {
             document.getElementById('masterControlPanel').classList.remove('active');
         }
 
-        // Show MCP Section
         function showMCPSection(sectionName) {
-            // Hide all sections
             document.querySelectorAll('.mcp-section').forEach(section => {
                 section.classList.remove('active');
             });
             
-            // Remove active from all tabs
             document.querySelectorAll('.mcp-nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Show selected section
             document.getElementById(`mcp-${sectionName}`).classList.add('active');
-            
-            // Activate corresponding tab
             event.target.classList.add('active');
         }
 
-        // Toggle Edit Mode
         function toggleEditMode() {
             if (!isAdminLoggedIn) {
                 showNotification('Access Denied', 'Master admin login required', 'error');
@@ -2065,22 +3038,31 @@
             }
         }
 
-        // ==================== PORTFOLIO FUNCTIONS ====================
-
-        // Setup Portfolio Upload
+        // Portfolio management functions
         function setupPortfolioUpload() {
             const uploadZone = document.getElementById('portfolioUploadZone');
             const fileInput = document.getElementById('portfolioFileInput');
             const portfolioUpload = document.getElementById('portfolioUpload');
 
-            // Drag and drop events
-            uploadZone.addEventListener('dragover', handleDragOver);
-            uploadZone.addEventListener('drop', handlePortfolioDrop);
-            uploadZone.addEventListener('dragleave', handleDragLeave);
-            uploadZone.addEventListener('click', () => fileInput.click());
+            if (uploadZone) {
+                uploadZone.addEventListener('dragover', handleDragOver);
+                uploadZone.addEventListener('drop', handlePortfolioDrop);
+                uploadZone.addEventListener('dragleave', handleDragLeave);
+                uploadZone.addEventListener('click', () => fileInput.click());
+                
+                // Keyboard support
+                uploadZone.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        fileInput.click();
+                    }
+                });
+            }
 
-            // File input events
-            fileInput.addEventListener('change', handlePortfolioFileSelect);
+            if (fileInput) {
+                fileInput.addEventListener('change', handlePortfolioFileSelect);
+            }
+            
             if (portfolioUpload) {
                 portfolioUpload.addEventListener('change', handlePortfolioFileSelect);
             }
@@ -2108,21 +3090,53 @@
             processPortfolioFiles(files);
         }
 
-        // Process Portfolio Files
         function processPortfolioFiles(files) {
             if (!isAdminLoggedIn) {
                 showNotification('Access Denied', 'Admin login required to upload files', 'error');
                 return;
             }
 
+            if (files.length === 0) return;
+
+            showUploadProgress();
+            
             files.forEach((file, index) => {
                 setTimeout(() => {
-                    processPortfolioFile(file);
-                }, index * 100); // Stagger uploads
+                    processPortfolioFile(file, index, files.length);
+                }, index * 100);
             });
         }
 
-        function processPortfolioFile(file) {
+        function showUploadProgress() {
+            const progress = document.getElementById('uploadProgress');
+            const status = document.getElementById('uploadStatus');
+            
+            if (progress) {
+                progress.style.display = 'block';
+                document.getElementById('uploadProgressBar').style.width = '0%';
+            }
+            
+            if (status) {
+                status.style.display = 'block';
+                status.textContent = 'Preparing upload...';
+                status.className = 'upload-status';
+            }
+        }
+
+        function updateUploadProgress(progress, status) {
+            const progressBar = document.getElementById('uploadProgressBar');
+            const statusElement = document.getElementById('uploadStatus');
+            
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            if (statusElement) {
+                statusElement.textContent = status;
+            }
+        }
+
+        function processPortfolioFile(file, index, totalFiles) {
             const reader = new FileReader();
             
             reader.onload = function(e) {
@@ -2143,8 +3157,17 @@
                 addPortfolioItemToStorage(portfolioItem);
                 displayPortfolioItem(portfolioItem);
                 updatePortfolioItemsList();
+                updatePortfolioAnalytics();
                 
-                showNotification('File Uploaded', `${file.name} added to portfolio`, 'success');
+                const progress = ((index + 1) / totalFiles) * 100;
+                updateUploadProgress(progress, `Uploaded ${index + 1} of ${totalFiles} files`);
+                
+                if (index === totalFiles - 1) {
+                    setTimeout(() => {
+                        hideUploadProgress();
+                        showNotification('Upload Complete', `${totalFiles} files uploaded successfully`, 'success');
+                    }, 500);
+                }
             };
             
             reader.onerror = function() {
@@ -2154,6 +3177,25 @@
             reader.readAsDataURL(file);
         }
 
+        function hideUploadProgress() {
+            const progress = document.getElementById('uploadProgress');
+            const status = document.getElementById('uploadStatus');
+            
+            if (progress) {
+                setTimeout(() => {
+                    progress.style.display = 'none';
+                }, 1000);
+            }
+            
+            if (status) {
+                status.textContent = 'Upload completed successfully!';
+                status.className = 'upload-status success';
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 2000);
+            }
+        }
+
         function getMediaType(fileType) {
             if (fileType.startsWith('image/')) return 'IMAGE';
             if (fileType.startsWith('video/')) return 'VIDEO';
@@ -2161,7 +3203,6 @@
             return 'FILE';
         }
 
-        // Add Portfolio Item from Master Control Panel
         function addPortfolioItem() {
             const title = document.getElementById('portfolioTitle').value;
             const category = document.getElementById('portfolioCategory').value;
@@ -2173,7 +3214,9 @@
                 return;
             }
             
-            Array.from(fileInput.files).forEach(file => {
+            showUploadProgress();
+            
+            Array.from(fileInput.files).forEach((file, index) => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const portfolioItem = {
@@ -2193,6 +3236,17 @@
                     addPortfolioItemToStorage(portfolioItem);
                     displayPortfolioItem(portfolioItem);
                     updatePortfolioItemsList();
+                    updatePortfolioAnalytics();
+                    
+                    const progress = ((index + 1) / fileInput.files.length) * 100;
+                    updateUploadProgress(progress, `Processing ${index + 1} of ${fileInput.files.length} files`);
+                    
+                    if (index === fileInput.files.length - 1) {
+                        setTimeout(() => {
+                            hideUploadProgress();
+                            showNotification('Portfolio Updated', 'Items added successfully', 'success');
+                        }, 500);
+                    }
                 };
                 reader.readAsDataURL(file);
             });
@@ -2201,8 +3255,6 @@
             document.getElementById('portfolioTitle').value = '';
             document.getElementById('portfolioDescription').value = '';
             fileInput.value = '';
-            
-            showNotification('Portfolio Updated', 'Items added successfully', 'success');
         }
 
         // Storage Functions
@@ -2221,15 +3273,12 @@
                 portfolioItems = JSON.parse(stored);
                 displayAllPortfolioItems();
                 updatePortfolioItemsList();
+                updatePortfolioAnalytics();
             }
         }
 
         // Display Functions
         function displayAllPortfolioItems() {
-            const grid = document.getElementById('portfolioGrid');
-            // Clear existing items except samples
-            const samples = grid.querySelectorAll('.portfolio-item');
-            
             portfolioItems.forEach(item => {
                 if (item.isVisible) {
                     displayPortfolioItem(item);
@@ -2241,6 +3290,19 @@
             const grid = document.getElementById('portfolioGrid');
             const itemElement = createPortfolioItemElement(item);
             grid.appendChild(itemElement);
+            
+            // Setup intersection observer for new item
+            if (window.IntersectionObserver) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                observer.observe(itemElement);
+            }
         }
 
         function createPortfolioItemElement(item) {
@@ -2248,34 +3310,56 @@
             div.className = 'portfolio-item';
             div.setAttribute('data-category', item.category);
             div.setAttribute('data-id', item.id);
+            div.setAttribute('data-date', item.dateAdded.split('T')[0]);
+            div.setAttribute('data-title', item.title);
+            div.setAttribute('role', 'gridcell');
             
             const mediaElement = item.mediaType === 'VIDEO' ? 
-                `<video src="${item.mediaUrl}" controls muted></video>` :
-                `<img src="${item.mediaUrl}" alt="${item.title}">`;
+                `<video src="${item.mediaUrl}" controls muted loading="lazy"></video>` :
+                `<img src="${item.mediaUrl}" alt="${item.title}" loading="lazy">`;
             
             div.innerHTML = `
                 <div class="portfolio-actions">
-                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)">
+                    <button class="portfolio-action-btn" onclick="editPortfolioItem(this)" aria-label="Edit ${item.title}">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)">
+                    <button class="portfolio-action-btn delete" onclick="deletePortfolioItem(this)" aria-label="Delete ${item.title}">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
                 <div class="portfolio-media">
                     ${mediaElement}
                     <div class="media-type-badge">${item.mediaType}</div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-overlay-content">
+                            <i class="fas fa-search-plus" style="font-size: 2rem;"></i>
+                            <p>View Project</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h4 class="portfolio-title">${item.title}</h4>
                     <div class="portfolio-category">${getCategoryName(item.category)}</div>
                     <p class="portfolio-description">${item.description}</p>
-                    <div class="portfolio-date">Added: ${new Date(item.dateAdded).toLocaleDateString()}</div>
+                    <div class="portfolio-meta">
+                        <div class="portfolio-date">
+                            <i class="fas fa-calendar"></i>
+                            ${new Date(item.dateAdded).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                        </div>
+                        <div class="portfolio-size">
+                            <i class="fas fa-file"></i>
+                            ${formatFileSize(item.fileSize)}
+                        </div>
+                    </div>
                 </div>
             `;
             
             // Add click event to open modal
-            div.addEventListener('click', () => openPortfolioModal(item));
+            div.addEventListener('click', (e) => {
+                if (!e.target.closest('.portfolio-actions')) {
+                    openPortfolioModal(div);
+                }
+            });
             
             return div;
         }
@@ -2290,18 +3374,24 @@
             const items = document.querySelectorAll('.portfolio-item');
             const buttons = document.querySelectorAll('.filter-btn');
             
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
+            // Update active button with proper ARIA attributes
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
             event.target.classList.add('active');
+            event.target.setAttribute('aria-selected', 'true');
             
-            // Filter items
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
+            // Filter items with animation
+            items.forEach((item, index) => {
+                const shouldShow = category === 'all' || item.getAttribute('data-category') === category;
+                
+                if (shouldShow) {
                     setTimeout(() => {
+                        item.style.display = 'block';
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
-                    }, 100);
+                    }, index * 50);
                 } else {
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(20px)';
@@ -2310,49 +3400,8 @@
                     }, 300);
                 }
             });
-        }
-
-        // Portfolio Modal Functions
-        function openPortfolioModal(item) {
-            const modal = document.getElementById('portfolioModal');
-            const mediaContainer = document.getElementById('portfolioModalMedia');
-            const infoContainer = document.getElementById('portfolioModalInfo');
             
-            // Create media element
-            const mediaElement = item.mediaType === 'VIDEO' ? 
-                `<video src="${item.mediaUrl}" controls autoplay muted>
-                    Your browser does not support the video tag.
-                </video>` :
-                `<img src="${item.mediaUrl}" alt="${item.title}">`;
-            
-            mediaContainer.innerHTML = mediaElement;
-            
-            // Create info element
-            infoContainer.innerHTML = `
-                <h3>${item.title}</h3>
-                <div style="color: var(--primary-color); font-weight: 600; margin: 1rem 0;">
-                    ${getCategoryName(item.category)}
-                </div>
-                <p style="margin-bottom: 1rem; line-height: 1.6;">${item.description}</p>
-                <div style="color: var(--text-light); font-size: var(--font-size-sm);">
-                    <i class="fas fa-calendar"></i> Added: ${new Date(item.dateAdded).toLocaleDateString()}
-                    <br>
-                    <i class="fas fa-file"></i> File: ${item.fileName} (${formatFileSize(item.fileSize)})
-                </div>
-            `;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePortfolioModal() {
-            const modal = document.getElementById('portfolioModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            
-            // Pause videos
-            const videos = modal.querySelectorAll('video');
-            videos.forEach(video => video.pause());
+            showNotification('Filter Applied', `Showing ${category === 'all' ? 'all' : category} projects`, 'info');
         }
 
         // Portfolio Management Functions
@@ -2367,15 +3416,23 @@
                 const newTitle = prompt('Enter new title:', portfolioItem.title);
                 const newDescription = prompt('Enter new description:', portfolioItem.description);
                 
-                if (newTitle !== null) portfolioItem.title = newTitle;
-                if (newDescription !== null) portfolioItem.description = newDescription;
+                if (newTitle !== null && newTitle.trim() !== '') {
+                    portfolioItem.title = newTitle.trim();
+                    item.setAttribute('data-title', newTitle.trim());
+                }
+                if (newDescription !== null && newDescription.trim() !== '') {
+                    portfolioItem.description = newDescription.trim();
+                }
                 
                 savePortfolioToStorage();
                 
                 // Update display
-                item.querySelector('.portfolio-title').textContent = portfolioItem.title;
-                item.querySelector('.portfolio-description').textContent = portfolioItem.description;
+                const titleElement = item.querySelector('.portfolio-title');
+                const descElement = item.querySelector('.portfolio-description');
+                if (titleElement) titleElement.textContent = portfolioItem.title;
+                if (descElement) descElement.textContent = portfolioItem.description;
                 
+                updatePortfolioItemsList();
                 showNotification('Item Updated', 'Portfolio item updated successfully', 'success');
             }
         }
@@ -2383,15 +3440,23 @@
         function deletePortfolioItem(button) {
             if (!isAdminLoggedIn) return;
             
-            if (confirm('Are you sure you want to delete this portfolio item?')) {
-                const item = button.closest('.portfolio-item');
+            const item = button.closest('.portfolio-item');
+            const title = item.querySelector('.portfolio-title').textContent;
+            
+            if (confirm(`Are you sure you want to delete "${title}"?`)) {
                 const id = item.getAttribute('data-id');
                 
                 portfolioItems = portfolioItems.filter(p => p.id != id);
                 savePortfolioToStorage();
                 
-                item.remove();
-                updatePortfolioItemsList();
+                // Animate removal
+                item.style.transform = 'scale(0)';
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.remove();
+                    updatePortfolioItemsList();
+                    updatePortfolioAnalytics();
+                }, 300);
                 
                 showNotification('Item Deleted', 'Portfolio item removed successfully', 'success');
             }
@@ -2404,12 +3469,20 @@
                 portfolioItems = [];
                 savePortfolioToStorage();
                 
-                // Remove all portfolio items from display
+                // Remove all portfolio items from display with animation
                 const grid = document.getElementById('portfolioGrid');
                 const items = grid.querySelectorAll('.portfolio-item[data-id]');
-                items.forEach(item => item.remove());
+                
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = 'scale(0)';
+                        item.style.opacity = '0';
+                        setTimeout(() => item.remove(), 300);
+                    }, index * 50);
+                });
                 
                 updatePortfolioItemsList();
+                updatePortfolioAnalytics();
                 showNotification('Portfolio Cleared', 'All portfolio items have been removed', 'success');
             }
         }
@@ -2421,7 +3494,7 @@
             list.innerHTML = '';
             
             if (portfolioItems.length === 0) {
-                list.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.6);">No portfolio items uploaded yet.</p>';
+                list.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.6); padding: 2rem;">No portfolio items uploaded yet.</p>';
                 return;
             }
             
@@ -2435,86 +3508,50 @@
                     background: rgba(255,255,255,0.05);
                     border-radius: 8px;
                     margin-bottom: 0.5rem;
+                    transition: var(--transition-normal);
                 `;
                 
                 div.innerHTML = `
-                    <div style="width: 60px; height: 40px; border-radius: 4px; overflow: hidden;">
+                    <div style="width: 60px; height: 40px; border-radius: 4px; overflow: hidden; background: rgba(255,255,255,0.1);">
                         ${item.mediaType === 'VIDEO' ? 
-                            `<video src="${item.mediaUrl}" style="width: 100%; height: 100%; object-fit: cover;"></video>` :
-                            `<img src="${item.mediaUrl}" style="width: 100%; height: 100%; object-fit: cover;">`
+                            `<video src="${item.mediaUrl}" style="width: 100%; height: 100%; object-fit: cover;" muted></video>` :
+                            `<img src="${item.mediaUrl}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">`
                         }
                     </div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 500;">${item.title}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">${getCategoryName(item.category)} • ${item.mediaType}</div>
+                    <div style="flex: 1; min-width: 0;">
+                        <div style="font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">${getCategoryName(item.category)} • ${item.mediaType} • ${formatFileSize(item.fileSize)}</div>
                     </div>
-                    <button onclick="deletePortfolioItemById('${item.id}')" style="background: #e74c3c; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer;">
+                    <button onclick="deletePortfolioItemById('${item.id}')" style="background: #e74c3c; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; transition: var(--transition-normal);" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">
                         <i class="fas fa-trash"></i>
                     </button>
                 `;
+                
+                div.onmouseover = () => div.style.background = 'rgba(255,255,255,0.08)';
+                div.onmouseout = () => div.style.background = 'rgba(255,255,255,0.05)';
                 
                 list.appendChild(div);
             });
         }
 
         function deletePortfolioItemById(id) {
-            portfolioItems = portfolioItems.filter(p => p.id != id);
-            savePortfolioToStorage();
-            
-            // Remove from display
-            const item = document.querySelector(`[data-id="${id}"]`);
-            if (item) item.remove();
-            
-            updatePortfolioItemsList();
-            showNotification('Item Deleted', 'Portfolio item removed', 'success');
-        }
-
-        // Portfolio Category Management
-        function addPortfolioCategory() {
-            const name = document.getElementById('newCategoryName').value;
-            const color = document.getElementById('newCategoryColor').value;
-            
-            if (!name) {
-                showNotification('Missing Name', 'Please enter a category name', 'error');
-                return;
+            const item = portfolioItems.find(p => p.id == id);
+            if (item && confirm(`Delete "${item.title}"?`)) {
+                portfolioItems = portfolioItems.filter(p => p.id != id);
+                savePortfolioToStorage();
+                
+                // Remove from display
+                const displayItem = document.querySelector(`[data-id="${id}"]`);
+                if (displayItem) {
+                    displayItem.style.transform = 'scale(0)';
+                    displayItem.style.opacity = '0';
+                    setTimeout(() => displayItem.remove(), 300);
+                }
+                
+                updatePortfolioItemsList();
+                updatePortfolioAnalytics();
+                showNotification('Item Deleted', 'Portfolio item removed', 'success');
             }
-            
-            const id = name.toLowerCase().replace(/\s+/g, '-');
-            const newCategory = { id, name, color };
-            
-            portfolioCategories.push(newCategory);
-            localStorage.setItem('refitPortfolioCategories', JSON.stringify(portfolioCategories));
-            
-            // Update category select
-            const select = document.getElementById('portfolioCategory');
-            const option = document.createElement('option');
-            option.value = id;
-            option.textContent = name;
-            select.appendChild(option);
-            
-            // Clear form
-            document.getElementById('newCategoryName').value = '';
-            document.getElementById('newCategoryColor').value = '#E8A0BF';
-            
-            showNotification('Category Added', `${name} category created successfully`, 'success');
-        }
-
-        // Portfolio Settings
-        function savePortfolioSettings() {
-            const settings = {
-                itemsPerPage: document.getElementById('portfolioItemsPerPage').value,
-                defaultView: document.getElementById('portfolioDefaultView').value,
-                autoOptimize: document.getElementById('autoOptimizeImages').value,
-                imageQuality: document.getElementById('portfolioImageQuality').value
-            };
-            
-            localStorage.setItem('refitPortfolioSettings', JSON.stringify(settings));
-            showNotification('Settings Saved', 'Portfolio settings updated successfully', 'success');
-        }
-
-        function updateImageQualityDisplay() {
-            const value = document.getElementById('portfolioImageQuality').value;
-            document.getElementById('imageQualityDisplay').textContent = `${value}%`;
         }
 
         // Utility Functions
@@ -2528,21 +3565,36 @@
 
         function clearPortfolioUploads() {
             const fileInput = document.getElementById('portfolioFileInput');
-            fileInput.value = '';
-            showNotification('Uploads Cleared', 'File selection cleared', 'info');
+            if (fileInput) {
+                fileInput.value = '';
+                showNotification('Uploads Cleared', 'File selection cleared', 'info');
+            }
         }
 
         function openBulkUpload() {
             const fileInput = document.getElementById('portfolioFileInput');
-            fileInput.setAttribute('webkitdirectory', '');
-            fileInput.click();
+            if (fileInput) {
+                fileInput.setAttribute('webkitdirectory', '');
+                fileInput.click();
+                // Remove the attribute after click to allow normal file selection
+                setTimeout(() => fileInput.removeAttribute('webkitdirectory'), 100);
+            }
         }
 
-        // Initialize slider and other functions
+        function updateImageQualityDisplay() {
+            const value = document.getElementById('portfolioImageQuality').value;
+            const display = document.getElementById('imageQualityDisplay');
+            if (display) {
+                display.textContent = `${value}%`;
+            }
+        }
+
+        // Initialize slider and other utility functions
         function initializeSlider() {
             const container = document.getElementById('heroSliderContainer');
-            const slides = container.querySelectorAll('.enhanced-slide');
+            if (!container) return;
             
+            const slides = container.querySelectorAll('.enhanced-slide');
             if (slides.length === 0) return;
             
             setInterval(() => {
@@ -2553,29 +3605,67 @@
 
         function setupEventListeners() {
             // Admin login keyboard events
-            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    attemptAdminLogin();
-                }
-            });
+            const adminEmail = document.getElementById('adminEmail');
+            const adminPassword = document.getElementById('adminPassword');
+            
+            if (adminPassword) {
+                adminPassword.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        attemptAdminLogin();
+                    }
+                });
+            }
 
-            document.getElementById('adminEmail').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('adminPassword').focus();
-                }
-            });
+            if (adminEmail) {
+                adminEmail.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        adminPassword.focus();
+                    }
+                });
+            }
 
-            // Close modal when clicking outside
-            document.getElementById('portfolioModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closePortfolioModal();
-                }
-            });
+            // Close modals when clicking outside
+            const portfolioModal = document.getElementById('portfolioModal');
+            if (portfolioModal) {
+                portfolioModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closePortfolioModal();
+                    }
+                });
+            }
 
-            // Escape key to close modal
+            const adminModal = document.getElementById('adminModal');
+            if (adminModal) {
+                adminModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeAdminLogin();
+                    }
+                });
+            }
+
+            // Global keyboard shortcuts
             document.addEventListener('keydown', function(e) {
+                // Escape key handling
                 if (e.key === 'Escape') {
-                    closePortfolioModal();
+                    if (portfolioModal && portfolioModal.classList.contains('active')) {
+                        closePortfolioModal();
+                    } else if (adminModal && adminModal.classList.contains('active')) {
+                        closeAdminLogin();
+                    }
+                }
+                
+                // Admin shortcuts (Ctrl/Cmd + combinations)
+                if ((e.ctrlKey || e.metaKey) && isAdminLoggedIn) {
+                    switch(e.key) {
+                        case 'e':
+                            e.preventDefault();
+                            toggleEditMode();
+                            break;
+                        case 'm':
+                            e.preventDefault();
+                            toggleMasterPanel();
+                            break;
+                    }
                 }
             });
         }
@@ -2586,21 +3676,33 @@
             document.body.setAttribute('data-theme', newTheme);
             
             const themeToggle = document.querySelector('.theme-toggle i');
-            themeToggle.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            if (themeToggle) {
+                themeToggle.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
             
             localStorage.setItem('theme', newTheme);
+            showNotification('Theme Changed', `Switched to ${newTheme} mode`, 'info');
         }
 
         function toggleLanguage() {
             const langToggle = document.querySelector('.lang-toggle');
-            const currentLang = langToggle.textContent;
-            const newLang = currentLang === 'EN' ? 'BM' : 'EN';
-            langToggle.textContent = newLang;
+            if (langToggle) {
+                const currentLang = langToggle.textContent;
+                const newLang = currentLang === 'EN' ? 'BM' : 'EN';
+                langToggle.textContent = newLang;
+                showNotification('Language Changed', `Switched to ${newLang}`, 'info');
+            }
         }
 
         function showNotification(title, message, type = 'info') {
+            // Remove any existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notif => notif.remove());
+            
             const notification = document.createElement('div');
             notification.className = `notification ${type} show`;
+            notification.setAttribute('role', 'alert');
+            notification.setAttribute('aria-live', 'polite');
             
             const icons = {
                 'success': 'fas fa-check-circle',
@@ -2609,14 +3711,14 @@
             };
             
             notification.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <i class="${icons[type]}" style="font-size: 1.5rem; color: var(--${type === 'success' ? 'secondary' : type === 'error' ? 'danger' : 'primary'}-color);"></i>
-                    <div>
-                        <strong style="display: block; margin-bottom: 0.25rem;">${title}</strong>
-                        <span style="font-size: 0.9rem; opacity: 0.8;">${message}</span>
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <i class="${icons[type]}" style="font-size: 1.5rem; color: var(--${type === 'success' ? 'secondary' : type === 'error' ? 'primary' : 'primary'}-color); margin-top: 0.1rem;"></i>
+                    <div style="flex: 1;">
+                        <strong style="display: block; margin-bottom: 0.25rem; font-size: var(--font-size-base);">${title}</strong>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.9; line-height: 1.4;">${message}</span>
                     </div>
                 </div>
-                <button onclick="this.parentElement.remove()" style="position: absolute; top: 0.5rem; right: 0.5rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-secondary);">×</button>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-secondary); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius-full); transition: var(--transition-normal);" onmouseover="this.style.background='rgba(0,0,0,0.1)'" onmouseout="this.style.background='none'" aria-label="Close notification">×</button>
             `;
             
             document.body.appendChild(notification);
@@ -2624,7 +3726,8 @@
             // Auto remove after 5 seconds
             setTimeout(() => {
                 if (notification.parentElement) {
-                    notification.remove();
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
                 }
             }, 5000);
         }
@@ -2633,8 +3736,161 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
-            document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+            const themeIcon = document.querySelector('.theme-toggle i');
+            if (themeIcon) {
+                themeIcon.className = 'fas fa-sun';
+            }
         }
+
+        // Initialize saved view preference
+        const savedView = localStorage.getItem('refitPortfolioView');
+        if (savedView && ['grid', 'masonry', 'list'].includes(savedView)) {
+            currentPortfolioView = savedView;
+            // Apply view on load
+            setTimeout(() => {
+                const grid = document.getElementById('portfolioGrid');
+                if (grid) {
+                    grid.className = `portfolio-grid ${savedView}`;
+                }
+            }, 100);
+        }
+
+        // Performance optimizations
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Register service worker for caching (if available)
+                console.log('Service Worker support detected');
+            });
+        }
+
+        // Preload critical images
+        function preloadCriticalImages() {
+            const criticalImages = [
+                'logo-image-1.png',
+                'logo-image-2.png'
+            ];
+            
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+
+        // Call preload on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', preloadCriticalImages);
+
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e.error);
+            if (isAdminLoggedIn) {
+                showNotification('Error Detected', 'An error occurred. Check console for details.', 'error');
+            }
+        });
+
+        // Unhandled promise rejection handling
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e.reason);
+            if (isAdminLoggedIn) {
+                showNotification('Promise Error', 'An async operation failed. Check console for details.', 'error');
+            }
+        });
+
+        // Accessibility improvements
+        function improveAccessibility() {
+            // Add skip link
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'sr-only';
+            skipLink.style.cssText = `
+                position: absolute;
+                top: -40px;
+                left: 6px;
+                background: var(--primary-color);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                border-radius: 4px;
+                z-index: 10000;
+                transition: top 0.3s;
+            `;
+            skipLink.addEventListener('focus', () => {
+                skipLink.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', () => {
+                skipLink.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+
+            // Add main content ID
+            const portfolioSection = document.getElementById('portfolio');
+            if (portfolioSection) {
+                portfolioSection.id = 'main-content';
+            }
+        }
+
+        // Call accessibility improvements
+        document.addEventListener('DOMContentLoaded', improveAccessibility);
+
+        // Feature detection and progressive enhancement
+        function detectFeatures() {
+            // Check for modern browser features
+            const features = {
+                intersectionObserver: 'IntersectionObserver' in window,
+                customProperties: CSS.supports('color', 'var(--test)'),
+                gridLayout: CSS.supports('display', 'grid'),
+                backdropFilter: CSS.supports('backdrop-filter', 'blur(10px)')
+            };
+
+            // Apply fallbacks for older browsers
+            if (!features.gridLayout) {
+                document.body.classList.add('no-grid');
+            }
+
+            if (!features.backdropFilter) {
+                document.body.classList.add('no-backdrop-filter');
+            }
+
+            return features;
+        }
+
+        // Initialize feature detection
+        const browserFeatures = detectFeatures();
+
+        // Analytics placeholder (would integrate with real analytics in production)
+        function trackEvent(category, action, label) {
+            console.log('Analytics event:', { category, action, label });
+            // In production, this would send to Google Analytics, etc.
+        }
+
+        // Track portfolio interactions
+        function setupAnalytics() {
+            // Track portfolio filter usage
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    trackEvent('Portfolio', 'Filter', e.target.textContent);
+                }
+                
+                if (e.target.closest('.portfolio-item')) {
+                    trackEvent('Portfolio', 'View Item', 'Portfolio Item Clicked');
+                }
+            });
+
+            // Track admin actions
+            if (isAdminLoggedIn) {
+                trackEvent('Admin', 'Login', 'Admin Session Started');
+            }
+        }
+
+        // Initialize analytics
+        document.addEventListener('DOMContentLoaded', setupAnalytics);
+
+        console.log('🎨 REFIT Portfolio Website Initialized Successfully');
+        console.log('🚀 Enhanced with advanced features and optimizations');
+        console.log('🔐 Admin Login: admin@refitservices.com / refit2024master');
     </script>
 </body>
 </html>
