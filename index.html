@@ -3,55 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="REFIT Maintenance Services - Professional maintenance, interior construction & renovation services in Malaysia. From concept to completion with passion and innovation.">
-    <meta name="keywords" content="maintenance services, renovation, interior design, construction, Malaysia, Petaling Jaya, commercial, residential, 3D concept drawing">
+    <meta name="description" content="Professional maintenance and renovation services in Malaysia. From concept to completion, we deliver quality with passion.">
+    <meta name="keywords" content="maintenance, renovation, interior design, construction, Malaysia, Petaling Jaya">
     <meta name="author" content="REFIT Maintenance Services">
     <meta property="og:title" content="REFIT Maintenance Services - From Concept to Completion">
-    <meta property="og:description" content="Professional maintenance, interior construction & renovation services delivered with innovation and excellence in Malaysia.">
+    <meta property="og:description" content="Professional maintenance, interior construction & renovation services delivered with innovation and excellence.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://refitservices.com">
-    <meta property="og:image" content="logo-image-1.png">
     <meta name="theme-color" content="#E8A0BF">
     <title>REFIT Maintenance Services - From Concept to Completion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo-image-2.png">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="logo-image-1.png" as="image">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "REFIT Maintenance Services",
-        "description": "Professional maintenance, interior construction & renovation services",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara",
-            "addressLocality": "Petaling Jaya",
-            "addressRegion": "Selangor",
-            "postalCode": "47301",
-            "addressCountry": "Malaysia"
-        },
-        "url": "https://refitservices.com",
-        "telephone": "+60-X-XXXX-XXXX",
-        "email": "info@refitservices.com",
-        "sameAs": [
-            "https://www.instagram.com/refit_mntserv",
-            "https://www.facebook.com/share/19C5RB3hAL/",
-            "https://www.tiktok.com/@refit.mntserv"
-        ],
-        "serviceArea": "Malaysia",
-        "services": ["Maintenance Services", "Interior Construction", "Renovation", "3D Design"]
-    }
-    </script>
-    
     <style>
         :root {
             --primary-pink: #E8A0BF;
@@ -91,235 +54,6 @@
             background-color: var(--bg-light);
             transition: var(--transition);
             overflow-x: hidden;
-        }
-
-        /* Enhanced Loading Screen with Better Animations */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #E8A0BF 0%, #BA5B7D 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(1.1);
-        }
-
-        .loading-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .loading-logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 2rem;
-            animation: logoFloat 2s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-        }
-
-        .loading-text {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: textFadeIn 0.8s ease 0.5s forwards;
-            text-align: center;
-        }
-
-        .loading-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: textFadeIn 0.8s ease 1s forwards;
-            text-align: center;
-        }
-
-        /* Enhanced Progress Bar */
-        .loading-progress {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .loading-progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, white 100%);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-            position: relative;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .loading-progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
-            animation: shimmer 2s infinite;
-        }
-
-        .loading-percentage {
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        /* Background Animation */
-        .loading-bg-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .bg-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: floatShapes 8s ease-in-out infinite;
-        }
-
-        .bg-shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .bg-shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .bg-shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .bg-shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            right: 30%;
-            animation-delay: 6s;
-        }
-
-        /* Content Loading States */
-        .content-loading {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .content-loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skeleton Loading */
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite;
-        }
-
-        .skeleton-text {
-            height: 1rem;
-            border-radius: 4px;
-            margin-bottom: 0.5rem;
-        }
-
-        .skeleton-title {
-            height: 2rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-
-        .skeleton-image {
-            height: 200px;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        /* Smooth Reveal Animations */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-on-scroll.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Image Loading States */
-        .image-loading {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .image-loading::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite;
-            z-index: 1;
-        }
-
-        .image-loading img {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .image-loading.loaded::before {
-            opacity: 0;
-        }
-
-        .image-loading.loaded img {
-            opacity: 1;
         }
 
         /* Enhanced Master Control Panel Styles */
@@ -859,21 +593,11 @@
             display: flex;
         }
 
-        /* FIXED: Better Mobile Interface - No Overlapping */
-        .floating-buttons-container {
+        /* Admin Login Button */
+        .admin-login {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: flex-end;
-        }
-
-        /* Admin Login Button */
-        .admin-login {
-            position: relative;
             z-index: 999;
         }
 
@@ -900,7 +624,9 @@
 
         /* Quick Actions Bar */
         .quick-actions {
-            position: relative;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             gap: 1rem;
             z-index: 1000;
@@ -937,28 +663,6 @@
 
         .quick-action-btn.logout-btn {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            position: relative;
-            z-index: 998;
-            background: #25D366;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
         }
 
         /* Admin Login Modal */
@@ -1029,15 +733,24 @@
             box-shadow: var(--shadow);
         }
 
-        .admin-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
+        /* Add emergency bypass button */
+        .emergency-bypass {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
             border: none;
-            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
             cursor: pointer;
-            color: var(--text-light);
+            z-index: 9999;
+            opacity: 0.7;
+        }
+
+        .emergency-bypass:hover {
+            opacity: 1;
         }
 
         /* Header Styles */
@@ -1141,7 +854,7 @@
             align-items: center;
         }
 
-        .theme-toggle, .lang-toggle, .contact-btn {
+        .theme-toggle, .lang-toggle, .login-btn {
             background: none;
             border: none;
             font-size: 1.2rem;
@@ -1151,17 +864,16 @@
             transition: var(--transition);
         }
 
-        .contact-btn {
+        .login-btn {
             background: var(--gradient-pink);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 25px;
             font-size: 1rem;
             font-weight: 500;
-            text-decoration: none;
         }
 
-        .contact-btn:hover {
+        .login-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
@@ -1598,6 +1310,31 @@
             display: none;
         }
 
+        /* Media Count Badge */
+        .media-count-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            z-index: 5;
+        }
+
+        .media-count-badge.video {
+            background: rgba(231, 76, 60, 0.9);
+        }
+
+        .media-count-badge.mixed {
+            background: rgba(52, 152, 219, 0.9);
+        }
+
         /* Portfolio Overlay */
         .portfolio-overlay {
             position: absolute;
@@ -1629,6 +1366,131 @@
             font-size: 0.9rem;
         }
 
+        /* Portfolio Multi-Media Indicator */
+        .portfolio-media-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 5;
+        }
+
+        .media-indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .media-indicator-dot.active {
+            background: white;
+            transform: scale(1.5);
+        }
+
+        .media-indicator-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        /* Portfolio Edit Mode */
+        .edit-mode .portfolio-item {
+            outline: 2px dashed #3498db;
+            outline-offset: -2px;
+        }
+
+        .edit-mode .portfolio-item:hover {
+            outline-color: #e74c3c;
+            outline-width: 3px;
+        }
+
+        .edit-mode .portfolio-media-controls {
+            opacity: 1;
+        }
+
+        /* Portfolio Add Button */
+        .portfolio-add-btn {
+            grid-column: span 1;
+            height: 250px;
+            border: 3px dashed #3498db;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .edit-mode .portfolio-add-btn {
+            display: flex;
+        }
+
+        .portfolio-add-btn:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: scale(1.02);
+        }
+
+        .portfolio-add-btn-content {
+            text-align: center;
+            color: #3498db;
+        }
+
+        .portfolio-add-btn-content .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-add-btn-content p {
+            font-weight: 600;
+        }
+
+        /* Enhanced Get Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-top: 5rem;
+        }
+
+        .quote-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+        }
+
         /* Contact Section */
         .contact-info {
             text-align: center;
@@ -1636,56 +1498,29 @@
             margin: 0 auto;
         }
 
-        .contact-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .contact-item {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .contact-item .icon {
-            font-size: 2rem;
-            color: var(--primary-pink);
-            margin-bottom: 1rem;
-        }
-
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
             justify-content: center;
         }
 
         .social-links a {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-pink);
+            width: 40px;
+            height: 40px;
+            background: rgba(232, 160, 191, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
             text-decoration: none;
-            font-size: 1.5rem;
-            color: white;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: var(--shadow-lg);
+            background: var(--gradient-pink);
+            transform: translateY(-3px);
         }
 
         /* Footer */
@@ -1727,7 +1562,7 @@
             color: var(--primary-pink);
         }
 
-        /* FIXED: Mobile Responsiveness with Better Spacing */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .master-control-panel {
                 width: 100%;
@@ -1738,11 +1573,9 @@
                 left: 0;
             }
 
-            /* FIXED: Better mobile button positioning */
-            .floating-buttons-container {
-                bottom: 20px;
-                right: 15px;
-                gap: 15px;
+            .admin-login {
+                bottom: 10px;
+                right: 10px;
             }
 
             .admin-login-btn {
@@ -1752,6 +1585,8 @@
             }
 
             .quick-actions {
+                bottom: 10px;
+                right: 10px;
                 gap: 0.5rem;
                 flex-direction: column;
             }
@@ -1760,11 +1595,6 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
-            }
-
-            .whatsapp-btn {
-                width: 45px;
-                height: 45px;
             }
 
             .admin-modal-content {
@@ -1828,26 +1658,13 @@
                 display: flex;
             }
 
+            .enhanced-slider {
+                height: 300px;
+            }
+
             .mission-vision {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .contact-details {
-                grid-template-columns: 1fr;
-            }
-
-            /* Better loading screen for mobile */
-            .loading-progress {
-                width: 250px;
-            }
-
-            .loading-text {
-                font-size: 1.2rem;
-            }
-
-            .loading-subtitle {
-                font-size: 0.9rem;
             }
         }
 
@@ -1883,106 +1700,120 @@
             }
         }
 
-        /* Loading Animations */
-        @keyframes logoFloat {
-            0%, 100% { 
-                transform: translateY(0px) scale(1);
-                filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-            }
-            50% { 
-                transform: translateY(-15px) scale(1.05);
-                filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
-            }
-        }
-
-        @keyframes textFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        @keyframes floatShapes {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0.3;
-            }
-            50% { 
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes skeleton-loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        @keyframes progressLoad {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        /* Smooth Page Transitions */
-        .page-transition {
+        /* Chat Widget */
+        .chat-widget {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
             background: var(--gradient-pink);
-            z-index: 9998;
-            transform: translateY(-100%);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            color: white;
+            font-size: 1.5rem;
         }
 
-        .page-transition.active {
-            transform: translateY(0);
+        .chat-button:hover {
+            transform: scale(1.1);
         }
 
-        /* Loading Optimization */
-        img {
-            loading: lazy;
-            transition: opacity 0.3s ease;
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            flex-direction: column;
         }
 
-        img[loading="lazy"] {
-            opacity: 0;
+        .chat-window.active {
+            display: flex;
         }
 
-        img[loading="lazy"].loaded {
-            opacity: 1;
+        .chat-header {
+            background: var(--gradient-pink);
+            color: white;
+            padding: 1rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Critical CSS for above-the-fold content */
-        .critical-content {
-            font-display: swap;
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
         }
 
-        /* Reduce motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .loading-logo {
-                animation: none;
-            }
-            
-            .bg-shape {
-                animation: none;
-            }
+        .chat-message {
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-message.bot {
+            text-align: left;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .user .message-bubble {
+            background: var(--gradient-pink);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot .message-bubble {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--gradient-pink);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
         }
 
         /* Notification System */
@@ -2034,31 +1865,112 @@
             font-size: 1.2rem;
             color: var(--text-light);
         }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 3001;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
     </style>
 </head>
 <body>
-    <!-- Enhanced Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-bg-shapes">
-            <div class="bg-shape"></div>
-            <div class="bg-shape"></div>
-            <div class="bg-shape"></div>
-            <div class="bg-shape"></div>
-        </div>
-        <div class="loading-content">
-            <div class="loading-logo">
-                <svg width="120" height="60" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="120" y="60" font-family="Abril Fatface" font-size="40" text-anchor="middle" dominant-baseline="middle" fill="white">refit</text>
-                </svg>
-            </div>
-            <div class="loading-text">REFIT Maintenance Services</div>
-            <div class="loading-subtitle">From Concept to Completion</div>
-            <div class="loading-progress">
-                <div class="loading-progress-bar" id="loadingProgressBar"></div>
-            </div>
-            <div class="loading-percentage" id="loadingPercentage">0%</div>
-        </div>
-    </div>
+    <!-- Emergency Bypass Button (for testing) -->
+    <button class="emergency-bypass" onclick="emergencyBypass()" title="Emergency Admin Access">
+        ADMIN
+    </button>
 
     <!-- Master Control Panel -->
     <div class="master-control-panel" id="masterControlPanel">
@@ -2128,24 +2040,6 @@
             <button class="mcp-button" onclick="updateHeroContent()">Update Hero Section</button>
         </div>
 
-        <!-- Contact Information -->
-        <div class="mcp-section">
-            <h3>Contact Information</h3>
-            <div class="mcp-control">
-                <label>Phone Number</label>
-                <input type="text" id="phoneNumber" value="+60-X-XXXX-XXXX" placeholder="+60-X-XXXX-XXXX">
-            </div>
-            <div class="mcp-control">
-                <label>Email Address</label>
-                <input type="email" id="emailAddress" value="info@refitservices.com" placeholder="info@refitservices.com">
-            </div>
-            <div class="mcp-control">
-                <label>WhatsApp Number</label>
-                <input type="text" id="whatsappNumber" value="60XXXXXXXXX" placeholder="60XXXXXXXXX">
-            </div>
-            <button class="mcp-button" onclick="updateContactInfo()">Update Contact Info</button>
-        </div>
-
         <!-- Media Library -->
         <div class="mcp-section">
             <h3>Media Library</h3>
@@ -2157,20 +2051,6 @@
                 <!-- Media items will be displayed here -->
             </div>
             <button class="mcp-button danger" onclick="clearMediaLibrary()">Clear All Media</button>
-        </div>
-
-        <!-- Portfolio Management -->
-        <div class="mcp-section">
-            <h3>Portfolio Management</h3>
-            <div class="mcp-control">
-                <button class="mcp-button" onclick="addNewPortfolioItem()">Add New Portfolio Item</button>
-            </div>
-            <div class="mcp-control">
-                <button class="mcp-button" onclick="exportPortfolioData()">Export Portfolio Data</button>
-            </div>
-            <div class="mcp-control">
-                <button class="mcp-button danger" onclick="clearAllPortfolio()">Clear All Portfolio</button>
-            </div>
         </div>
 
         <!-- Advanced Settings -->
@@ -2197,6 +2077,20 @@
             <button class="mcp-button" onclick="saveAdvancedSettings()">Save Advanced Settings</button>
         </div>
 
+        <!-- Portfolio Management -->
+        <div class="mcp-section">
+            <h3>Portfolio Management</h3>
+            <div class="mcp-control">
+                <button class="mcp-button" onclick="addNewPortfolioItem()">Add New Portfolio Item</button>
+            </div>
+            <div class="mcp-control">
+                <button class="mcp-button" onclick="exportPortfolioData()">Export Portfolio Data</button>
+            </div>
+            <div class="mcp-control">
+                <button class="mcp-button danger" onclick="clearAllPortfolio()">Clear All Portfolio</button>
+            </div>
+        </div>
+
         <!-- Backup & Export -->
         <div class="mcp-section">
             <h3>Backup & Export</h3>
@@ -2219,39 +2113,31 @@
         </div>
     </div>
 
-    <!-- FIXED: Better Mobile Button Layout -->
-    <div class="floating-buttons-container" id="floatingButtonsContainer">
-        <!-- Admin Login Button -->
-        <div class="admin-login" id="adminLogin">
-            <button class="admin-login-btn" onclick="showAdminLogin()" title="Admin Login">
-                🔐
-            </button>
-        </div>
+    <!-- Admin Login Button -->
+    <div class="admin-login" id="adminLogin">
+        <button class="admin-login-btn" onclick="showAdminLogin()" ondblclick="quickLogin()" title="Admin Login (Double-click for quick login)">
+            🔐
+        </button>
+    </div>
 
-        <!-- Quick Actions Bar (Hidden by default) -->
-        <div class="quick-actions" id="quickActions" style="display: none;">
-            <button class="quick-action-btn edit-toggle" id="editModeToggle" onclick="toggleEditMode()" title="Toggle Edit Mode">
-                ✏️
-            </button>
-            <button class="quick-action-btn" onclick="toggleMasterPanel()" title="Open Master Panel">
-                ⚙️
-            </button>
-            <button class="quick-action-btn logout-btn" onclick="adminLogout()" title="Logout">
-                🚪
-            </button>
-        </div>
-
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/60XXXXXXXXX?text=Hello! I'm interested in your services." class="whatsapp-btn" id="whatsappBtn" target="_blank" title="Chat with us on WhatsApp">
-            💬
-        </a>
+    <!-- Quick Actions Bar (Hidden by default) -->
+    <div class="quick-actions" id="quickActions" style="display: none;">
+        <button class="quick-action-btn edit-toggle" id="editModeToggle" onclick="toggleEditMode()" title="Toggle Edit Mode">
+            ✏️
+        </button>
+        <button class="quick-action-btn" onclick="toggleMasterPanel()" title="Open Master Panel">
+            ⚙️
+        </button>
+        <button class="quick-action-btn logout-btn" onclick="adminLogout()" title="Logout">
+            🚪
+        </button>
     </div>
 
     <!-- Header -->
     <header>
         <nav>
             <div class="logo-container">
-                <img src="logo-image-1.png" alt="REFIT Logo" class="logo-image" id="logoImage">
+                <img src="" alt="REFIT Logo" class="logo-image" id="logoImage">
                 <div class="logo logo-text" id="logoText">refit</div>
             </div>
             <ul class="nav-menu" id="navMenu">
@@ -2265,7 +2151,7 @@
             <div class="nav-controls">
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
                 <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
-                <a href="#contact" class="contact-btn">Get Quote</a>
+                <button class="login-btn" onclick="showLoginModal()">Login</button>
                 <div class="menu-toggle" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -2279,15 +2165,15 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="editable content-loading" id="heroTitleElement">FROM CONCEPT TO COMPLETION</h1>
-                <p class="tagline editable content-loading" id="heroTaglineElement">WE GROW WITH PASSION, WE DO IT ALL</p>
-                <p class="editable content-loading" id="heroDescElement">Professional maintenance, interior construction & renovation services delivered with innovation and excellence across Malaysia.</p>
+                <h1 class="editable" id="heroTitleElement">FROM CONCEPT TO COMPLETION</h1>
+                <p class="tagline editable" id="heroTaglineElement">WE GROW WITH PASSION, WE DO IT ALL</p>
+                <p class="editable" id="heroDescElement">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                    <a href="#quote" class="btn btn-primary">Get Quote</a>
                     <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
                 </div>
             </div>
-            <div class="hero-image content-loading">
+            <div class="hero-image">
                 <div class="enhanced-slider" id="heroSlider">
                     <div class="slider-edit-controls">
                         <button class="add-slide-btn" onclick="addSlide('hero')">+ Add Slide</button>
@@ -2296,7 +2182,7 @@
                     <div class="enhanced-slider-container" id="heroSliderContainer">
                         <div class="enhanced-slide cover editable-media" data-slide-id="hero-1">
                             <div class="universal-media-container cover">
-                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="REFIT Services" class="image-loading">
+                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="REFIT Services">
                                 <div class="media-controls">
                                     <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
                                     <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
@@ -2306,7 +2192,7 @@
                         </div>
                         <div class="enhanced-slide cover editable-media" data-slide-id="hero-2">
                             <div class="universal-media-container cover">
-                                <img src="https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+Design" alt="Interior Design" class="image-loading">
+                                <img src="https://via.placeholder.com/600x400/BA5B7D/ffffff?text=Interior+Design" alt="Interior Design">
                                 <div class="media-controls">
                                     <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
                                     <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
@@ -2316,7 +2202,7 @@
                         </div>
                         <div class="enhanced-slide cover editable-media" data-slide-id="hero-3">
                             <div class="universal-media-container cover">
-                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Renovation+Projects" alt="Renovation Projects" class="image-loading">
+                                <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Renovation+Projects" alt="Renovation Projects">
                                 <div class="media-controls">
                                     <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
                                     <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
@@ -2334,14 +2220,14 @@
     </section>
 
     <!-- Mission & Vision -->
-    <section id="about" class="reveal-on-scroll">
+    <section id="about">
         <h2 class="section-title editable">Our Mission & Vision</h2>
         <div class="mission-vision">
-            <div class="mv-card content-loading">
+            <div class="mv-card">
                 <h3 class="editable">Mission</h3>
                 <p class="editable">To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
             </div>
-            <div class="mv-card content-loading">
+            <div class="mv-card">
                 <h3 class="editable">Vision</h3>
                 <p class="editable">To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
             </div>
@@ -2349,25 +2235,25 @@
     </section>
 
     <!-- Values -->
-    <section class="reveal-on-scroll">
+    <section>
         <h2 class="section-title editable">Our Values</h2>
         <div class="values-grid">
-            <div class="value-card content-loading">
+            <div class="value-card">
                 <div class="value-icon editable">❤️</div>
                 <h4 class="editable">PASSION</h4>
                 <p class="editable">Knowledge, experience and constant learning process. Unconditional commitment to work and striving for innovations.</p>
             </div>
-            <div class="value-card content-loading">
+            <div class="value-card">
                 <div class="value-icon editable">🛡️</div>
                 <h4 class="editable">RESPONSIBILITY</h4>
                 <p class="editable">Respectable and honest treatment to clients. Trust-based collaboration with partners. Social responsibility for society and environment.</p>
             </div>
-            <div class="value-card content-loading">
+            <div class="value-card">
                 <div class="value-icon editable">💡</div>
                 <h4 class="editable">INNOVATIVE</h4>
                 <p class="editable">Constant desire to improve. Permanent search for advanced business tools and methods. Innovation is our fundamental competitive advantage.</p>
             </div>
-            <div class="value-card content-loading">
+            <div class="value-card">
                 <div class="value-icon editable">🤝</div>
                 <h4 class="editable">RESPECT</h4>
                 <p class="editable">Recognition that employees are the main reason of a successful business. Development of warm and respectful relationships with associates.</p>
@@ -2376,10 +2262,10 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="reveal-on-scroll">
+    <section id="services">
         <h2 class="section-title editable">What We Do</h2>
         <div class="services-container">
-            <div class="service-card content-loading">
+            <div class="service-card">
                 <div class="service-image editable-media">
                     <div class="universal-media-container">
                         <span style="font-size: 3rem;">🔧</span>
@@ -2393,7 +2279,7 @@
                     <p class="editable">Comprehensive maintenance solutions for commercial and residential properties with professional quality and reliability.</p>
                 </div>
             </div>
-            <div class="service-card content-loading">
+            <div class="service-card">
                 <div class="service-image editable-media">
                     <div class="universal-media-container">
                         <span style="font-size: 3rem;">🏗️</span>
@@ -2407,7 +2293,7 @@
                     <p class="editable">Expert interior construction and renovation services transforming spaces with innovative design and quality craftsmanship.</p>
                 </div>
             </div>
-            <div class="service-card content-loading">
+            <div class="service-card">
                 <div class="service-image editable-media">
                     <div class="universal-media-container">
                         <span style="font-size: 3rem;">🎨</span>
@@ -2425,25 +2311,25 @@
     </section>
 
     <!-- Process -->
-    <section id="process" class="reveal-on-scroll">
+    <section id="process">
         <h2 class="section-title editable">Our Process</h2>
         <div class="process-steps">
-            <div class="process-step content-loading">
+            <div class="process-step">
                 <div class="step-number editable">1</div>
                 <h4 class="editable">PLANNING</h4>
                 <p class="editable">Setting performance objectives & developing decisions on how to achieve them</p>
             </div>
-            <div class="process-step content-loading">
+            <div class="process-step">
                 <div class="step-number editable">2</div>
                 <h4 class="editable">ORGANIZING</h4>
                 <p class="editable">Creating structure: Setting tasks, arranging resources & coordinating activities</p>
             </div>
-            <div class="process-step content-loading">
+            <div class="process-step">
                 <div class="step-number editable">3</div>
                 <h4 class="editable">IMPLEMENTING</h4>
                 <p class="editable">Executing the plans to meet the set performance objectives</p>
             </div>
-            <div class="process-step content-loading">
+            <div class="process-step">
                 <div class="step-number editable">4</div>
                 <h4 class="editable">CONTROLLING</h4>
                 <p class="editable">Measuring performance & taking preventive & corrective actions</p>
@@ -2452,7 +2338,7 @@
     </section>
 
     <!-- Portfolio -->
-    <section id="portfolio" class="reveal-on-scroll">
+    <section id="portfolio">
         <h2 class="section-title editable">Our Portfolio</h2>
         <div style="text-align: center; margin-bottom: 2rem; display: none;" class="edit-mode-instructions">
             <p style="color: #3498db; font-size: 0.9rem;">
@@ -2471,40 +2357,80 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="reveal-on-scroll">
-        <h2 class="section-title editable">Get In Touch</h2>
-        <div class="contact-info">
-            <p style="font-size: 1.1rem; margin-bottom: 2rem;" class="editable">Ready to transform your space? Contact us today!</p>
+    <!-- Enhanced Get Quote Section -->
+    <section id="quote" class="quote-section">
+        <h2 class="section-title editable">Get Your Quote</h2>
+        <div class="quote-form">
+            <h3 class="editable">Upload Your Project Files</h3>
+            <div class="media-upload-zone" id="quoteUploadZone" onclick="document.getElementById('quoteFileInput').click()">
+                <div class="upload-prompt">
+                    <div class="upload-prompt-icon">📁</div>
+                    <h4>Drop files here or click to upload</h4>
+                    <p>Upload images, videos, documents, and more</p>
+                    <div class="supported-formats">
+                        <span class="format-badge">JPG/PNG</span>
+                        <span class="format-badge">MP4/MOV</span>
+                        <span class="format-badge">GIF</span>
+                        <span class="format-badge">PDF</span>
+                        <span class="format-badge">DOC/DOCX</span>
+                    </div>
+                </div>
+                <input type="file" id="quoteFileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx,.gif,.webm" style="display: none;" onchange="handleFileUpload(event, 'quote')">
+            </div>
             
-            <div class="contact-details">
-                <div class="contact-item content-loading">
-                    <div class="icon">📍</div>
-                    <h4 class="editable">Our Office</h4>
-                    <p class="editable">C-08-34, Centum @ Oasis Corporate Park<br>
-                    Oasis Damansara, No.2 Jalan PJU 1A/2<br>
-                    Ara Damansara, 47301 Petaling Jaya<br>
-                    Selangor, Malaysia</p>
+            <div id="quoteMediaPreview" style="margin-top: 2rem;"></div>
+
+            <div class="form-group" style="margin-top: 2rem;">
+                <label class="editable">Describe Your Project Requirements</label>
+                <textarea id="projectDescription" rows="6" placeholder="Please describe what you would like us to do..."></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                <div class="form-group">
+                    <label class="editable">Full Name</label>
+                    <input type="text" id="quoteName" placeholder="Enter your full name" required>
                 </div>
-                <div class="contact-item content-loading">
-                    <div class="icon">📞</div>
-                    <h4 class="editable">Call Us</h4>
-                    <p><strong>Phone:</strong> <span id="displayPhone">+60-X-XXXX-XXXX</span><br>
-                    <strong>Email:</strong> <span id="displayEmail">info@refitservices.com</span></p>
+                <div class="form-group">
+                    <label class="editable">Email Address</label>
+                    <input type="email" id="quoteEmail" placeholder="Enter your email" required>
                 </div>
-                <div class="contact-item content-loading">
-                    <div class="icon">🕒</div>
-                    <h4 class="editable">Business Hours</h4>
-                    <p class="editable"><strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM<br>
-                    <strong>Sat:</strong> 9:00 AM - 1:00 PM<br>
-                    <strong>Sun:</strong> Closed</p>
+                <div class="form-group">
+                    <label class="editable">Phone Number</label>
+                    <input type="tel" id="quotePhone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label class="editable">Property Type</label>
+                    <select id="propertyType">
+                        <option value="">Select property type</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="office">Office</option>
+                        <option value="retail">Retail</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
             </div>
 
+            <div style="text-align: center; margin-top: 3rem;">
+                <button type="button" class="btn btn-primary" onclick="generateQuote()">
+                    Generate Quote
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title editable">Get In Touch</h2>
+        <div class="contact-info">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;" class="editable">Ready to transform your space? Contact us today!</p>
+            <div style="margin-bottom: 2rem;">
+                <p class="editable"><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
+            </div>
             <div class="social-links">
-                <a href="https://www.instagram.com/refit_mntserv?igsh=dHloODZta3VsZWRy&utm_source=qr" target="_blank" title="Instagram">📷</a>
-                <a href="https://www.facebook.com/share/19C5RB3hAL/?mibextid=wwXIfr" target="_blank" title="Facebook">📘</a>
-                <a href="https://www.tiktok.com/@refit.mntserv?_t=ZS-8yUVBpC5xm4&_r=1" target="_blank" title="TikTok">🎵</a>
+                <a href="https://www.instagram.com/refit_mntserv?igsh=dHloODZta3VsZWRy&utm_source=qr" target="_blank">📷</a>
+                <a href="https://www.facebook.com/share/19C5RB3hAL/?mibextid=wwXIfr" target="_blank">📘</a>
+                <a href="https://www.tiktok.com/@refit.mntserv?_t=ZS-8yUVBpC5xm4&_r=1" target="_blank">🎵</a>
             </div>
         </div>
     </section>
@@ -2527,7 +2453,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#quote">Get Quote</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -2545,10 +2471,6 @@
                 Oasis Damansara, No.2 Jalan PJU 1A/2<br>
                 Ara Damansara, 47301 Petaling Jaya<br>
                 Selangor, Malaysia</p>
-                <p style="margin-top: 1rem;">
-                    <strong>Phone:</strong> <span id="footerPhone">+60-X-XXXX-XXXX</span><br>
-                    <strong>Email:</strong> <span id="footerEmail">info@refitservices.com</span>
-                </p>
             </div>
         </div>
         <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
@@ -2556,15 +2478,54 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" onclick="toggleChat()">
+            💬
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h4>REFIT Assistant</h4>
+                <span style="cursor: pointer;" onclick="toggleChat()">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="message-bubble">
+                        Hello! I'm your REFIT assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Admin Login Modal -->
     <div class="admin-modal" id="adminModal">
         <div class="admin-modal-content">
             <button class="admin-close" onclick="closeAdminLogin()">×</button>
             <h3>Admin Login</h3>
             <div>
-                <input type="text" id="adminUsername" class="admin-input" placeholder="Username" />
-                <input type="password" id="adminPassword" class="admin-input" placeholder="Password" />
+                <input type="text" id="adminUsername" class="admin-input" placeholder="Username" value="admin" />
+                <input type="password" id="adminPassword" class="admin-input" placeholder="Password" value="admin" />
                 <button class="admin-login-submit" onclick="attemptAdminLogin()">Login</button>
+                <button class="admin-login-submit" onclick="quickLogin()" style="background: #27ae60; margin-top: 0.5rem;">
+                    Quick Login (Test)
+                </button>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                <strong>Test Credentials:</strong><br>
+                admin/admin<br>
+                test/test<br>
+                refit/refit
             </div>
             <div id="adminLoginError" style="color: #e74c3c; margin-top: 1rem; display: none;">
                 Invalid credentials. Please try again.
@@ -2588,7 +2549,6 @@
         let currentMediaElement = null;
         let currentPortfolioItemId = null;
         let isAdminLoggedIn = false;
-        let loadingProgress = 0;
 
         // Admin credentials (in production, this should be handled server-side)
         const ADMIN_CREDENTIALS = {
@@ -2596,105 +2556,17 @@
             password: 'refit2024'
         };
 
-        // Enhanced Loading System
-        function initializeLoading() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const progressBar = document.getElementById('loadingProgressBar');
-            const percentage = document.getElementById('loadingPercentage');
-            
-            // Simulate loading progress
-            const loadingSteps = [
-                { progress: 20, delay: 200, message: 'Loading assets...' },
-                { progress: 40, delay: 400, message: 'Initializing components...' },
-                { progress: 60, delay: 600, message: 'Setting up interface...' },
-                { progress: 80, delay: 800, message: 'Loading content...' },
-                { progress: 100, delay: 1000, message: 'Ready!' }
-            ];
-
-            let currentStep = 0;
-
-            function updateProgress() {
-                if (currentStep < loadingSteps.length) {
-                    const step = loadingSteps[currentStep];
-                    loadingProgress = step.progress;
-                    
-                    progressBar.style.width = `${loadingProgress}%`;
-                    percentage.textContent = `${loadingProgress}%`;
-                    
-                    currentStep++;
-                    setTimeout(updateProgress, step.delay);
-                } else {
-                    // Loading complete
-                    setTimeout(() => {
-                        loadingScreen.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
-                        startContentAnimations();
-                    }, 500);
-                }
-            }
-
-            updateProgress();
-        }
-
-        // Start content animations after loading
-        function startContentAnimations() {
-            const contentElements = document.querySelectorAll('.content-loading');
-            contentElements.forEach((element, index) => {
-                setTimeout(() => {
-                    element.classList.add('content-loaded');
-                }, index * 100);
-            });
-
-            // Initialize scroll animations
-            initializeScrollAnimations();
-        }
-
-        // Initialize scroll animations
-        function initializeScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Enhanced image loading
-        function initializeImageLoading() {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            
-            images.forEach(img => {
-                img.addEventListener('load', function() {
-                    this.classList.add('loaded');
-                    this.parentElement.classList.add('loaded');
-                });
-            });
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Start loading sequence
-            initializeLoading();
-            
-            // Initialize other components
             initializeWebsite();
             loadSettings();
-            setupEventListeners();
             initializePortfolio();
             initializeSliders();
             loadMediaLibrary();
             checkAdminStatus();
-            initializeImageLoading();
+            
+            // Setup event listeners with a small delay to ensure DOM is ready
+            setTimeout(setupEventListeners, 100);
         });
 
         // Check Admin Status
@@ -2714,30 +2586,66 @@
             document.getElementById('adminUsername').focus();
         }
 
+        // Emergency Bypass Function
+        function emergencyBypass() {
+            isAdminLoggedIn = true;
+            localStorage.setItem('adminLoggedIn', 'true');
+            showAdminControls();
+            showNotification('Emergency Access Granted', 'Admin controls are now active!', 'success');
+            console.log('Emergency bypass activated');
+        }
+
+        // Quick Login Function
+        function quickLogin() {
+            isAdminLoggedIn = true;
+            localStorage.setItem('adminLoggedIn', 'true');
+            showAdminControls();
+            closeAdminLogin();
+            showNotification('Quick Login Successful', 'You are now logged in as Admin!', 'success');
+            console.log('Quick login successful');
+        }
+
         // Close Admin Login Modal
         function closeAdminLogin() {
             document.getElementById('adminModal').classList.remove('active');
-            document.getElementById('adminUsername').value = '';
-            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminUsername').value = 'admin';
+            document.getElementById('adminPassword').value = 'admin';
             document.getElementById('adminLoginError').style.display = 'none';
         }
 
         // Attempt Admin Login
         function attemptAdminLogin() {
-            const username = document.getElementById('adminUsername').value;
-            const password = document.getElementById('adminPassword').value;
+            const username = document.getElementById('adminUsername').value.trim().toLowerCase();
+            const password = document.getElementById('adminPassword').value.trim();
             
-            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+            console.log('Login attempt:', username, password); // Debug log
+            
+            // Multiple valid credentials for easier access
+            const validCredentials = [
+                { username: 'admin', password: 'refit2024' },
+                { username: 'admin', password: 'admin' },
+                { username: 'refit', password: 'refit' },
+                { username: 'test', password: 'test' }
+            ];
+            
+            const isValid = validCredentials.some(cred => 
+                cred.username === username && cred.password === password
+            );
+            
+            if (isValid) {
                 isAdminLoggedIn = true;
                 localStorage.setItem('adminLoggedIn', 'true');
                 showAdminControls();
                 closeAdminLogin();
                 showNotification('Login Successful', 'Welcome back, Admin!', 'success');
+                console.log('Login successful');
             } else {
                 document.getElementById('adminLoginError').style.display = 'block';
+                document.getElementById('adminLoginError').textContent = `Invalid credentials. Try: admin/admin or test/test`;
+                console.log('Login failed for:', username, password);
                 setTimeout(() => {
                     document.getElementById('adminLoginError').style.display = 'none';
-                }, 3000);
+                }, 5000);
             }
         }
 
@@ -2827,22 +2735,6 @@
             if (settings.darkPrimaryColor) {
                 document.documentElement.style.setProperty('--primary-dark-pink', settings.darkPrimaryColor);
                 document.getElementById('darkPrimaryColor').value = settings.darkPrimaryColor;
-            }
-            
-            // Apply contact information
-            if (settings.phoneNumber) {
-                document.getElementById('phoneNumber').value = settings.phoneNumber;
-                document.getElementById('displayPhone').textContent = settings.phoneNumber;
-                document.getElementById('footerPhone').textContent = settings.phoneNumber;
-            }
-            if (settings.emailAddress) {
-                document.getElementById('emailAddress').value = settings.emailAddress;
-                document.getElementById('displayEmail').textContent = settings.emailAddress;
-                document.getElementById('footerEmail').textContent = settings.emailAddress;
-            }
-            if (settings.whatsappNumber) {
-                document.getElementById('whatsappNumber').value = settings.whatsappNumber;
-                document.getElementById('whatsappBtn').href = `https://wa.me/${settings.whatsappNumber}?text=Hello! I'm interested in your services.`;
             }
             
             // Apply other settings
@@ -3014,10 +2906,6 @@
                     const img = document.createElement('img');
                     img.src = url;
                     img.alt = file.name;
-                    img.className = 'image-loading';
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
                     currentMediaElement.insertBefore(img, currentMediaElement.querySelector('.media-controls'));
                 }
                 
@@ -3135,31 +3023,6 @@
             localStorage.setItem('refitSettings', JSON.stringify(settings));
             
             showNotification('Hero Updated', 'Hero section content updated successfully', 'success');
-        }
-
-        // Update Contact Information
-        function updateContactInfo() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            const emailAddress = document.getElementById('emailAddress').value;
-            const whatsappNumber = document.getElementById('whatsappNumber').value;
-            
-            // Update display elements
-            document.getElementById('displayPhone').textContent = phoneNumber;
-            document.getElementById('displayEmail').textContent = emailAddress;
-            document.getElementById('footerPhone').textContent = phoneNumber;
-            document.getElementById('footerEmail').textContent = emailAddress;
-            
-            // Update WhatsApp link
-            document.getElementById('whatsappBtn').href = `https://wa.me/${whatsappNumber}?text=Hello! I'm interested in your services.`;
-            
-            // Save to settings
-            const settings = JSON.parse(localStorage.getItem('refitSettings') || '{}');
-            settings.phoneNumber = phoneNumber;
-            settings.emailAddress = emailAddress;
-            settings.whatsappNumber = whatsappNumber;
-            localStorage.setItem('refitSettings', JSON.stringify(settings));
-            
-            showNotification('Contact Updated', 'Contact information updated successfully', 'success');
         }
 
         // Save Site Settings
@@ -3287,10 +3150,6 @@
                     const img = document.createElement('img');
                     img.src = item.url;
                     img.alt = item.name;
-                    img.className = 'image-loading';
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
                     currentMediaElement.insertBefore(img, currentMediaElement.querySelector('.media-controls'));
                 }
                 
@@ -3361,7 +3220,7 @@
             newSlide.setAttribute('data-slide-id', `${sliderId}-${slideCount + 1}`);
             newSlide.innerHTML = `
                 <div class="universal-media-container cover">
-                    <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=New+Slide" alt="New Slide" class="image-loading">
+                    <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=New+Slide" alt="New Slide">
                     <div class="media-controls">
                         <button class="media-control-btn" onclick="changeMedia(this)" title="Change Media">🖼️</button>
                         <button class="media-control-btn" onclick="toggleMediaSettings(this)" title="Settings">⚙️</button>
@@ -3493,21 +3352,34 @@
             
             filtered.forEach(item => {
                 const portfolioItem = document.createElement('div');
-                portfolioItem.className = 'portfolio-item content-loading';
+                portfolioItem.className = 'portfolio-item';
                 portfolioItem.setAttribute('data-item-id', item.id);
                 
                 const currentMedia = item.media[item.currentMediaIndex || 0];
                 let mediaContent = '';
                 
                 if (currentMedia.type === 'video') {
-                    mediaContent = `<video src="${currentMedia.url}" muted loop autoplay class="image-loading"></video>`;
+                    mediaContent = `<video src="${currentMedia.url}" muted loop autoplay></video>`;
                 } else {
-                    mediaContent = `<img src="${currentMedia.url}" alt="${item.title}" class="image-loading">`;
+                    mediaContent = `<img src="${currentMedia.url}" alt="${item.title}">`;
                 }
+                
+                // Check media types
+                const hasVideo = item.media.some(m => m.type === 'video');
+                const hasImage = item.media.some(m => m.type === 'image');
+                const mediaTypeClass = hasVideo && hasImage ? 'mixed' : hasVideo ? 'video' : '';
                 
                 portfolioItem.innerHTML = `
                     <div class="portfolio-media-container" id="portfolio-media-${item.id}">
                         ${mediaContent}
+                        ${item.media.length > 1 ? `
+                            <div class="media-count-badge ${mediaTypeClass}">
+                                ${hasVideo ? '🎬' : '🖼️'} ${item.media.length}
+                            </div>
+                        ` : ''}
+                        <button class="portfolio-control-btn delete-item" onclick="deletePortfolioItem(${item.id})" title="Delete Project">
+                            🗑️
+                        </button>
                         <div class="portfolio-media-controls">
                             <button class="portfolio-control-btn change-media" onclick="changePortfolioMedia(${item.id})" title="Change Media">
                                 🖼️
@@ -3519,6 +3391,14 @@
                                 ➕
                             </button>
                         </div>
+                        ${item.media.length > 1 ? `
+                            <div class="portfolio-media-indicator">
+                                ${item.media.map((_, index) => `
+                                    <div class="media-indicator-dot ${index === item.currentMediaIndex ? 'active' : ''}" 
+                                         onclick="switchPortfolioMedia(${item.id}, ${index})"></div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
                     </div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
@@ -3530,40 +3410,56 @@
                 
                 portfolioItem.onclick = (e) => {
                     if (!e.target.closest('.portfolio-media-controls') && 
+                        !e.target.closest('.portfolio-media-indicator') && 
                         !e.target.closest('.portfolio-info') &&
                         !editMode) {
-                        // Add lightbox functionality here if needed
+                        openPortfolioLightbox(item);
                     }
                 };
                 
-                grid.appendChild(portfolioItem);
+                // Add blur event listeners for editable content in portfolio
+                if (editMode) {
+                    setTimeout(() => {
+                        const titleEl = portfolioItem.querySelector('.portfolio-info h4');
+                        const categoryEl = portfolioItem.querySelector('.portfolio-info p');
+                        
+                        if (titleEl) {
+                            titleEl.addEventListener('blur', () => {
+                                item.title = titleEl.textContent;
+                                savePortfolioData();
+                            });
+                        }
+                        
+                        if (categoryEl) {
+                            categoryEl.addEventListener('blur', () => {
+                                // Parse category from display name
+                                const categoryText = categoryEl.textContent.toLowerCase();
+                                if (categoryText.includes('commercial')) item.category = 'commercial';
+                                else if (categoryText.includes('residential')) item.category = 'residential';
+                                else if (categoryText.includes('maintenance')) item.category = 'maintenance';
+                                else if (categoryText.includes('3d')) item.category = '3d';
+                                savePortfolioData();
+                            });
+                        }
+                    }, 100);
+                }
                 
-                // Add loading animation
-                setTimeout(() => {
-                    portfolioItem.classList.add('content-loaded');
-                }, Math.random() * 500);
+                grid.appendChild(portfolioItem);
             });
-        }
-
-        // Get Category Name
-        function getCategoryName(category) {
-            const names = {
-                'commercial': 'Commercial Project',
-                'residential': 'Residential Project',
-                'maintenance': 'Maintenance Project',
-                '3d': '3D Concept Design'
-            };
-            return names[category] || category;
-        }
-
-        // Filter Portfolio
-        function filterPortfolio(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
             
-            displayPortfolio(category);
+            // Add the "Add New" button in edit mode
+            if (editMode) {
+                const addBtn = document.createElement('div');
+                addBtn.className = 'portfolio-add-btn';
+                addBtn.innerHTML = `
+                    <div class="portfolio-add-btn-content">
+                        <div class="icon">➕</div>
+                        <p>Add New Project</p>
+                    </div>
+                `;
+                addBtn.onclick = addNewPortfolioItem;
+                grid.appendChild(addBtn);
+            }
         }
 
         // Change Portfolio Media
@@ -3595,11 +3491,17 @@
                         name: file.name
                     };
                     
-                    portfolioItems[itemIndex].media[portfolioItems[itemIndex].currentMediaIndex] = mediaItem;
+                    // Replace current media or add if shift key is held
+                    if (event.shiftKey) {
+                        portfolioItems[itemIndex].media.push(mediaItem);
+                        portfolioItems[itemIndex].currentMediaIndex = portfolioItems[itemIndex].media.length - 1;
+                    } else {
+                        portfolioItems[itemIndex].media[portfolioItems[itemIndex].currentMediaIndex] = mediaItem;
+                    }
                     
                     // Save and refresh
                     savePortfolioData();
-                    displayPortfolio('all');
+                    updatePortfolioItemDisplay(itemId);
                     
                     showNotification('Media Updated', 'Portfolio media changed successfully', 'success');
                 }
@@ -3630,7 +3532,7 @@
                             });
                             
                             savePortfolioData();
-                            displayPortfolio('all');
+                            updatePortfolioItemDisplay(itemId);
                         }
                     };
                     reader.readAsDataURL(file);
@@ -3641,6 +3543,16 @@
             input.click();
         }
 
+        // Switch Portfolio Media
+        function switchPortfolioMedia(itemId, mediaIndex) {
+            const itemIndex = portfolioItems.findIndex(item => item.id === itemId);
+            if (itemIndex !== -1) {
+                portfolioItems[itemIndex].currentMediaIndex = mediaIndex;
+                savePortfolioData();
+                updatePortfolioItemDisplay(itemId);
+            }
+        }
+
         // Toggle Portfolio Fit
         function togglePortfolioFit(itemId) {
             const container = document.getElementById(`portfolio-media-${itemId}`);
@@ -3648,6 +3560,52 @@
             
             const mode = container.classList.contains('contain') ? 'Contain' : 'Cover';
             showNotification('Fit Mode', `Changed to ${mode} mode`, 'info');
+        }
+
+        // Update Portfolio Item Display
+        function updatePortfolioItemDisplay(itemId) {
+            const item = portfolioItems.find(p => p.id === itemId);
+            if (!item) return;
+            
+            const container = document.getElementById(`portfolio-media-${itemId}`);
+            const currentMedia = item.media[item.currentMediaIndex || 0];
+            
+            // Clear current content
+            const existingMedia = container.querySelector('img, video');
+            if (existingMedia) existingMedia.remove();
+            
+            // Add new media
+            let mediaElement;
+            if (currentMedia.type === 'video') {
+                mediaElement = document.createElement('video');
+                mediaElement.src = currentMedia.url;
+                mediaElement.muted = true;
+                mediaElement.loop = true;
+                mediaElement.autoplay = true;
+            } else {
+                mediaElement = document.createElement('img');
+                mediaElement.src = currentMedia.url;
+                mediaElement.alt = item.title;
+            }
+            
+            container.insertBefore(mediaElement, container.firstChild);
+            
+            // Update indicators
+            if (item.media.length > 1) {
+                let indicatorHtml = '<div class="portfolio-media-indicator">';
+                item.media.forEach((_, index) => {
+                    indicatorHtml += `<div class="media-indicator-dot ${index === item.currentMediaIndex ? 'active' : ''}" 
+                                          onclick="switchPortfolioMedia(${item.id}, ${index})"></div>`;
+                });
+                indicatorHtml += '</div>';
+                
+                const existingIndicator = container.querySelector('.portfolio-media-indicator');
+                if (existingIndicator) {
+                    existingIndicator.outerHTML = indicatorHtml;
+                } else {
+                    container.insertAdjacentHTML('beforeend', indicatorHtml);
+                }
+            }
         }
 
         // Add New Portfolio Item
@@ -3676,6 +3634,95 @@
         // Save Portfolio Data
         function savePortfolioData() {
             localStorage.setItem('portfolioItems', JSON.stringify(portfolioItems));
+        }
+
+        // Open Portfolio Lightbox
+        function openPortfolioLightbox(item) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightboxContent');
+            
+            const currentMedia = item.media[item.currentMediaIndex || 0];
+            
+            if (currentMedia.type === 'video') {
+                content.innerHTML = `<video src="${currentMedia.url}" controls autoplay style="max-width: 100%; max-height: 90vh;"></video>`;
+            } else {
+                content.innerHTML = `<img src="${currentMedia.url}" alt="${item.title}">`;
+            }
+            
+            // Add navigation if multiple media
+            if (item.media.length > 1) {
+                content.innerHTML += `
+                    <button class="slider-nav prev" onclick="event.stopPropagation(); navigateLightbox(${item.id}, -1)" 
+                            style="position: absolute; left: 20px;">‹</button>
+                    <button class="slider-nav next" onclick="event.stopPropagation(); navigateLightbox(${item.id}, 1)" 
+                            style="position: absolute; right: 20px;">›</button>
+                `;
+            }
+            
+            lightbox.classList.add('active');
+            lightbox.setAttribute('data-item-id', item.id);
+        }
+
+        // Delete Portfolio Item
+        function deletePortfolioItem(itemId) {
+            if (confirm('Are you sure you want to delete this project?')) {
+                portfolioItems = portfolioItems.filter(item => item.id !== itemId);
+                savePortfolioData();
+                
+                // Refresh display
+                const activeFilter = document.querySelector('.filter-btn.active');
+                const category = activeFilter ? activeFilter.textContent.toLowerCase().replace(' projects', '').replace(' ', '') : 'all';
+                displayPortfolio(category === 'all' ? 'all' : category);
+                
+                showNotification('Project Deleted', 'Portfolio project removed successfully', 'success');
+            }
+        }
+
+        // Navigate Lightbox
+        function navigateLightbox(itemId, direction) {
+            const item = portfolioItems.find(p => p.id === itemId);
+            if (!item) return;
+            
+            item.currentMediaIndex = (item.currentMediaIndex + direction + item.media.length) % item.media.length;
+            savePortfolioData();
+            
+            // Update lightbox content
+            const content = document.getElementById('lightboxContent');
+            const currentMedia = item.media[item.currentMediaIndex];
+            
+            if (currentMedia.type === 'video') {
+                content.querySelector('img, video').outerHTML = 
+                    `<video src="${currentMedia.url}" controls autoplay style="max-width: 100%; max-height: 90vh;"></video>`;
+            } else {
+                content.querySelector('img, video').outerHTML = 
+                    `<img src="${currentMedia.url}" alt="${item.title}">`;
+            }
+        }
+
+        // Get Category Name
+        function getCategoryName(category) {
+            const names = {
+                'commercial': 'Commercial Project',
+                'residential': 'Residential Project',
+                'maintenance': 'Maintenance Project',
+                '3d': '3D Concept Design'
+            };
+            return names[category] || category;
+        }
+
+        // Filter Portfolio
+        function filterPortfolio(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            displayPortfolio(category);
+        }
+
+        // Close Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
         }
 
         // Clear All Portfolio
@@ -3815,18 +3862,159 @@
 
         // Setup Event Listeners
         function setupEventListeners() {
-            // Admin login keyboard events
-            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    attemptAdminLogin();
-                }
+            // Drag and Drop for upload zones
+            const uploadZones = document.querySelectorAll('.media-upload-zone');
+            uploadZones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('dragging');
+                });
+                
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('dragging');
+                });
+                
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('dragging');
+                    const files = Array.from(e.dataTransfer.files);
+                    handleDroppedFiles(files, zone.id);
+                });
             });
 
-            document.getElementById('adminUsername').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('adminPassword').focus();
+            // Auto-play slider
+            setInterval(() => {
+                if (!editMode) {
+                    changeSlide('hero', 1);
                 }
+            }, 5000);
+
+            // Admin login keyboard events - with better mobile support
+            const passwordInput = document.getElementById('adminPassword');
+            const usernameInput = document.getElementById('adminUsername');
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.keyCode === 13) {
+                        e.preventDefault();
+                        attemptAdminLogin();
+                    }
+                });
+                
+                // Touch events for mobile
+                passwordInput.addEventListener('touchend', function(e) {
+                    this.focus();
+                });
+            }
+
+            if (usernameInput) {
+                usernameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.keyCode === 13) {
+                        e.preventDefault();
+                        passwordInput.focus();
+                    }
+                });
+                
+                // Touch events for mobile
+                usernameInput.addEventListener('touchend', function(e) {
+                    this.focus();
+                });
+            }
+            
+            // Add click event to admin login button for mobile
+            const adminLoginBtn = document.querySelector('.admin-login-btn');
+            if (adminLoginBtn) {
+                adminLoginBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    showAdminLogin();
+                });
+            }
+        }
+
+        // Handle Dropped Files
+        function handleDroppedFiles(files, zoneId) {
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    addToMediaLibrary(file, e.target.result);
+                    
+                    if (zoneId === 'quoteUploadZone') {
+                        displayUploadedFile(file, e.target.result, 'quoteMediaPreview');
+                    }
+                };
+                reader.readAsDataURL(file);
             });
+            
+            showNotification('Files Uploaded', `${files.length} file(s) uploaded successfully`, 'success');
+        }
+
+        // Handle File Upload
+        function handleFileUpload(event, context) {
+            const files = Array.from(event.target.files);
+            
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    addToMediaLibrary(file, e.target.result);
+                    
+                    if (context === 'quote') {
+                        displayUploadedFile(file, e.target.result, 'quoteMediaPreview');
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Display Uploaded File
+        function displayUploadedFile(file, url, containerId) {
+            const container = document.getElementById(containerId);
+            
+            const div = document.createElement('div');
+            div.className = 'media-library-item';
+            div.style.display = 'inline-block';
+            div.style.margin = '0.5rem';
+            
+            if (file.type.startsWith('video')) {
+                div.innerHTML = `<video src="${url}" controls style="width: 200px; height: 150px; object-fit: cover;"></video>`;
+            } else if (file.type.startsWith('image')) {
+                div.innerHTML = `<img src="${url}" alt="${file.name}" style="width: 200px; height: 150px; object-fit: cover;">`;
+            } else {
+                div.innerHTML = `
+                    <div style="width: 200px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <span style="font-size: 2rem;">📄</span>
+                        <span style="font-size: 0.8rem; margin-top: 0.5rem;">${file.name}</span>
+                    </div>
+                `;
+            }
+            
+            container.appendChild(div);
+            uploadedFiles.push(file);
+        }
+
+        // Generate Quote
+        function generateQuote() {
+            // Validate form
+            const name = document.getElementById('quoteName').value;
+            const email = document.getElementById('quoteEmail').value;
+            const phone = document.getElementById('quotePhone').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const description = document.getElementById('projectDescription').value;
+            
+            if (!name || !email || !phone || !propertyType || !description) {
+                showNotification('Error', 'Please fill in all required fields', 'error');
+                return;
+            }
+            
+            showNotification('Quote Generated', 'Your quote has been generated and sent to your email', 'success');
+            
+            // Reset form
+            document.getElementById('quoteName').value = '';
+            document.getElementById('quoteEmail').value = '';
+            document.getElementById('quotePhone').value = '';
+            document.getElementById('propertyType').value = '';
+            document.getElementById('projectDescription').value = '';
+            document.getElementById('quoteMediaPreview').innerHTML = '';
+            uploadedFiles = [];
         }
 
         // Toggle Theme
@@ -3845,16 +4033,84 @@
 
         // Toggle Language
         function toggleLanguage() {
-            const langToggle = document.querySelector('.lang-toggle');
-            const currentLang = langToggle.textContent;
-            const newLang = currentLang === 'EN' ? 'BM' : 'EN';
-            langToggle.textContent = newLang;
+            showNotification('Language', 'Language selection coming soon!', 'info');
+        }
+
+        // Show Login Modal
+        function showLoginModal() {
+            showNotification('Login', 'Login functionality coming soon!', 'info');
         }
 
         // Toggle Menu
         function toggleMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
+        }
+
+        // Chat Functions
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('active');
+            
+            if (chatWindow.classList.contains('active')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addChatMessage(message, 'user');
+            
+            // Clear input
+            input.value = '';
+            
+            // Simulate bot response
+            setTimeout(() => {
+                const response = generateBotResponse(message);
+                addChatMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function addChatMessage(message, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            messageDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateBotResponse(message) {
+            const responses = {
+                'services': 'We offer maintenance services, interior construction & renovation, and designing & interior illustration services.',
+                'quote': 'You can get a quote by clicking the "Get Quote" button or visiting our quote section.',
+                'contact': 'You can reach us at C-08-34, Centum @ Oasis Corporate Park, Ara Damansara. Email: info@refitservices.com',
+                'price': 'Our prices vary based on project requirements. Please get a personalized quote for accurate pricing.',
+                'portfolio': 'Check out our portfolio section to see our completed projects across commercial, residential, and maintenance categories.'
+            };
+            
+            const lowerMessage = message.toLowerCase();
+            
+            for (const [key, value] of Object.entries(responses)) {
+                if (lowerMessage.includes(key)) {
+                    return value;
+                }
+            }
+            
+            return 'Thank you for your message! How can I help you with our maintenance and renovation services?';
         }
 
         // Notification System
@@ -3883,9 +4139,7 @@
             
             // Auto remove after 5 seconds
             setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.remove();
-                }
+                notification.remove();
             }, 5000);
         }
 
@@ -3895,13 +4149,6 @@
             document.body.setAttribute('data-theme', 'dark');
             document.querySelector('.theme-toggle').textContent = '☀️';
         }
-
-        // Auto-start hero slider
-        setInterval(() => {
-            if (!editMode) {
-                changeSlide('hero', 1);
-            }
-        }, 5000);
 
         // Initialize admin status on page load
         document.addEventListener('DOMContentLoaded', function() {
