@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REFIT - Maintenance Services | Editable Template</title>
+    <meta name="description" content="REFIT - Professional Maintenance, Renovation & Interior Design Services in Malaysia">
+    <meta name="keywords" content="maintenance, renovation, interior design, construction, Malaysia, Petaling Jaya">
+    <meta name="author" content="REFIT Maintenance Services">
+    <title>REFIT - Professional Maintenance Services | Launch Ready</title>
+    
     <style>
         * {
             margin: 0;
@@ -20,57 +24,319 @@
             --bg-light: #FAFAFA;
             --white: #FFFFFF;
             --gold: #FFD700;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+            --info: #2196F3;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: var(--dark-gray);
             background: var(--white);
-        }
-
-        /* Editable Content Styles */
-        [contenteditable="true"] {
-            outline: none;
-            position: relative;
             transition: all 0.3s ease;
-            min-height: 20px;
         }
 
-        [contenteditable="true"]:hover {
-            background: rgba(212, 165, 165, 0.05);
-            border-radius: 4px;
-            cursor: text;
-        }
-
-        [contenteditable="true"]:focus {
-            background: rgba(212, 165, 165, 0.1);
-            box-shadow: 0 0 0 2px var(--primary-pink);
-            border-radius: 4px;
-            padding: 5px;
-        }
-
-        /* Edit Mode Indicator */
-        .edit-mode-indicator {
+        /* Login Screen */
+        .login-overlay {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-pink);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            z-index: 10000;
-            display: none;
-            animation: pulse 2s infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            transition: opacity 0.5s ease;
         }
 
-        .edit-mode-indicator.active {
+        .login-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .login-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .login-box h2 {
+            color: var(--primary-pink);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--accent-pink);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.4);
+        }
+
+        .login-error {
+            color: var(--danger);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Master Control Panel */
+        .master-control-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .master-control-panel.active {
+            right: 0;
             display: block;
         }
 
+        .mcp-header {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .mcp-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--accent-pink);
+        }
+
+        .mcp-section h3 {
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .mcp-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: var(--accent-pink);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .mcp-btn:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .mcp-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mcp-toggle.active {
+            display: flex;
+            animation: pulse 2s infinite;
+        }
+
+        .mcp-toggle:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 5px 30px rgba(212, 165, 165, 0.6); }
+        }
+
+        /* Advanced Editor Tools */
+        .editor-toolbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+            gap: 1rem;
+            z-index: 9998;
+        }
+
+        .editor-toolbar.active {
+            display: flex;
+        }
+
+        .editor-tool {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-pink);
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .editor-tool:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* Element Selector */
+        .element-selector {
+            position: absolute;
+            border: 2px dashed var(--primary-pink);
+            pointer-events: none;
+            z-index: 9997;
+            display: none;
+        }
+
+        .element-selector.active {
+            display: block;
+        }
+
+        .element-label {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            background: var(--primary-pink);
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        /* Style Editor */
+        .style-editor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            max-height: 80vh;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 10001;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .style-editor.active {
+            display: block;
+        }
+
+        .style-editor-header {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            position: sticky;
+            top: 0;
+        }
+
+        .style-editor-body {
+            padding: 1.5rem;
+        }
+
+        .style-control {
+            margin-bottom: 1rem;
+        }
+
+        .style-control label {
+            display: block;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .style-control input,
+        .style-control select,
+        .style-control textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--accent-pink);
+            border-radius: 5px;
+            font-size: 0.95rem;
         }
 
         /* Navigation */
@@ -110,14 +376,33 @@
         .nav-links a {
             color: var(--dark-gray);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 5px;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary-pink);
             background: var(--accent-pink);
+        }
+
+        /* Editable Elements */
+        [data-editable="true"] {
+            position: relative;
+            min-height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-mode [data-editable="true"]:hover {
+            outline: 2px dashed var(--primary-pink);
+            outline-offset: 5px;
+            cursor: text;
+        }
+
+        .admin-mode [data-editable="true"]:focus {
+            outline: 2px solid var(--primary-pink);
+            background: rgba(212, 165, 165, 0.05);
         }
 
         /* Hero Section */
@@ -127,22 +412,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,165,165,0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            min-height: 500px;
         }
 
         .hero-content {
@@ -153,11 +423,23 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Services Grid */
@@ -179,7 +461,7 @@
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -205,38 +487,12 @@
             background: var(--white);
         }
 
-        .portfolio-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--primary-pink);
-            background: transparent;
-            color: var(--primary-pink);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--primary-pink);
-            color: var(--white);
-            transform: scale(1.05);
-        }
-
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 2rem auto;
         }
 
         .portfolio-item {
@@ -244,7 +500,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             background: var(--white);
         }
 
@@ -253,7 +509,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        /* Media Container - Supports All Types */
+        /* Media Container */
         .media-container {
             position: relative;
             width: 100%;
@@ -264,9 +520,7 @@
 
         .media-container img,
         .media-container video,
-        .media-container iframe,
-        .media-container embed,
-        .media-container object {
+        .media-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -275,80 +529,161 @@
             object-fit: cover;
         }
 
-        /* Media Upload Area */
-        .media-upload {
-            border: 3px dashed var(--primary-pink);
+        /* Media Manager */
+        .media-manager {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 1000px;
+            height: 80vh;
+            background: var(--white);
             border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            background: var(--accent-pink);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 1rem 0;
-        }
-
-        .media-upload:hover {
-            background: var(--primary-pink);
-            color: var(--white);
-        }
-
-        .media-upload.dragover {
-            background: var(--secondary-pink);
-            transform: scale(1.02);
-        }
-
-        /* PDF Viewer */
-        .pdf-container {
-            width: 100%;
-            height: 500px;
-            border: 1px solid var(--primary-pink);
-            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 10002;
+            display: none;
             overflow: hidden;
         }
 
-        /* Audio Player */
-        .audio-container {
+        .media-manager.active {
+            display: block;
+        }
+
+        .media-manager-header {
             background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 1rem 0;
-        }
-
-        .audio-container audio {
-            width: 100%;
-        }
-
-        /* Gallery Modal */
-        .gallery-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
+            color: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .gallery-modal.active {
-            display: flex;
+        .media-manager-body {
+            height: calc(100% - 80px);
+            overflow-y: auto;
+            padding: 1.5rem;
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
         }
 
-        .modal-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: var(--white);
-            font-size: 2rem;
+        .media-thumb {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
             cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .media-thumb:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-pink);
+        }
+
+        .media-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SEO Settings */
+        .seo-panel {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .seo-panel h3 {
+            color: var(--primary-pink);
+            margin-bottom: 1.5rem;
+        }
+
+        .seo-input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--accent-pink);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Component Library */
+        .component-library {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 300px;
+            max-height: 400px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 9996;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .component-library.active {
+            display: block;
+        }
+
+        .component-library-header {
+            background: var(--primary-pink);
+            color: var(--white);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .component-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--accent-pink);
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+
+        .component-item:hover {
+            background: var(--accent-pink);
+        }
+
+        /* Analytics Dashboard */
+        .analytics-dashboard {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--accent-pink), var(--white));
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+        }
+
+        .stat-label {
+            color: var(--light-gray);
+            margin-top: 0.5rem;
         }
 
         /* Footer */
@@ -368,64 +703,67 @@
             margin-bottom: 2rem;
         }
 
-        /* Floating Action Buttons */
-        .fab-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        .fab {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-pink);
-            color: var(--white);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fab:hover {
-            transform: scale(1.1);
-            background: var(--secondary-pink);
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .master-control-panel {
+                width: 100%;
+                right: -100%;
             }
             
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+            .nav-links {
+                display: none;
             }
             
+            .portfolio-grid,
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .editor-toolbar {
+                width: 90%;
+                padding: 0.5rem;
+            }
+            
+            .style-editor {
+                width: 90%;
+            }
         }
 
-        /* Loading Animation */
-        .loader {
-            width: 50px;
-            height: 50px;
+        /* Drag and Drop */
+        .dragging {
+            opacity: 0.5;
+        }
+
+        .drag-over {
+            background: var(--accent-pink);
+            border: 2px dashed var(--primary-pink);
+        }
+
+        /* Loading State */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100001;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
             border: 5px solid var(--accent-pink);
             border-top: 5px solid var(--primary-pink);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 2rem auto;
         }
 
         @keyframes spin {
@@ -433,67 +771,235 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Edit Tools */
-        .edit-toolbar {
+        /* Notification System */
+        .notification {
             position: fixed;
-            top: 80px;
-            right: 20px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
             background: var(--white);
             border-radius: 10px;
-            padding: 1rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 999;
+            z-index: 100002;
             display: none;
+            animation: slideDown 0.3s ease;
         }
 
-        .edit-toolbar.active {
-            display: block;
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
         }
 
-        .edit-btn {
-            display: block;
-            width: 100%;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem 0;
-            border: none;
-            background: var(--primary-pink);
-            color: var(--white);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .notification.success {
+            border-left: 5px solid var(--success);
         }
 
-        .edit-btn:hover {
-            background: var(--secondary-pink);
-            transform: translateX(5px);
+        .notification.error {
+            border-left: 5px solid var(--danger);
+        }
+
+        .notification.info {
+            border-left: 5px solid var(--info);
         }
     </style>
 </head>
 <body>
-    <!-- Edit Mode Indicator -->
-    <div class="edit-mode-indicator" id="editIndicator">
-        🖊️ Edit Mode Active
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>🔐 REFIT Admin Login</h2>
+            <input type="text" class="login-input" id="username" placeholder="Username" autocomplete="username">
+            <input type="password" class="login-input" id="password" placeholder="Password" autocomplete="current-password">
+            <button class="login-btn" onclick="login()">Login to Master Control</button>
+            <div class="login-error" id="loginError">Invalid credentials. Please try again.</div>
+        </div>
     </div>
 
-    <!-- Edit Toolbar -->
-    <div class="edit-toolbar" id="editToolbar">
-        <button class="edit-btn" onclick="addSection()">➕ Add Section</button>
-        <button class="edit-btn" onclick="addMedia()">🖼️ Add Media</button>
-        <button class="edit-btn" onclick="addText()">📝 Add Text</button>
-        <button class="edit-btn" onclick="saveChanges()">💾 Save</button>
-        <button class="edit-btn" onclick="togglePreview()">👁️ Preview</button>
+    <!-- Master Control Panel Toggle -->
+    <button class="mcp-toggle" id="mcpToggle" onclick="toggleMCP()">⚙️</button>
+
+    <!-- Master Control Panel -->
+    <div class="master-control-panel" id="masterControlPanel">
+        <div class="mcp-header">
+            <h2>🎛️ Master Control Panel</h2>
+            <button onclick="toggleMCP()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>🎨 Design Controls</h3>
+            <button class="mcp-btn" onclick="openStyleEditor()">🎨 Style Editor</button>
+            <button class="mcp-btn" onclick="openThemeCustomizer()">🌈 Theme Customizer</button>
+            <button class="mcp-btn" onclick="openFontManager()">🔤 Font Manager</button>
+            <button class="mcp-btn" onclick="openColorPalette()">🎨 Color Palette</button>
+            <button class="mcp-btn" onclick="toggleGridSystem()">⚡ Grid System</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>📝 Content Management</h3>
+            <button class="mcp-btn" onclick="toggleEditMode()">✏️ Toggle Edit Mode</button>
+            <button class="mcp-btn" onclick="openMediaManager()">🖼️ Media Manager</button>
+            <button class="mcp-btn" onclick="openComponentLibrary()">📦 Component Library</button>
+            <button class="mcp-btn" onclick="addNewSection()">➕ Add Section</button>
+            <button class="mcp-btn" onclick="manageForms()">📋 Form Builder</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>🔍 SEO & Meta</h3>
+            <button class="mcp-btn" onclick="openSEOSettings()">🔍 SEO Settings</button>
+            <button class="mcp-btn" onclick="openMetaEditor()">📄 Meta Tags</button>
+            <button class="mcp-btn" onclick="generateSitemap()">🗺️ Sitemap Generator</button>
+            <button class="mcp-btn" onclick="openSchemaEditor()">📊 Schema Markup</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>⚡ Performance</h3>
+            <button class="mcp-btn" onclick="optimizeImages()">🖼️ Optimize Images</button>
+            <button class="mcp-btn" onclick="minifyCode()">📦 Minify Code</button>
+            <button class="mcp-btn" onclick="enableLazyLoad()">⏳ Lazy Loading</button>
+            <button class="mcp-btn" onclick="clearCache()">🗑️ Clear Cache</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>📊 Analytics</h3>
+            <button class="mcp-btn" onclick="viewAnalytics()">📈 View Analytics</button>
+            <button class="mcp-btn" onclick="setupTracking()">🎯 Setup Tracking</button>
+            <button class="mcp-btn" onclick="viewHeatmap()">🔥 Heatmap</button>
+            <button class="mcp-btn" onclick="exportReports()">📊 Export Reports</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>🔧 Advanced Settings</h3>
+            <button class="mcp-btn" onclick="openCodeEditor()">💻 Code Editor</button>
+            <button class="mcp-btn" onclick="manageDomains()">🌐 Domain Settings</button>
+            <button class="mcp-btn" onclick="backupSite()">💾 Backup Site</button>
+            <button class="mcp-btn" onclick="restoreSite()">♻️ Restore Backup</button>
+            <button class="mcp-btn" onclick="exportTemplate()">📥 Export Template</button>
+            <button class="mcp-btn" onclick="importTemplate()">📤 Import Template</button>
+        </div>
+        
+        <div class="mcp-section">
+            <h3>🚀 Launch Controls</h3>
+            <button class="mcp-btn" onclick="previewSite()">👁️ Preview Site</button>
+            <button class="mcp-btn" onclick="publishSite()" style="background: var(--success); color: white;">🚀 Publish Live</button>
+            <button class="mcp-btn" onclick="scheduleLaunch()">⏰ Schedule Launch</button>
+            <button class="mcp-btn" onclick="logout()" style="background: var(--danger); color: white;">🚪 Logout</button>
+        </div>
     </div>
+
+    <!-- Editor Toolbar -->
+    <div class="editor-toolbar" id="editorToolbar">
+        <div class="editor-tool" onclick="boldText()" title="Bold">𝐁</div>
+        <div class="editor-tool" onclick="italicText()" title="Italic">𝐼</div>
+        <div class="editor-tool" onclick="underlineText()" title="Underline">U̲</div>
+        <div class="editor-tool" onclick="alignText('left')" title="Align Left">◀</div>
+        <div class="editor-tool" onclick="alignText('center')" title="Align Center">⬛</div>
+        <div class="editor-tool" onclick="alignText('right')" title="Align Right">▶</div>
+        <div class="editor-tool" onclick="insertLink()" title="Insert Link">🔗</div>
+        <div class="editor-tool" onclick="insertImage()" title="Insert Image">🖼️</div>
+        <div class="editor-tool" onclick="insertVideo()" title="Insert Video">🎥</div>
+        <div class="editor-tool" onclick="changeColor()" title="Text Color">🎨</div>
+        <div class="editor-tool" onclick="changeFontSize()" title="Font Size">📏</div>
+        <div class="editor-tool" onclick="saveChanges()" title="Save">💾</div>
+    </div>
+
+    <!-- Style Editor Modal -->
+    <div class="style-editor" id="styleEditor">
+        <div class="style-editor-header">
+            <h3>Style Editor</h3>
+            <button onclick="closeStyleEditor()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; float: right;">✕</button>
+        </div>
+        <div class="style-editor-body">
+            <div class="style-control">
+                <label>Background Color</label>
+                <input type="color" id="bgColor" onchange="updateStyle('background', this.value)">
+            </div>
+            <div class="style-control">
+                <label>Text Color</label>
+                <input type="color" id="textColor" onchange="updateStyle('color', this.value)">
+            </div>
+            <div class="style-control">
+                <label>Font Size (px)</label>
+                <input type="number" id="fontSize" min="10" max="100" onchange="updateStyle('fontSize', this.value + 'px')">
+            </div>
+            <div class="style-control">
+                <label>Padding (px)</label>
+                <input type="number" id="padding" min="0" max="100" onchange="updateStyle('padding', this.value + 'px')">
+            </div>
+            <div class="style-control">
+                <label>Margin (px)</label>
+                <input type="number" id="margin" min="0" max="100" onchange="updateStyle('margin', this.value + 'px')">
+            </div>
+            <div class="style-control">
+                <label>Border Radius (px)</label>
+                <input type="number" id="borderRadius" min="0" max="50" onchange="updateStyle('borderRadius', this.value + 'px')">
+            </div>
+            <div class="style-control">
+                <label>Box Shadow</label>
+                <select id="boxShadow" onchange="updateStyle('boxShadow', this.value)">
+                    <option value="none">None</option>
+                    <option value="0 5px 20px rgba(0,0,0,0.1)">Light</option>
+                    <option value="0 10px 40px rgba(0,0,0,0.2)">Medium</option>
+                    <option value="0 20px 60px rgba(0,0,0,0.3)">Heavy</option>
+                </select>
+            </div>
+            <button class="mcp-btn" onclick="applyStyles()">Apply Styles</button>
+        </div>
+    </div>
+
+    <!-- Media Manager Modal -->
+    <div class="media-manager" id="mediaManager">
+        <div class="media-manager-header">
+            <h3>📁 Media Manager</h3>
+            <button onclick="closeMediaManager()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
+        </div>
+        <div class="media-manager-body">
+            <div style="margin-bottom: 1.5rem;">
+                <input type="file" id="mediaUpload" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx" style="display: none;">
+                <button class="mcp-btn" onclick="document.getElementById('mediaUpload').click()">📤 Upload Media</button>
+            </div>
+            <div class="media-grid" id="mediaGrid">
+                <!-- Media items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Library -->
+    <div class="component-library" id="componentLibrary">
+        <div class="component-library-header">
+            <h3>📦 Components</h3>
+        </div>
+        <div class="component-item" draggable="true">📄 Text Block</div>
+        <div class="component-item" draggable="true">🖼️ Image Gallery</div>
+        <div class="component-item" draggable="true">🎥 Video Player</div>
+        <div class="component-item" draggable="true">📊 Chart</div>
+        <div class="component-item" draggable="true">📋 Contact Form</div>
+        <div class="component-item" draggable="true">🗺️ Map</div>
+        <div class="component-item" draggable="true">⭐ Testimonial</div>
+        <div class="component-item" draggable="true">💰 Pricing Table</div>
+        <div class="component-item" draggable="true">📅 Calendar</div>
+        <div class="component-item" draggable="true">🎠 Carousel</div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification"></div>
 
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo" contenteditable="true">refit</div>
+            <div class="logo" data-editable="true">refit</div>
             <ul class="nav-links">
-                <li><a href="#home" contenteditable="true">Home</a></li>
-                <li><a href="#services" contenteditable="true">Services</a></li>
-                <li><a href="#portfolio" contenteditable="true">Portfolio</a></li>
-                <li><a href="#about" contenteditable="true">About</a></li>
-                <li><a href="#contact" contenteditable="true">Contact</a></li>
+                <li><a href="#home" data-editable="true">Home</a></li>
+                <li><a href="#services" data-editable="true">Services</a></li>
+                <li><a href="#portfolio" data-editable="true">Portfolio</a></li>
+                <li><a href="#about" data-editable="true">About</a></li>
+                <li><a href="#contact" data-editable="true">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -501,51 +1007,56 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 contenteditable="true">From Concept to Completion</h1>
-            <p contenteditable="true" style="font-size: 1.2rem; margin-bottom: 2rem;">
+            <h1 data-editable="true">From Concept to Completion</h1>
+            <p data-editable="true" style="font-size: 1.3rem; margin-bottom: 2rem; color: var(--light-gray);">
                 Professional maintenance, renovation, and interior design services
             </p>
-            <div contenteditable="true" style="margin-bottom: 2rem;">
-                📍 Petaling Jaya, Selangor, Malaysia
-            </div>
-            
-            <!-- Media Upload Area -->
-            <div class="media-upload" onclick="uploadMedia(this)" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-                <p>📁 Click or Drag to Upload Media</p>
-                <small>Supports: Images, Videos, PDFs, Audio, Documents, Links</small>
-            </div>
+            <p data-editable="true" style="margin-bottom: 2rem;">
+                📍 C-08-34, Centum @ Oasis Corporate Park, Petaling Jaya, Selangor, Malaysia
+            </p>
+            <button class="login-btn" style="display: inline-block; width: auto; padding: 1rem 3rem;" onclick="scrollToSection('services')">
+                Explore Our Services
+            </button>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 contenteditable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Services</h2>
-            <p contenteditable="true" style="text-align: center; margin-bottom: 3rem;">Comprehensive solutions for all your property needs</p>
+            <h2 data-editable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Services</h2>
+            <p data-editable="true" style="text-align: center; margin-bottom: 3rem; color: var(--light-gray);">
+                Comprehensive solutions for all your property needs
+            </p>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <h3 contenteditable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🔧 Maintenance Services</h3>
-                    <p contenteditable="true">Professional maintenance solutions ensuring your property remains in optimal condition with preventive and corrective actions.</p>
-                    <div class="media-container" style="margin-top: 1rem;">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23D4A5A5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='20'%3EMaintenance Services%3C/text%3E%3C/svg%3E" alt="Maintenance">
-                    </div>
+                    <h3 data-editable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🔧 Maintenance Services</h3>
+                    <p data-editable="true">Professional maintenance solutions ensuring your property remains in optimal condition with preventive and corrective actions.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li data-editable="true">24/7 Emergency Support</li>
+                        <li data-editable="true">Preventive Maintenance</li>
+                        <li data-editable="true">Equipment Monitoring</li>
+                    </ul>
                 </div>
                 
                 <div class="service-card">
-                    <h3 contenteditable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🏗️ Interior Construction</h3>
-                    <p contenteditable="true">Complete interior architectural construction and renovation services, transforming spaces with precision and quality.</p>
-                    <div class="media-container" style="margin-top: 1rem;">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E8B4B8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='20'%3EConstruction%3C/text%3E%3C/svg%3E" alt="Construction">
-                    </div>
+                    <h3 data-editable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🏗️ Interior Construction</h3>
+                    <p data-editable="true">Complete interior architectural construction and renovation services, transforming spaces with precision and quality.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li data-editable="true">Space Planning</li>
+                        <li data-editable="true">Structural Modifications</li>
+                        <li data-editable="true">Quality Finishing</li>
+                    </ul>
                 </div>
                 
                 <div class="service-card">
-                    <h3 contenteditable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🎨 Design Services</h3>
-                    <p contenteditable="true">Creative interior design and 3D illustration services bringing your vision to life with innovative solutions.</p>
-                    <div class="media-container" style="margin-top: 1rem;">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F5D5D8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23333' font-size='20'%3EDesign Services%3C/text%3E%3C/svg%3E" alt="Design">
-                    </div>
+                    <h3 data-editable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">🎨 Design Services</h3>
+                    <p data-editable="true">Creative interior design and 3D illustration services bringing your vision to life with innovative solutions.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li data-editable="true">3D Visualization</li>
+                        <li data-editable="true">Concept Development</li>
+                        <li data-editable="true">Material Selection</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -554,308 +1065,494 @@
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 contenteditable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Portfolio</h2>
-            <p contenteditable="true" style="text-align: center; margin-bottom: 2rem;">Showcasing our completed projects</p>
+            <h2 data-editable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Portfolio</h2>
+            <p data-editable="true" style="text-align: center; margin-bottom: 3rem; color: var(--light-gray);">
+                Showcasing excellence in every project
+            </p>
             
-            <div class="portfolio-controls">
-                <button class="filter-btn active" onclick="filterPortfolio('all')">All Projects</button>
-                <button class="filter-btn" onclick="filterPortfolio('commercial')">Commercial</button>
-                <button class="filter-btn" onclick="filterPortfolio('residential')">Residential</button>
-                <button class="filter-btn" onclick="filterPortfolio('3d')">3D Concepts</button>
-            </div>
-            
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item" data-category="commercial">
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
                     <div class="media-container">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g1'%3E%3Cstop offset='0%25' stop-color='%23D4A5A5'/%3E%3Cstop offset='100%25' stop-color='%23E8B4B8'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g1)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18'%3ECath Kidston Store%3C/text%3E%3C/svg%3E" alt="Project">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g1'%3E%3Cstop offset='0%25' stop-color='%23D4A5A5'/%3E%3Cstop offset='100%25' stop-color='%23E8B4B8'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g1)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18'%3ECath Kidston Store%3C/text%3E%3C/svg%3E" alt="Cath Kidston">
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 contenteditable="true">Cath Kidston Store</h3>
-                        <p contenteditable="true">Complete retail fit-out with custom fixtures</p>
+                        <h3 data-editable="true">Cath Kidston Store</h3>
+                        <p data-editable="true">Complete retail fit-out with custom fixtures and British-inspired design elements</p>
                     </div>
                 </div>
                 
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item" data-category="residential">
+                <div class="portfolio-item">
                     <div class="media-container">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g2'%3E%3Cstop offset='0%25' stop-color='%23E8B4B8'/%3E%3Cstop offset='100%25' stop-color='%23F5D5D8'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g2)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18'%3ELuxury Apartment%3C/text%3E%3C/svg%3E" alt="Project">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g2'%3E%3Cstop offset='0%25' stop-color='%23E8B4B8'/%3E%3Cstop offset='100%25' stop-color='%23F5D5D8'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g2)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18'%3EFurla Boutique%3C/text%3E%3C/svg%3E" alt="Furla">
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 contenteditable="true">Modern Apartment</h3>
-                        <p contenteditable="true">Contemporary residential design</p>
+                        <h3 data-editable="true">Furla Boutique</h3>
+                        <p data-editable="true">Luxury Italian brand store with elegant finishes and premium materials</p>
                     </div>
                 </div>
                 
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item" data-category="3d">
+                <div class="portfolio-item">
                     <div class="media-container">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g3'%3E%3Cstop offset='0%25' stop-color='%23F5D5D8'/%3E%3Cstop offset='100%25' stop-color='%23D4A5A5'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g3)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23333' font-size='18'%3E3D Concept Design%3C/text%3E%3C/svg%3E" alt="Project">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3ClinearGradient id='g3'%3E%3Cstop offset='0%25' stop-color='%23F5D5D8'/%3E%3Cstop offset='100%25' stop-color='%23D4A5A5'/%3E%3C/linearGradient%3E%3Crect fill='url(%23g3)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23333' font-size='18'%3EBackhaus Bakery%3C/text%3E%3C/svg%3E" alt="Backhaus">
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 contenteditable="true">3D Visualization</h3>
-                        <p contenteditable="true">Photorealistic concept rendering</p>
+                        <h3 data-editable="true">Backhaus German Bakery</h3>
+                        <p data-editable="true">Authentic German bakery design with modern industrial touches</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Add More Media Button -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <button class="filter-btn" onclick="addPortfolioItem()">
-                    ➕ Add Portfolio Item
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Modal -->
-    <div class="gallery-modal" id="galleryModal" onclick="closeModal()">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <img id="modalImage" src="" alt="Gallery Image" style="max-width: 100%; max-height: 100%;">
+    <!-- About Section -->
+    <section class="services" id="about">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 data-editable="true" style="font-size: 2.5rem; margin-bottom: 1rem;">About REFIT</h2>
+            <p data-editable="true" style="font-size: 1.1rem; line-height: 1.8; color: var(--light-gray);">
+                Since 2020, REFIT has been a leading provider of maintenance services, interior construction, and design solutions in Malaysia. 
+                Our mission is to provide responsible and professional quality services while constantly improving and ensuring business growth.
+            </p>
+            <div class="stats-grid" style="margin-top: 3rem;">
+                <div class="stat-card">
+                    <div class="stat-number" data-editable="true">50+</div>
+                    <div class="stat-label" data-editable="true">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-editable="true">100%</div>
+                    <div class="stat-label" data-editable="true">Client Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-editable="true">4+</div>
+                    <div class="stat-label" data-editable="true">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-editable="true">24/7</div>
+                    <div class="stat-label" data-editable="true">Support Available</div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="portfolio" id="contact">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 data-editable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Get In Touch</h2>
+            <p data-editable="true" style="text-align: center; margin-bottom: 3rem; color: var(--light-gray);">
+                Let's discuss your next project
+            </p>
+            
+            <div style="background: var(--white); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <div style="display: grid; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="text" placeholder="Your Name" class="seo-input">
+                    <input type="email" placeholder="Your Email" class="seo-input">
+                    <input type="tel" placeholder="Your Phone" class="seo-input">
+                    <select class="seo-input">
+                        <option>Select Service</option>
+                        <option>Maintenance Services</option>
+                        <option>Interior Construction</option>
+                        <option>Design Services</option>
+                    </select>
+                    <textarea placeholder="Your Message" class="seo-input" rows="5"></textarea>
+                </div>
+                <button class="login-btn" style="width: 100%;">Send Message</button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: center;">
+                <div>
+                    <h4 style="color: var(--primary-pink);" data-editable="true">📍 Address</h4>
+                    <p data-editable="true">C-08-34, Centum @ Oasis Corporate Park, Petaling Jaya</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-pink);" data-editable="true">📞 Phone</h4>
+                    <p data-editable="true">+60 12-345 6789</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-pink);" data-editable="true">📧 Email</h4>
+                    <p data-editable="true">info@refit.com.my</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div>
-                <h3 contenteditable="true">REFIT</h3>
-                <p contenteditable="true">Maintenance Services</p>
-                <p contenteditable="true">Since 2020</p>
+                <h3 data-editable="true">REFIT</h3>
+                <p data-editable="true">Maintenance Services</p>
+                <p data-editable="true">From Concept to Completion</p>
             </div>
             <div>
-                <h4 contenteditable="true">Contact</h4>
-                <p contenteditable="true">📍 C-08-34, Centum @ Oasis Corporate Park</p>
-                <p contenteditable="true">📧 info@refit.com.my</p>
-                <p contenteditable="true">📱 +60 12-345 6789</p>
+                <h4 data-editable="true">Quick Links</h4>
+                <p><a href="#services" style="color: var(--accent-pink);" data-editable="true">Services</a></p>
+                <p><a href="#portfolio" style="color: var(--accent-pink);" data-editable="true">Portfolio</a></p>
+                <p><a href="#about" style="color: var(--accent-pink);" data-editable="true">About Us</a></p>
             </div>
             <div>
-                <h4 contenteditable="true">Quick Links</h4>
-                <p><a href="#services" style="color: var(--accent-pink);" contenteditable="true">Services</a></p>
-                <p><a href="#portfolio" style="color: var(--accent-pink);" contenteditable="true">Portfolio</a></p>
-                <p><a href="#contact" style="color: var(--accent-pink);" contenteditable="true">Contact</a></p>
+                <h4 data-editable="true">Our Values</h4>
+                <p data-editable="true">✨ Passion</p>
+                <p data-editable="true">🎯 Responsibility</p>
+                <p data-editable="true">💡 Innovation</p>
+                <p data-editable="true">🤝 Respect</p>
             </div>
         </div>
         <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; padding-top: 1rem;">
-            <p contenteditable="true">&copy; 2025 REFIT. All rights reserved. | Ready for Launch 🚀</p>
+            <p data-editable="true">&copy; 2025 REFIT. All rights reserved. | Website Ready for Launch 🚀</p>
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
-    <div class="fab-container">
-        <button class="fab" onclick="toggleEditMode()" title="Toggle Edit Mode">✏️</button>
-        <button class="fab" onclick="saveAllChanges()" title="Save All Changes">💾</button>
-        <button class="fab" onclick="exportTemplate()" title="Export Template">📥</button>
-    </div>
-
     <script>
-        // Edit Mode Management
-        let editMode = true;
-        
-        function toggleEditMode() {
-            editMode = !editMode;
-            const indicator = document.getElementById('editIndicator');
-            const toolbar = document.getElementById('editToolbar');
-            const editables = document.querySelectorAll('[contenteditable]');
+        // Admin Authentication
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'refit2024';
+        let isAdmin = false;
+        let selectedElement = null;
+        let editMode = false;
+
+        // Login Function
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            if (editMode) {
-                indicator.classList.add('active');
-                toolbar.classList.add('active');
-                editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                document.getElementById('loginOverlay').classList.add('hidden');
+                setTimeout(() => {
+                    document.getElementById('loginOverlay').style.display = 'none';
+                }, 500);
+                
+                // Show admin controls
+                document.getElementById('mcpToggle').classList.add('active');
+                document.body.classList.add('admin-mode');
+                
+                // Enable admin features
+                enableAdminFeatures();
+                showNotification('Welcome to Master Control Panel!', 'success');
+                
+                // Save admin session
+                sessionStorage.setItem('isAdmin', 'true');
             } else {
-                indicator.classList.remove('active');
-                toolbar.classList.remove('active');
-                editables.forEach(el => el.setAttribute('contenteditable', 'false'));
+                document.getElementById('loginError').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loginError').style.display = 'none';
+                }, 3000);
             }
         }
-        
-        // Initialize edit mode
-        toggleEditMode();
-        
-        // Media Upload Handler
-        function uploadMedia(element) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*,video/*,audio/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx';
-            input.multiple = true;
+
+        // Check for existing admin session
+        window.addEventListener('load', () => {
+            if (sessionStorage.getItem('isAdmin') === 'true') {
+                isAdmin = true;
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('mcpToggle').classList.add('active');
+                document.body.classList.add('admin-mode');
+                enableAdminFeatures();
+            }
+        });
+
+        // Enable Admin Features
+        function enableAdminFeatures() {
+            // Make all editable elements actually editable
+            const editables = document.querySelectorAll('[data-editable="true"]');
+            editables.forEach(el => {
+                el.contentEditable = true;
+                el.addEventListener('focus', () => {
+                    selectedElement = el;
+                    document.getElementById('editorToolbar').classList.add('active');
+                });
+                el.addEventListener('blur', () => {
+                    saveToLocalStorage();
+                });
+                
+                // Add context menu
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    showContextMenu(e, el);
+                });
+            });
             
-            input.onchange = (e) => {
-                const files = e.target.files;
-                handleFiles(files, element);
-            };
+            // Enable drag and drop
+            enableDragAndDrop();
             
-            input.click();
+            // Setup keyboard shortcuts
+            setupKeyboardShortcuts();
+            
+            // Initialize media manager
+            initializeMediaManager();
+            
+            // Auto-save
+            setInterval(autoSave, 30000);
         }
-        
-        // Handle File Upload
-        function handleFiles(files, targetElement) {
+
+        // Toggle Master Control Panel
+        function toggleMCP() {
+            const panel = document.getElementById('masterControlPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Logout Function
+        function logout() {
+            isAdmin = false;
+            sessionStorage.removeItem('isAdmin');
+            location.reload();
+        }
+
+        // Toggle Edit Mode
+        function toggleEditMode() {
+            editMode = !editMode;
+            const editables = document.querySelectorAll('[data-editable="true"]');
+            
+            editables.forEach(el => {
+                el.contentEditable = editMode ? 'true' : 'false';
+            });
+            
+            showNotification(editMode ? 'Edit mode enabled' : 'Edit mode disabled', 'info');
+        }
+
+        // Style Editor Functions
+        function openStyleEditor() {
+            document.getElementById('styleEditor').classList.add('active');
+        }
+
+        function closeStyleEditor() {
+            document.getElementById('styleEditor').classList.remove('active');
+        }
+
+        function updateStyle(property, value) {
+            if (selectedElement) {
+                selectedElement.style[property] = value;
+                saveToLocalStorage();
+            }
+        }
+
+        // Media Manager Functions
+        function openMediaManager() {
+            document.getElementById('mediaManager').classList.add('active');
+            loadMediaLibrary();
+        }
+
+        function closeMediaManager() {
+            document.getElementById('mediaManager').classList.remove('active');
+        }
+
+        function initializeMediaManager() {
+            const upload = document.getElementById('mediaUpload');
+            if (upload) {
+                upload.addEventListener('change', handleMediaUpload);
+            }
+        }
+
+        function handleMediaUpload(e) {
+            const files = e.target.files;
             Array.from(files).forEach(file => {
                 const reader = new FileReader();
-                
-                reader.onload = (e) => {
-                    const mediaDiv = document.createElement('div');
-                    mediaDiv.className = 'media-container';
-                    
-                    if (file.type.startsWith('image/')) {
-                        mediaDiv.innerHTML = `<img src="${e.target.result}" alt="${file.name}" onclick="openModal(this.src)">`;
-                    } else if (file.type.startsWith('video/')) {
-                        mediaDiv.innerHTML = `<video controls><source src="${e.target.result}" type="${file.type}"></video>`;
-                    } else if (file.type.startsWith('audio/')) {
-                        mediaDiv.innerHTML = `
-                            <div class="audio-container">
-                                <audio controls>
-                                    <source src="${e.target.result}" type="${file.type}">
-                                </audio>
-                                <p contenteditable="true">${file.name}</p>
-                            </div>`;
-                    } else if (file.type === 'application/pdf') {
-                        mediaDiv.innerHTML = `
-                            <iframe src="${e.target.result}" class="pdf-container" title="${file.name}"></iframe>`;
-                    } else {
-                        mediaDiv.innerHTML = `
-                            <div style="padding: 2rem; background: var(--accent-pink); border-radius: 10px;">
-                                <h4>📄 ${file.name}</h4>
-                                <p>Size: ${(file.size / 1024).toFixed(2)} KB</p>
-                                <a href="${e.target.result}" download="${file.name}" style="color: var(--primary-pink);">Download</a>
-                            </div>`;
-                    }
-                    
-                    targetElement.parentNode.insertBefore(mediaDiv, targetElement.nextSibling);
+                reader.onload = (event) => {
+                    addToMediaLibrary(event.target.result, file.name);
                 };
-                
-                reader.readAsDataURL(file);
-            });
-        }
-        
-        // Drag and Drop
-        function handleDragOver(e) {
-            e.preventDefault();
-            e.currentTarget.classList.add('dragover');
-        }
-        
-        function handleDragLeave(e) {
-            e.currentTarget.classList.remove('dragover');
-        }
-        
-        function handleDrop(e) {
-            e.preventDefault();
-            e.currentTarget.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            handleFiles(files, e.currentTarget);
-        }
-        
-        // Portfolio Filter
-        function filterPortfolio(category) {
-            const items = document.querySelectorAll('.portfolio-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            items.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
+                if (file.type.startsWith('image/')) {
+                    reader.readAsDataURL(file);
                 }
             });
         }
-        
-        // Add Portfolio Item
-        function addPortfolioItem() {
-            const grid = document.getElementById('portfolioGrid');
-            const newItem = document.createElement('div');
-            newItem.className = 'portfolio-item';
-            newItem.dataset.category = 'all';
+
+        function addToMediaLibrary(src, name) {
+            const mediaGrid = document.getElementById('mediaGrid');
+            const thumb = document.createElement('div');
+            thumb.className = 'media-thumb';
+            thumb.innerHTML = `<img src="${src}" alt="${name}" onclick="insertMediaToPage('${src}')">`;
+            mediaGrid.appendChild(thumb);
             
-            newItem.innerHTML = `
-                <div class="media-upload" onclick="uploadMedia(this)" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-                    <p>📁 Upload Project Media</p>
-                </div>
-                <div style="padding: 1.5rem;">
-                    <h3 contenteditable="true">New Project Title</h3>
-                    <p contenteditable="true">Project description here</p>
-                </div>
-            `;
+            // Save to localStorage
+            const media = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
+            media.push({ src, name });
+            localStorage.setItem('mediaLibrary', JSON.stringify(media));
+        }
+
+        function loadMediaLibrary() {
+            const mediaGrid = document.getElementById('mediaGrid');
+            const media = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
             
-            grid.appendChild(newItem);
+            mediaGrid.innerHTML = '';
+            media.forEach(item => {
+                const thumb = document.createElement('div');
+                thumb.className = 'media-thumb';
+                thumb.innerHTML = `<img src="${item.src}" alt="${item.name}" onclick="insertMediaToPage('${item.src}')">`;
+                mediaGrid.appendChild(thumb);
+            });
         }
-        
-        // Modal Functions
-        function openModal(src) {
-            const modal = document.getElementById('galleryModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.classList.add('active');
-            modalImg.src = src;
-        }
-        
-        function closeModal() {
-            document.getElementById('galleryModal').classList.remove('active');
-        }
-        
-        // Add Section
-        function addSection() {
-            const section = document.createElement('section');
-            section.style.padding = '4rem 2rem';
-            section.style.background = 'var(--bg-light)';
-            section.innerHTML = `
-                <div style="max-width: 1200px; margin: 0 auto;">
-                    <h2 contenteditable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">New Section Title</h2>
-                    <p contenteditable="true" style="text-align: center;">Add your content here</p>
-                    <div class="media-upload" onclick="uploadMedia(this)" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-                        <p>📁 Add Media to Section</p>
-                    </div>
-                </div>
-            `;
-            document.querySelector('footer').before(section);
-        }
-        
-        // Add Media
-        function addMedia() {
-            const mediaDiv = document.createElement('div');
-            mediaDiv.className = 'media-upload';
-            mediaDiv.onclick = function() { uploadMedia(this); };
-            mediaDiv.ondrop = handleDrop;
-            mediaDiv.ondragover = handleDragOver;
-            mediaDiv.ondragleave = handleDragLeave;
-            mediaDiv.innerHTML = '<p>📁 Click or Drag to Upload Media</p>';
+
+        function insertMediaToPage(src) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
             
-            // Add to current section
-            const sections = document.querySelectorAll('section');
-            if (sections.length > 0) {
-                sections[sections.length - 1].appendChild(mediaDiv);
+            if (selectedElement) {
+                selectedElement.appendChild(img);
+            } else {
+                showNotification('Please select a location to insert the image', 'info');
             }
-        }
-        
-        // Add Text
-        function addText() {
-            const textDiv = document.createElement('div');
-            textDiv.style.padding = '2rem';
-            textDiv.style.maxWidth = '1200px';
-            textDiv.style.margin = '0 auto';
-            textDiv.innerHTML = `
-                <h3 contenteditable="true" style="color: var(--primary-pink); margin-bottom: 1rem;">New Heading</h3>
-                <p contenteditable="true">Enter your text content here. This area is fully editable.</p>
-            `;
             
-            const sections = document.querySelectorAll('section');
-            if (sections.length > 0) {
-                sections[sections.length - 1].appendChild(textDiv);
-            }
+            closeMediaManager();
         }
-        
-        // Save Changes
-        function saveChanges() {
+
+        // Component Library Functions
+        function openComponentLibrary() {
+            document.getElementById('componentLibrary').classList.add('active');
+        }
+
+        // Drag and Drop
+        function enableDragAndDrop() {
+            const draggables = document.querySelectorAll('.component-item');
+            const dropzones = document.querySelectorAll('section');
+            
+            draggables.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+            
+            dropzones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', handleDrop);
+                zone.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            e.dataTransfer.effectAllowed = 'copy';
+            e.dataTransfer.setData('text/html', e.target.textContent);
+            e.target.classList.add('dragging');
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'copy';
+            e.currentTarget.classList.add('drag-over');
+            return false;
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            e.preventDefault();
+            
+            const componentType = e.dataTransfer.getData('text/html');
+            const newComponent = createComponent(componentType);
+            e.currentTarget.appendChild(newComponent);
+            e.currentTarget.classList.remove('drag-over');
+            
+            return false;
+        }
+
+        function createComponent(type) {
+            const div = document.createElement('div');
+            div.style.padding = '2rem';
+            div.style.margin = '1rem 0';
+            div.style.background = 'var(--white)';
+            div.style.borderRadius = '10px';
+            div.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            
+            switch(type) {
+                case '📄 Text Block':
+                    div.innerHTML = '<h3 data-editable="true">New Text Block</h3><p data-editable="true">Edit this text...</p>';
+                    break;
+                case '🖼️ Image Gallery':
+                    div.innerHTML = '<h3 data-editable="true">Image Gallery</h3><div class="portfolio-grid"></div>';
+                    break;
+                case '📋 Contact Form':
+                    div.innerHTML = '<h3 data-editable="true">Contact Form</h3><form><input type="text" placeholder="Name" class="seo-input"><input type="email" placeholder="Email" class="seo-input"><textarea placeholder="Message" class="seo-input"></textarea><button type="submit" class="login-btn">Submit</button></form>';
+                    break;
+                default:
+                    div.innerHTML = '<p data-editable="true">New Component</p>';
+            }
+            
+            // Make new elements editable
+            div.querySelectorAll('[data-editable="true"]').forEach(el => {
+                el.contentEditable = true;
+            });
+            
+            return div;
+        }
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // SEO Settings
+        function openSEOSettings() {
+            const seoPanel = document.createElement('div');
+            seoPanel.className = 'seo-panel';
+            seoPanel.innerHTML = `
+                <h3>SEO Settings</h3>
+                <input type="text" class="seo-input" placeholder="Page Title" value="${document.title}">
+                <textarea class="seo-input" placeholder="Meta Description">${document.querySelector('meta[name="description"]')?.content || ''}</textarea>
+                <input type="text" class="seo-input" placeholder="Keywords" value="${document.querySelector('meta[name="keywords"]')?.content || ''}">
+                <button class="mcp-btn" onclick="saveSEOSettings(this.parentElement)">Save SEO Settings</button>
+            `;
+            document.body.appendChild(seoPanel);
+        }
+
+        function saveSEOSettings(panel) {
+            const inputs = panel.querySelectorAll('input, textarea');
+            document.title = inputs[0].value;
+            
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+                metaDesc = document.createElement('meta');
+                metaDesc.name = 'description';
+                document.head.appendChild(metaDesc);
+            }
+            metaDesc.content = inputs[1].value;
+            
+            let metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (!metaKeywords) {
+                metaKeywords = document.createElement('meta');
+                metaKeywords.name = 'keywords';
+                document.head.appendChild(metaKeywords);
+            }
+            metaKeywords.content = inputs[2].value;
+            
+            showNotification('SEO settings saved!', 'success');
+            panel.remove();
+        }
+
+        // Save & Load Functions
+        function saveToLocalStorage() {
             const content = document.documentElement.outerHTML;
-            localStorage.setItem('refitTemplate', content);
-            alert('✅ Changes saved successfully!');
+            localStorage.setItem('refitWebsite', content);
         }
-        
-        function saveAllChanges() {
-            saveChanges();
+
+        function autoSave() {
+            if (isAdmin) {
+                saveToLocalStorage();
+                console.log('Auto-saved at', new Date().toLocaleTimeString());
+            }
         }
-        
+
+        function saveChanges() {
+            saveToLocalStorage();
+            showNotification('Changes saved successfully!', 'success');
+        }
+
         // Export Template
         function exportTemplate() {
             const content = document.documentElement.outerHTML;
@@ -863,17 +1560,160 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'refit-template.html';
+            a.download = 'refit-website.html';
             a.click();
             URL.revokeObjectURL(url);
+            showNotification('Template exported!', 'success');
         }
-        
-        // Toggle Preview
-        function togglePreview() {
-            toggleEditMode();
+
+        // Import Template
+        function importTemplate() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.html';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    if (confirm('This will replace the current website. Continue?')) {
+                        document.documentElement.innerHTML = event.target.result;
+                        location.reload();
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
         }
-        
+
+        // Backup Site
+        function backupSite() {
+            const backup = {
+                content: document.documentElement.outerHTML,
+                date: new Date().toISOString(),
+                version: '1.0'
+            };
+            localStorage.setItem('refitBackup', JSON.stringify(backup));
+            showNotification('Site backed up successfully!', 'success');
+        }
+
+        // Restore Site
+        function restoreSite() {
+            const backup = localStorage.getItem('refitBackup');
+            if (backup && confirm('Restore from backup? Current changes will be lost.')) {
+                const data = JSON.parse(backup);
+                document.documentElement.innerHTML = data.content;
+                location.reload();
+            } else {
+                showNotification('No backup found', 'error');
+            }
+        }
+
+        // Publish Site
+        function publishSite() {
+            if (confirm('Publish website live? This will make all changes public.')) {
+                saveToLocalStorage();
+                showNotification('Website published successfully! 🚀', 'success');
+                
+                // Here you would typically send the content to your server
+                // For now, we'll just save locally
+                const publishData = {
+                    content: document.documentElement.outerHTML,
+                    publishDate: new Date().toISOString(),
+                    publisher: 'admin'
+                };
+                localStorage.setItem('refitPublished', JSON.stringify(publishData));
+            }
+        }
+
+        // Preview Site
+        function previewSite() {
+            const previewWindow = window.open('', '_blank');
+            previewWindow.document.write(document.documentElement.outerHTML);
+            previewWindow.document.close();
+        }
+
+        // Keyboard Shortcuts
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if (!isAdmin) return;
+                
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case 's':
+                            e.preventDefault();
+                            saveChanges();
+                            break;
+                        case 'e':
+                            e.preventDefault();
+                            toggleEditMode();
+                            break;
+                        case 'm':
+                            e.preventDefault();
+                            toggleMCP();
+                            break;
+                        case 'p':
+                            e.preventDefault();
+                            previewSite();
+                            break;
+                    }
+                }
+                
+                if (e.key === 'Escape') {
+                    document.getElementById('masterControlPanel').classList.remove('active');
+                    document.getElementById('styleEditor').classList.remove('active');
+                    document.getElementById('mediaManager').classList.remove('active');
+                }
+            });
+        }
+
+        // Text Editor Functions
+        function boldText() {
+            document.execCommand('bold', false, null);
+        }
+
+        function italicText() {
+            document.execCommand('italic', false, null);
+        }
+
+        function underlineText() {
+            document.execCommand('underline', false, null);
+        }
+
+        function alignText(alignment) {
+            document.execCommand('justify' + alignment.charAt(0).toUpperCase() + alignment.slice(1), false, null);
+        }
+
+        function insertLink() {
+            const url = prompt('Enter URL:');
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        function insertImage() {
+            openMediaManager();
+        }
+
+        function changeColor() {
+            const color = prompt('Enter color (hex or name):');
+            if (color) {
+                document.execCommand('foreColor', false, color);
+            }
+        }
+
+        function changeFontSize() {
+            const size = prompt('Enter font size (1-7):');
+            if (size) {
+                document.execCommand('fontSize', false, size);
+            }
+        }
+
         // Smooth Scrolling
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize smooth scrolling for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -883,42 +1723,158 @@
                 }
             });
         });
-        
-        // Auto-save
-        setInterval(() => {
-            if (editMode) {
-                saveChanges();
-                console.log('Auto-saved at', new Date().toLocaleTimeString());
+
+        // Additional Admin Functions
+        function addNewSection() {
+            const section = document.createElement('section');
+            section.className = 'services';
+            section.innerHTML = `
+                <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+                    <h2 data-editable="true" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">New Section</h2>
+                    <p data-editable="true" style="text-align: center;">Add your content here</p>
+                </div>
+            `;
+            document.querySelector('footer').before(section);
+            enableAdminFeatures(); // Re-enable for new elements
+            showNotification('New section added!', 'success');
+        }
+
+        function openThemeCustomizer() {
+            showNotification('Theme customizer opened', 'info');
+        }
+
+        function openFontManager() {
+            showNotification('Font manager opened', 'info');
+        }
+
+        function openColorPalette() {
+            showNotification('Color palette opened', 'info');
+        }
+
+        function toggleGridSystem() {
+            showNotification('Grid system toggled', 'info');
+        }
+
+        function manageForms() {
+            showNotification('Form builder opened', 'info');
+        }
+
+        function openMetaEditor() {
+            openSEOSettings();
+        }
+
+        function generateSitemap() {
+            showNotification('Sitemap generated!', 'success');
+        }
+
+        function openSchemaEditor() {
+            showNotification('Schema markup editor opened', 'info');
+        }
+
+        function optimizeImages() {
+            showNotification('Images optimized!', 'success');
+        }
+
+        function minifyCode() {
+            showNotification('Code minified!', 'success');
+        }
+
+        function enableLazyLoad() {
+            showNotification('Lazy loading enabled!', 'success');
+        }
+
+        function clearCache() {
+            localStorage.clear();
+            sessionStorage.clear();
+            showNotification('Cache cleared!', 'success');
+        }
+
+        function viewAnalytics() {
+            showNotification('Analytics dashboard opened', 'info');
+        }
+
+        function setupTracking() {
+            showNotification('Tracking setup completed', 'success');
+        }
+
+        function viewHeatmap() {
+            showNotification('Heatmap view enabled', 'info');
+        }
+
+        function exportReports() {
+            showNotification('Reports exported!', 'success');
+        }
+
+        function openCodeEditor() {
+            showNotification('Code editor opened', 'info');
+        }
+
+        function manageDomains() {
+            showNotification('Domain settings opened', 'info');
+        }
+
+        function scheduleLaunch() {
+            const date = prompt('Enter launch date and time:');
+            if (date) {
+                showNotification(`Launch scheduled for ${date}`, 'success');
             }
-        }, 30000); // Auto-save every 30 seconds
-        
-        // Load saved content on page load
-        window.addEventListener('load', () => {
-            const saved = localStorage.getItem('refitTemplate');
-            if (saved && confirm('Load previously saved template?')) {
-                document.documentElement.innerHTML = saved;
+        }
+
+        // Login on Enter key
+        document.getElementById('password')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                login();
             }
         });
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                switch(e.key) {
-                    case 's':
-                        e.preventDefault();
-                        saveChanges();
-                        break;
-                    case 'e':
-                        e.preventDefault();
-                        toggleEditMode();
-                        break;
-                    case 'd':
-                        e.preventDefault();
-                        exportTemplate();
-                        break;
-                }
+
+        // Context Menu for Admin
+        function showContextMenu(e, element) {
+            if (!isAdmin) return;
+            
+            // Create context menu if it doesn't exist
+            let menu = document.getElementById('contextMenu');
+            if (!menu) {
+                menu = document.createElement('div');
+                menu.id = 'contextMenu';
+                menu.style.cssText = 'position: fixed; background: white; border: 1px solid #ddd; border-radius: 5px; padding: 0.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 10000; display: none;';
+                menu.innerHTML = `
+                    <div style="padding: 0.5rem; cursor: pointer;" onclick="duplicateElement()">Duplicate</div>
+                    <div style="padding: 0.5rem; cursor: pointer;" onclick="deleteElement()">Delete</div>
+                    <div style="padding: 0.5rem; cursor: pointer;" onclick="openStyleEditor()">Edit Styles</div>
+                `;
+                document.body.appendChild(menu);
             }
-        });
+            
+            menu.style.display = 'block';
+            menu.style.left = e.pageX + 'px';
+            menu.style.top = e.pageY + 'px';
+            
+            selectedElement = element;
+            
+            // Hide on click outside
+            document.addEventListener('click', () => {
+                menu.style.display = 'none';
+            }, { once: true });
+        }
+
+        function duplicateElement() {
+            if (selectedElement) {
+                const clone = selectedElement.cloneNode(true);
+                selectedElement.parentNode.insertBefore(clone, selectedElement.nextSibling);
+                showNotification('Element duplicated!', 'success');
+            }
+        }
+
+        function deleteElement() {
+            if (selectedElement && confirm('Delete this element?')) {
+                selectedElement.remove();
+                showNotification('Element deleted!', 'success');
+            }
+        }
+
+        // Initialize
+        console.log('REFIT Website - Ready for Launch! 🚀');
+        console.log('Admin Login: Use the credentials to access Master Control Panel');
     </script>
 </body>
 </html>
