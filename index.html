@@ -1326,6 +1326,200 @@
             border-radius: var(--border-radius);
         }
 
+        /* File Upload Styles */
+        .file-upload-area {
+            position: relative;
+            border: 2px dashed var(--primary-pink);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.05) 0%, rgba(186, 91, 125, 0.05) 100%);
+        }
+
+        .file-upload-area:hover {
+            border-color: var(--primary-dark-pink);
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
+        }
+
+        .file-upload-area.dragging {
+            border-color: var(--primary-dark-pink);
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.15) 0%, rgba(186, 91, 125, 0.15) 100%);
+            transform: scale(1.02);
+        }
+
+        .file-input-hidden {
+            display: none;
+        }
+
+        .upload-placeholder {
+            pointer-events: none;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-pink);
+        }
+
+        .upload-placeholder h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-placeholder p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .upload-formats {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .format-badge {
+            background: var(--primary-pink);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-xl);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .upload-progress {
+            padding: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-pink);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .uploaded-files-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .uploaded-file-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .uploaded-file-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateX(5px);
+        }
+
+        .file-thumbnail {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            margin-right: 1rem;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .file-thumbnail img,
+        .file-thumbnail video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-size {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .file-remove {
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .file-remove:hover {
+            background: #dc2626;
+            transform: rotate(90deg);
+        }
+
+        .upload-info {
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-pink);
+        }
+
+        .upload-info small {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* File Type Icons */
+        .file-icon-pdf { color: #ef4444; }
+        .file-icon-doc { color: #3b82f6; }
+        .file-icon-excel { color: #10b981; }
+        .file-icon-video { color: #8b5cf6; }
+        .file-icon-image { color: #f59e0b; }
+        .file-icon-default { color: #6b7280; }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -1415,6 +1609,35 @@
 
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* File Upload Mobile Styles */
+            .file-upload-area {
+                padding: 1.5rem;
+            }
+            
+            .upload-icon {
+                font-size: 2.5rem;
+            }
+            
+            .uploaded-file-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .file-thumbnail {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .file-info {
+                margin-bottom: 0.5rem;
+            }
+            
+            .upload-formats {
+                display: none;
             }
         }
 
@@ -1658,9 +1881,59 @@
                         <label class="form-label" for="message">Message *</label>
                         <textarea id="message" class="form-textarea" required placeholder="Tell us about your project..."></textarea>
                     </div>
+                    
+                    <!-- File Upload Section -->
+                    <div class="form-group">
+                        <label class="form-label">Upload Files (Images, Videos, Documents)</label>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <input type="file" id="fileInput" class="file-input-hidden" multiple accept="image/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.txt,.zip,.rar">
+                            <div class="upload-placeholder" id="uploadPlaceholder">
+                                <div class="upload-icon">📁</div>
+                                <h4>Drop files here or click to browse</h4>
+                                <p>Support: Images, Videos, PDF, Word, Excel (Max 25MB per file)</p>
+                                <div class="upload-formats">
+                                    <span class="format-badge">JPG</span>
+                                    <span class="format-badge">PNG</span>
+                                    <span class="format-badge">MP4</span>
+                                    <span class="format-badge">PDF</span>
+                                    <span class="format-badge">DOC</span>
+                                </div>
+                            </div>
+                            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <span class="progress-text" id="progressText">Uploading... 0%</span>
+                            </div>
+                        </div>
+                        <div class="uploaded-files-list" id="uploadedFilesList"></div>
+                        <div class="upload-info">
+                            <small>💡 You can upload multiple files to help us better understand your project requirements</small>
+                        </div>
+                    </div>
+                    
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
             </div>
+            <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-pink); margin-bottom: 1rem;">📍</div>
+                    <h4>Our Office</h4>
+                    <p>C-08-34, Centum @ Oasis Corporate Park<br>Petaling Jaya, Selangor</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-pink); margin-bottom: 1rem;">📞</div>
+                    <h4>Contact Info</h4>
+                    <p>Phone: +60-3-XXXX-XXXX<br>Email: info@refitservices.com</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-pink); margin-bottom: 1rem;">🕒</div>
+                    <h4>Business Hours</h4>
+                    <p>Mon-Fri: 9AM-6PM<br>Sat: 9AM-1PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
             <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                 <div style="text-align: center;">
                     <div style="font-size: 3rem; color: var(--primary-pink); margin-bottom: 1rem;">📍</div>
@@ -2083,11 +2356,237 @@
             event.target.classList.add('active');
         }
 
-        // Contact Form
+        // Contact Form with File Upload
         function handleContactSubmit(event) {
             event.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                files: uploadedFiles
+            };
+            
+            // Show success notification
             showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+            
+            // Log form data (in production, send to server)
+            console.log('Form submitted with data:', formData);
+            console.log('Uploaded files:', uploadedFiles);
+            
+            // In production, send to backend
+            // Example: sendToBackend(formData);
+            
+            // Reset form and files
             document.getElementById('contactForm').reset();
+            uploadedFiles = [];
+            updateUploadedFilesList();
+        }
+
+        // File Upload System
+        let uploadedFiles = [];
+        const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
+        const ALLOWED_TYPES = {
+            'image/jpeg': { icon: '🖼️', class: 'file-icon-image' },
+            'image/jpg': { icon: '🖼️', class: 'file-icon-image' },
+            'image/png': { icon: '🖼️', class: 'file-icon-image' },
+            'image/gif': { icon: '🖼️', class: 'file-icon-image' },
+            'image/webp': { icon: '🖼️', class: 'file-icon-image' },
+            'video/mp4': { icon: '🎥', class: 'file-icon-video' },
+            'video/mpeg': { icon: '🎥', class: 'file-icon-video' },
+            'video/quicktime': { icon: '🎥', class: 'file-icon-video' },
+            'video/webm': { icon: '🎥', class: 'file-icon-video' },
+            'application/pdf': { icon: '📄', class: 'file-icon-pdf' },
+            'application/msword': { icon: '📝', class: 'file-icon-doc' },
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document': { icon: '📝', class: 'file-icon-doc' },
+            'application/vnd.ms-excel': { icon: '📊', class: 'file-icon-excel' },
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': { icon: '📊', class: 'file-icon-excel' },
+            'text/plain': { icon: '📃', class: 'file-icon-default' },
+            'application/zip': { icon: '🗜️', class: 'file-icon-default' },
+            'application/x-rar-compressed': { icon: '🗜️', class: 'file-icon-default' }
+        };
+
+        // Initialize file upload area
+        function initFileUpload() {
+            const fileUploadArea = document.getElementById('fileUploadArea');
+            const fileInput = document.getElementById('fileInput');
+            
+            // Click to upload
+            fileUploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // Drag and drop events
+            fileUploadArea.addEventListener('dragenter', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.add('dragging');
+            });
+            
+            fileUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.add('dragging');
+            });
+            
+            fileUploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.remove('dragging');
+            });
+            
+            fileUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.remove('dragging');
+                handleFiles(e.dataTransfer.files);
+            });
+            
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // Handle file selection
+        function handleFiles(files) {
+            const fileArray = Array.from(files);
+            
+            for (let file of fileArray) {
+                // Validate file size
+                if (file.size > MAX_FILE_SIZE) {
+                    showNotification(`File "${file.name}" is too large. Maximum size is 25MB.`, 'error');
+                    continue;
+                }
+                
+                // Validate file type
+                if (!ALLOWED_TYPES[file.type]) {
+                    showNotification(`File type "${file.type}" is not supported.`, 'error');
+                    continue;
+                }
+                
+                // Process and add file
+                processFile(file);
+            }
+        }
+
+        // Process individual file
+        function processFile(file) {
+            const reader = new FileReader();
+            
+            // Show upload progress
+            showUploadProgress();
+            
+            reader.onload = function(e) {
+                const fileData = {
+                    id: Date.now() + Math.random(),
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    url: e.target.result,
+                    file: file
+                };
+                
+                uploadedFiles.push(fileData);
+                updateUploadedFilesList();
+                hideUploadProgress();
+                showNotification(`File "${file.name}" uploaded successfully!`, 'success');
+            };
+            
+            reader.onerror = function() {
+                hideUploadProgress();
+                showNotification(`Failed to upload "${file.name}"`, 'error');
+            };
+            
+            // Read file based on type
+            if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
+                reader.readAsDataURL(file);
+            } else {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Show upload progress
+        function showUploadProgress() {
+            const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+            const uploadProgress = document.getElementById('uploadProgress');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            uploadPlaceholder.style.display = 'none';
+            uploadProgress.style.display = 'block';
+            
+            // Simulate progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(hideUploadProgress, 500);
+                }
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `Uploading... ${Math.round(progress)}%`;
+            }, 200);
+        }
+
+        // Hide upload progress
+        function hideUploadProgress() {
+            const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+            const uploadProgress = document.getElementById('uploadProgress');
+            
+            uploadPlaceholder.style.display = 'block';
+            uploadProgress.style.display = 'none';
+        }
+
+        // Update uploaded files list
+        function updateUploadedFilesList() {
+            const listContainer = document.getElementById('uploadedFilesList');
+            listContainer.innerHTML = '';
+            
+            uploadedFiles.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'uploaded-file-item';
+                
+                // Get file icon
+                const fileInfo = ALLOWED_TYPES[file.type] || { icon: '📎', class: 'file-icon-default' };
+                
+                // Create thumbnail
+                let thumbnail = '';
+                if (file.type.startsWith('image/')) {
+                    thumbnail = `<div class="file-thumbnail"><img src="${file.url}" alt="${file.name}"></div>`;
+                } else if (file.type.startsWith('video/')) {
+                    thumbnail = `<div class="file-thumbnail"><video src="${file.url}" muted></video></div>`;
+                } else {
+                    thumbnail = `<div class="file-thumbnail ${fileInfo.class}">${fileInfo.icon}</div>`;
+                }
+                
+                fileItem.innerHTML = `
+                    ${thumbnail}
+                    <div class="file-info">
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">${formatFileSize(file.size)}</span>
+                    </div>
+                    <button class="file-remove" onclick="removeFile(${file.id})">×</button>
+                `;
+                
+                listContainer.appendChild(fileItem);
+            });
+        }
+
+        // Remove uploaded file
+        function removeFile(fileId) {
+            uploadedFiles = uploadedFiles.filter(file => file.id !== fileId);
+            updateUploadedFilesList();
+            showNotification('File removed', 'info');
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
         }
 
         // Newsletter
@@ -2190,6 +2689,7 @@
             createParticles();
             initGallery();
             displayPortfolio();
+            initFileUpload(); // Initialize file upload system
             
             // Track page view
             trackEvent('Page', 'View', 'Home');
