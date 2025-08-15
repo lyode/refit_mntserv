@@ -1557,6 +1557,7 @@
     </div>
 
     <script>
+const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
         // ==========================================
         // FIREBASE CONFIGURATION AND INITIALIZATION
         // ==========================================
@@ -1571,6 +1572,106 @@
   messagingSenderId: "578073628488",
   appId: "1:578073628488:web:d83e05828a5003a00f6d7d"
 };
+ // =========================================
+        // REFIT MEDIA CONFIGURATION
+        // =========================================
+        
+        // Preload REFIT images from GitHub
+        const refitImages = {
+            logos: [
+                `${GITHUB_MEDIA}/images/logo/refit-logo-pink.png`,
+                `${GITHUB_MEDIA}/images/logo/refit-logo-white.png`,
+                `${GITHUB_MEDIA}/images/logo/refit-logo.png`
+            ],
+            hero: [
+                `${GITHUB_MEDIA}/images/hero/hero1.jpg`,
+                `${GITHUB_MEDIA}/images/hero/hero2.jpg`,
+                `${GITHUB_MEDIA}/images/hero/hero3.jpg`
+            ],
+            portfolio: [
+                // Commercial Projects
+                `${GITHUB_MEDIA}/images/portfolio/cath-kidston.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/pie-face.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/tusan.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/bungkus.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/railcoffee.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/backhaus.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/furla.jpg`,
+                // Residential Projects
+                `${GITHUB_MEDIA}/images/portfolio/residential1.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/residential2.jpg`,
+                `${GITHUB_MEDIA}/images/portfolio/residential3.jpg`
+            ],
+            services: [
+                `${GITHUB_MEDIA}/images/services/maintenance.jpg`,
+                `${GITHUB_MEDIA}/images/services/construction.jpg`,
+                `${GITHUB_MEDIA}/images/services/design.jpg`
+            ]
+        };
+
+        // Portfolio project details
+        const portfolioProjects = [
+            {
+                title: 'Cath Kidston Store',
+                description: 'Complete retail interior renovation',
+                category: 'Commercial',
+                image: 0  // Index in portfolio array
+            },
+            {
+                title: 'Pie Face Cafe',
+                description: 'Modern cafe design and construction',
+                category: 'Commercial',
+                image: 1
+            },
+            {
+                title: 'Tusan Ice Cream',
+                description: 'Flagship store interior design',
+                category: 'Commercial',
+                image: 2
+            },
+            {
+                title: 'Bungkus Restaurant',
+                description: 'Contemporary dining space',
+                category: 'Commercial',
+                image: 3
+            },
+            {
+                title: 'Rail Coffee',
+                description: 'Industrial cafe concept',
+                category: 'Commercial',
+                image: 4
+            },
+            {
+                title: 'Backhaus Bakery',
+                description: 'German bakery interior',
+                category: 'Commercial',
+                image: 5
+            },
+            {
+                title: 'Furla Boutique',
+                description: 'Luxury retail space',
+                category: 'Commercial',
+                image: 6
+            },
+            {
+                title: 'Modern Residence',
+                description: 'Contemporary home renovation',
+                category: 'Residential',
+                image: 7
+            },
+            {
+                title: 'Luxury Apartment',
+                description: 'High-end residential design',
+                category: 'Residential',
+                image: 8
+            },
+            {
+                title: 'Family Home',
+                description: 'Complete home makeover',
+                category: 'Residential',
+                image: 9
+            }
+        ];
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
@@ -1939,6 +2040,77 @@
             checkMobileMenu();
             initializeMediaManagement();
             updateAllContactDisplay();
+            // Load real images on page load
+        function loadRealImages() {
+            // Set logo
+            const logoImg = document.getElementById('logoImage');
+            if (logoImg && refitImages.logos[0]) {
+                logoImg.src = refitImages.logos[0];
+                logoImg.style.display = 'block';
+                document.getElementById('logoText').style.display = 'none';
+            }
+            
+            // Set hero images
+            const heroSlideshow = document.getElementById('heroSlideshow');
+            if (heroSlideshow) {
+                heroSlideshow.innerHTML = '';
+                refitImages.hero.forEach((img, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
+                    slide.innerHTML = `<img src="${img}" alt="REFIT Interior ${index + 1}">`;
+                    heroSlideshow.appendChild(slide);
+                });
+                
+                // Start slideshow if multiple images
+                if (refitImages.hero.length > 1) {
+                    startSlideshow('hero', 5000);
+                }
+            }
+            
+            // Load portfolio
+            const portfolioGrid = document.getElementById('portfolioGrid');
+            if (portfolioGrid) {
+                portfolioGrid.innerHTML = '';
+                portfolioProjects.forEach(project => {
+                    const item = document.createElement('div');
+                    item.className = 'portfolio-item';
+                    item.style.cssText = `
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: var(--border-radius);
+                        box-shadow: var(--shadow-md);
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                        height: 350px;
+                    `;
+                    item.innerHTML = `
+                        <img src="${refitImages.portfolio[project.image]}" 
+                             alt="${project.title}" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; 
+                                    padding: 1.5rem; 
+                                    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
+                                    color: white;">
+                            <h4 style="margin-bottom: 0.5rem;">${project.title}</h4>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">${project.description}</p>
+                            <span style="font-size: 0.8rem; 
+                                       background: var(--primary-color); 
+                                       padding: 2px 8px; 
+                                       border-radius: 12px;">
+                                ${project.category}
+                            </span>
+                        </div>
+                    `;
+                    item.onmouseover = () => item.style.transform = 'translateY(-5px)';
+                    item.onmouseout = () => item.style.transform = 'translateY(0)';
+                    portfolioGrid.appendChild(item);
+                });
+            }
+        }
+        
+        // Call the function to load real images
+        loadRealImages();
+            
         });
 
         // ==========================================
