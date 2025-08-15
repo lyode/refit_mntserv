@@ -2097,7 +2097,7 @@ async function saveSettings() {
         showNotification('✅ All settings saved successfully!', 'success');
         
         // Animate save button to show success
-        const saveBtn = event.target;
+        const saveBtn = document.querySelector('.btn-primary[onclick*="saveSettings"]');
         const originalHTML = saveBtn.innerHTML;
         saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
         saveBtn.style.background = 'linear-gradient(135deg, #51cf66, #37b24d)';
