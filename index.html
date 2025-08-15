@@ -2390,58 +2390,151 @@ async function resetSettings() {
             document.getElementById('tiktokLink').href = siteConfig.contact.tiktok;
         }
 
-        function loadHeroSlideshow() {
+        // 1. SIMPLIFIED MEDIA LOADING - No GitHub API needed for public repos!
+function loadHeroSlideshow() {
     const slideshow = document.getElementById('heroSlideshow');
+    if (!slideshow) return;
+    
+    // Your actual images from GitHub
+    const heroImages = [
+        'https://raw.githubusercontent.com/lyode/refit-media/main/media/hero/hero1.jpg',
+        'https://raw.githubusercontent.com/lyode/refit-media/main/media/hero/hero2.jpg',
+        'https://raw.githubusercontent.com/lyode/refit-media/main/media/hero/hero3.jpg',
+        'https://raw.githubusercontent.com/lyode/refit-media/main/media/hero/hero4.jpg',
+        'https://raw.githubusercontent.com/lyode/refit-media/main/media/hero/hero5.jpg'
+    ];
+    
     slideshow.innerHTML = '';
     
-    siteConfig.media.heroImages.forEach((img, index) => {
+    heroImages.forEach((imgUrl, index) => {
         const slide = document.createElement('div');
         slide.className = 'hero-slide';
         if (index === 0) slide.classList.add('active');
         
-        const imgEl = document.createElement('img');
-        // Use raw GitHub URL instead of GitHub Pages
-        imgEl.src = `https://raw.githubusercontent.com/${githubConfig.username}/${githubConfig.repo}/main/media/hero/${img}`;
-        imgEl.alt = `REFIT Interior ${index + 1}`;
-        imgEl.onerror = () => {
-            console.error('Failed to load image:', img);
-            imgEl.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="500"%3E%3Crect fill="%23f0f0f0" width="800" height="500"/%3E%3Ctext fill="%23999" font-family="sans-serif" font-size="24" text-anchor="middle" x="400" y="250"%3EREFIT Interior%3C/text%3E%3C/svg%3E';
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.alt = `REFIT Interior ${index + 1}`;
+        img.onerror = function() {
+            console.log('Failed to load:', imgUrl);
+            this.src = 'https://via.placeholder.com/800x500/E8A0BF/ffffff?text=REFIT+Interior';
         };
         
-        slide.appendChild(imgEl);
+        slide.appendChild(img);
         slideshow.appendChild(slide);
     });
     
-    if (siteConfig.media.heroImages.length > 1) {
+    // Start slideshow if more than one image
+    if (heroImages.length > 1) {
         startSlideshow();
     }
 }
-        function startSlideshow() {
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.hero-slide');
-            
-            setInterval(() => {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }, 5000);
-        }
 
-        function loadServices() {
-            const container = document.getElementById('servicesContainer');
-            container.innerHTML = '';
-            
-            siteConfig.media.services.forEach(service => {
-                const card = document.createElement('div');
-                card.className = 'service-card';
-                card.innerHTML = `
-                    <div class="service-icon">${service.icon}</div>
-                    <h3>${service.title}</h3>
-                    <p>${service.description}</p>
-                `;
-                container.appendChild(card);
-            });
+// 2. LOAD PORTFOLIO DIRECTLY
+function loadPortfolio() {
+    const grid = document.getElementById('portfolioGrid');
+    if (!grid) return;
+    
+    // Your actual portfolio images
+    const portfolioItems = [
+        {
+            img: 'https://raw.githubusercontent.com/lyode/refit-media/main/media/portfolio/commercial/cath-kidston.jpg',
+            title: 'Cath Kidston Store',
+            description: 'Complete retail interior renovation',
+            category: 'Commercial'
+        },
+        {
+            img: 'https://raw.githubusercontent.com/lyode/refit-media/main/media/portfolio/commercial/pie-face.jpg',
+            title: 'Pie Face Cafe',
+            description: 'Modern cafe design and construction',
+            category: 'Commercial'
+        },
+        {
+            img: 'https://raw.githubusercontent.com/lyode/refit-media/main/media/portfolio/commercial/tusan.jpg',
+            title: 'Tusan Ice Cream',
+            description: 'Flagship store interior design',
+            category: 'Commercial'
+        },
+        {
+            img: 'https://raw.githubusercontent.com/lyode/refit-media/main/media/portfolio/residential/residential1.jpg',
+            title: 'Modern Residence',
+            description: 'Contemporary home renovation',
+            category: 'Residential'
         }
+    ];
+    
+    grid.innerHTML = '';
+    
+    portfolioItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'portfolio-item';
+        div.innerHTML = `
+            <img src="${item.img}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x350/E8A0BF/ffffff?text=${item.title}'">
+            <div class="portfolio-overlay">
+                <h4>${item.title}</h4>
+                <p>${item.description}</p>
+                <span style="background: var(--primary-color); padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">
+                    ${item.category}
+                </span>
+            </div>
+        `;
+        grid.appendChild(div);
+    });
+}
+
+// 3. SIMPLIFIED INIT FUNCTION
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Loading REFIT Interior media...');
+    
+    // Load logo directly
+    const logoImg = document.getElementById('logoImage');
+    if (logoImg) {
+        logoImg.src = 'https://raw.githubusercontent.com/lyode/refit-media/main/media/logos/refit-logo-pink.png';
+        logoImg.onerror = function() {
+            console.log('Logo failed to load, showing text instead');
+            this.style.display = 'none';
+            document.getElementById('logoText').style.display = 'block';
+        };
+    }
+    
+    // Load hero slideshow
+    loadHeroSlideshow();
+    
+    // Load services
+    loadServices();
+    
+    // Load portfolio
+    loadPortfolio();
+    
+    // Setup other UI elements
+    setupSmoothScrolling();
+    checkMobileMenu();
+    
+    console.log('✅ Media loading complete!');
+});
+
+// Keep your existing services function
+function loadServices() {
+    const container = document.getElementById('servicesContainer');
+    if (!container) return;
+    
+    const services = [
+        { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties' },
+        { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services' },
+        { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions' }
+    ];
+    
+    container.innerHTML = '';
+    services.forEach(service => {
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.innerHTML = `
+            <div class="service-icon">${service.icon}</div>
+            <h3>${service.title}</h3>
+            <p>${service.description}</p>
+        `;
+        container.appendChild(card);
+    });
+}
 
         function loadPortfolio() {
             const grid = document.getElementById('portfolioGrid');
