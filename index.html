@@ -2025,139 +2025,128 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             }, 500);
         }
 
-        // ==========================================
-        // INITIALIZE APPLICATION
-        // ==========================================
+       // =========================================
+    // INITIALIZE APPLICATION
+    // =========================================
 
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Load configuration from Firestore
-            await loadSiteConfig();
-            
-            // Initialize other components
-            loadServices();
-            loadPortfolio();
-            setupSmoothScrolling();
-            checkMobileMenu();
-            initializeMediaManagement();
-            updateAllContactDisplay();
-            loadRealImages()
-            // Load real images on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Load configuration from Firestore
+        await loadSiteConfig();
+        
+        // Initialize other components
+        loadServices();
+        loadPortfolio();
+        setupSmoothScrolling();
+        checkMobileMenu();
+        initializeMediaManagement();
+        updateAllContactDisplay();
+        
+        // Load real images on page load
         function loadRealImages() {
             // Set logo
             const logoImg = document.getElementById('logoImage');
-            if (logoImg && refitImages.logos[0]) {
+            if (logoImg && refitImages && refitImages.logos && refitImages.logos[0]) {
                 logoImg.src = refitImages.logos[0];
                 logoImg.style.display = 'block';
-                document.getElementById('logoText').style.display = 'none';
+                const logoText = document.getElementById('logoText');
+                if (logoText) {
+                    logoText.style.display = 'none';
+                }
             }
             
             // Set hero images
             const heroSlideshow = document.getElementById('heroSlideshow');
-            if (heroSlideshow) {
+            if (heroSlideshow && refitImages && refitImages.hero) {
                 heroSlideshow.innerHTML = '';
-                refitImages.hero.forEach((img, index) => {
+                refitImages.hero.forEach(function(img, index) {
                     const slide = document.createElement('div');
-                    slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
-                    slide.innerHTML = `<img src="${img}" alt="REFIT Interior ${index + 1}">`;
+                    slide.className = 'hero-slide';
+                    if (index === 0) {
+                        slide.className += ' active';
+                    }
+                    const imgElement = document.createElement('img');
+                    imgElement.src = img;
+                    imgElement.alt = 'REFIT Interior ' + (index + 1);
+                    slide.appendChild(imgElement);
                     heroSlideshow.appendChild(slide);
-                    });
-            
-            // Start slideshow if multiple images
-            if (refitImages.hero.length > 1) {
-                startSlideshow('hero', 5000);
-            }
-        }
-        
-        // Load portfolio
-        const portfolioGrid = document.getElementById('portfolioGrid');
-        if (portfolioGrid) {
-            portfolioGrid.innerHTML = '';
-            portfolioProjects.forEach(project => {
-                const item = document.createElement('div');
-                item.className = 'portfolio-item';
-                item.style.cssText = `
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: var(--border-radius);
-                    box-shadow: var(--shadow-md);
-                    cursor: pointer;
-                    transition: transform 0.3s ease;
-                    height: 350px;
-                `;
-                item.innerHTML = `
-                    <img src="${refitImages.portfolio[project.image]}" 
-                         alt="${project.title}" 
-                         style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; 
-                                padding: 1.5rem; 
-                                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
-                                color: white;">
-                        <h4 style="margin-bottom: 0.5rem;">${project.title}</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">${project.description}</p>
-                        <span style="font-size: 0.8rem; 
-                                   background: var(--primary-color); 
-                                   padding: 2px 8px; 
-                                   border-radius: 12px;">
-                            ${project.category}
-                        </span>
-                    </div>
-                `;
-                item.onmouseover = () => item.style.transform = 'translateY(-5px)';
-                item.onmouseout = () => item.style.transform = 'translateY(0)';
-                portfolioGrid.appendChild(item);
-                    });
-        } 
-        } 
+                });
+                
                 // Start slideshow if multiple images
                 if (refitImages.hero.length > 1) {
                     startSlideshow('hero', 5000);
                 }
-
-        // Load portfolio
+            }
+            
+            // Load portfolio
             const portfolioGrid = document.getElementById('portfolioGrid');
-            if (portfolioGrid) {
+            if (portfolioGrid && portfolioProjects && refitImages && refitImages.portfolio) {
                 portfolioGrid.innerHTML = '';
-                portfolioProjects.forEach(project => {
+                portfolioProjects.forEach(function(project) {
                     const item = document.createElement('div');
                     item.className = 'portfolio-item';
-                    item.style.cssText = `
-                        position: relative;
-                        overflow: hidden;
-                        border-radius: var(--border-radius);
-                        box-shadow: var(--shadow-md);
-                        cursor: pointer;
-                        transition: transform 0.3s ease;
-                        height: 350px;
-                    `;
-                    item.innerHTML = `
-                        <img src="${refitImages.portfolio[project.image]}" 
-                             alt="${project.title}" 
-                             style="width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; bottom: 0; left: 0; right: 0; 
-                                    padding: 1.5rem; 
-                                    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
-                                    color: white;">
-                            <h4 style="margin-bottom: 0.5rem;">${project.title}</h4>
-                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">${project.description}</p>
-                            <span style="font-size: 0.8rem; 
-                                       background: var(--primary-color); 
-                                       padding: 2px 8px; 
-                                       border-radius: 12px;">
-                                ${project.category}
-                            </span>
-                        </div>
-                    `;
-                    item.onmouseover = () => item.style.transform = 'translateY(-5px)';
-                    item.onmouseout = () => item.style.transform = 'translateY(0)';
+                    item.style.position = 'relative';
+                    item.style.overflow = 'hidden';
+                    item.style.borderRadius = 'var(--border-radius)';
+                    item.style.boxShadow = 'var(--shadow-md)';
+                    item.style.cursor = 'pointer';
+                    item.style.transition = 'transform 0.3s ease';
+                    item.style.height = '350px';
+                    
+                    const img = document.createElement('img');
+                    img.src = refitImages.portfolio[project.image];
+                    img.alt = project.title;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'absolute';
+                    overlay.style.bottom = '0';
+                    overlay.style.left = '0';
+                    overlay.style.right = '0';
+                    overlay.style.padding = '1.5rem';
+                    overlay.style.background = 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)';
+                    overlay.style.color = 'white';
+                    
+                    const title = document.createElement('h4');
+                    title.style.marginBottom = '0.5rem';
+                    title.textContent = project.title;
+                    
+                    const description = document.createElement('p');
+                    description.style.fontSize = '0.9rem';
+                    description.style.opacity = '0.9';
+                    description.style.marginBottom = '0.5rem';
+                    description.textContent = project.description;
+                    
+                    const category = document.createElement('span');
+                    category.style.fontSize = '0.8rem';
+                    category.style.background = 'var(--primary-color)';
+                    category.style.padding = '2px 8px';
+                    category.style.borderRadius = '12px';
+                    category.textContent = project.category;
+                    
+                    overlay.appendChild(title);
+                    overlay.appendChild(description);
+                    overlay.appendChild(category);
+                    
+                    item.appendChild(img);
+                    item.appendChild(overlay);
+                    
+                    item.onmouseover = function() {
+                        item.style.transform = 'translateY(-5px)';
+                    };
+                    item.onmouseout = function() {
+                        item.style.transform = 'translateY(0)';
+                    };
+                    
                     portfolioGrid.appendChild(item);
-                }); 
+                });
             }
         }
         
         // Call the function to load real images
         loadRealImages();
-            
-        });
+    });
 
         // ==========================================
         // ORIGINAL FUNCTIONS (Modified for Firebase)
