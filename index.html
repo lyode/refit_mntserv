@@ -2105,18 +2105,15 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
                 item.onmouseover = () => item.style.transform = 'translateY(-5px)';
                 item.onmouseout = () => item.style.transform = 'translateY(0)';
                 portfolioGrid.appendChild(item);
-            });
-        }
-    }
-                });
-                
+                    });
+        } 
+        } 
                 // Start slideshow if multiple images
                 if (refitImages.hero.length > 1) {
                     startSlideshow('hero', 5000);
                 }
-            }
-            
-            // Load portfolio
+
+        // Load portfolio
             const portfolioGrid = document.getElementById('portfolioGrid');
             if (portfolioGrid) {
                 portfolioGrid.innerHTML = '';
