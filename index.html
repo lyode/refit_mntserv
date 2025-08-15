@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://refitinterior.com/">
     <meta property="og:title" content="REFIT Interior - Professional Maintenance & Design Services">
     <meta property="og:description" content="From Concept to Completion - Professional maintenance, renovation & interior design services in Malaysia">
-    <meta property="og:image" content="https://refitinterior.com/images/og-image.jpg">
+    <meta property="og:image" content="https://lyode.github.io/refit-media/images/og-image.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -25,24 +25,23 @@
     <meta property="twitter:description" content="Professional maintenance, renovation & interior design services">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
+    <link rel="icon" type="image/x-icon" href="https://lyode.github.io/refit-media/favicon.ico">
     
     <title>REFIT Interior - Professional Maintenance, Renovation & Interior Design Services Malaysia</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     
     <style>
         :root {
@@ -101,8 +100,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 12000;
@@ -125,39 +125,15 @@
             animation: spin 1s linear infinite;
         }
 
+        .loading-text {
+            margin-top: 20px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        /* Container Sizing */
-        .container-box {
-            width: 100%;
-            height: auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .media-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .media-container img,
-        .media-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .media-container.contain img,
-        .media-container.contain video {
-            object-fit: contain;
         }
 
         /* Header */
@@ -205,26 +181,6 @@
             display: none;
         }
 
-        .logo-slideshow {
-            display: none;
-            width: 200px;
-            height: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .logo-slide.active {
-            opacity: 1;
-        }
-
         .nav-menu {
             display: flex;
             list-style: none;
@@ -256,7 +212,7 @@
             width: 100%;
         }
 
-        /* Admin Button - Reduced Size by 40% */
+        /* Admin Button */
         .admin-btn-container {
             position: fixed;
             top: 100px;
@@ -271,27 +227,22 @@
         .admin-logout-btn {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 4px 8px;
-            border-radius: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
             border: none;
             box-shadow: var(--shadow-md);
             font-weight: 500;
-            font-size: 8px;
+            font-size: 12px;
             transition: all var(--transition-speed) ease;
             display: flex;
             align-items: center;
-            gap: 3px;
-        }
-
-        .admin-login-btn i,
-        .admin-logout-btn i {
-            font-size: 7px;
+            gap: 5px;
         }
 
         .admin-login-btn:hover,
         .admin-logout-btn:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
 
@@ -299,7 +250,7 @@
             background: linear-gradient(135deg, #ff6b6b, #c92a2a);
         }
 
-        /* Master Panel Button - Enhanced */
+        /* Master Panel Button */
         .master-panel-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -314,32 +265,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .master-panel-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .master-panel-btn:hover::before {
-            left: 100%;
         }
 
         .master-panel-btn:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-
-        .master-panel-btn.visible {
-            animation: slideInRight 0.5s ease;
         }
 
         /* Floating Action Buttons */
@@ -394,520 +324,6 @@
             }
         }
 
-        /* Social Media Icons */
-        .social-media {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all var(--transition-speed) ease;
-            font-size: 18px;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-icon.facebook:hover {
-            background: var(--facebook-color);
-            color: white;
-        }
-
-        .social-icon.instagram:hover {
-            background: var(--instagram-color);
-            color: white;
-        }
-
-        .social-icon.tiktok:hover {
-            background: var(--tiktok-color);
-            color: white;
-        }
-
-        /* Save Button - Enhanced */
-        .save-settings-btn {
-            background: linear-gradient(135deg, #51cf66, #37b24d);
-            color: white;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.3);
-            transition: all var(--transition-speed) ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .save-settings-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .save-settings-btn:hover::before {
-            left: 100%;
-        }
-
-        .save-settings-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(81, 207, 102, 0.4);
-        }
-
-        .save-settings-btn i {
-            font-size: 18px;
-            animation: rotate 2s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .save-settings-btn:hover i {
-            animation-duration: 0.5s;
-        }
-
-        /* Master Control Panel - Enhanced */
-        .master-control-panel {
-            position: fixed;
-            top: 0;
-            right: -700px;
-            width: 700px;
-            height: 100vh;
-            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            overflow-y: auto;
-            display: none;
-        }
-
-        .master-control-panel.active {
-            right: 0;
-            display: block;
-        }
-
-        .mcp-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .mcp-header h2 {
-            font-size: 1.8rem;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mcp-header h2::before {
-            content: '⚡';
-            font-size: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        .mcp-close {
-            cursor: pointer;
-            font-size: 2.2rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .mcp-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .mcp-tabs {
-            display: flex;
-            background: white;
-            border-bottom: 3px solid #dee2e6;
-            position: sticky;
-            top: 96px;
-            z-index: 99;
-            overflow-x: auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .mcp-tab {
-            flex: 1;
-            min-width: 110px;
-            padding: 1.2rem 1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            white-space: nowrap;
-            color: #6c757d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .mcp-tab:hover {
-            background: rgba(102, 126, 234, 0.05);
-            color: #667eea;
-        }
-
-        .mcp-tab.active {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.1);
-        }
-
-        .mcp-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .mcp-tab i {
-            font-size: 1rem;
-        }
-
-        .mcp-content {
-            padding: 2rem;
-            background: white;
-        }
-
-        .mcp-section {
-            margin-bottom: 2.5rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-            animation: fadeIn 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mcp-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-        }
-
-        .mcp-section h3 {
-            margin-bottom: 1.5rem;
-            color: #495057;
-            font-size: 1.2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mcp-section h3::before {
-            font-size: 1.3rem;
-        }
-
-        .control-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .control-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-        }
-
-        .control-input {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            transition: all var(--transition-speed) ease;
-            background: white;
-        }
-
-        .control-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .control-select {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            background: white;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .control-select:hover {
-            border-color: #667eea;
-        }
-
-        .control-select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .control-textarea {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            resize: vertical;
-            min-height: 120px;
-            font-family: var(--font-family);
-            transition: all var(--transition-speed) ease;
-            background: white;
-        }
-
-        .control-textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .color-picker-group {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .color-picker-input {
-            width: 70px;
-            height: 45px;
-            border: 3px solid #e9ecef;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .color-picker-input:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            border-color: #667eea;
-        }
-
-        .range-slider-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 0;
-        }
-
-        .range-slider {
-            flex: 1;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(to right, #e9ecef 0%, #e9ecef 100%);
-            outline: none;
-            -webkit-appearance: none;
-            position: relative;
-        }
-
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .range-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
-        }
-
-        .range-value {
-            min-width: 60px;
-            text-align: center;
-            font-weight: 700;
-            color: #667eea;
-            font-size: 0.95rem;
-            padding: 5px 10px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 8px;
-        }
-
-        .upload-zone {
-            border: 3px dashed #667eea;
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            position: relative;
-        }
-
-        .upload-zone:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            border-color: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-
-        .upload-zone.dragging {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            transform: scale(1.02);
-            border-style: solid;
-        }
-
-        .upload-preview {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .upload-preview-item {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-
-        .upload-preview-item img,
-        .upload-preview-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .upload-preview-remove {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .btn {
-            padding: 0.85rem 1.75rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            box-shadow: 0 3px 15px rgba(102, 126, 234, 0.15);
-        }
-
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
-        }
-
         /* Hero Section */
         .hero {
             margin-top: 80px;
@@ -934,7 +350,7 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease var(--animation-delay);
+            animation: fadeInUp 1s ease;
         }
 
         .hero-text .tagline {
@@ -942,14 +358,14 @@
             color: var(--secondary-color);
             font-weight: 600;
             margin-bottom: 2rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease calc(var(--animation-delay) + 0.2s) both;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero-text p {
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease calc(var(--animation-delay) + 0.4s) both;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .hero-media {
@@ -979,8 +395,7 @@
             opacity: 1;
         }
 
-        .hero-slide img,
-        .hero-slide video {
+        .hero-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1013,7 +428,105 @@
             border-radius: 2px;
         }
 
-        /* Contact Section with Social Media */
+        /* Services Grid */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            height: 350px;
+            background: white;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+        }
+
+        .portfolio-overlay h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        /* Contact Section */
         #contact .contact-info {
             display: flex;
             justify-content: center;
@@ -1032,7 +545,7 @@
             font-size: 20px;
         }
 
-        /* Footer with Social Media */
+        /* Footer */
         footer {
             background: var(--text-primary);
             color: white;
@@ -1057,10 +570,17 @@
             color: white;
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
         }
 
         .footer-social .social-icon:hover {
             background: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         /* Modal */
@@ -1107,6 +627,100 @@
             transform: rotate(90deg);
         }
 
+        /* Control Group */
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .control-input {
+            width: 100%;
+            padding: 0.85rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed) ease;
+            background: white;
+        }
+
+        .control-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(232, 160, 191, 0.1);
+        }
+
+        /* Button */
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 5px 20px rgba(232, 160, 191, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232, 160, 191, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            z-index: 11000;
+            animation: slideInRight 0.3s ease;
+            max-width: 300px;
+        }
+
+        .notification.success {
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--primary-color);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -1146,59 +760,8 @@
             }
         }
 
-        /* Notification System */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 11000;
-            animation: slideInRight 0.3s ease;
-            max-width: 300px;
-        }
-
-        .notification.success {
-            border-left: 4px solid #4ecdc4;
-        }
-
-        .notification.error {
-            border-left: 4px solid #ff6b6b;
-        }
-
-        .notification.info {
-            border-left: 4px solid var(--primary-color);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .master-control-panel {
-                width: 100%;
-                right: -100%;
-            }
-
-            .mcp-tabs {
-                overflow-x: auto;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .mcp-tab {
-                min-width: 90px;
-                padding: 1rem 0.8rem;
-                font-size: 0.8rem;
-            }
-
-            .mcp-content {
-                padding: 1rem;
-            }
-
-            .mcp-section {
-                padding: 1.5rem;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1238,41 +801,8 @@
                 transition: all var(--transition-speed) ease;
             }
 
-            .admin-btn-container {
-                top: 90px;
-                right: 10px;
-            }
-
-            .admin-login-btn,
-            .admin-logout-btn {
-                padding: 3px 6px;
-                font-size: 7px;
-            }
-
-            .master-panel-btn {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-
-            .floating-buttons {
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .float-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-
-            .social-media {
-                gap: 10px;
-            }
-
-            .social-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1293,23 +823,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary-color);
         }
-
-        /* Editable Element Indicators */
-        .editable-element {
-            position: relative;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .edit-mode .editable-element {
-            outline: 2px dashed var(--primary-color);
-            outline-offset: 4px;
-            cursor: pointer;
-        }
-
-        .edit-mode .editable-element:hover {
-            outline-color: var(--secondary-color);
-            background: rgba(232, 160, 191, 0.05);
-        }
     </style>
     
     <!-- Google Analytics -->
@@ -1320,75 +833,55 @@
         gtag('js', new Date());
         gtag('config', 'G-F78WGS57C3');
     </script>
-    
-    <!-- FIREBASE SCRIPTS - Add these before closing </head> -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 </head>
 <body>
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
+        <div class="loading-text">Loading REFIT Interior...</div>
     </div>
 
     <!-- Admin Buttons Container -->
     <div class="admin-btn-container" id="adminBtnContainer">
         <button id="adminLoginBtn" class="admin-login-btn" onclick="showLoginModal()">
-            <i class="fas fa-sign-in-alt"></i> Admin Login
+            <i class="fas fa-sign-in-alt"></i> Admin
         </button>
         <button id="adminLogoutBtn" class="admin-logout-btn" style="display: none;" onclick="handleLogout()">
             <i class="fas fa-sign-out-alt"></i> Logout
         </button>
-        <button id="masterPanelToggle" class="master-panel-btn" style="display: none;" onclick="openMasterPanel()">
-            <i class="fas fa-cog"></i> Control Panel
+        <button id="masterPanelToggle" class="master-panel-btn" style="display: none;" onclick="openMediaPanel()">
+            <i class="fas fa-cog"></i> Media Panel
         </button>
     </div>
 
     <!-- Floating Action Buttons -->
     <div class="floating-buttons">
-        <a href="" id="whatsappFloat" target="_blank" class="float-btn whatsapp-btn">
+        <a href="https://wa.me/60123456789" id="whatsappFloat" target="_blank" class="float-btn whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="" id="emailFloat" class="float-btn email-btn">
+        <a href="mailto:info@refitinterior.com" id="emailFloat" class="float-btn email-btn">
             <i class="fas fa-envelope"></i>
         </a>
     </div>
 
     <!-- Header -->
-    <header id="mainHeader" class="editable-element">
+    <header id="mainHeader">
         <nav>
-            <div class="logo-container editable-element" data-element="logo">
+            <div class="logo-container">
                 <span class="logo-text" id="logoText">refit</span>
-                <img class="logo-media" id="logoImage" alt="Logo">
-                <video class="logo-media" id="logoVideo" muted autoplay loop></video>
-                <div class="logo-slideshow" id="logoSlideshow"></div>
+                <img class="logo-media" id="logoImage" alt="REFIT Logo">
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="editable-element" data-element="nav-1">Home</a></li>
-                <li><a href="#about" class="editable-element" data-element="nav-2">About</a></li>
-                <li><a href="#services" class="editable-element" data-element="nav-3">Services</a></li>
-                <li><a href="#portfolio" class="editable-element" data-element="nav-4">Portfolio</a></li>
-                <li><a href="#contact" class="editable-element" data-element="nav-5">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="nav-controls">
-                <div class="social-media">
-                    <a href="" target="_blank" class="social-icon facebook" id="navFacebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" target="_blank" class="social-icon instagram" id="navInstagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" target="_blank" class="social-icon tiktok" id="navTiktok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-                <div class="menu-toggle" onclick="toggleMenu()" style="display: none;">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="menu-toggle" onclick="toggleMenu()" style="display: none;">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
@@ -1397,19 +890,17 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="editable-element" data-element="hero-title">FROM CONCEPT TO COMPLETION</h1>
-                <p class="tagline editable-element" data-element="hero-tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
-                <p class="editable-element" data-element="hero-description">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
+                <h1>FROM CONCEPT TO COMPLETION</h1>
+                <p class="tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
+                <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary editable-element" data-element="hero-btn-1">Get Started</a>
-                    <a href="#portfolio" class="btn btn-secondary editable-element" data-element="hero-btn-2">View Portfolio</a>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
                 </div>
             </div>
-            <div class="hero-media editable-element media-container" data-element="hero-media">
+            <div class="hero-media">
                 <div class="hero-slideshow" id="heroSlideshow">
-                    <div class="hero-slide active">
-                        <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="Hero Image">
-                    </div>
+                    <!-- Hero slides will be loaded from GitHub -->
                 </div>
             </div>
         </div>
@@ -1417,41 +908,42 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title editable-element" data-element="about-title">Our Mission & Vision</h2>
+        <h2 class="section-title">Our Mission & Vision</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <div class="editable-element" data-element="mission-box" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
-                <h3 class="editable-element" data-element="mission-title">Mission</h3>
-                <p class="editable-element" data-element="mission-text">To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Mission</h3>
+                <p>To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
             </div>
-            <div class="editable-element" data-element="vision-box" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
-                <h3 class="editable-element" data-element="vision-title">Vision</h3>
-                <p class="editable-element" data-element="vision-text">To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Vision</h3>
+                <p>To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-        <h2 class="section-title editable-element" data-element="services-title">What We Do</h2>
-        <div class="services-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            <!-- Services will be dynamically added here -->
+        <h2 class="section-title">What We Do</h2>
+        <div class="services-container" id="servicesContainer">
+            <!-- Services will be loaded dynamically -->
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio">
-        <h2 class="section-title editable-element" data-element="portfolio-title">Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            <!-- Portfolio items will be dynamically added here -->
+        <h2 class="section-title">Our Portfolio</h2>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Portfolio items will be loaded from GitHub -->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title editable-element" data-element="contact-title">Get In Touch</h2>
+        <h2 class="section-title">Get In Touch</h2>
         <div style="text-align: center;">
-            <p class="editable-element" data-element="contact-text" style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
-            <p class="editable-element" data-element="contact-address"><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
+            <p><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara,<br>
+               No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
             
             <div class="contact-info">
                 <div class="contact-item">
@@ -1474,23 +966,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-social">
-                <a href="" target="_blank" class="social-icon" id="footerFacebook">
+                <a href="https://facebook.com/refitinterior" target="_blank" class="social-icon">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerInstagram">
+                <a href="https://instagram.com/refitinterior" target="_blank" class="social-icon">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerTiktok">
+                <a href="https://tiktok.com/@refitinterior" target="_blank" class="social-icon">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="" class="social-icon" id="footerEmail">
+                <a href="mailto:info@refitinterior.com" class="social-icon">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerWhatsapp">
+                <a href="https://wa.me/60123456789" target="_blank" class="social-icon">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
-            <p class="editable-element" data-element="footer-text" style="color: white;">&copy; 2024 REFIT Maintenance Services. All rights reserved.</p>
+            <p style="color: white;">&copy; 2024 REFIT Maintenance Services. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1514,304 +1006,238 @@
         </div>
     </div>
 
-    <!-- Master Control Panel (same as original, keeping for brevity) -->
-    <div class="master-control-panel" id="masterControlPanel">
-        <!-- Content remains the same as original -->
-        <div class="mcp-header">
-            <h2>Master Control Panel</h2>
-            <span class="mcp-close" onclick="closeMasterPanel()">&times;</span>
-        </div>
-        
-        <div class="mcp-tabs">
-            <button class="mcp-tab active" onclick="switchTab('text')">
-                <i class="fas fa-font"></i> Text
-            </button>
-            <button class="mcp-tab" onclick="switchTab('design')">
-                <i class="fas fa-palette"></i> Design
-            </button>
-            <button class="mcp-tab" onclick="switchTab('media')">
-                <i class="fas fa-photo-video"></i> Media
-            </button>
-            <button class="mcp-tab" onclick="switchTab('layout')">
-                <i class="fas fa-th-large"></i> Layout
-            </button>
-            <button class="mcp-tab" onclick="switchTab('contact')">
-                <i class="fas fa-address-book"></i> Contact
-            </button>
-            <button class="mcp-tab" onclick="switchTab('animation')">
-                <i class="fas fa-magic"></i> Animation
-            </button>
-            <button class="mcp-tab" onclick="switchTab('advanced')">
-                <i class="fas fa-cogs"></i> Advanced
-            </button>
-        </div>
-
-        <div class="mcp-content">
-            <!-- Save Settings Button -->
-            <button class="save-settings-btn" onclick="saveAllSettings()">
-                <i class="fas fa-save"></i> Save All Settings
-            </button>
-
-            <!-- Tab contents remain the same as original -->
-        </div>
-    </div>
-
     <script>
-const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
         // ==========================================
-        // FIREBASE CONFIGURATION AND INITIALIZATION
+        // GITHUB MEDIA CONFIGURATION
         // ==========================================
         
-        // IMPORTANT: Replace these with your actual Firebase project configuration
-    const firebaseConfig = {
-  apiKey: "AIzaSyBUydcGASk-UsK4u1kCBbQTcw4eGMd6N1s",
-  authDomain: "refit-97e3d.firebaseapp.com",
-  databaseURL: "https://refit-97e3d.firebaseio.com",
-  projectId: "refit-97e3d",
-  storageBucket: "refit-97e3d.firebasestorage.app",
-  messagingSenderId: "578073628488",
-  appId: "1:578073628488:web:d83e05828a5003a00f6d7d"
-};
- // =========================================
-        // REFIT MEDIA CONFIGURATION
-        // =========================================
+        const GITHUB_MEDIA_BASE = 'https://lyode.github.io/refit-media';
         
-        // Preload REFIT images from GitHub
-        const refitImages = {
-            logos: [
-                `${GITHUB_MEDIA}/images/logo/refit-logo-pink.png`,
-                `${GITHUB_MEDIA}/images/logo/refit-logo-white.png`,
-                `${GITHUB_MEDIA}/images/logo/refit-logo.png`
-            ],
-            hero: [
-                `${GITHUB_MEDIA}/images/hero/hero1.jpg`,
-                `${GITHUB_MEDIA}/images/hero/hero2.jpg`,
-                `${GITHUB_MEDIA}/images/hero/hero3.jpg`
-            ],
-            portfolio: [
-                // Commercial Projects
-                `${GITHUB_MEDIA}/images/portfolio/cath-kidston.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/pie-face.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/tusan.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/bungkus.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/railcoffee.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/backhaus.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/furla.jpg`,
-                // Residential Projects
-                `${GITHUB_MEDIA}/images/portfolio/residential1.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/residential2.jpg`,
-                `${GITHUB_MEDIA}/images/portfolio/residential3.jpg`
-            ],
-            services: [
-                `${GITHUB_MEDIA}/images/services/maintenance.jpg`,
-                `${GITHUB_MEDIA}/images/services/construction.jpg`,
-                `${GITHUB_MEDIA}/images/services/design.jpg`
-            ]
+        // GitHub Media Manager
+        const GitHubMedia = {
+            // Media paths configuration
+            paths: {
+                logos: [
+                    `${GITHUB_MEDIA_BASE}/images/logo/refit-logo-pink.png`,
+                    `${GITHUB_MEDIA_BASE}/images/logo/refit-logo-white.png`,
+                    `${GITHUB_MEDIA_BASE}/images/logo/refit-logo.png`
+                ],
+                hero: [
+                    `${GITHUB_MEDIA_BASE}/images/hero/hero1.jpg`,
+                    `${GITHUB_MEDIA_BASE}/images/hero/hero2.jpg`,
+                    `${GITHUB_MEDIA_BASE}/images/hero/hero3.jpg`,
+                    `${GITHUB_MEDIA_BASE}/images/hero/hero4.jpg`,
+                    `${GITHUB_MEDIA_BASE}/images/hero/hero5.jpg`
+                ],
+                portfolio: {
+                    commercial: [
+                        { file: 'cath-kidston.jpg', title: 'Cath Kidston Store', description: 'Complete retail interior renovation' },
+                        { file: 'pie-face.jpg', title: 'Pie Face Cafe', description: 'Modern cafe design and construction' },
+                        { file: 'tusan.jpg', title: 'Tusan Ice Cream', description: 'Flagship store interior design' },
+                        { file: 'bungkus.jpg', title: 'Bungkus Restaurant', description: 'Contemporary dining space' },
+                        { file: 'railcoffee.jpg', title: 'Rail Coffee', description: 'Industrial cafe concept' },
+                        { file: 'backhaus.jpg', title: 'Backhaus Bakery', description: 'German bakery interior' },
+                        { file: 'furla.jpg', title: 'Furla Boutique', description: 'Luxury retail space' },
+                        { file: 'topshop.jpg', title: 'Topshop', description: 'Fashion retail renovation' },
+                        { file: 'topman.jpg', title: 'Topman', description: 'Men\'s fashion store design' }
+                    ],
+                    residential: [
+                        { file: 'residential1.jpg', title: 'Modern Residence', description: 'Contemporary home renovation' },
+                        { file: 'residential2.jpg', title: 'Luxury Apartment', description: 'High-end residential design' },
+                        { file: 'residential3.jpg', title: 'Family Home', description: 'Complete home makeover' },
+                        { file: 'residential4.jpg', title: 'Minimalist Condo', description: 'Scandinavian inspired design' },
+                        { file: 'residential5.jpg', title: 'Executive Suite', description: 'Premium living space' }
+                    ],
+                    maintenance: [
+                        { file: 'maintenance1.jpg', title: 'Commercial Maintenance', description: 'Regular upkeep services' },
+                        { file: 'maintenance2.jpg', title: 'Building Management', description: 'Comprehensive facility care' }
+                    ]
+                },
+                services: [
+                    { file: 'maintenance.jpg', icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties' },
+                    { file: 'construction.jpg', icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services' },
+                    { file: 'design.jpg', icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions' }
+                ]
+            },
+
+            // Load logo from GitHub
+            loadLogo() {
+                const logoImg = document.getElementById('logoImage');
+                const logoText = document.getElementById('logoText');
+                
+                if (logoImg && this.paths.logos[0]) {
+                    logoImg.src = this.paths.logos[0];
+                    logoImg.style.display = 'block';
+                    logoImg.onerror = () => {
+                        console.log('Logo image failed to load, using text fallback');
+                        logoImg.style.display = 'none';
+                        logoText.style.display = 'block';
+                    };
+                    logoText.style.display = 'none';
+                }
+            },
+
+            // Load hero slideshow from GitHub
+            loadHeroSlideshow() {
+                const slideshow = document.getElementById('heroSlideshow');
+                if (!slideshow) return;
+
+                slideshow.innerHTML = '';
+                let loadedCount = 0;
+
+                this.paths.hero.forEach((imgPath, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'hero-slide';
+                    if (index === 0) slide.classList.add('active');
+
+                    const img = new Image();
+                    img.src = imgPath;
+                    img.alt = `REFIT Interior ${index + 1}`;
+                    
+                    img.onload = () => {
+                        loadedCount++;
+                        slide.appendChild(img);
+                        slideshow.appendChild(slide);
+                        
+                        // Start slideshow when all images are loaded
+                        if (loadedCount === this.paths.hero.length && this.paths.hero.length > 1) {
+                            this.startSlideshow('hero', 5000);
+                        }
+                    };
+
+                    img.onerror = () => {
+                        console.error(`Failed to load hero image: ${imgPath}`);
+                    };
+                });
+            },
+
+            // Load portfolio from GitHub
+            loadPortfolio() {
+                const portfolioGrid = document.getElementById('portfolioGrid');
+                if (!portfolioGrid) return;
+
+                portfolioGrid.innerHTML = '';
+
+                // Load all portfolio categories
+                Object.entries(this.paths.portfolio).forEach(([category, projects]) => {
+                    projects.forEach(project => {
+                        const item = document.createElement('div');
+                        item.className = 'portfolio-item';
+
+                        const img = new Image();
+                        img.src = `${GITHUB_MEDIA_BASE}/images/portfolio/${project.file}`;
+                        img.alt = project.title;
+                        
+                        const overlay = document.createElement('div');
+                        overlay.className = 'portfolio-overlay';
+                        overlay.innerHTML = `
+                            <h4>${project.title}</h4>
+                            <p>${project.description}</p>
+                            <span class="portfolio-category">${category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                        `;
+
+                        img.onload = () => {
+                            item.appendChild(img);
+                            item.appendChild(overlay);
+                            portfolioGrid.appendChild(item);
+                        };
+
+                        img.onerror = () => {
+                            console.error(`Failed to load portfolio image: ${project.file}`);
+                        };
+                    });
+                });
+            },
+
+            // Load services from GitHub
+            loadServices() {
+                const servicesContainer = document.getElementById('servicesContainer');
+                if (!servicesContainer) return;
+
+                servicesContainer.innerHTML = '';
+
+                this.paths.services.forEach(service => {
+                    const card = document.createElement('div');
+                    card.className = 'service-card';
+                    card.innerHTML = `
+                        <div class="service-icon">${service.icon}</div>
+                        <h3>${service.title}</h3>
+                        <p>${service.description}</p>
+                    `;
+                    servicesContainer.appendChild(card);
+                });
+            },
+
+            // Start slideshow
+            startSlideshow(id, interval) {
+                let currentSlide = 0;
+                const slides = document.querySelectorAll(`#${id}Slideshow .${id}-slide`);
+                
+                if (slides.length <= 1) return;
+
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, interval);
+            },
+
+            // Preload critical images
+            preloadImages() {
+                const imagesToPreload = [
+                    this.paths.logos[0],
+                    ...this.paths.hero.slice(0, 3) // Preload first 3 hero images
+                ];
+
+                imagesToPreload.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
         };
 
-        // Portfolio project details
-        const portfolioProjects = [
-            {
-                title: 'Cath Kidston Store',
-                description: 'Complete retail interior renovation',
-                category: 'Commercial',
-                image: 0  // Index in portfolio array
-            },
-            {
-                title: 'Pie Face Cafe',
-                description: 'Modern cafe design and construction',
-                category: 'Commercial',
-                image: 1
-            },
-            {
-                title: 'Tusan Ice Cream',
-                description: 'Flagship store interior design',
-                category: 'Commercial',
-                image: 2
-            },
-            {
-                title: 'Bungkus Restaurant',
-                description: 'Contemporary dining space',
-                category: 'Commercial',
-                image: 3
-            },
-            {
-                title: 'Rail Coffee',
-                description: 'Industrial cafe concept',
-                category: 'Commercial',
-                image: 4
-            },
-            {
-                title: 'Backhaus Bakery',
-                description: 'German bakery interior',
-                category: 'Commercial',
-                image: 5
-            },
-            {
-                title: 'Furla Boutique',
-                description: 'Luxury retail space',
-                category: 'Commercial',
-                image: 6
-            },
-            {
-                title: 'Modern Residence',
-                description: 'Contemporary home renovation',
-                category: 'Residential',
-                image: 7
-            },
-            {
-                title: 'Luxury Apartment',
-                description: 'High-end residential design',
-                category: 'Residential',
-                image: 8
-            },
-            {
-                title: 'Family Home',
-                description: 'Complete home makeover',
-                category: 'Residential',
-                image: 9
-            }
-        ];
+        // ==========================================
+        // FIREBASE CONFIGURATION
+        // ==========================================
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBUydcGASk-UsK4u1kCBbQTcw4eGMd6N1s",
+            authDomain: "refit-97e3d.firebaseapp.com",
+            databaseURL: "https://refit-97e3d.firebaseio.com",
+            projectId: "refit-97e3d",
+            storageBucket: "refit-97e3d.firebasestorage.app",
+            messagingSenderId: "578073628488",
+            appId: "1:578073628488:web:d83e05828a5003a00f6d7d"
+        };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-
-        // Firebase services
         const auth = firebase.auth();
         const db = firebase.firestore();
         const storage = firebase.storage();
 
         // ==========================================
-        // GLOBAL CONFIGURATION
-        // ==========================================
-        
-        let siteConfig = {
-            isAuthenticated: false,
-            editMode: false,
-            animations: true,
-            media: {
-                logo: { type: 'text', value: 'refit', files: [], link: '' },
-                hero: { type: 'image', files: [] },
-                portfolio: [],
-                services: []
-            },
-            styles: {
-                primaryColor: '#E8A0BF',
-                secondaryColor: '#BA5B7D',
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 16,
-                borderRadius: 16,
-                animationDuration: 1
-            },
-            contact: {
-                phone: '+60 12-345 6789',
-                whatsapp: '+60 12-345 6789',
-                email: 'info@refitinterior.com',
-                facebook: 'https://facebook.com/refitinterior',
-                instagram: 'https://instagram.com/refitinterior',
-                tiktok: 'https://tiktok.com/@refitinterior'
-            }
-        };
-
-        // ==========================================
-        // FIREBASE HELPER FUNCTIONS
+        // AUTHENTICATION
         // ==========================================
 
-        // Show/Hide Loading Overlay
-        function showLoading() {
-            document.getElementById('loadingOverlay').classList.add('active');
-        }
-
-        function hideLoading() {
-            document.getElementById('loadingOverlay').classList.remove('active');
-        }
-
-        // Load site configuration from Firestore
-        async function loadSiteConfig() {
-            try {
-                showLoading();
-                const docRef = await db.collection('siteConfig').doc('main').get();
-                
-                if (docRef.exists) {
-                    const data = docRef.data();
-                    siteConfig = { ...siteConfig, ...data };
-                    //applyAllSettings();
-                    console.log('Site configuration loaded from Firestore');
-                } else {
-                    // Create initial configuration in Firestore
-                    await saveSiteConfig();
-                    console.log('Initial configuration created in Firestore');
-                }
-            } catch (error) {
-                console.error('Error loading site configuration:', error);
-                showNotification('Error loading configuration', 'error');
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Save site configuration to Firestore
-        async function saveSiteConfig() {
-            try {
-                showLoading();
-                await db.collection('siteConfig').doc('main').set(siteConfig);
-                console.log('Site configuration saved to Firestore');
-                showNotification('✅ Configuration saved successfully!', 'success');
-            } catch (error) {
-                console.error('Error saving site configuration:', error);
-                showNotification('❌ Error saving configuration', 'error');
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Upload file to Firebase Storage
-        async function uploadToStorage(file, path) {
-            try {
-                const storageRef = storage.ref();
-                const fileRef = storageRef.child(`${path}/${Date.now()}_${file.name}`);
-                const snapshot = await fileRef.put(file);
-                const downloadURL = await snapshot.ref.getDownloadURL();
-                return downloadURL;
-            } catch (error) {
-                console.error('Error uploading file:', error);
-                throw error;
-            }
-        }
-
-        // Delete file from Firebase Storage
-        async function deleteFromStorage(url) {
-            try {
-                const fileRef = storage.refFromURL(url);
-                await fileRef.delete();
-                console.log('File deleted from storage');
-            } catch (error) {
-                console.error('Error deleting file:', error);
-            }
-        }
-
-        // ==========================================
-        // AUTHENTICATION WITH FIREBASE
-        // ==========================================
-
-        // Monitor auth state changes
+        // Monitor auth state
         auth.onAuthStateChanged((user) => {
             if (user) {
-                siteConfig.isAuthenticated = true;
                 showAdminControls();
                 console.log('User authenticated:', user.email);
             } else {
-                siteConfig.isAuthenticated = false;
                 hideAdminControls();
-                console.log('User not authenticated');
             }
         });
 
-        // Show login modal
         function showLoginModal() {
             document.getElementById('loginModal').classList.add('active');
         }
 
-        // Handle login with Firebase Auth
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
         async function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -1835,7 +1261,6 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             }
         }
 
-        // Handle logout with Firebase Auth
         async function handleLogout() {
             try {
                 await auth.signOut();
@@ -1846,445 +1271,35 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             }
         }
 
-        // ==========================================
-        // MEDIA UPLOAD WITH FIREBASE STORAGE
-        // ==========================================
-
-        // Handle logo upload to Firebase Storage
-        async function handleLogoUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            for (const file of files) {
-                try {
-                    showLoading();
-                    const url = await uploadToStorage(file, 'logos');
-                    
-                    const mediaItem = {
-                        type: file.type,
-                        url: url,
-                        name: file.name,
-                        id: Date.now() + Math.random()
-                    };
-                    
-                    siteConfig.media.logo.files.push(mediaItem);
-                    renderLogoGallery();
-                    applyLogo();
-                    await saveSiteConfig();
-                } catch (error) {
-                    console.error('Error uploading logo:', error);
-                    showNotification('❌ Error uploading logo', 'error');
-                } finally {
-                    hideLoading();
-                }
-            }
-        }
-
-        // Handle hero media upload to Firebase Storage
-        async function handleHeroMediaUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            for (const file of files) {
-                try {
-                    showLoading();
-                    const url = await uploadToStorage(file, 'hero');
-                    
-                    const mediaItem = {
-                        type: file.type,
-                        url: url,
-                        name: file.name,
-                        id: Date.now() + Math.random()
-                    };
-                    
-                    siteConfig.media.hero.files.push(mediaItem);
-                    renderHeroGallery();
-                    applyHeroMedia();
-                    await saveSiteConfig();
-                } catch (error) {
-                    console.error('Error uploading hero media:', error);
-                    showNotification('❌ Error uploading hero media', 'error');
-                } finally {
-                    hideLoading();
-                }
-            }
-        }
-
-        // Handle portfolio upload to Firebase Storage
-        async function handlePortfolioUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            for (const file of files) {
-                try {
-                    showLoading();
-                    const url = await uploadToStorage(file, 'portfolio');
-                    
-                    const portfolioItem = {
-                        id: Date.now() + Math.random(),
-                        title: 'New Project',
-                        description: 'Project description',
-                        category: 'Interior Design',
-                        media: {
-                            type: file.type,
-                            url: url,
-                            name: file.name
-                        },
-                        link: ''
-                    };
-                    
-                    siteConfig.media.portfolio.push(portfolioItem);
-                    renderPortfolioManager();
-                    updatePortfolioDisplay();
-                    await saveSiteConfig();
-                } catch (error) {
-                    console.error('Error uploading portfolio:', error);
-                    showNotification('❌ Error uploading portfolio', 'error');
-                } finally {
-                    hideLoading();
-                }
-            }
-        }
-
-        // Delete media item with Firebase Storage
-        async function deleteMediaItem(type, index) {
-            if (confirm('Are you sure you want to delete this item?')) {
-                try {
-                    showLoading();
-                    let item;
-                    
-                    if (type === 'logo') {
-                        item = siteConfig.media.logo.files[index];
-                        await deleteFromStorage(item.url);
-                        siteConfig.media.logo.files.splice(index, 1);
-                        renderLogoGallery();
-                        applyLogo();
-                    } else if (type === 'hero') {
-                        item = siteConfig.media.hero.files[index];
-                        await deleteFromStorage(item.url);
-                        siteConfig.media.hero.files.splice(index, 1);
-                        renderHeroGallery();
-                        applyHeroMedia();
-                    }
-                    
-                    await saveSiteConfig();
-                    showNotification('✅ Item deleted', 'success');
-                } catch (error) {
-                    console.error('Error deleting media:', error);
-                    showNotification('❌ Error deleting item', 'error');
-                } finally {
-                    hideLoading();
-                }
-            }
-        }
-
-        // Delete portfolio item with Firebase Storage
-        async function deletePortfolioItem(index) {
-            if (confirm('Are you sure you want to delete this portfolio item?')) {
-                try {
-                    showLoading();
-                    const item = siteConfig.media.portfolio[index];
-                    
-                    if (item.media && item.media.url) {
-                        await deleteFromStorage(item.media.url);
-                    }
-                    
-                    siteConfig.media.portfolio.splice(index, 1);
-                    renderPortfolioManager();
-                    updatePortfolioDisplay();
-                    await saveSiteConfig();
-                    showNotification('✅ Portfolio item deleted', 'success');
-                } catch (error) {
-                    console.error('Error deleting portfolio item:', error);
-                    showNotification('❌ Error deleting portfolio item', 'error');
-                } finally {
-                    hideLoading();
-                }
-            }
-        }
-
-        // ==========================================
-        // SAVE ALL SETTINGS TO FIREBASE
-        // ==========================================
-
-        async function saveAllSettings() {
-            await saveSiteConfig();
-            
-            // Animate save button
-            const saveBtn = document.querySelector('.save-settings-btn');
-            const originalContent = saveBtn.innerHTML;
-            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved Successfully!';
-            saveBtn.style.background = 'linear-gradient(135deg, #51cf66, #37b24d)';
-            
-            setTimeout(() => {
-                saveBtn.innerHTML = originalContent;
-            }, 2000);
-            
-            // Add pulse animation to the panel
-            const panel = document.getElementById('masterControlPanel');
-            panel.style.animation = 'pulse 0.5s ease';
-            setTimeout(() => {
-                panel.style.animation = '';
-            }, 500);
-        }
-
-       // =========================================
-    // INITIALIZE APPLICATION
-    // =========================================
-
-    document.addEventListener('DOMContentLoaded', async function() {
-        // Load configuration from Firestore
-        await loadSiteConfig();
-        
-        // Initialize other components
-        loadServices();
-        loadPortfolio();
-        setupSmoothScrolling();
-        checkMobileMenu();
-        initializeMediaManagement();
-        updateAllContactDisplay();
-        
-        // Load real images on page load
-        function loadRealImages() {
-            // Set logo
-            const logoImg = document.getElementById('logoImage');
-            if (logoImg && refitImages && refitImages.logos && refitImages.logos[0]) {
-                logoImg.src = refitImages.logos[0];
-                logoImg.style.display = 'block';
-                const logoText = document.getElementById('logoText');
-                if (logoText) {
-                    logoText.style.display = 'none';
-                }
-            }
-            
-            // Set hero images
-            const heroSlideshow = document.getElementById('heroSlideshow');
-            if (heroSlideshow && refitImages && refitImages.hero) {
-                heroSlideshow.innerHTML = '';
-                refitImages.hero.forEach(function(img, index) {
-                    const slide = document.createElement('div');
-                    slide.className = 'hero-slide';
-                    if (index === 0) {
-                        slide.className += ' active';
-                    }
-                    const imgElement = document.createElement('img');
-                    imgElement.src = img;
-                    imgElement.alt = 'REFIT Interior ' + (index + 1);
-                    slide.appendChild(imgElement);
-                    heroSlideshow.appendChild(slide);
-                });
-                
-                // Start slideshow if multiple images
-                if (refitImages.hero.length > 1) {
-                    startSlideshow('hero', 5000);
-                }
-            }
-            
-            // Load portfolio
-            const portfolioGrid = document.getElementById('portfolioGrid');
-            if (portfolioGrid && portfolioProjects && refitImages && refitImages.portfolio) {
-                portfolioGrid.innerHTML = '';
-                portfolioProjects.forEach(function(project) {
-                    const item = document.createElement('div');
-                    item.className = 'portfolio-item';
-                    item.style.position = 'relative';
-                    item.style.overflow = 'hidden';
-                    item.style.borderRadius = 'var(--border-radius)';
-                    item.style.boxShadow = 'var(--shadow-md)';
-                    item.style.cursor = 'pointer';
-                    item.style.transition = 'transform 0.3s ease';
-                    item.style.height = '350px';
-                    
-                    const img = document.createElement('img');
-                    img.src = refitImages.portfolio[project.image];
-                    img.alt = project.title;
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.objectFit = 'cover';
-                    
-                    const overlay = document.createElement('div');
-                    overlay.style.position = 'absolute';
-                    overlay.style.bottom = '0';
-                    overlay.style.left = '0';
-                    overlay.style.right = '0';
-                    overlay.style.padding = '1.5rem';
-                    overlay.style.background = 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)';
-                    overlay.style.color = 'white';
-                    
-                    const title = document.createElement('h4');
-                    title.style.marginBottom = '0.5rem';
-                    title.textContent = project.title;
-                    
-                    const description = document.createElement('p');
-                    description.style.fontSize = '0.9rem';
-                    description.style.opacity = '0.9';
-                    description.style.marginBottom = '0.5rem';
-                    description.textContent = project.description;
-                    
-                    const category = document.createElement('span');
-                    category.style.fontSize = '0.8rem';
-                    category.style.background = 'var(--primary-color)';
-                    category.style.padding = '2px 8px';
-                    category.style.borderRadius = '12px';
-                    category.textContent = project.category;
-                    
-                    overlay.appendChild(title);
-                    overlay.appendChild(description);
-                    overlay.appendChild(category);
-                    
-                    item.appendChild(img);
-                    item.appendChild(overlay);
-                    
-                    item.onmouseover = function() {
-                        item.style.transform = 'translateY(-5px)';
-                    };
-                    item.onmouseout = function() {
-                        item.style.transform = 'translateY(0)';
-                    };
-                    
-                    portfolioGrid.appendChild(item);
-                });
-            }
-        }
-        
-        // Call the function to load real images
-        loadRealImages();
-    });
-
-        // ==========================================
-        // ORIGINAL FUNCTIONS (Modified for Firebase)
-        // ==========================================
-
-        // Admin Controls
         function showAdminControls() {
             document.getElementById('adminLoginBtn').style.display = 'none';
             document.getElementById('adminLogoutBtn').style.display = 'flex';
             document.getElementById('masterPanelToggle').style.display = 'flex';
-            initializeEditableElements();
         }
 
         function hideAdminControls() {
             document.getElementById('adminLoginBtn').style.display = 'flex';
             document.getElementById('adminLogoutBtn').style.display = 'none';
             document.getElementById('masterPanelToggle').style.display = 'none';
-            closeMasterPanel();
-            disableEditableElements();
         }
 
-        // Initialize Editable Elements
-        function initializeEditableElements() {
-            if (!siteConfig.isAuthenticated) return;
-            
-            document.querySelectorAll('.editable-element').forEach(element => {
-                element.style.cursor = 'pointer';
-                element.title = 'Click to edit';
-                
-                element.addEventListener('dblclick', function(e) {
-                    if (!siteConfig.isAuthenticated) return;
-                    e.preventDefault();
-                    e.stopPropagation();
-                    makeElementEditable(this);
-                });
-            });
+        function openMediaPanel() {
+            // You can implement a media management panel here
+            showNotification('Media panel coming soon!', 'info');
         }
 
-        function disableEditableElements() {
-            document.querySelectorAll('.editable-element').forEach(element => {
-                element.style.cursor = 'default';
-                element.title = '';
-                element.contentEditable = false;
-            });
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
         }
 
-        function makeElementEditable(element) {
-            element.contentEditable = true;
-            element.focus();
-            
-            const range = document.createRange();
-            range.selectNodeContents(element);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            
-            element.addEventListener('blur', async function() {
-                this.contentEditable = false;
-                await saveElementContent(this);
-            });
-            
-            element.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    this.blur();
-                }
-            });
-        }
-
-        async function saveElementContent(element) {
-            const elementId = element.getAttribute('data-element');
-            if (elementId) {
-                // Save to Firestore
-                try {
-                    await db.collection('content').doc(elementId).set({
-                        content: element.innerHTML,
-                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                    showNotification('✅ Content saved', 'success');
-                } catch (error) {
-                    console.error('Error saving content:', error);
-                    showNotification('❌ Error saving content', 'error');
-                }
-            }
-        }
-
-        // Master Panel Controls
-        function openMasterPanel() {
-            if (!siteConfig.isAuthenticated) return;
-            document.getElementById('masterControlPanel').classList.add('active');
-            loadMediaGalleries();
-            updateAllContactDisplay();
-        }
-
-        function closeMasterPanel() {
-            document.getElementById('masterControlPanel').classList.remove('active');
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.style.display = 'none';
-            });
-            
-            document.querySelectorAll('.mcp-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            document.getElementById(tabName + '-tab').style.display = 'block';
-            event.target.classList.add('active');
-            
-            if (tabName === 'media') {
-                loadMediaGalleries();
-            } else if (tabName === 'contact') {
-                updateAllContactDisplay();
-            }
-        }
-
-        // Media Management
-        function initializeMediaManagement() {
-            if (!siteConfig.media.services || siteConfig.media.services.length === 0) {
-                siteConfig.media.services = [
-                    { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties.' },
-                    { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services.' },
-                    { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions.' }
-                ];
-            }
-        }
-
-        // All other original functions remain the same...
-        // (Include all the remaining functions from your original code)
-
-        // Utility Functions
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+        function hideLoading() {
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.remove('active');
+            }, 500);
         }
 
         function showNotification(message, type = 'info') {
@@ -2294,11 +1309,27 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.3s ease';
+                notification.style.animation = 'slideOutRight 0.3s ease forwards';
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
 
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Check if mobile menu is needed
+        function checkMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (window.innerWidth <= 768) {
+                menuToggle.style.display = 'flex';
+            } else {
+                menuToggle.style.display = 'none';
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        }
+
+        // Smooth scrolling for anchor links
         function setupSmoothScrolling() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -2314,42 +1345,52 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             });
         }
 
-        function checkMobileMenu() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (window.innerWidth <= 768) {
-                menuToggle.style.display = 'flex';
-            } else {
-                menuToggle.style.display = 'none';
-            }
-        }
+        // ==========================================
+        // INITIALIZE APPLICATION
+        // ==========================================
 
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Show loading
+            showLoading();
+
+            // Preload critical images
+            GitHubMedia.preloadImages();
+
+            // Load all media from GitHub
+            GitHubMedia.loadLogo();
+            GitHubMedia.loadHeroSlideshow();
+            GitHubMedia.loadServices();
+            GitHubMedia.loadPortfolio();
+
+            // Setup UI interactions
+            setupSmoothScrolling();
+            checkMobileMenu();
+
+            // Hide loading after content loads
+            hideLoading();
+
+            // Log successful initialization
+            console.log('REFIT Interior website initialized successfully');
+            console.log('Media loaded from:', GITHUB_MEDIA_BASE);
+        });
+
+        // Handle window resize
         window.addEventListener('resize', checkMobileMenu);
 
-        // Include all other original functions here...
-        // (Copy all remaining functions from your original script)
-
-        function loadServices() {
-            updateServicesDisplay();
-        }
-
-        function loadPortfolio() {
-            updatePortfolioDisplay();
-        }
-
-        // Update functions remain the same but save to Firebase
-        async function updateContactInfo(type, value) {
-            siteConfig.contact[type] = value;
-            // Update display logic remains the same
-            await saveSiteConfig();
-        }
-
-        async function updateSocialMedia(platform, url) {
-            siteConfig.contact[platform] = url;
-            // Update display logic remains the same
-            await saveSiteConfig();
-        }
-
-        // Include all remaining functions...
+        // Handle scroll effects
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.getElementById('mainHeader');
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = 'var(--shadow-lg)';
+            } else {
+                header.style.boxShadow = 'var(--shadow-md)';
+            }
+            
+            lastScroll = currentScroll;
+        });
     </script>
 </body>
 </html>
