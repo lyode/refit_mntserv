@@ -1734,7 +1734,7 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
                 if (docRef.exists) {
                     const data = docRef.data();
                     siteConfig = { ...siteConfig, ...data };
-                    applyAllSettings();
+                    //applyAllSettings();
                     console.log('Site configuration loaded from Firestore');
                 } else {
                     // Create initial configuration in Firestore
