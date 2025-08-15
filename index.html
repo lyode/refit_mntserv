@@ -2040,6 +2040,7 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
             checkMobileMenu();
             initializeMediaManagement();
             updateAllContactDisplay();
+            loadRealImages()
             // Load real images on page load
         function loadRealImages() {
             // Set logo
@@ -2059,6 +2060,54 @@ const GITHUB_MEDIA = 'https://lyode.github.io/refit-media';
                     slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
                     slide.innerHTML = `<img src="${img}" alt="REFIT Interior ${index + 1}">`;
                     heroSlideshow.appendChild(slide);
+                    });
+            
+            // Start slideshow if multiple images
+            if (refitImages.hero.length > 1) {
+                startSlideshow('hero', 5000);
+            }
+        }
+        
+        // Load portfolio
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        if (portfolioGrid) {
+            portfolioGrid.innerHTML = '';
+            portfolioProjects.forEach(project => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item';
+                item.style.cssText = `
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--shadow-md);
+                    cursor: pointer;
+                    transition: transform 0.3s ease;
+                    height: 350px;
+                `;
+                item.innerHTML = `
+                    <img src="${refitImages.portfolio[project.image]}" 
+                         alt="${project.title}" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; 
+                                padding: 1.5rem; 
+                                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
+                                color: white;">
+                        <h4 style="margin-bottom: 0.5rem;">${project.title}</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">${project.description}</p>
+                        <span style="font-size: 0.8rem; 
+                                   background: var(--primary-color); 
+                                   padding: 2px 8px; 
+                                   border-radius: 12px;">
+                            ${project.category}
+                        </span>
+                    </div>
+                `;
+                item.onmouseover = () => item.style.transform = 'translateY(-5px)';
+                item.onmouseout = () => item.style.transform = 'translateY(0)';
+                portfolioGrid.appendChild(item);
+            });
+        }
+    }
                 });
                 
                 // Start slideshow if multiple images
