@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REFIT Interior - Professional Services</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Bright Oracle - Messages from the Universe</title>
     <style>
         * {
             margin: 0;
@@ -18,438 +12,1212 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            background: #f8f8f8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 30%, #0f1419 100%);
+            min-height: 100vh;
+            color: white;
+            overflow: hidden;
         }
 
-        /* Header */
-        header {
+        /* Top Navigation Bar */
+        .top-nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 70px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(186, 85, 211, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 3000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #e8e8e8;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            text-shadow: 0 0 20px rgba(186, 85, 211, 0.5);
+        }
+
+        .nav-logo .logo-icon {
+            font-size: 2rem;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(186, 85, 211, 0.8);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(186, 85, 211, 1);
+                transform: scale(1.05);
+            }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: rgba(186, 85, 211, 0.2);
+            border: 2px solid rgba(186, 85, 211, 0.5);
+            color: #e8e8e8;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(186, 85, 211, 0.4);
+            border-color: rgba(186, 85, 211, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .nav-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        /* Main Oracle Container - Full Screen */
+        .bright-oracle-container {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 30%, #0f1419 100%);
+            overflow: hidden;
             z-index: 1000;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo-container {
-            height: 60px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-media {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 500;
-        }
-
-        /* Hero */
-        .hero {
-            margin-top: 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 60px 5%;
-            background: linear-gradient(135deg, rgba(232, 160, 191, 0.1), rgba(186, 91, 125, 0.1));
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.5rem;
-            color: #BA5B7D;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .hero-media {
+        .oracle-background {
+            position: absolute;
             width: 100%;
-            height: 500px;
-            border-radius: 16px;
+            height: 100%;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            position: relative;
         }
 
-        .hero-slide {
+        .mystical-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .mystical-particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: mysticalFloat 8s ease-in-out infinite;
+            filter: blur(0.5px);
+        }
+
+        @keyframes mysticalFloat {
+            0%, 100% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+                transform: translateY(95vh) scale(1) rotate(45deg);
+            }
+            95% {
+                opacity: 0.8;
+                transform: translateY(-5vh) scale(0.8) rotate(315deg);
+            }
+            100% {
+                transform: translateY(-10vh) scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .aurora-lights {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 15% 60%, rgba(186, 85, 211, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 30%, rgba(138, 43, 226, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(147, 112, 219, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 20%, rgba(123, 104, 238, 0.15) 0%, transparent 50%);
+            animation: auroraShift 15s ease-in-out infinite;
+        }
+
+        @keyframes auroraShift {
+            0%, 100% { 
+                opacity: 0.7; 
+                transform: scale(1) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            25% { 
+                opacity: 0.9; 
+                transform: scale(1.05) rotate(1deg);
+                filter: hue-rotate(15deg);
+            }
+            50% { 
+                opacity: 0.5; 
+                transform: scale(0.98) rotate(-1deg);
+                filter: hue-rotate(30deg);
+            }
+            75% { 
+                opacity: 0.8; 
+                transform: scale(1.02) rotate(0.5deg);
+                filter: hue-rotate(15deg);
+            }
+        }
+
+        /* Oracle Landing Screen */
+        .oracle-landing {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 1;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: landingBreathe 6s ease-in-out infinite;
+        }
+
+        .oracle-landing.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -50%) scale(0.85);
+        }
+
+        @keyframes landingBreathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.02); }
+        }
+
+        .floating-ask {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 30px;
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        .ask-text {
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: #e8e8e8;
+            text-shadow: 0 0 30px rgba(186, 85, 211, 0.6);
+            letter-spacing: 8px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+
+        .ask-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            animation: pulseGlow 4s ease-in-out infinite, colorShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+        }
+
+        @keyframes colorShift {
+            0%, 100% { 
+                background: radial-gradient(circle, rgba(186, 85, 211, 0.3) 0%, transparent 70%);
+            }
+            25% { 
+                background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+            }
+            50% { 
+                background: radial-gradient(circle, rgba(147, 112, 219, 0.3) 0%, transparent 70%);
+            }
+            75% { 
+                background: radial-gradient(circle, rgba(123, 104, 238, 0.3) 0%, transparent 70%);
+            }
+        }
+
+        .oracle-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.7; }
+        }
+
+        /* Floating Words */
+        .floating-words-container {
             position: absolute;
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .hero-slide.active {
+        .floating-words-container.active {
             opacity: 1;
+            visibility: visible;
         }
 
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-right: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #E8A0BF, #BA5B7D);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #E8A0BF;
-            border: 2px solid #E8A0BF;
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* Services */
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-            text-align: center;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Portfolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
+        .floating-words {
             position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-            height: 350px;
-        }
-
-        .portfolio-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
 
-        .portfolio-overlay {
+        .floating-word {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white;
+            color: #e8e8e8;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            text-shadow: 0 0 20px rgba(186, 85, 211, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: wordFloat 8s ease-in-out infinite;
+            opacity: 0;
+            user-select: none;
+            transform-origin: center;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 3rem 5%;
+        .floating-word.big {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .floating-word.medium {
+            font-size: 2.1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .floating-word.small {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .floating-word:hover {
+            transform: scale(1.3) rotate(1deg);
+            text-shadow: 
+                0 0 30px rgba(186, 85, 211, 1),
+                0 0 60px rgba(186, 85, 211, 0.8),
+                0 0 90px rgba(186, 85, 211, 0.6);
+            color: #dda0dd;
+            animation-play-state: paused;
+        }
+
+        .floating-word:active {
+            transform: scale(1.1) rotate(-1deg);
+            transition: transform 0.1s ease;
+        }
+
+        @keyframes wordFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.7) rotate(-5deg);
+                filter: blur(2px);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(0px) scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+            85% {
+                opacity: 1;
+                transform: translateY(-15px) scale(1.05) rotate(2deg);
+                filter: blur(0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.8) rotate(5deg);
+                filter: blur(1px);
+            }
+        }
+
+        /* Enhanced Message Display with Better Typography */
+        .message-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            max-width: 700px;
             text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Floating Buttons */
-        .floating-buttons {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 999;
+        .message-container.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .float-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .bright-message {
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(186, 85, 211, 0.1) 0%, transparent 50%),
+                rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(186, 85, 211, 0.4);
+            border-radius: 25px;
+            padding: 45px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(20px);
+            animation: messageFloatUp 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bright-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(186, 85, 211, 0.1), transparent);
+            animation: shimmerMessage 6s ease-in-out infinite;
+        }
+
+        .bright-message p {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: #f0f0f0;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(186, 85, 211, 0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes messageFloatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.85);
+                filter: blur(3px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-5px) scale(1.02);
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes shimmerMessage {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .message-actions {
             display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            color: white;
-            font-size: 28px;
-            text-decoration: none;
+            gap: 25px;
+            animation: actionsAppear 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
         }
 
-        .whatsapp-btn {
-            background: #25D366;
+        @keyframes actionsAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.8);
+            }
+            60% {
+                opacity: 0.8;
+                transform: translateY(-5px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        .email-btn {
-            background: linear-gradient(135deg, #E8A0BF, #BA5B7D);
+        .oracle-button {
+            background: rgba(186, 85, 211, 0.15);
+            border: 2px solid rgba(186, 85, 211, 0.6);
+            color: #f0f0f0;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            font-weight: 400;
         }
 
+        .oracle-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .oracle-button:hover::before {
+            left: 100%;
+        }
+
+        .oracle-button:hover {
+            background: rgba(186, 85, 211, 0.3);
+            border-color: rgba(186, 85, 211, 0.9);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(186, 85, 211, 0.4),
+                0 0 30px rgba(186, 85, 211, 0.3);
+            text-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
+        }
+
+        .oracle-button:active {
+            transform: translateY(-1px) scale(1.02);
+            transition: transform 0.1s ease;
+        }
+
+        .noted-btn {
+            background: rgba(46, 204, 113, 0.15);
+            border-color: rgba(46, 204, 113, 0.6);
+        }
+
+        .noted-btn:hover {
+            background: rgba(46, 204, 113, 0.3);
+            border-color: rgba(46, 204, 113, 0.9);
+            box-shadow: 
+                0 15px 35px rgba(46, 204, 113, 0.4),
+                0 0 30px rgba(46, 204, 113, 0.3);
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.8);
+        }
+
+        .more-btn {
+            background: rgba(241, 196, 15, 0.15);
+            border-color: rgba(241, 196, 15, 0.6);
+        }
+
+        .more-btn:hover {
+            background: rgba(241, 196, 15, 0.3);
+            border-color: rgba(241, 196, 15, 0.9);
+            box-shadow: 
+                0 15px 35px rgba(241, 196, 15, 0.4),
+                0 0 30px rgba(241, 196, 15, 0.3);
+            text-shadow: 0 0 15px rgba(241, 196, 15, 0.8);
+        }
+
+        /* Enhanced Wishes Screen */
+        .wishes-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            max-width: 600px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .wishes-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .wishes-message {
+            background: 
+                radial-gradient(circle at 70% 70%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+                rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(46, 204, 113, 0.4);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(20px);
+            animation: wishesFloatUp 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishes-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(46, 204, 113, 0.1), transparent);
+            animation: shimmerWish 6s ease-in-out infinite;
+        }
+
+        .wishes-message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes wishesFloatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes shimmerWish {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .back-btn {
+            background: rgba(186, 85, 211, 0.15);
+            border-color: rgba(186, 85, 211, 0.6);
+            animation: backBtnAppear 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+        }
+
+        @keyframes backBtnAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(25px) scale(0.8);
+            }
+            60% {
+                opacity: 0.8;
+                transform: translateY(-3px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Mobile Responsiveness - Enhanced */
         @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .top-nav {
+                height: 60px;
+                padding: 0 20px;
             }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
+
+            .nav-logo h1 {
+                font-size: 1.5rem;
             }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+
+            .nav-logo .logo-icon {
+                font-size: 1.7rem;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .bright-oracle-container {
+                top: 60px;
+                height: calc(100vh - 60px);
+            }
+
+            .ask-text {
+                font-size: 3.2rem;
+                letter-spacing: 3px;
+            }
+
+            .floating-word.big {
+                font-size: 2.3rem;
+                letter-spacing: 1px;
+            }
+
+            .floating-word.medium {
+                font-size: 1.8rem;
+            }
+
+            .floating-word.small {
+                font-size: 1.3rem;
+            }
+
+            .bright-message,
+            .wishes-message {
+                padding: 30px 25px;
+                margin-bottom: 25px;
+            }
+
+            .bright-message p {
+                font-size: 1.3rem;
+                line-height: 1.7;
+            }
+
+            .wishes-message p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .oracle-button {
+                padding: 15px 28px;
+                font-size: 1.1rem;
+                letter-spacing: 0.5px;
+            }
+
+            .message-container,
+            .wishes-container {
+                width: 92%;
+            }
+
+            .message-actions {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .oracle-button {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-nav {
+                height: 55px;
+                padding: 0 15px;
+            }
+
+            .nav-logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .nav-logo .logo-icon {
+                font-size: 1.5rem;
+            }
+
+            .nav-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .bright-oracle-container {
+                top: 55px;
+                height: calc(100vh - 55px);
+            }
+
+            .ask-text {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+
+            .oracle-subtitle {
+                font-size: 1rem;
+            }
+
+            .floating-word.big {
+                font-size: 2rem;
+            }
+
+            .floating-word.medium {
+                font-size: 1.6rem;
+            }
+
+            .floating-word.small {
+                font-size: 1.2rem;
+            }
+
+            .bright-message,
+            .wishes-message {
+                padding: 25px 20px;
+            }
+
+            .bright-message p {
+                font-size: 1.2rem;
+                line-height: 1.6;
+            }
+
+            .wishes-message p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .oracle-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+                width: 180px;
+            }
+
+            .message-actions {
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/60123456789" class="float-btn whatsapp-btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="mailto:info@refitinterior.com" class="float-btn email-btn">
-            <i class="fas fa-envelope"></i>
-        </a>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="nav-logo">
+            <div class="logo-icon">🔮</div>
+            <div>
+                <h1>Bright Oracle</h1>
+                <div class="nav-subtitle">Messages from the Universe</div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="#" class="nav-btn" onclick="openChatGPT()">🤖 ChatGPT</a>
+            <a href="#" class="nav-btn" onclick="refreshOracle()">✨ New Session</a>
+        </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img class="logo-media" src="https://raw.githubusercontent.com/lyode/refit-media/main/media/logos/refit-logo-pink.png" 
-                     alt="REFIT Logo" 
-                     onerror="this.style.display='none'; document.getElementById('logoText').style.display='block';">
-                <span id="logoText" style="display:none; font-size: 2.5rem; font-weight: 700; color: #E8A0BF;">refit</span>
+    <!-- Main Oracle Container - Full Screen -->
+    <div class="bright-oracle-container">
+        <div class="oracle-background">
+            <div class="mystical-particles" id="mysticalParticles"></div>
+            <div class="aurora-lights"></div>
+        </div>
+        
+        <!-- Landing Screen with 'aSk' -->
+        <div class="oracle-landing" id="oracleLanding">
+            <div class="floating-ask" id="floatingAsk" onclick="showFloatingWords()">
+                <span class="ask-text">aSk</span>
+                <div class="ask-glow"></div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>FROM CONCEPT TO COMPLETION</h1>
-                <p class="tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
-                <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
-                <div>
-                    <a href="#contact" class="btn btn-primary">Get Started</a>
-                    <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
-                </div>
-            </div>
-            <div class="hero-media">
-                <div id="heroSlideshow">
-                    <!-- Images will be added by JavaScript -->
-                </div>
+            <div class="oracle-subtitle">What seeks to be known?</div>
+        </div>
+        
+        <!-- Floating Words Screen -->
+        <div class="floating-words-container" id="floatingWordsContainer">
+            <div class="floating-words" id="floatingWords"></div>
+        </div>
+        
+        <!-- Message Display -->
+        <div class="message-container" id="messageContainer">
+            <div class="bright-message" id="brightMessage"></div>
+            <div class="message-actions" id="messageActions">
+                <button class="oracle-button noted-btn" onclick="showWishes()">noTed</button>
+                <button class="oracle-button more-btn" onclick="showMoreWords()">i wAnt moRe</button>
             </div>
         </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <h2 class="section-title">Our Mission & Vision</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <div style="background: white; padding: 2rem; border-radius: 16px;">
-                <h3 style="color: #E8A0BF; margin-bottom: 1rem;">Mission</h3>
-                <p>To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
-            </div>
-            <div style="background: white; padding: 2rem; border-radius: 16px;">
-                <h3 style="color: #E8A0BF; margin-bottom: 1rem;">Vision</h3>
-                <p>To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
-            </div>
+        
+        <!-- Wishes Screen -->
+        <div class="wishes-container" id="wishesContainer">
+            <div class="wishes-message" id="wishesMessage"></div>
+            <button class="oracle-button back-btn" onclick="returnToLanding()">aSk</button>
         </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-        <h2 class="section-title">What We Do</h2>
-        <div class="services-container" id="servicesContainer"></div>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio">
-        <h2 class="section-title">Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioGrid"></div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div style="text-align: center;">
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
-            <p><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara,<br>
-               No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
-            <div style="margin-top: 2rem;">
-                <p>📞 +60 12-345 6789 | ✉️ info@refitinterior.com</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 REFIT Maintenance Services. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script>
-        // Simple slideshow
-        function loadHeroSlideshow() {
-            const slideshow = document.getElementById('heroSlideshow');
-            const images = [
-                'https://via.placeholder.com/800x500/E8A0BF/ffffff?text=REFIT+Interior+1',
-                'https://via.placeholder.com/800x500/BA5B7D/ffffff?text=REFIT+Interior+2',
-                'https://via.placeholder.com/800x500/F5C99B/333333?text=REFIT+Interior+3'
-            ];
-            
-            images.forEach((img, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'hero-slide';
-                if (index === 0) slide.classList.add('active');
-                slide.innerHTML = `<img src="${img}" alt="Hero ${index + 1}">`;
-                slideshow.appendChild(slide);
-            });
-            
-            // Start slideshow
-            let current = 0;
-            setInterval(() => {
-                const slides = document.querySelectorAll('.hero-slide');
-                slides[current].classList.remove('active');
-                current = (current + 1) % slides.length;
-                slides[current].classList.add('active');
-            }, 3000);
-        }
+        // Bright Oracle System - Enhanced
+        const oracleWords = [
+            'journey', 'shadow', 'light', 'whisper', 'mirror', 'river', 'mountain', 
+            'ocean', 'star', 'moon', 'fire', 'wind', 'door', 'key', 'bridge', 
+            'garden', 'forest', 'dawn', 'thunder', 'silence', 'dream', 'echo',
+            'feather', 'pearl', 'crystal', 'spiral', 'compass', 'lantern', 'butterfly',
+            'hourglass', 'seed', 'horizon', 'tide', 'ember', 'veil', 'prism',
+            'labyrinth', 'constellation', 'dewdrop', 'cascade', 'sanctuary', 'phoenix'
+        ];
 
-        // Load services
-        function loadServices() {
-            const container = document.getElementById('servicesContainer');
-            const services = [
-                { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions' },
-                { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction services' },
-                { icon: '🎨', title: 'Design Services', description: 'Creative design solutions' }
-            ];
+        const brightMessages = {
+            journey: "A path unfolds where footprints have never been... The compass spins not to confuse, but to remind you that true direction comes from within. Three steps forward, one glance back - the rhythm of those who change worlds.",
             
-            services.forEach(service => {
-                const card = document.createElement('div');
-                card.className = 'service-card';
-                card.innerHTML = `
-                    <div class="service-icon">${service.icon}</div>
-                    <h3>${service.title}</h3>
-                    <p>${service.description}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // Load portfolio
-        function loadPortfolio() {
-            const grid = document.getElementById('portfolioGrid');
-            const items = [
-                { img: 'https://via.placeholder.com/400x350/E8A0BF/ffffff?text=Project+1', title: 'Cath Kidston Store', desc: 'Retail renovation' },
-                { img: 'https://via.placeholder.com/400x350/BA5B7D/ffffff?text=Project+2', title: 'Modern Office', desc: 'Office design' },
-                { img: 'https://via.placeholder.com/400x350/F5C99B/333333?text=Project+3', title: 'Luxury Home', desc: 'Residential project' },
-                { img: 'https://via.placeholder.com/400x350/E8A0BF/ffffff?text=Project+4', title: 'Restaurant', desc: 'Commercial space' }
-            ];
+            shadow: "In the valley where light fears to tread, a figure walks who knows both darkness and dawn... What follows you may not be chasing - it might be learning to dance. The shadow teaches the light how to shine.",
             
-            items.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'portfolio-item';
-                div.innerHTML = `
-                    <img src="${item.img}" alt="${item.title}">
-                    <div class="portfolio-overlay">
-                        <h4>${item.title}</h4>
-                        <p>${item.desc}</p>
-                    </div>
-                `;
-                grid.appendChild(div);
-            });
-        }
+            light: "Through the crack in the wooden shutters, something golden spills onto the floor... It carries no weight, yet lifts everything it touches. The lantern in your window has been waiting for someone to notice it was always lit.",
+            
+            whisper: "Between the thunder and the silence, words float on currents you cannot see... The mountain hears what the valley speaks. Listen not for answers, but for the questions you forgot you asked.",
+            
+            mirror: "A surface that shows not what is, but what could be... The reflection winks first, and you realize you've been following, not leading. Sometimes the clearest view is when you're not looking directly.",
+            
+            river: "It remembers every stone it has kissed, every bridge it has supported... Moving forward while staying the same, it whispers ancient secrets to the willows. The current knows where you need to go, even when you don't.",
+            
+            mountain: "Silent witness to a thousand sunrises, keeper of clouds and dreams... It does not move, yet everything around it shifts. What appears immovable often holds the greatest power to transform.",
+            
+            ocean: "Tides turn not by force, but by ancient agreement with the moon... In its depths, treasures wait not to be found, but to find the right moment to surface. The waves have been practicing your name.",
+            
+            star: "Light that traveled eons to reach this moment, this glance upward... It burns bright not for itself, but for the wishes it will carry. Distance makes the heart grow fonder, and the soul grow wiser.",
+            
+            moon: "She waxes and wanes, yet never truly disappears... In her phases, the secret of renewal - that completeness comes through cycles, not straight lines. The night sky has been saving your favorite constellation.",
+            
+            fire: "It dances without music, speaks without words... Born from the meeting of spark and breath, it transforms everything it touches. What you thought was destruction might be the forge of something magnificent.",
+            
+            wind: "Invisible mover of visible things, carrier of seeds and secrets... It knows no borders, recognizes no walls. The message you've been waiting for rides on currents you haven't felt yet.",
+            
+            door: "Every ending is a beginning wearing a different coat... Behind it, not just a room, but a possibility. The key you seek might already be in your pocket, worn smooth by overthinking.",
+            
+            key: "It opens not just locks, but moments when everything clicks into place... Some are made of metal, others of understanding. The door that needs opening may not be the one you're standing in front of.",
+            
+            bridge: "It exists in the space between here and there, now and then... Built not just of stone and steel, but of hope and determination. The crossing happens one step at a time, but the courage to begin happens in an instant.",
+            
+            garden: "What grows here was planted by hands you've never shaken... Seasons change the scenery but not the soil. The seeds you scattered in forgotten moments are closer to bloom than you imagine.",
+            
+            forest: "Ancient parliament of roots and branches, where decisions are made in decades, not moments... It holds space for both the acorn and the oak. You are both the seedling and the shelter you seek.",
+            
+            dawn: "Not the sun's first performance, but the daily miracle of light remembering how to begin... Darkness retreats not in defeat, but in trust that its time will come again. The horizon blushes because it knows what's coming.",
+            
+            thunder: "The sky's heartbeat made audible, its passion impossible to contain... It speaks in a language older than words, younger than silence. What sounds like chaos might be the universe clearing its throat to speak your name.",
+            
+            silence: "The space between notes where music becomes meaning... It does not empty rooms, it fills them with possibility. In the pause between breaths, infinite conversations wait to begin.",
+            
+            dream: "The night shift of the soul, where impossible things clock in for work... Reality takes a break to let imagination stretch its legs. The strangest visions often carry the most practical wisdom.",
+            
+            echo: "Not just repetition, but transformation - the same voice returning as someone new... Mountains teach words to become songs. What you spoke into the void has been traveling, gathering wisdom, preparing to return with gifts.",
+            
+            feather: "What fell from the sky carries more than just lightness... It remembers the heights it has seen, the winds it has danced with. Sometimes the softest touch leaves the deepest impression.",
+            
+            pearl: "Born from irritation, polished by patience... The oyster knows that some treasures require both pressure and time. What troubles you today might be tomorrow's most precious gift.",
+            
+            crystal: "Light enters confused and leaves as rainbows... It holds ancient memories in its geometric heart. Clarity comes not from absence of color, but from the courage to let all colors shine through.",
+            
+            spiral: "Neither circle nor line, but the marriage of both... It ascends while returning, moves forward while looking back. The path that seems to repeat is actually climbing.",
+            
+            compass: "Its needle trembles not from uncertainty, but from the magnetic pull of purpose... True north exists not just in geography, but in the geography of the heart.",
+            
+            lantern: "Small flame that refuses to be intimidated by infinite darkness... It does not compete with the sun, yet guides the lost home. Sometimes the smallest light casts the longest shadow.",
+            
+            butterfly: "From caterpillar to chrysalis to wings - the art of becoming... What appears as death is merely rehearsal for flight. The transformation was always the destination.",
+            
+            hourglass: "Sand falls not to hurry, but to remind... Each grain matters, yet none can stop the flow. Time is not the enemy of dreams, but their dance partner.",
+            
+            seed: "In its small darkness lies the blueprint of forests... It waits not for perfect conditions, but for the moment when waiting becomes growing. Potential sleeps lightly.",
+            
+            horizon: "The place where earth kisses sky, where today meets tomorrow... It moves as you move, always present, never reached. The line that teaches us that boundaries are invitations to explore.",
+            
+            tide: "The ocean's breath made visible, the moon's influence made tangible... It takes away and brings back, but never quite the same treasures. Rhythm is the heartbeat of change.",
+            
+            ember: "The fire's last whisper, its final gift before sleep... It glows not to burn, but to remember warmth. In its orange heart, the promise that flames can always return.",
+            
+            veil: "Thin barrier between the seen and unseen, the known and mysterious... It conceals not to hide, but to make the revelation more precious. Some truths are worth unwrapping slowly.",
+            
+            prism: "Takes white light and reveals its hidden orchestra... Truth is often simpler than it appears, yet more complex than we imagine. Sometimes breaking apart leads to greater beauty.",
+            
+            labyrinth: "Not a maze to confuse, but a path to center... Every turn has purpose, every wall has meaning. The way in is the way out, but you are not the same traveler.",
+            
+            constellation: "Stars that agreed to tell a story together... Separated by vast distances, yet united in purpose. Your scattered moments form patterns others will navigate by.",
+            
+            dewdrop: "Morning's tiny mirror, holding the world in miniature... It exists in the space between night and day, darkness and light. Perfect spheres that teach us how to hold everything while grasping nothing.",
+            
+            cascade: "Water that found the art of falling gracefully... Each drop follows the one before, yet creates its own music. Sometimes the most beautiful descents lead to the most powerful rivers.",
+            
+            sanctuary: "Not just a place, but a pause in the storm... It exists wherever peace decides to rest for a moment. The most sacred spaces are often the ones we create by simply being still.",
+            
+            phoenix: "Death was just the intermission between acts... It burns not to destroy, but to discover what cannot be consumed. From ashes comes not just rebirth, but transformation."
+        };
 
-        // Initialize
+        const brightWishes = [
+            "May your next step find solid ground and your next breath find peace...",
+            "The universe conspires in whispers - may you hear them clearly...",
+            "What you seek is already seeking you across time and space...",
+            "May the path rise to meet you, and the wind be always at your back...",
+            "In the garden of possibility, may your dreams take root and bloom...",
+            "The stars have aligned in your favor - trust the cosmic timing...",
+            "May clarity come like dawn - slowly, then all at once...",
+            "Your story is still being written in the ink of starlight...",
+            "May synchronicity be your constant companion on this journey...",
+            "The bridges you need are already being built by invisible hands...",
+            "May you find magic in the mundane and miracles in the ordinary...",
+            "Your intuition is a compass that never lies - may you trust its direction...",
+            "The universe is rearranging itself in your favor - be patient with the process...",
+            "May your heart be a sanctuary and your spirit a lighthouse...",
+            "What is meant for you will never pass you by - this is cosmic law...",
+            "May you dance with uncertainty and find rhythm in the unknown..."
+        ];
+
+        const oracleGreetings = [
+            "What seeks to be known?",
+            "The cosmos stirs with your questions...",
+            "Ancient wisdom awaits your touch...",
+            "The universe has been expecting you...",
+            "Your soul's inquiry echoes through eternity...",
+            "What mystery calls to your heart?"
+        ];
+
+        // Initialize Oracle on page load
         document.addEventListener('DOMContentLoaded', function() {
-            loadHeroSlideshow();
-            loadServices();
-            loadPortfolio();
-            console.log('✅ Website loaded successfully!');
+            generateEnhancedMysticalParticles();
+            
+            // Set random greeting
+            const subtitle = document.querySelector('.oracle-subtitle');
+            if (subtitle) {
+                const randomGreeting = oracleGreetings[Math.floor(Math.random() * oracleGreetings.length)];
+                subtitle.textContent = randomGreeting;
+            }
         });
+
+        function generateEnhancedMysticalParticles() {
+            const container = document.getElementById('mysticalParticles');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('mystical-particle');
+                
+                // Random size between 2px and 10px
+                const size = 2 + Math.random() * 8;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random colors in mystical spectrum
+                const colors = [
+                    'rgba(186, 85, 211, 0.8)',
+                    'rgba(138, 43, 226, 0.7)',
+                    'rgba(147, 112, 219, 0.6)',
+                    'rgba(123, 104, 238, 0.8)',
+                    'rgba(221, 160, 221, 0.7)'
+                ];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${randomColor} 0%, transparent 70%)`;
+                
+                // Random horizontal position
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 6) + 's';
+                
+                container.appendChild(particle);
+            }
+        }
+
+        function resetOracleScreens() {
+            document.getElementById('oracleLanding').classList.remove('hidden');
+            document.getElementById('floatingWordsContainer').classList.remove('active');
+            document.getElementById('messageContainer').classList.remove('active');
+            document.getElementById('wishesContainer').classList.remove('active');
+        }
+
+        function showFloatingWords() {
+            // Hide landing screen with enhanced transition
+            const landing = document.getElementById('oracleLanding');
+            landing.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            landing.style.opacity = '0';
+            
+            setTimeout(() => {
+                landing.classList.add('hidden');
+                landing.style.transform = 'translate(-50%, -50%) scale(1)';
+                landing.style.opacity = '1';
+            }, 500);
+            
+            // Show floating words after transition
+            setTimeout(() => {
+                const container = document.getElementById('floatingWordsContainer');
+                const wordsContainer = document.getElementById('floatingWords');
+                
+                container.classList.add('active');
+                
+                // Clear any existing words
+                wordsContainer.innerHTML = '';
+                
+                // Generate 10-14 random words for more variety
+                const wordCount = 10 + Math.floor(Math.random() * 5);
+                const selectedWords = [];
+                
+                // Select unique random words
+                while (selectedWords.length < wordCount) {
+                    const randomWord = oracleWords[Math.floor(Math.random() * oracleWords.length)];
+                    if (!selectedWords.includes(randomWord)) {
+                        selectedWords.push(randomWord);
+                    }
+                }
+                
+                // Create floating word elements with enhanced positioning
+                selectedWords.forEach((word, index) => {
+                    const wordElement = document.createElement('div');
+                    wordElement.classList.add('floating-word');
+                    
+                    // More balanced size distribution
+                    const sizeRandom = Math.random();
+                    if (sizeRandom < 0.3) {
+                        wordElement.classList.add('big');
+                    } else if (sizeRandom < 0.7) {
+                        wordElement.classList.add('medium');
+                    } else {
+                        wordElement.classList.add('small');
+                    }
+                    
+                    wordElement.textContent = word;
+                    wordElement.onclick = () => showBrightMessage(word);
+                    
+                    // Better distribution algorithm to avoid overlapping
+                    const angle = (index / wordCount) * 2 * Math.PI;
+                    const radiusX = 25 + Math.random() * 20;
+                    const radiusY = 20 + Math.random() * 15;
+                    const centerX = 50;
+                    const centerY = 45;
+                    
+                    const x = centerX + radiusX * Math.cos(angle) + (Math.random() - 0.5) * 10;
+                    const y = centerY + radiusY * Math.sin(angle) + (Math.random() - 0.5) * 10;
+                    
+                    wordElement.style.left = Math.max(5, Math.min(90, x)) + '%';
+                    wordElement.style.top = Math.max(10, Math.min(80, y)) + '%';
+                    
+                    // Staggered animation with more variety
+                    wordElement.style.animationDelay = (index * 0.2 + Math.random() * 0.3) + 's';
+                    wordElement.style.animationDuration = (6 + Math.random() * 4) + 's';
+                    
+                    wordsContainer.appendChild(wordElement);
+                });
+            }, 600);
+        }
+
+        function showBrightMessage(word) {
+            // Hide floating words with fade effect
+            const wordsContainer = document.getElementById('floatingWordsContainer');
+            wordsContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                wordsContainer.classList.remove('active');
+                wordsContainer.style.opacity = '1';
+            }, 400);
+            
+            // Show message after transition
+            setTimeout(() => {
+                const messageContainer = document.getElementById('messageContainer');
+                const messageElement = document.getElementById('brightMessage');
+                
+                messageContainer.classList.add('active');
+                
+                // Get message for the word (enhanced fallback messages)
+                const fallbackMessages = [
+                    "The universe speaks in symbols older than words... This moment carries a message meant just for you. Listen with your heart, not just your ears.",
+                    "In the space between heartbeats, wisdom whispers... What you've chosen echoes through dimensions you cannot see but always feel.",
+                    "Ancient energies stir when certain words are spoken... The cosmos has been waiting for you to ask this exact question at this precise moment.",
+                    "From the stellar nurseries to the quantum realm, your choice reverberates... The answer was always within you, wearing the mask of a question."
+                ];
+                
+                const message = brightMessages[word] || fallbackMessages[Math.floor(Math.random() * fallbackMessages.length)];
+                
+                // Add typing effect to message
+                typeMessage(messageElement, message);
+                
+            }, 600);
+        }
+
+        function typeMessage(element, message) {
+            element.innerHTML = '<p></p>';
+            const paragraph = element.querySelector('p');
+            let index = 0;
+            
+            function typeCharacter() {
+                if (index < message.length) {
+                    paragraph.textContent += message.charAt(index);
+                    index++;
+                    
+                    // Variable typing speed for more natural effect
+                    const delay = message.charAt(index - 1) === '.' ? 300 : 
+                                 message.charAt(index - 1) === ',' ? 150 : 
+                                 Math.random() * 50 + 20;
+                    
+                    setTimeout(typeCharacter, delay);
+                }
+            }
+            
+            typeCharacter();
+        }
+
+        function showWishes() {
+            // Hide message container
+            document.getElementById('messageContainer').classList.remove('active');
+            
+            // Show wishes after transition
+            setTimeout(() => {
+                const wishesContainer = document.getElementById('wishesContainer');
+                const wishesElement = document.getElementById('wishesMessage');
+                
+                wishesContainer.classList.add('active');
+                
+                // Select random wish
+                const randomWish = brightWishes[Math.floor(Math.random() * brightWishes.length)];
+                
+                // Add gentle typing effect to wishes too
+                typeMessage(wishesElement, randomWish);
+                
+            }, 500);
+        }
+
+        function showMoreWords() {
+            // Hide message container
+            document.getElementById('messageContainer').classList.remove('active');
+            
+            // Show new floating words after transition
+            setTimeout(() => {
+                showFloatingWords();
+            }, 500);
+        }
+
+        function returnToLanding() {
+            // Hide wishes container
+            document.getElementById('wishesContainer').classList.remove('active');
+            
+            // Show landing screen after transition with new greeting
+            setTimeout(() => {
+                const subtitle = document.querySelector('.oracle-subtitle');
+                const randomGreeting = oracleGreetings[Math.floor(Math.random() * oracleGreetings.length)];
+                subtitle.textContent = randomGreeting;
+                
+                resetOracleScreens();
+            }, 500);
+        }
+
+        // Top navigation functions
+        function openChatGPT() {
+            window.open('https://chatgpt.com', '_blank');
+        }
+
+        function refreshOracle() {
+            // Reset all screens
+            resetOracleScreens();
+            
+            // Regenerate particles
+            generateEnhancedMysticalParticles();
+            
+            // Set new greeting
+            const subtitle = document.querySelector('.oracle-subtitle');
+            const randomGreeting = oracleGreetings[Math.floor(Math.random() * oracleGreetings.length)];
+            subtitle.textContent = randomGreeting;
+        }
     </script>
 </body>
 </html>
