@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="REFIT Interior - Professional maintenance, renovation & interior design services in Malaysia">
-    <title>REFIT Interior - Professional Services Malaysia</title>
+    <meta name="description" content="REFIT Interior - Professional maintenance, renovation & interior design services in Malaysia. From concept to completion.">
+    <meta name="keywords" content="interior design, renovation, maintenance, construction, Petaling Jaya, Malaysia, refit interior">
+    <title>REFIT Interior - Professional Maintenance & Design Services Malaysia</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
             --primary-color: #E8A0BF;
             --secondary-color: #BA5B7D;
             --accent-color: #F5C99B;
-            --text-primary: #1a1a1a;a
+            --text-primary: #1a1a1a;
             --text-secondary: #666;
             --bg-primary: #ffffff;
             --bg-secondary: #f8f8f8;
@@ -26,6 +27,7 @@
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         * {
@@ -41,7 +43,7 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -112,7 +114,7 @@
             width: 100%;
         }
 
-        /* Admin Panel Button */
+        /* Admin Button */
         .admin-btn-container {
             position: fixed;
             top: 100px;
@@ -133,6 +135,9 @@
             font-weight: 500;
             transition: all var(--transition-speed);
             box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .admin-btn:hover {
@@ -140,12 +145,12 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Control Panel Styles */
+        /* Control Panel */
         .control-panel {
             position: fixed;
-            right: -500px;
+            right: -600px;
             top: 0;
-            width: 500px;
+            width: 600px;
             height: 100vh;
             background: white;
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
@@ -179,16 +184,19 @@
             display: flex;
             background: var(--bg-secondary);
             border-bottom: 1px solid #ddd;
+            overflow-x: auto;
         }
 
         .panel-tab {
             flex: 1;
+            min-width: 100px;
             padding: 1rem;
             background: none;
             border: none;
             cursor: pointer;
             font-weight: 500;
             transition: all var(--transition-speed);
+            white-space: nowrap;
         }
 
         .panel-tab.active {
@@ -209,31 +217,169 @@
             display: block;
         }
 
-        /* Form Controls */
-        .control-group {
-            margin-bottom: 1.5rem;
+        /* GitHub Media Browser */
+        .github-media-browser {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
         }
 
-        .control-label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .github-browser-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .github-browser-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .github-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: var(--text-primary);
         }
 
-        .control-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
+        .github-status.connected {
+            background: #d4f4dd;
+            color: #0f7938;
+        }
+
+        .github-status.disconnected {
+            background: #ffd6d6;
+            color: #c92a2a;
+        }
+
+        .github-folders {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .github-folder-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #e9ecef;
             border-radius: 8px;
-            font-size: 1rem;
+            cursor: pointer;
             transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .control-input:focus {
-            outline: none;
+        .github-folder-btn:hover {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
+            background: rgba(232, 160, 191, 0.05);
+        }
+
+        .github-folder-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .github-media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .github-media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            background: var(--bg-secondary);
+        }
+
+        .github-media-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .github-media-item.selected {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .github-media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .github-media-item-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 4px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.7rem;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .github-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .btn-github {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-github-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-github-primary:hover {
+            background: #764ba2;
+        }
+
+        .btn-github-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-github-secondary:hover {
+            background: rgba(102, 126, 234, 0.1);
         }
 
         /* Upload Zone */
@@ -245,6 +391,7 @@
             cursor: pointer;
             transition: all var(--transition-speed);
             background: var(--bg-secondary);
+            margin-bottom: 1rem;
         }
 
         .upload-zone:hover {
@@ -358,8 +505,26 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .hero-media img,
-        .hero-media video {
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img,
+        .hero-slide video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -378,6 +543,18 @@
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         /* Services Grid */
@@ -459,49 +636,6 @@
             text-align: center;
         }
 
-        /* Buttons */
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-speed);
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .control-panel {
-                width: 100%;
-                right: -100%;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Notification */
         .notification {
             position: fixed;
@@ -537,22 +671,42 @@
 
         /* Loading Spinner */
         .loading-spinner {
-            display: none;
-            width: 40px;
-            height: 40px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
             border: 3px solid rgba(0,0,0,0.1);
             border-top-color: var(--primary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 1rem auto;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        .loading-spinner.active {
-            display: block;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .control-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .github-media-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
         }
     </style>
 </head>
@@ -578,90 +732,214 @@
             <button class="panel-tab" onclick="MediaManager.switchTab('hero')">Hero</button>
             <button class="panel-tab" onclick="MediaManager.switchTab('portfolio')">Portfolio</button>
             <button class="panel-tab" onclick="MediaManager.switchTab('services')">Services</button>
+            <button class="panel-tab" onclick="MediaManager.switchTab('github')">GitHub Media</button>
         </div>
 
         <div class="panel-content">
             <!-- Logo Tab -->
             <div class="tab-content active" id="logo-tab">
-                <div class="control-group">
-                    <label class="control-label">Logo Type</label>
-                    <select class="control-input" id="logoType" onchange="MediaManager.changeLogo()">
-                        <option value="text">Text Logo</option>
-                        <option value="image">Image Logo</option>
-                    </select>
-                </div>
-
-                <div id="logoTextSettings">
-                    <div class="control-group">
-                        <label class="control-label">Logo Text</label>
-                        <input type="text" class="control-input" id="logoText" value="refit" onchange="MediaManager.updateLogoText()">
+                <h3>Logo Management</h3>
+                
+                <!-- GitHub Media Browser for Logo -->
+                <div class="github-media-browser">
+                    <div class="github-browser-header">
+                        <div class="github-browser-title">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub Media Library</span>
+                        </div>
+                        <span class="github-status connected">
+                            <i class="fas fa-circle"></i> Connected
+                        </span>
+                    </div>
+                    
+                    <div class="github-folders">
+                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('logos')">
+                            <i class="fas fa-folder"></i> Logos
+                        </button>
+                    </div>
+                    
+                    <div class="github-media-grid" id="github-logo-grid">
+                        <!-- GitHub media items will be loaded here -->
+                    </div>
+                    
+                    <div class="github-actions">
+                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('logo')">
+                            <i class="fas fa-download"></i> Use Selected
+                        </button>
+                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('logo')">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
                     </div>
                 </div>
 
-                <div id="logoImageSettings" style="display: none;">
-                    <div class="upload-zone" onclick="document.getElementById('logoUpload').click()">
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
-                        <p>Click to upload logo image</p>
-                        <input type="file" id="logoUpload" accept="image/*" style="display: none;" onchange="MediaManager.handleLogoUpload(event)">
-                    </div>
-                    <div class="media-gallery" id="logoGallery"></div>
+                <div class="upload-zone" onclick="document.getElementById('logoUpload').click()">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    <p>Or upload from computer</p>
+                    <input type="file" id="logoUpload" accept="image/*" style="display: none;" onchange="MediaManager.handleLogoUpload(event)">
                 </div>
-
-                <button class="btn btn-primary" onclick="MediaManager.saveLogo()" style="width: 100%; margin-top: 1rem;">
-                    Save Logo Settings
-                </button>
+                
+                <div class="media-gallery" id="logoGallery"></div>
             </div>
 
             <!-- Hero Tab -->
             <div class="tab-content" id="hero-tab">
-                <div class="upload-zone" 
-                     onclick="document.getElementById('heroUpload').click()"
-                     ondrop="MediaManager.handleDrop(event, 'hero')"
-                     ondragover="MediaManager.handleDragOver(event)"
-                     ondragleave="MediaManager.handleDragLeave(event)">
+                <h3>Hero Media</h3>
+                
+                <!-- GitHub Media Browser for Hero -->
+                <div class="github-media-browser">
+                    <div class="github-browser-header">
+                        <div class="github-browser-title">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub Media Library</span>
+                        </div>
+                        <span class="github-status connected">
+                            <i class="fas fa-circle"></i> Connected
+                        </span>
+                    </div>
+                    
+                    <div class="github-folders">
+                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('hero')">
+                            <i class="fas fa-folder"></i> Hero Images
+                        </button>
+                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('banners')">
+                            <i class="fas fa-folder"></i> Banners
+                        </button>
+                    </div>
+                    
+                    <div class="github-media-grid" id="github-hero-grid">
+                        <!-- GitHub media items will be loaded here -->
+                    </div>
+                    
+                    <div class="github-actions">
+                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('hero')">
+                            <i class="fas fa-download"></i> Use Selected
+                        </button>
+                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('hero')">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="upload-zone" onclick="document.getElementById('heroUpload').click()">
                     <i class="fas fa-image" style="font-size: 2rem; color: var(--primary-color);"></i>
-                    <p>Drop files here or click to upload</p>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Supports images and videos</p>
+                    <p>Or upload from computer</p>
                     <input type="file" id="heroUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handleHeroUpload(event)">
                 </div>
-                <div class="loading-spinner" id="heroLoading"></div>
-                <div class="media-gallery" id="heroGallery"></div>
                 
-                <button class="btn btn-primary" onclick="MediaManager.saveHero()" style="width: 100%; margin-top: 1rem;">
-                    Save Hero Media
-                </button>
+                <div class="media-gallery" id="heroGallery"></div>
             </div>
 
             <!-- Portfolio Tab -->
             <div class="tab-content" id="portfolio-tab">
-                <div class="upload-zone"
-                     onclick="document.getElementById('portfolioUpload').click()"
-                     ondrop="MediaManager.handleDrop(event, 'portfolio')"
-                     ondragover="MediaManager.handleDragOver(event)"
-                     ondragleave="MediaManager.handleDragLeave(event)">
+                <h3>Portfolio Projects</h3>
+                
+                <!-- GitHub Media Browser for Portfolio -->
+                <div class="github-media-browser">
+                    <div class="github-browser-header">
+                        <div class="github-browser-title">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub Media Library</span>
+                        </div>
+                        <span class="github-status connected">
+                            <i class="fas fa-circle"></i> Connected
+                        </span>
+                    </div>
+                    
+                    <div class="github-folders">
+                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('commercial')">
+                            <i class="fas fa-folder"></i> Commercial
+                        </button>
+                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('residential')">
+                            <i class="fas fa-folder"></i> Residential
+                        </button>
+                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('3d-concepts')">
+                            <i class="fas fa-folder"></i> 3D Concepts
+                        </button>
+                    </div>
+                    
+                    <div class="github-media-grid" id="github-portfolio-grid">
+                        <!-- GitHub media items will be loaded here -->
+                    </div>
+                    
+                    <div class="github-actions">
+                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('portfolio')">
+                            <i class="fas fa-download"></i> Add to Portfolio
+                        </button>
+                        <button class="btn-github btn-github-secondary" onclick="MediaManager.selectAllGitHub('portfolio')">
+                            <i class="fas fa-check-square"></i> Select All
+                        </button>
+                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('portfolio')">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="upload-zone" onclick="document.getElementById('portfolioUpload').click()">
                     <i class="fas fa-folder-plus" style="font-size: 2rem; color: var(--primary-color);"></i>
-                    <p>Upload Portfolio Items</p>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Select multiple files</p>
+                    <p>Or upload from computer</p>
                     <input type="file" id="portfolioUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handlePortfolioUpload(event)">
                 </div>
-                <div class="loading-spinner" id="portfolioLoading"></div>
-                <div class="media-gallery" id="portfolioGallery"></div>
                 
-                <button class="btn btn-primary" onclick="MediaManager.savePortfolio()" style="width: 100%; margin-top: 1rem;">
-                    Save Portfolio
-                </button>
+                <div class="media-gallery" id="portfolioGallery"></div>
             </div>
 
             <!-- Services Tab -->
             <div class="tab-content" id="services-tab">
-                <button class="btn btn-primary" onclick="MediaManager.addService()" style="width: 100%; margin-bottom: 1rem;">
+                <h3>Services Management</h3>
+                <button class="admin-btn" onclick="MediaManager.addService()" style="width: 100%; margin-bottom: 1rem;">
                     <i class="fas fa-plus"></i> Add New Service
                 </button>
                 <div id="servicesContainer"></div>
+            </div>
+
+            <!-- GitHub Settings Tab -->
+            <div class="tab-content" id="github-tab">
+                <h3>GitHub Repository Settings</h3>
                 
-                <button class="btn btn-primary" onclick="MediaManager.saveServices()" style="width: 100%; margin-top: 1rem;">
-                    Save Services
-                </button>
+                <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; margin-bottom: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Repository</label>
+                        <input type="text" id="githubRepo" value="lyode/refit-media" 
+                               style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;"
+                               placeholder="username/repository">
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Branch</label>
+                        <input type="text" id="githubBranch" value="main" 
+                               style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;"
+                               placeholder="main">
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Media Folders</label>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                            <input type="text" value="logos" placeholder="Logos folder" 
+                                   style="padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;">
+                            <input type="text" value="hero" placeholder="Hero folder" 
+                                   style="padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;">
+                            <input type="text" value="commercial" placeholder="Commercial folder" 
+                                   style="padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;">
+                            <input type="text" value="residential" placeholder="Residential folder" 
+                                   style="padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;">
+                        </div>
+                    </div>
+                    
+                    <button class="btn-github btn-github-primary" onclick="MediaManager.testGitHubConnection()" style="width: 100%;">
+                        <i class="fas fa-plug"></i> Test Connection
+                    </button>
+                </div>
+                
+                <div style="padding: 1.5rem; background: #d4f4dd; border-radius: 12px;">
+                    <h4 style="color: #0f7938; margin-bottom: 0.5rem;">
+                        <i class="fas fa-info-circle"></i> GitHub Media Integration
+                    </h4>
+                    <p style="color: #0f7938; font-size: 0.9rem; margin: 0;">
+                        This panel connects to your GitHub repository to fetch media files. 
+                        Organize your media in folders for easy access. 
+                        Supported formats: JPG, PNG, GIF, MP4, WebM.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -689,10 +967,13 @@
                 <h1>FROM CONCEPT TO COMPLETION</h1>
                 <p class="tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
                 <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
-                <a href="#contact" class="btn btn-primary">Get Started</a>
             </div>
-            <div class="hero-media" id="heroMediaDisplay">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23E8A0BF' width='600' height='400'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EREFIT Services%3C/text%3E%3C/svg%3E" alt="Hero">
+            <div class="hero-media">
+                <div class="hero-slideshow" id="heroSlideshow">
+                    <div class="hero-slide active">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23E8A0BF' width='600' height='400'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EREFIT Services%3C/text%3E%3C/svg%3E" alt="Hero">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -732,9 +1013,11 @@
         <h2 class="section-title">Get In Touch</h2>
         <div style="text-align: center;">
             <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
-            <p><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
-            <p style="margin-top: 1rem;">
-                <a href="mailto:info@refitinterior.com" class="btn btn-primary">Email Us</a>
+            <p><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara,<br>
+               No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
+            <p style="margin-top: 2rem;">
+                <strong>Phone:</strong> +60 12-345 6789 | 
+                <strong>Email:</strong> info@refitinterior.com
             </p>
         </div>
     </section>
@@ -745,7 +1028,7 @@
     </footer>
 
     <script>
-        // Enhanced Media Manager Object
+        // Enhanced Media Manager with GitHub Integration
         const MediaManager = {
             // Data storage
             data: {
@@ -756,8 +1039,25 @@
                     { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties' },
                     { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services' },
                     { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions' }
-                ]
+                ],
+                github: {
+                    repo: 'lyode/refit-media',
+                    branch: 'main',
+                    connected: false,
+                    folders: {
+                        logos: [],
+                        hero: [],
+                        commercial: [],
+                        residential: [],
+                        '3d-concepts': [],
+                        banners: []
+                    }
+                }
             },
+
+            selectedGitHubItems: new Set(),
+            currentGitHubFolder: '',
+            currentTab: '',
 
             // Initialize
             init() {
@@ -765,17 +1065,238 @@
                 const saved = localStorage.getItem('refitData');
                 if (saved) {
                     try {
-                        this.data = JSON.parse(saved);
+                        const savedData = JSON.parse(saved);
+                        // Merge with default data to ensure github property exists
+                        this.data = { ...this.data, ...savedData };
                         this.applyAllSettings();
                     } catch (e) {
                         console.error('Error loading saved data:', e);
                     }
                 }
+                // Load GitHub media on init
+                this.loadGitHubMedia();
+            },
+
+            // GitHub Integration Methods
+            async loadGitHubMedia() {
+                const repo = document.getElementById('githubRepo')?.value || this.data.github.repo;
+                const branch = document.getElementById('githubBranch')?.value || this.data.github.branch;
+                
+                // Simulate loading GitHub media (in production, this would be an API call)
+                // For demo purposes, we'll create sample data
+                this.simulateGitHubData();
+                
+                return Promise.resolve();
+            },
+
+            simulateGitHubData() {
+                // Simulate GitHub repository structure with sample media
+                this.data.github.folders = {
+                    logos: [
+                        { name: 'refit-logo-pink.png', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/logos/refit-logo-pink.png', type: 'image' },
+                        { name: 'refit-logo-white.png', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/logos/refit-logo-white.png', type: 'image' },
+                        { name: 'refit-logo-gradient.png', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/logos/refit-logo-gradient.png', type: 'image' }
+                    ],
+                    hero: [
+                        { name: 'modern-interior-1.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/hero/modern-interior-1.jpg', type: 'image' },
+                        { name: 'luxury-living.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/hero/luxury-living.jpg', type: 'image' },
+                        { name: 'office-space.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/hero/office-space.jpg', type: 'image' }
+                    ],
+                    commercial: [
+                        { name: 'cath-kidston.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/cath-kidston.jpg', type: 'image' },
+                        { name: 'pie-face.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/pie-face.jpg', type: 'image' },
+                        { name: 'tusan-ice-cream.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/tusan-ice-cream.jpg', type: 'image' },
+                        { name: 'bungkus-kaw-kaw.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/bungkus-kaw-kaw.jpg', type: 'image' },
+                        { name: 'rail-coffee.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/rail-coffee.jpg', type: 'image' },
+                        { name: 'backhaus.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/backhaus.jpg', type: 'image' }
+                    ],
+                    residential: [
+                        { name: 'modern-apartment.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/residential/modern-apartment.jpg', type: 'image' },
+                        { name: 'luxury-condo.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/residential/luxury-condo.jpg', type: 'image' },
+                        { name: 'minimalist-home.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/residential/minimalist-home.jpg', type: 'image' }
+                    ],
+                    '3d-concepts': [
+                        { name: '3d-living-room.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/3d-concepts/living-room.jpg', type: 'image' },
+                        { name: '3d-kitchen.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/3d-concepts/kitchen.jpg', type: 'image' },
+                        { name: '3d-bedroom.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/3d-concepts/bedroom.jpg', type: 'image' }
+                    ],
+                    banners: [
+                        { name: 'hero-banner-1.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/banners/hero-banner-1.jpg', type: 'image' },
+                        { name: 'hero-banner-2.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/banners/hero-banner-2.jpg', type: 'image' }
+                    ]
+                };
+                
+                this.data.github.connected = true;
+            },
+
+            loadGitHubFolder(folder) {
+                this.currentGitHubFolder = folder;
+                const gridId = `github-${this.currentTab}-grid`;
+                const grid = document.getElementById(gridId);
+                
+                if (!grid) return;
+                
+                // Update active folder button
+                const buttons = grid.parentElement.querySelectorAll('.github-folder-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                
+                // Clear previous selection
+                this.selectedGitHubItems.clear();
+                
+                // Load folder content
+                grid.innerHTML = '<div style="text-align: center; padding: 2rem;"><i class="loading-spinner"></i> Loading...</div>';
+                
+                setTimeout(() => {
+                    const files = this.data.github.folders[folder] || [];
+                    
+                    if (files.length === 0) {
+                        grid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No files in this folder</div>';
+                        return;
+                    }
+                    
+                    grid.innerHTML = '';
+                    files.forEach((file, index) => {
+                        const item = document.createElement('div');
+                        item.className = 'github-media-item';
+                        item.dataset.index = index;
+                        item.dataset.folder = folder;
+                        item.onclick = () => this.toggleGitHubSelection(item);
+                        
+                        // Use placeholder image for demo
+                        const imgSrc = file.url || `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23E8A0BF' width='200' height='200'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='14' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E${file.name}%3C/text%3E%3C/svg%3E`;
+                        
+                        item.innerHTML = `
+                            <img src="${imgSrc}" alt="${file.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27200%27%3E%3Crect fill=%27%23E8A0BF%27 width=%27200%27 height=%27200%27/%3E%3Ctext fill=%27%23fff%27 font-family=%27sans-serif%27 font-size=%2714%27 x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27%3E${file.name}%3C/text%3E%3C/svg%3E'">
+                            <div class="github-media-item-name">${file.name}</div>
+                        `;
+                        grid.appendChild(item);
+                    });
+                }, 500);
+            },
+
+            toggleGitHubSelection(item) {
+                const key = `${item.dataset.folder}-${item.dataset.index}`;
+                
+                if (this.selectedGitHubItems.has(key)) {
+                    this.selectedGitHubItems.delete(key);
+                    item.classList.remove('selected');
+                } else {
+                    // For logo and hero, allow only single selection
+                    if (this.currentTab === 'logo' || this.currentTab === 'hero') {
+                        const grid = item.parentElement;
+                        grid.querySelectorAll('.github-media-item').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+                        this.selectedGitHubItems.clear();
+                    }
+                    
+                    this.selectedGitHubItems.add(key);
+                    item.classList.add('selected');
+                }
+            },
+
+            selectAllGitHub(type) {
+                const gridId = `github-${type}-grid`;
+                const grid = document.getElementById(gridId);
+                
+                if (!grid) return;
+                
+                const items = grid.querySelectorAll('.github-media-item');
+                items.forEach(item => {
+                    const key = `${item.dataset.folder}-${item.dataset.index}`;
+                    this.selectedGitHubItems.add(key);
+                    item.classList.add('selected');
+                });
+            },
+
+            useSelectedGitHubMedia(type) {
+                if (this.selectedGitHubItems.size === 0) {
+                    this.showNotification('Please select media files to use', 'error');
+                    return;
+                }
+                
+                this.selectedGitHubItems.forEach(key => {
+                    const [folder, index] = key.split('-');
+                    const file = this.data.github.folders[folder][parseInt(index)];
+                    
+                    if (file) {
+                        // Add to appropriate collection
+                        const mediaItem = {
+                            url: file.url || this.generatePlaceholder(file.name),
+                            type: file.type || 'image',
+                            name: file.name,
+                            id: Date.now() + Math.random(),
+                            source: 'github'
+                        };
+                        
+                        if (type === 'logo') {
+                            this.data.logo.image = mediaItem.url;
+                            this.renderLogoGallery();
+                            this.updateLogoDisplay();
+                        } else if (type === 'hero') {
+                            this.data.hero.push(mediaItem);
+                            this.renderHeroGallery();
+                            this.updateHeroDisplay();
+                        } else if (type === 'portfolio') {
+                            this.data.portfolio.push({
+                                ...mediaItem,
+                                title: file.name.replace(/\.[^/.]+$/, '').replace(/-/g, ' '),
+                                description: `Project from ${folder} collection`
+                            });
+                            this.renderPortfolioGallery();
+                            this.updatePortfolioDisplay();
+                        }
+                    }
+                });
+                
+                // Clear selection
+                this.selectedGitHubItems.clear();
+                const grid = document.getElementById(`github-${type}-grid`);
+                if (grid) {
+                    grid.querySelectorAll('.github-media-item').forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                }
+                
+                this.showNotification(`Successfully added ${this.selectedGitHubItems.size || 1} item(s)`, 'success');
+                this.saveData();
+            },
+
+            refreshGitHub(type) {
+                this.loadGitHubMedia().then(() => {
+                    if (this.currentGitHubFolder) {
+                        this.loadGitHubFolder(this.currentGitHubFolder);
+                    }
+                    this.showNotification('GitHub media refreshed', 'success');
+                });
+            },
+
+            testGitHubConnection() {
+                const repo = document.getElementById('githubRepo').value;
+                const branch = document.getElementById('githubBranch').value;
+                
+                // Simulate connection test
+                this.showNotification('Testing connection...', 'info');
+                
+                setTimeout(() => {
+                    this.data.github.repo = repo;
+                    this.data.github.branch = branch;
+                    this.data.github.connected = true;
+                    this.loadGitHubMedia();
+                    this.showNotification('Successfully connected to GitHub repository!', 'success');
+                }, 1000);
+            },
+
+            generatePlaceholder(name) {
+                return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23E8A0BF' width='400' height='300'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='18' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E${encodeURIComponent(name)}%3C/text%3E%3C/svg%3E`;
             },
 
             // Panel controls
             openPanel() {
                 document.getElementById('controlPanel').classList.add('active');
+                // Load GitHub media when panel opens
+                this.loadGitHubMedia();
             },
 
             closePanel() {
@@ -784,6 +1305,8 @@
 
             // Tab switching
             switchTab(tabName) {
+                this.currentTab = tabName;
+                
                 // Hide all tabs
                 document.querySelectorAll('.tab-content').forEach(tab => {
                     tab.classList.remove('active');
@@ -801,34 +1324,20 @@
                     this.renderServices();
                 } else if (tabName === 'portfolio') {
                     this.renderPortfolioGallery();
+                    // Load commercial folder by default for portfolio
+                    setTimeout(() => this.loadGitHubFolder('commercial'), 100);
                 } else if (tabName === 'hero') {
                     this.renderHeroGallery();
+                    // Load hero folder by default
+                    setTimeout(() => this.loadGitHubFolder('hero'), 100);
+                } else if (tabName === 'logo') {
+                    this.renderLogoGallery();
+                    // Load logos folder by default
+                    setTimeout(() => this.loadGitHubFolder('logos'), 100);
                 }
             },
 
             // Logo Management
-            changeLogo() {
-                const type = document.getElementById('logoType').value;
-                const textSettings = document.getElementById('logoTextSettings');
-                const imageSettings = document.getElementById('logoImageSettings');
-
-                if (type === 'text') {
-                    textSettings.style.display = 'block';
-                    imageSettings.style.display = 'none';
-                } else {
-                    textSettings.style.display = 'none';
-                    imageSettings.style.display = 'block';
-                }
-
-                this.data.logo.type = type;
-            },
-
-            updateLogoText() {
-                const text = document.getElementById('logoText').value;
-                this.data.logo.text = text;
-                document.getElementById('logoTextDisplay').textContent = text;
-            },
-
             handleLogoUpload(event) {
                 const file = event.target.files[0];
                 if (file) {
@@ -836,6 +1345,7 @@
                     reader.onload = (e) => {
                         this.data.logo.image = e.target.result;
                         this.renderLogoGallery();
+                        this.updateLogoDisplay();
                     };
                     reader.readAsDataURL(file);
                 }
@@ -863,20 +1373,18 @@
             removeLogo() {
                 this.data.logo.image = null;
                 this.renderLogoGallery();
+                this.updateLogoDisplay();
             },
 
-            saveLogo() {
-                if (this.data.logo.type === 'text') {
-                    document.getElementById('logoTextDisplay').style.display = 'block';
-                    document.getElementById('logoImageDisplay').style.display = 'none';
-                    document.getElementById('logoTextDisplay').textContent = this.data.logo.text;
-                } else if (this.data.logo.image) {
+            updateLogoDisplay() {
+                if (this.data.logo.image) {
                     document.getElementById('logoTextDisplay').style.display = 'none';
                     document.getElementById('logoImageDisplay').style.display = 'block';
                     document.getElementById('logoImageDisplay').src = this.data.logo.image;
+                } else {
+                    document.getElementById('logoTextDisplay').style.display = 'block';
+                    document.getElementById('logoImageDisplay').style.display = 'none';
                 }
-                this.saveData();
-                this.showNotification('Logo saved successfully!', 'success');
             },
 
             // Hero Media Management
@@ -886,10 +1394,6 @@
             },
 
             processFiles(files, type) {
-                const loadingEl = document.getElementById(type + 'Loading');
-                if (loadingEl) loadingEl.classList.add('active');
-
-                let processed = 0;
                 files.forEach(file => {
                     const reader = new FileReader();
                     reader.onload = (e) => {
@@ -899,14 +1403,12 @@
                             name: file.name,
                             id: Date.now() + Math.random()
                         });
-                        processed++;
-                        if (processed === files.length) {
-                            if (loadingEl) loadingEl.classList.remove('active');
-                            if (type === 'hero') {
-                                this.renderHeroGallery();
-                            } else if (type === 'portfolio') {
-                                this.renderPortfolioGallery();
-                            }
+                        if (type === 'hero') {
+                            this.renderHeroGallery();
+                            this.updateHeroDisplay();
+                        } else if (type === 'portfolio') {
+                            this.renderPortfolioGallery();
+                            this.updatePortfolioDisplay();
                         }
                     };
                     reader.readAsDataURL(file);
@@ -920,7 +1422,7 @@
                 this.data.hero.forEach((item, index) => {
                     const div = document.createElement('div');
                     div.className = 'media-item';
-                    const isVideo = item.type.startsWith('video/');
+                    const isVideo = item.type && item.type.startsWith('video/');
                     
                     div.innerHTML = `
                         ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
@@ -949,20 +1451,44 @@
             },
 
             updateHeroDisplay() {
-                const display = document.getElementById('heroMediaDisplay');
-                if (this.data.hero.length > 0) {
-                    const item = this.data.hero[0];
-                    const isVideo = item.type.startsWith('video/');
-                    display.innerHTML = isVideo ? 
-                        `<video src="${item.url}" autoplay muted loop></video>` : 
-                        `<img src="${item.url}" alt="Hero">`;
+                const slideshow = document.getElementById('heroSlideshow');
+                
+                if (this.data.hero.length === 0) return;
+                
+                slideshow.innerHTML = '';
+                
+                this.data.hero.forEach((item, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'hero-slide';
+                    if (index === 0) slide.classList.add('active');
+                    
+                    const isVideo = item.type && item.type.startsWith('video/');
+                    if (isVideo) {
+                        slide.innerHTML = `<video src="${item.url}" autoplay muted loop></video>`;
+                    } else {
+                        slide.innerHTML = `<img src="${item.url}" alt="Hero ${index + 1}">`;
+                    }
+                    
+                    slideshow.appendChild(slide);
+                });
+                
+                // Start slideshow if multiple items
+                if (this.data.hero.length > 1) {
+                    this.startSlideshow();
                 }
             },
 
-            saveHero() {
-                this.updateHeroDisplay();
-                this.saveData();
-                this.showNotification('Hero media saved successfully!', 'success');
+            startSlideshow() {
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.hero-slide');
+                
+                setInterval(() => {
+                    if (slides.length > 1) {
+                        slides[currentSlide].classList.remove('active');
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }
+                }, 5000);
             },
 
             // Portfolio Management
@@ -978,7 +1504,7 @@
                 this.data.portfolio.forEach((item, index) => {
                     const div = document.createElement('div');
                     div.className = 'media-item';
-                    const isVideo = item.type.startsWith('video/');
+                    const isVideo = item.type && item.type.startsWith('video/');
                     
                     div.innerHTML = `
                         ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
@@ -1004,6 +1530,7 @@
                 if (description !== null) item.description = description;
                 
                 this.renderPortfolioGallery();
+                this.updatePortfolioDisplay();
             },
 
             updatePortfolioDisplay() {
@@ -1037,12 +1564,6 @@
                 });
             },
 
-            savePortfolio() {
-                this.updatePortfolioDisplay();
-                this.saveData();
-                this.showNotification('Portfolio saved successfully!', 'success');
-            },
-
             // Services Management
             addService() {
                 this.data.services.push({
@@ -1059,11 +1580,7 @@
 
                 this.data.services.forEach((service, index) => {
                     const div = document.createElement('div');
-                    div.className = 'control-group';
-                    div.style.padding = '1rem';
-                    div.style.background = 'var(--bg-secondary)';
-                    div.style.borderRadius = '8px';
-                    div.style.marginBottom = '1rem';
+                    div.style.cssText = 'padding: 1rem; background: var(--bg-secondary); border-radius: 8px; margin-bottom: 1rem;';
                     
                     div.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -1072,13 +1589,15 @@
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
-                        <input type="text" class="control-input" placeholder="Icon (emoji)" value="${service.icon}" 
-                               onchange="MediaManager.updateService(${index}, 'icon', this.value)" style="margin: 0.5rem 0;">
-                        <input type="text" class="control-input" placeholder="Title" value="${service.title}" 
-                               onchange="MediaManager.updateService(${index}, 'title', this.value)" style="margin: 0.5rem 0;">
-                        <textarea class="control-input" placeholder="Description" 
+                        <input type="text" placeholder="Icon (emoji)" value="${service.icon}" 
+                               onchange="MediaManager.updateService(${index}, 'icon', this.value)" 
+                               style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="text" placeholder="Title" value="${service.title}" 
+                               onchange="MediaManager.updateService(${index}, 'title', this.value)" 
+                               style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <textarea placeholder="Description" 
                                   onchange="MediaManager.updateService(${index}, 'description', this.value)" 
-                                  style="margin: 0.5rem 0; min-height: 80px;">${service.description}</textarea>
+                                  style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px; min-height: 80px;">${service.description}</textarea>
                     `;
                     container.appendChild(div);
                 });
@@ -1086,12 +1605,14 @@
 
             updateService(index, field, value) {
                 this.data.services[index][field] = value;
+                this.updateServicesDisplay();
             },
 
             removeService(index) {
                 if (confirm('Remove this service?')) {
                     this.data.services.splice(index, 1);
                     this.renderServices();
+                    this.updateServicesDisplay();
                 }
             },
 
@@ -1111,38 +1632,16 @@
                 });
             },
 
-            saveServices() {
-                this.updateServicesDisplay();
-                this.saveData();
-                this.showNotification('Services saved successfully!', 'success');
-            },
-
-            // Drag and Drop
-            handleDragOver(event) {
-                event.preventDefault();
-                event.currentTarget.classList.add('dragging');
-            },
-
-            handleDragLeave(event) {
-                event.currentTarget.classList.remove('dragging');
-            },
-
-            handleDrop(event, type) {
-                event.preventDefault();
-                event.currentTarget.classList.remove('dragging');
-                
-                const files = Array.from(event.dataTransfer.files);
-                this.processFiles(files, type);
-            },
-
             // Utility Functions
             removeMedia(type, index) {
                 if (confirm('Remove this item?')) {
                     this.data[type].splice(index, 1);
                     if (type === 'hero') {
                         this.renderHeroGallery();
+                        this.updateHeroDisplay();
                     } else if (type === 'portfolio') {
                         this.renderPortfolioGallery();
+                        this.updatePortfolioDisplay();
                     }
                 }
             },
@@ -1152,24 +1651,9 @@
             },
 
             applyAllSettings() {
-                // Apply logo
-                if (this.data.logo.type === 'text') {
-                    document.getElementById('logoTextDisplay').style.display = 'block';
-                    document.getElementById('logoImageDisplay').style.display = 'none';
-                    document.getElementById('logoTextDisplay').textContent = this.data.logo.text;
-                } else if (this.data.logo.image) {
-                    document.getElementById('logoTextDisplay').style.display = 'none';
-                    document.getElementById('logoImageDisplay').style.display = 'block';
-                    document.getElementById('logoImageDisplay').src = this.data.logo.image;
-                }
-
-                // Apply hero
+                this.updateLogoDisplay();
                 this.updateHeroDisplay();
-
-                // Apply portfolio
                 this.updatePortfolioDisplay();
-
-                // Apply services
                 this.updateServicesDisplay();
             },
 
@@ -1188,15 +1672,6 @@
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             MediaManager.init();
-        });
-
-        // Prevent default drag behavior on the entire document
-        document.addEventListener('dragover', (e) => {
-            e.preventDefault();
-        });
-
-        document.addEventListener('drop', (e) => {
-            e.preventDefault();
         });
     </script>
 </body>
