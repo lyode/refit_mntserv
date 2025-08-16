@@ -3,45 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="REFIT Interior - Professional maintenance, renovation & interior design services in Malaysia. From concept to completion.">
-    <meta name="keywords" content="interior design, renovation, maintenance, construction, Petaling Jaya, Malaysia, refit interior">
-    <meta name="author" content="REFIT Interior">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://refitinterior.com/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://refitinterior.com/">
-    <meta property="og:title" content="REFIT Interior - Professional Maintenance & Design Services">
-    <meta property="og:description" content="From Concept to Completion - Professional maintenance, renovation & interior design services in Malaysia">
-    <meta property="og:image" content="https://refitinterior.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://refitinterior.com/">
-    <meta property="twitter:title" content="REFIT Interior - Professional Services">
-    <meta property="twitter:description" content="Professional maintenance, renovation & interior design services">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
-    
-    <title>REFIT Interior - Professional Maintenance, Renovation & Interior Design Services Malaysia</title>
+    <meta name="description" content="REFIT Interior - Professional maintenance, renovation & interior design services in Malaysia">
+    <title>REFIT Interior - Professional Services Malaysia</title>
     
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -49,32 +17,15 @@
             --primary-color: #E8A0BF;
             --secondary-color: #BA5B7D;
             --accent-color: #F5C99B;
-            --text-primary: #1a1a1a;
+            --text-primary: #1a1a1a;a
             --text-secondary: #666;
             --bg-primary: #ffffff;
             --bg-secondary: #f8f8f8;
-            --border-color: #e0e0e0;
-            --border-width: 2px;
-            --border-style: solid;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-            --transition-speed: 0.3s;
-            --animation-duration: 1s;
-            --animation-delay: 0s;
             --border-radius: 16px;
-            --font-family: 'Inter', sans-serif;
-            --font-size-base: 16px;
-            --font-weight: 400;
-            --line-height: 1.5;
-            --letter-spacing: 0px;
-            --container-width: 1400px;
-            --section-spacing: 60px;
-            --whatsapp-color: #25D366;
-            --facebook-color: #1877F2;
-            --instagram-color: #E4405F;
-            --tiktok-color: #000000;
+            --transition-speed: 0.3s;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         * {
@@ -84,47 +35,13 @@
         }
 
         body {
-            font-family: var(--font-family);
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight);
-            line-height: var(--line-height);
-            letter-spacing: var(--letter-spacing);
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
-            background-color: var(--bg-secondary);
-            overflow-x: hidden;
+            background: var(--bg-secondary);
+            line-height: 1.6;
         }
 
-        /* Container Sizing */
-        .container-box {
-            width: 100%;
-            height: auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .media-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .media-container img,
-        .media-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .media-container.contain img,
-        .media-container.contain video {
-            object-fit: contain;
-        }
-
-        /* Header */
+        /* Header Styles */
         header {
             position: fixed;
             top: 0;
@@ -132,7 +49,7 @@
             background: var(--bg-primary);
             box-shadow: var(--shadow-md);
             z-index: 1000;
-            transition: all var(--transition-speed) ease;
+            transition: all var(--transition-speed);
         }
 
         nav {
@@ -140,20 +57,17 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            max-width: var(--container-width);
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            cursor: pointer;
             height: 60px;
-            min-width: 120px;
         }
 
         .logo-text {
-            font-family: var(--font-family);
             font-size: 2.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -162,45 +76,23 @@
             background-clip: text;
         }
 
-        .logo-media {
+        .logo-image {
             max-height: 60px;
             width: auto;
-            max-width: 200px;
             display: none;
-        }
-
-        .logo-slideshow {
-            display: none;
-            width: 200px;
-            height: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .logo-slide.active {
-            opacity: 1;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
-            align-items: center;
         }
 
         .nav-menu a {
             text-decoration: none;
             color: var(--text-primary);
             font-weight: 500;
-            transition: all var(--transition-speed) ease;
+            transition: color var(--transition-speed);
             position: relative;
             padding: 0.5rem 0;
         }
@@ -211,411 +103,113 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: var(--border-width);
+            height: 2px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transition: width var(--transition-speed) ease;
+            transition: width var(--transition-speed);
         }
 
         .nav-menu a:hover::after {
             width: 100%;
         }
 
-        /* Admin Button - Reduced Size by 40% */
+        /* Admin Panel Button */
         .admin-btn-container {
             position: fixed;
             top: 100px;
-            right: 15px;
+            right: 20px;
             z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-        }
-
-        .admin-login-btn,
-        .admin-logout-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 4px 8px;
-            border-radius: 16px;
-            cursor: pointer;
-            border: none;
-            box-shadow: var(--shadow-md);
-            font-weight: 500;
-            font-size: 8px;
-            transition: all var(--transition-speed) ease;
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        .admin-login-btn i,
-        .admin-logout-btn i {
-            font-size: 7px;
-        }
-
-        .admin-login-btn:hover,
-        .admin-logout-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .admin-logout-btn {
-            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
-        }
-
-        /* Master Panel Button - Enhanced */
-        .master-panel-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            font-weight: 600;
-            font-size: 14px;
-            transition: all var(--transition-speed) ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .master-panel-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .master-panel-btn:hover::before {
-            left: 100%;
-        }
-
-        .master-panel-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-
-        .master-panel-btn.visible {
-            animation: slideInRight 0.5s ease;
-        }
-
-        /* Floating Action Buttons */
-        .floating-buttons {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 999;
-        }
-
-        .float-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            text-decoration: none;
-            color: white;
-            font-size: 28px;
-        }
-
-        .float-btn:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .whatsapp-btn {
-            background: var(--whatsapp-color);
-            animation: pulse 2s infinite;
-        }
-
-        .email-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Social Media Icons */
-        .social-media {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all var(--transition-speed) ease;
-            font-size: 18px;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-icon.facebook:hover {
-            background: var(--facebook-color);
-            color: white;
-        }
-
-        .social-icon.instagram:hover {
-            background: var(--instagram-color);
-            color: white;
-        }
-
-        .social-icon.tiktok:hover {
-            background: var(--tiktok-color);
-            color: white;
-        }
-
-        /* Save Button - Enhanced */
-        .save-settings-btn {
-            background: linear-gradient(135deg, #51cf66, #37b24d);
-            color: white;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.3);
-            transition: all var(--transition-speed) ease;
-            display: flex;
-            align-items: center;
             gap: 10px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
         }
 
-        .save-settings-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .save-settings-btn:hover::before {
-            left: 100%;
-        }
-
-        .save-settings-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(81, 207, 102, 0.4);
-        }
-
-        .save-settings-btn i {
-            font-size: 18px;
-            animation: rotate 2s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .save-settings-btn:hover i {
-            animation-duration: 0.5s;
-        }
-
-        /* Master Control Panel - Enhanced */
-        .master-control-panel {
-            position: fixed;
-            top: 0;
-            right: -700px;
-            width: 700px;
-            height: 100vh;
-            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            overflow-y: auto;
-            display: none;
-        }
-
-        .master-control-panel.active {
-            right: 0;
-            display: block;
-        }
-
-        .mcp-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .admin-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 2rem;
-            position: sticky;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            box-shadow: var(--shadow-md);
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Control Panel Styles */
+        .control-panel {
+            position: fixed;
+            right: -500px;
             top: 0;
-            z-index: 100;
+            width: 500px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .control-panel.active {
+            right: 0;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 30px rgba(102, 126, 234, 0.3);
         }
 
-        .mcp-header h2 {
-            font-size: 1.8rem;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mcp-header h2::before {
-            content: '⚡';
-            font-size: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        .mcp-close {
+        .panel-close {
             cursor: pointer;
-            font-size: 2.2rem;
-            width: 40px;
-            height: 40px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .panel-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all var(--transition-speed) ease;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid #ddd;
         }
 
-        .mcp-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .mcp-tabs {
-            display: flex;
-            background: white;
-            border-bottom: 3px solid #dee2e6;
-            position: sticky;
-            top: 96px;
-            z-index: 99;
-            overflow-x: auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .mcp-tab {
+        .panel-tab {
             flex: 1;
-            min-width: 110px;
-            padding: 1.2rem 1rem;
+            padding: 1rem;
             background: none;
             border: none;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            white-space: nowrap;
-            color: #6c757d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            font-weight: 500;
+            transition: all var(--transition-speed);
         }
 
-        .mcp-tab:hover {
-            background: rgba(102, 126, 234, 0.05);
-            color: #667eea;
-        }
-
-        .mcp-tab.active {
+        .panel-tab.active {
             background: white;
-            color: #667eea;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.1);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
         }
 
-        .mcp-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+        .panel-content {
+            padding: 1.5rem;
         }
 
-        .mcp-tab i {
-            font-size: 1rem;
+        .tab-content {
+            display: none;
         }
 
-        .mcp-content {
-            padding: 2rem;
-            background: white;
+        .tab-content.active {
+            display: block;
         }
 
-        .mcp-section {
-            margin-bottom: 2.5rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-            animation: fadeIn 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mcp-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-        }
-
-        .mcp-section h3 {
-            margin-bottom: 1.5rem;
-            color: #495057;
-            font-size: 1.2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mcp-section h3::before {
-            font-size: 1.3rem;
-        }
-
+        /* Form Controls */
         .control-group {
             margin-bottom: 1.5rem;
         }
@@ -625,251 +219,96 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--text-primary);
-            font-size: 0.9rem;
         }
 
         .control-input {
             width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            transition: all var(--transition-speed) ease;
-            background: white;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all var(--transition-speed);
         }
 
         .control-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            transform: translateY(-1px);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
         }
 
-        .control-select {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            background: white;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .control-select:hover {
-            border-color: #667eea;
-        }
-
-        .control-select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .control-textarea {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            resize: vertical;
-            min-height: 120px;
-            font-family: var(--font-family);
-            transition: all var(--transition-speed) ease;
-            background: white;
-        }
-
-        .control-textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .color-picker-group {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .color-picker-input {
-            width: 70px;
-            height: 45px;
-            border: 3px solid #e9ecef;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .color-picker-input:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            border-color: #667eea;
-        }
-
-        .range-slider-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 0;
-        }
-
-        .range-slider {
-            flex: 1;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(to right, #e9ecef 0%, #e9ecef 100%);
-            outline: none;
-            -webkit-appearance: none;
-            position: relative;
-        }
-
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .range-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
-        }
-
-        .range-value {
-            min-width: 60px;
-            text-align: center;
-            font-weight: 700;
-            color: #667eea;
-            font-size: 0.95rem;
-            padding: 5px 10px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 8px;
-        }
-
+        /* Upload Zone */
         .upload-zone {
-            border: 3px dashed #667eea;
-            border-radius: 20px;
-            padding: 3rem;
+            border: 2px dashed var(--primary-color);
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
             cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            position: relative;
+            transition: all var(--transition-speed);
+            background: var(--bg-secondary);
         }
 
         .upload-zone:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            border-color: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            background: rgba(232, 160, 191, 0.05);
+            border-color: var(--secondary-color);
         }
 
         .upload-zone.dragging {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            transform: scale(1.02);
+            background: rgba(232, 160, 191, 0.1);
             border-style: solid;
         }
 
-        .upload-preview {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        /* Media Gallery */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
         }
 
-        .upload-preview-item {
+        .media-item {
             position: relative;
-            width: 80px;
-            height: 80px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 1;
+            background: var(--bg-secondary);
         }
 
-        .upload-preview-item img,
-        .upload-preview-item video {
+        .media-item img,
+        .media-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .upload-preview-remove {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .btn {
-            padding: 0.85rem 1.75rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-primary::before {
-            content: '';
+        .media-item-controls {
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
+            right: 0;
+            padding: 0.25rem;
+            display: flex;
+            gap: 0.25rem;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
         }
 
-        .btn-primary:hover::before {
-            left: 100%;
+        .media-item:hover .media-item-controls {
+            opacity: 1;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
+        .media-btn {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            box-shadow: 0 3px 15px rgba(102, 126, 234, 0.15);
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all var(--transition-speed);
         }
 
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .media-btn:hover {
+            background: var(--primary-color);
             color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
         }
 
         /* Hero Section */
@@ -879,13 +318,11 @@
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, rgba(232, 160, 191, 0.1) 0%, rgba(186, 91, 125, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-            padding: var(--section-spacing) 5%;
+            padding: 4rem 5%;
         }
 
         .hero-content {
-            max-width: var(--container-width);
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -894,66 +331,44 @@
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            line-height: 1.2;
             margin-bottom: 1rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease var(--animation-delay);
+            line-height: 1.2;
         }
 
         .hero-text .tagline {
             font-size: 1.5rem;
             color: var(--secondary-color);
             font-weight: 600;
-            margin-bottom: 2rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease calc(var(--animation-delay) + 0.2s) both;
+            margin-bottom: 1.5rem;
         }
 
         .hero-text p {
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            animation: var(--animation-type, fadeInUp) var(--animation-duration) ease calc(var(--animation-delay) + 0.4s) both;
         }
 
         .hero-media {
             position: relative;
-            width: 100%;
             height: 500px;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-lg);
         }
 
-        .hero-slideshow {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        .hero-slide img,
-        .hero-slide video {
+        .hero-media img,
+        .hero-media video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Section Styles */
+        /* Sections */
         section {
-            padding: var(--section-spacing) 5%;
-            max-width: var(--container-width);
+            padding: 4rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -965,38 +380,78 @@
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform var(--transition-speed);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-item img,
+        .portfolio-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform var(--transition-speed);
         }
 
-        /* Contact Section with Social Media */
-        #contact .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 20px;
-        }
-
-        /* Footer with Social Media */
+        /* Footer */
         footer {
             background: var(--text-primary);
             color: white;
@@ -1004,365 +459,226 @@
             text-align: center;
         }
 
-        .footer-content {
-            max-width: var(--container-width);
-            margin: 0 auto;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 2rem;
-        }
-
-        .footer-social .social-icon {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 40px;
-            height: 40px;
-        }
-
-        .footer-social .social-icon:hover {
-            background: var(--primary-color);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: var(--bg-primary);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-            animation: slideUp 0.3s ease;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
             cursor: pointer;
-            color: var(--text-secondary);
-            transition: all var(--transition-speed) ease;
+            transition: all var(--transition-speed);
+            display: inline-block;
+            text-decoration: none;
         }
 
-        .modal-close:hover {
-            color: var(--text-primary);
-            transform: rotate(90deg);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
-            }
-            50% {
-                transform: scale(1.002);
-                box-shadow: -20px 0 80px rgba(102, 126, 234, 0.4);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Notification System */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 11000;
-            animation: slideInRight 0.3s ease;
-            max-width: 300px;
-        }
-
-        .notification.success {
-            border-left: 4px solid #4ecdc4;
-        }
-
-        .notification.error {
-            border-left: 4px solid #ff6b6b;
-        }
-
-        .notification.info {
-            border-left: 4px solid var(--primary-color);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .master-control-panel {
-                width: 100%;
-                right: -100%;
-            }
-
-            .mcp-tabs {
-                overflow-x: auto;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .mcp-tab {
-                min-width: 90px;
-                padding: 1rem 0.8rem;
-                font-size: 0.8rem;
-            }
-
-            .mcp-content {
-                padding: 1rem;
-            }
-
-            .mcp-section {
-                padding: 1.5rem;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
             .nav-menu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
+                display: none;
+            }
+
+            .control-panel {
                 width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--bg-primary);
-                flex-direction: column;
-                padding: 2rem;
-                transition: right var(--transition-speed) ease;
+                right: -100%;
             }
 
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-                flex-direction: column;
-                cursor: pointer;
-                gap: 4px;
-            }
-
-            .menu-toggle span {
-                width: 25px;
-                height: 3px;
-                background: var(--text-primary);
-                transition: all var(--transition-speed) ease;
-            }
-
-            .admin-btn-container {
-                top: 90px;
-                right: 10px;
-            }
-
-            .admin-login-btn,
-            .admin-logout-btn {
-                padding: 3px 6px;
-                font-size: 7px;
-            }
-
-            .master-panel-btn {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-
-            .floating-buttons {
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .float-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-
-            .social-media {
-                gap: 10px;
-            }
-
-            .social-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 11000;
+            animation: slideDown 0.3s ease;
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
+        .notification.success {
+            border-left: 4px solid #4caf50;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
+        .notification.error {
+            border-left: 4px solid #f44336;
         }
 
-        /* Editable Element Indicators */
-        .editable-element {
-            position: relative;
-            transition: all var(--transition-speed) ease;
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
         }
 
-        .edit-mode .editable-element {
-            outline: 2px dashed var(--primary-color);
-            outline-offset: 4px;
-            cursor: pointer;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .edit-mode .editable-element:hover {
-            outline-color: var(--secondary-color);
-            background: rgba(232, 160, 191, 0.05);
+        .loading-spinner.active {
+            display: block;
         }
     </style>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F78WGS57C3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-F78WGS57C3');
-    </script>
 </head>
 <body>
-    <!-- Admin Buttons Container -->
-    <div class="admin-btn-container" id="adminBtnContainer">
-        <button id="adminLoginBtn" class="admin-login-btn" onclick="showLoginModal()">
-            <i class="fas fa-sign-in-alt"></i> Admin Login
-        </button>
-        <button id="adminLogoutBtn" class="admin-logout-btn" style="display: none;" onclick="handleLogout()">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-        <button id="masterPanelToggle" class="master-panel-btn" style="display: none;" onclick="openMasterPanel()">
-            <i class="fas fa-cog"></i> Control Panel
+    <!-- Admin Button -->
+    <div class="admin-btn-container">
+        <button class="admin-btn" onclick="MediaManager.openPanel()">
+            <i class="fas fa-cog"></i> Admin Panel
         </button>
     </div>
 
-    <!-- Floating Action Buttons -->
-    <div class="floating-buttons">
-        <a href="" id="whatsappFloat" target="_blank" class="float-btn whatsapp-btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="" id="emailFloat" class="float-btn email-btn">
-            <i class="fas fa-envelope"></i>
-        </a>
+    <!-- Control Panel -->
+    <div class="control-panel" id="controlPanel">
+        <div class="panel-header">
+            <h2>Site Management</h2>
+            <button class="panel-close" onclick="MediaManager.closePanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="panel-tabs">
+            <button class="panel-tab active" onclick="MediaManager.switchTab('logo')">Logo</button>
+            <button class="panel-tab" onclick="MediaManager.switchTab('hero')">Hero</button>
+            <button class="panel-tab" onclick="MediaManager.switchTab('portfolio')">Portfolio</button>
+            <button class="panel-tab" onclick="MediaManager.switchTab('services')">Services</button>
+        </div>
+
+        <div class="panel-content">
+            <!-- Logo Tab -->
+            <div class="tab-content active" id="logo-tab">
+                <div class="control-group">
+                    <label class="control-label">Logo Type</label>
+                    <select class="control-input" id="logoType" onchange="MediaManager.changeLogo()">
+                        <option value="text">Text Logo</option>
+                        <option value="image">Image Logo</option>
+                    </select>
+                </div>
+
+                <div id="logoTextSettings">
+                    <div class="control-group">
+                        <label class="control-label">Logo Text</label>
+                        <input type="text" class="control-input" id="logoText" value="refit" onchange="MediaManager.updateLogoText()">
+                    </div>
+                </div>
+
+                <div id="logoImageSettings" style="display: none;">
+                    <div class="upload-zone" onclick="document.getElementById('logoUpload').click()">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <p>Click to upload logo image</p>
+                        <input type="file" id="logoUpload" accept="image/*" style="display: none;" onchange="MediaManager.handleLogoUpload(event)">
+                    </div>
+                    <div class="media-gallery" id="logoGallery"></div>
+                </div>
+
+                <button class="btn btn-primary" onclick="MediaManager.saveLogo()" style="width: 100%; margin-top: 1rem;">
+                    Save Logo Settings
+                </button>
+            </div>
+
+            <!-- Hero Tab -->
+            <div class="tab-content" id="hero-tab">
+                <div class="upload-zone" 
+                     onclick="document.getElementById('heroUpload').click()"
+                     ondrop="MediaManager.handleDrop(event, 'hero')"
+                     ondragover="MediaManager.handleDragOver(event)"
+                     ondragleave="MediaManager.handleDragLeave(event)">
+                    <i class="fas fa-image" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    <p>Drop files here or click to upload</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Supports images and videos</p>
+                    <input type="file" id="heroUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handleHeroUpload(event)">
+                </div>
+                <div class="loading-spinner" id="heroLoading"></div>
+                <div class="media-gallery" id="heroGallery"></div>
+                
+                <button class="btn btn-primary" onclick="MediaManager.saveHero()" style="width: 100%; margin-top: 1rem;">
+                    Save Hero Media
+                </button>
+            </div>
+
+            <!-- Portfolio Tab -->
+            <div class="tab-content" id="portfolio-tab">
+                <div class="upload-zone"
+                     onclick="document.getElementById('portfolioUpload').click()"
+                     ondrop="MediaManager.handleDrop(event, 'portfolio')"
+                     ondragover="MediaManager.handleDragOver(event)"
+                     ondragleave="MediaManager.handleDragLeave(event)">
+                    <i class="fas fa-folder-plus" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    <p>Upload Portfolio Items</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Select multiple files</p>
+                    <input type="file" id="portfolioUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handlePortfolioUpload(event)">
+                </div>
+                <div class="loading-spinner" id="portfolioLoading"></div>
+                <div class="media-gallery" id="portfolioGallery"></div>
+                
+                <button class="btn btn-primary" onclick="MediaManager.savePortfolio()" style="width: 100%; margin-top: 1rem;">
+                    Save Portfolio
+                </button>
+            </div>
+
+            <!-- Services Tab -->
+            <div class="tab-content" id="services-tab">
+                <button class="btn btn-primary" onclick="MediaManager.addService()" style="width: 100%; margin-bottom: 1rem;">
+                    <i class="fas fa-plus"></i> Add New Service
+                </button>
+                <div id="servicesContainer"></div>
+                
+                <button class="btn btn-primary" onclick="MediaManager.saveServices()" style="width: 100%; margin-top: 1rem;">
+                    Save Services
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Header -->
-    <header id="mainHeader" class="editable-element">
+    <header>
         <nav>
-            <div class="logo-container editable-element" data-element="logo">
-                <span class="logo-text" id="logoText">refit</span>
-                <img class="logo-media" id="logoImage" alt="Logo">
-                <video class="logo-media" id="logoVideo" muted autoplay loop></video>
-                <div class="logo-slideshow" id="logoSlideshow"></div>
+            <div class="logo-container">
+                <span class="logo-text" id="logoTextDisplay">refit</span>
+                <img class="logo-image" id="logoImageDisplay" alt="Logo">
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="editable-element" data-element="nav-1">Home</a></li>
-                <li><a href="#about" class="editable-element" data-element="nav-2">About</a></li>
-                <li><a href="#services" class="editable-element" data-element="nav-3">Services</a></li>
-                <li><a href="#portfolio" class="editable-element" data-element="nav-4">Portfolio</a></li>
-                <li><a href="#contact" class="editable-element" data-element="nav-5">Contact</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="nav-controls">
-                <div class="social-media">
-                    <a href="" target="_blank" class="social-icon facebook" id="navFacebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" target="_blank" class="social-icon instagram" id="navInstagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" target="_blank" class="social-icon tiktok" id="navTiktok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-                <div class="menu-toggle" onclick="toggleMenu()" style="display: none;">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
         </nav>
     </header>
 
@@ -1370,1412 +686,518 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="editable-element" data-element="hero-title">FROM CONCEPT TO COMPLETION</h1>
-                <p class="tagline editable-element" data-element="hero-tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
-                <p class="editable-element" data-element="hero-description">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary editable-element" data-element="hero-btn-1">Get Started</a>
-                    <a href="#portfolio" class="btn btn-secondary editable-element" data-element="hero-btn-2">View Portfolio</a>
-                </div>
+                <h1>FROM CONCEPT TO COMPLETION</h1>
+                <p class="tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
+                <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
+                <a href="#contact" class="btn btn-primary">Get Started</a>
             </div>
-            <div class="hero-media editable-element media-container" data-element="hero-media">
-                <div class="hero-slideshow" id="heroSlideshow">
-                    <div class="hero-slide active">
-                        <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="Hero Image">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title editable-element" data-element="about-title">Our Mission & Vision</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <div class="editable-element" data-element="mission-box" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
-                <h3 class="editable-element" data-element="mission-title">Mission</h3>
-                <p class="editable-element" data-element="mission-text">To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
-            </div>
-            <div class="editable-element" data-element="vision-box" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
-                <h3 class="editable-element" data-element="vision-title">Vision</h3>
-                <p class="editable-element" data-element="vision-text">To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
+            <div class="hero-media" id="heroMediaDisplay">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23E8A0BF' width='600' height='400'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EREFIT Services%3C/text%3E%3C/svg%3E" alt="Hero">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-        <h2 class="section-title editable-element" data-element="services-title">What We Do</h2>
-        <div class="services-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            <!-- Services will be dynamically added here -->
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid" id="servicesDisplay">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Maintenance Services</h3>
+                <p>Comprehensive maintenance solutions for all properties</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Interior Construction</h3>
+                <p>Expert construction and renovation services</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Design Services</h3>
+                <p>Creative design and planning solutions</p>
+            </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio">
-        <h2 class="section-title editable-element" data-element="portfolio-title">Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <h2 class="section-title">Our Portfolio</h2>
+        <div class="portfolio-grid" id="portfolioDisplay">
             <!-- Portfolio items will be dynamically added here -->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title editable-element" data-element="contact-title">Get In Touch</h2>
+        <h2 class="section-title">Get In Touch</h2>
         <div style="text-align: center;">
-            <p class="editable-element" data-element="contact-text" style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
-            <p class="editable-element" data-element="contact-address"><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span id="contactPhone">+60 12-345 6789</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span id="contactEmail">info@refitinterior.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <span id="contactWhatsapp">+60 12-345 6789</span>
-                </div>
-            </div>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
+            <p><strong>Address:</strong> C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:info@refitinterior.com" class="btn btn-primary">Email Us</a>
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="" target="_blank" class="social-icon" id="footerFacebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="" target="_blank" class="social-icon" id="footerInstagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" target="_blank" class="social-icon" id="footerTiktok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="" class="social-icon" id="footerEmail">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="" target="_blank" class="social-icon" id="footerWhatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-            <p class="editable-element" data-element="footer-text" style="color: white;">&copy; 2024 REFIT Maintenance Services. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 REFIT Interior. All rights reserved.</p>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 2rem;">Admin Login</h2>
-            <form onsubmit="handleLogin(event)">
-                <div class="control-group">
-                    <label class="control-label">Username</label>
-                    <input type="text" class="control-input" id="loginUsername" required>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Password</label>
-                    <input type="password" class="control-input" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
-                <div id="loginError" style="color: #ff6b6b; text-align: center; margin-top: 1rem; display: none;">Invalid credentials!</div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Master Control Panel -->
-    <div class="master-control-panel" id="masterControlPanel">
-        <div class="mcp-header">
-            <h2>Master Control Panel</h2>
-            <span class="mcp-close" onclick="closeMasterPanel()">&times;</span>
-        </div>
-        
-        <div class="mcp-tabs">
-            <button class="mcp-tab active" onclick="switchTab('text')">
-                <i class="fas fa-font"></i> Text
-            </button>
-            <button class="mcp-tab" onclick="switchTab('design')">
-                <i class="fas fa-palette"></i> Design
-            </button>
-            <button class="mcp-tab" onclick="switchTab('media')">
-                <i class="fas fa-photo-video"></i> Media
-            </button>
-            <button class="mcp-tab" onclick="switchTab('layout')">
-                <i class="fas fa-th-large"></i> Layout
-            </button>
-            <button class="mcp-tab" onclick="switchTab('contact')">
-                <i class="fas fa-address-book"></i> Contact
-            </button>
-            <button class="mcp-tab" onclick="switchTab('animation')">
-                <i class="fas fa-magic"></i> Animation
-            </button>
-            <button class="mcp-tab" onclick="switchTab('advanced')">
-                <i class="fas fa-cogs"></i> Advanced
-            </button>
-        </div>
-
-        <div class="mcp-content">
-            <!-- Save Settings Button -->
-            <button class="save-settings-btn" onclick="saveAllSettings()">
-                <i class="fas fa-save"></i> Save All Settings
-            </button>
-
-            <!-- Text & Content Tab -->
-            <div id="text-tab" class="tab-content">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-edit"></i> Quick Edit Mode</h3>
-                    <button class="btn btn-primary" onclick="toggleEditMode()" style="width: 100%; padding: 12px; font-size: 16px;">
-                        <i class="fas fa-pencil-alt"></i> Enable Direct Editing
-                    </button>
-                    <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.85rem; text-align: center;">
-                        Click on any element to edit directly on the page
-                    </p>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-text-height"></i> Typography Settings</h3>
-                    <div class="control-group">
-                        <label class="control-label">Font Family</label>
-                        <select class="control-select" onchange="updateFontFamily(this.value)" style="padding: 10px; border-radius: 10px;">
-                            <option value="'Inter', sans-serif">Inter</option>
-                            <option value="'Poppins', sans-serif">Poppins</option>
-                            <option value="'Montserrat', sans-serif">Montserrat</option>
-                            <option value="'Roboto', sans-serif">Roboto</option>
-                            <option value="'Playfair Display', serif">Playfair Display</option>
-                            <option value="'Raleway', sans-serif">Raleway</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Base Font Size</label>
-                        <div class="range-slider-container">
-                            <input type="range" class="range-slider" min="12" max="24" value="16" oninput="updateFontSize(this.value)">
-                            <span class="range-value">16px</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-file-alt"></i> Content Management</h3>
-                    <div class="control-group">
-                        <label class="control-label">Hero Title</label>
-                        <input type="text" class="control-input" id="heroTitleInput" value="FROM CONCEPT TO COMPLETION" oninput="updateElementText('hero-title', this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Hero Tagline</label>
-                        <input type="text" class="control-input" id="heroTaglineInput" value="WE GROW WITH PASSION, WE DO IT ALL" oninput="updateElementText('hero-tagline', this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Hero Description</label>
-                        <textarea class="control-textarea" oninput="updateElementText('hero-description', this.value)" style="padding: 12px; border-radius: 10px;">Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Design Tab -->
-            <div id="design-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-paint-brush"></i> Color Palette</h3>
-                    <div class="control-group">
-                        <label class="control-label">Primary Color</label>
-                        <div class="color-picker-group">
-                            <input type="color" class="color-picker-input" value="#E8A0BF" oninput="updateColor('primary', this.value)">
-                            <input type="text" class="control-input" value="#E8A0BF" oninput="updateColor('primary', this.value)" style="width: 100px; padding: 10px; border-radius: 10px;">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Secondary Color</label>
-                        <div class="color-picker-group">
-                            <input type="color" class="color-picker-input" value="#BA5B7D" oninput="updateColor('secondary', this.value)">
-                            <input type="text" class="control-input" value="#BA5B7D" oninput="updateColor('secondary', this.value)" style="width: 100px; padding: 10px; border-radius: 10px;">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-border-style"></i> Borders & Shadows</h3>
-                    <div class="control-group">
-                        <label class="control-label">Border Radius</label>
-                        <div class="range-slider-container">
-                            <input type="range" class="range-slider" min="0" max="50" value="16" oninput="updateBorderRadius(this.value)">
-                            <span class="range-value">16px</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Media Tab -->
-            <div id="media-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-image"></i> Logo Management</h3>
-                    <div class="control-group">
-                        <label class="control-label">Logo Type</label>
-                        <select class="control-select" id="logoType" onchange="changeLogo()" style="padding: 10px; border-radius: 10px;">
-                            <option value="text">Text Logo</option>
-                            <option value="image">Single Image</option>
-                            <option value="video">Video Logo</option>
-                            <option value="slideshow">Image Slideshow</option>
-                            <option value="animation">Animated GIF</option>
-                        </select>
-                    </div>
-                    <div class="control-group" id="logoTextSettings">
-                        <label class="control-label">Logo Text</label>
-                        <input type="text" class="control-input" id="logoTextInput" value="refit" oninput="updateLogoText(this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group" id="logoMediaSettings" style="display: none;">
-                        <label class="control-label">Logo Media</label>
-                        <div class="upload-zone" onclick="document.getElementById('logoFileInput').click()" style="border-radius: 15px; padding: 2rem;">
-                            <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: #667eea; margin-bottom: 0.5rem;"></i>
-                            <p style="font-weight: 600;">Upload Logo Media</p>
-                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Images, Videos, GIFs</p>
-                            <input type="file" id="logoFileInput" accept="image/*,video/*,.gif" multiple style="display: none;" onchange="handleLogoUpload(event)">
-                        </div>
-                        <div class="media-gallery" id="logoGallery"></div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Logo Link (Optional)</label>
-                        <input type="url" class="control-input" id="logoLink" placeholder="https://example.com" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-film"></i> Hero Media Management</h3>
-                    <div class="control-group">
-                        <label class="control-label">Media Type</label>
-                        <select class="control-select" onchange="updateHeroMediaType(this.value)" style="padding: 10px; border-radius: 10px;">
-                            <option value="image">Single Image</option>
-                            <option value="video">Video Background</option>
-                            <option value="slideshow">Image Slideshow</option>
-                            <option value="gallery">Media Gallery</option>
-                        </select>
-                    </div>
-                    <div class="upload-zone" onclick="document.getElementById('heroMediaInput').click()" style="border-radius: 15px; padding: 2rem;">
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: #667eea; margin-bottom: 0.5rem;"></i>
-                        <p style="font-weight: 600;">Upload Hero Media</p>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Drag & drop or click to browse</p>
-                        <input type="file" id="heroMediaInput" accept="image/*,video/*" multiple style="display: none;" onchange="handleHeroMediaUpload(event)">
-                    </div>
-                    <div class="media-gallery" id="heroGallery"></div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-th-large"></i> Portfolio Management</h3>
-                    <button class="btn btn-primary" onclick="addPortfolioItem()" style="width: 100%; margin-bottom: 1rem;">
-                        <i class="fas fa-plus"></i> Add New Portfolio Item
-                    </button>
-                    <div class="upload-zone" onclick="document.getElementById('portfolioInput').click()" style="border-radius: 15px; padding: 2rem;">
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: #667eea; margin-bottom: 0.5rem;"></i>
-                        <p style="font-weight: 600;">Upload Portfolio Media</p>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Select multiple files</p>
-                        <input type="file" id="portfolioInput" accept="image/*,video/*" multiple style="display: none;" onchange="handlePortfolioUpload(event)">
-                    </div>
-                    <div class="portfolio-manager" id="portfolioManager"></div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-briefcase"></i> Services Management</h3>
-                    <button class="btn btn-primary" onclick="addServiceItem()" style="width: 100%; margin-bottom: 1rem;">
-                        <i class="fas fa-plus"></i> Add New Service
-                    </button>
-                    <div class="services-manager" id="servicesManager"></div>
-                </div>
-            </div>
-
-            <!-- Layout Tab -->
-            <div id="layout-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-ruler-combined"></i> Container Settings</h3>
-                    <div class="control-group">
-                        <label class="control-label">Container Width</label>
-                        <select class="control-select" onchange="updateContainerWidth(this.value)" style="padding: 10px; border-radius: 10px;">
-                            <option value="1200px">Standard (1200px)</option>
-                            <option value="1400px" selected>Wide (1400px)</option>
-                            <option value="1600px">Extra Wide (1600px)</option>
-                            <option value="100%">Full Width</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Tab -->
-            <div id="contact-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-phone"></i> Contact Information</h3>
-                    <div class="control-group">
-                        <label class="control-label">Phone Number</label>
-                        <input type="tel" class="control-input" id="phoneInput" value="+60 12-345 6789" onchange="updateContactInfo('phone', this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">WhatsApp Number</label>
-                        <input type="tel" class="control-input" id="whatsappInput" value="+60 12-345 6789" onchange="updateContactInfo('whatsapp', this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Email Address</label>
-                        <input type="email" class="control-input" id="emailInput" value="info@refitinterior.com" onchange="updateContactInfo('email', this.value)" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-share-alt"></i> Social Media Links</h3>
-                    <div class="control-group">
-                        <label class="control-label">Facebook URL</label>
-                        <input type="url" class="control-input" id="facebookInput" value="https://facebook.com/refitinterior" onchange="updateSocialMedia('facebook', this.value)" placeholder="https://facebook.com/yourpage" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Instagram URL</label>
-                        <input type="url" class="control-input" id="instagramInput" value="https://instagram.com/refitinterior" onchange="updateSocialMedia('instagram', this.value)" placeholder="https://instagram.com/yourprofile" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">TikTok URL</label>
-                        <input type="url" class="control-input" id="tiktokInput" value="https://tiktok.com/@refitinterior" onchange="updateSocialMedia('tiktok', this.value)" placeholder="https://tiktok.com/@yourhandle" style="padding: 12px; border-radius: 10px;">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Animation Tab -->
-            <div id="animation-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-sparkles"></i> Animation Settings</h3>
-                    <div class="control-group">
-                        <label class="control-label" style="display: flex; align-items: center; gap: 10px;">
-                            <input type="checkbox" id="enableAnimations" checked onchange="toggleAnimations(this.checked)" style="width: 20px; height: 20px;">
-                            <span>Enable Animations</span>
-                        </label>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Animation Duration</label>
-                        <div class="range-slider-container">
-                            <input type="range" class="range-slider" min="0.2" max="3" step="0.1" value="1" oninput="updateAnimationDuration(this.value)">
-                            <span class="range-value">1s</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Advanced Tab -->
-            <div id="advanced-tab" class="tab-content" style="display: none;">
-                <div class="mcp-section">
-                    <h3><i class="fas fa-code"></i> Custom Code</h3>
-                    <div class="control-group">
-                        <label class="control-label">Custom CSS</label>
-                        <textarea class="control-textarea" placeholder="Add custom CSS here..." oninput="updateCustomCSS(this.value)" style="padding: 12px; border-radius: 10px; font-family: 'Courier New', monospace;"></textarea>
-                    </div>
-                </div>
-
-                <div class="mcp-section">
-                    <h3><i class="fas fa-download"></i> Export/Import Settings</h3>
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn btn-primary" onclick="exportSettings()" style="flex: 1; padding: 12px;">
-                            <i class="fas fa-file-export"></i> Export Settings
-                        </button>
-                        <button class="btn btn-secondary" onclick="importSettings()" style="flex: 1; padding: 12px;">
-                            <i class="fas fa-file-import"></i> Import Settings
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Global Configuration
-        const siteConfig = {
-            isAuthenticated: false,
-            editMode: false,
-            animations: true,
-            media: {
-                logo: { type: 'text', value: 'refit', files: [], link: '' },
-                hero: { type: 'image', files: [] },
+        // Enhanced Media Manager Object
+        const MediaManager = {
+            // Data storage
+            data: {
+                logo: { type: 'text', text: 'refit', image: null },
+                hero: [],
                 portfolio: [],
-                services: []
+                services: [
+                    { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties' },
+                    { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services' },
+                    { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions' }
+                ]
             },
-            styles: {
-                primaryColor: '#E8A0BF',
-                secondaryColor: '#BA5B7D',
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 16,
-                borderRadius: 16,
-                animationDuration: 1
+
+            // Initialize
+            init() {
+                // Load saved data from localStorage
+                const saved = localStorage.getItem('refitData');
+                if (saved) {
+                    try {
+                        this.data = JSON.parse(saved);
+                        this.applyAllSettings();
+                    } catch (e) {
+                        console.error('Error loading saved data:', e);
+                    }
+                }
             },
-            contact: {
-                phone: '+60 12-345 6789',
-                whatsapp: '+60 12-345 6789',
-                email: 'info@refitinterior.com',
-                facebook: 'https://facebook.com/refitinterior',
-                instagram: 'https://instagram.com/refitinterior',
-                tiktok: 'https://tiktok.com/@refitinterior'
+
+            // Panel controls
+            openPanel() {
+                document.getElementById('controlPanel').classList.add('active');
+            },
+
+            closePanel() {
+                document.getElementById('controlPanel').classList.remove('active');
+            },
+
+            // Tab switching
+            switchTab(tabName) {
+                // Hide all tabs
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.panel-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                // Show selected tab
+                document.getElementById(tabName + '-tab').classList.add('active');
+                event.target.classList.add('active');
+
+                // Load content for the tab
+                if (tabName === 'services') {
+                    this.renderServices();
+                } else if (tabName === 'portfolio') {
+                    this.renderPortfolioGallery();
+                } else if (tabName === 'hero') {
+                    this.renderHeroGallery();
+                }
+            },
+
+            // Logo Management
+            changeLogo() {
+                const type = document.getElementById('logoType').value;
+                const textSettings = document.getElementById('logoTextSettings');
+                const imageSettings = document.getElementById('logoImageSettings');
+
+                if (type === 'text') {
+                    textSettings.style.display = 'block';
+                    imageSettings.style.display = 'none';
+                } else {
+                    textSettings.style.display = 'none';
+                    imageSettings.style.display = 'block';
+                }
+
+                this.data.logo.type = type;
+            },
+
+            updateLogoText() {
+                const text = document.getElementById('logoText').value;
+                this.data.logo.text = text;
+                document.getElementById('logoTextDisplay').textContent = text;
+            },
+
+            handleLogoUpload(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        this.data.logo.image = e.target.result;
+                        this.renderLogoGallery();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            },
+
+            renderLogoGallery() {
+                const gallery = document.getElementById('logoGallery');
+                gallery.innerHTML = '';
+
+                if (this.data.logo.image) {
+                    const item = document.createElement('div');
+                    item.className = 'media-item';
+                    item.innerHTML = `
+                        <img src="${this.data.logo.image}" alt="Logo">
+                        <div class="media-item-controls">
+                            <button class="media-btn" onclick="MediaManager.removeLogo()">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    gallery.appendChild(item);
+                }
+            },
+
+            removeLogo() {
+                this.data.logo.image = null;
+                this.renderLogoGallery();
+            },
+
+            saveLogo() {
+                if (this.data.logo.type === 'text') {
+                    document.getElementById('logoTextDisplay').style.display = 'block';
+                    document.getElementById('logoImageDisplay').style.display = 'none';
+                    document.getElementById('logoTextDisplay').textContent = this.data.logo.text;
+                } else if (this.data.logo.image) {
+                    document.getElementById('logoTextDisplay').style.display = 'none';
+                    document.getElementById('logoImageDisplay').style.display = 'block';
+                    document.getElementById('logoImageDisplay').src = this.data.logo.image;
+                }
+                this.saveData();
+                this.showNotification('Logo saved successfully!', 'success');
+            },
+
+            // Hero Media Management
+            handleHeroUpload(event) {
+                const files = Array.from(event.target.files);
+                this.processFiles(files, 'hero');
+            },
+
+            processFiles(files, type) {
+                const loadingEl = document.getElementById(type + 'Loading');
+                if (loadingEl) loadingEl.classList.add('active');
+
+                let processed = 0;
+                files.forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        this.data[type].push({
+                            url: e.target.result,
+                            type: file.type,
+                            name: file.name,
+                            id: Date.now() + Math.random()
+                        });
+                        processed++;
+                        if (processed === files.length) {
+                            if (loadingEl) loadingEl.classList.remove('active');
+                            if (type === 'hero') {
+                                this.renderHeroGallery();
+                            } else if (type === 'portfolio') {
+                                this.renderPortfolioGallery();
+                            }
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
+            },
+
+            renderHeroGallery() {
+                const gallery = document.getElementById('heroGallery');
+                gallery.innerHTML = '';
+
+                this.data.hero.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'media-item';
+                    const isVideo = item.type.startsWith('video/');
+                    
+                    div.innerHTML = `
+                        ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
+                        <div class="media-item-controls">
+                            <button class="media-btn" onclick="MediaManager.setAsHeroMain(${index})">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <button class="media-btn" onclick="MediaManager.removeMedia('hero', ${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    gallery.appendChild(div);
+                });
+            },
+
+            setAsHeroMain(index) {
+                const item = this.data.hero[index];
+                if (item) {
+                    // Move to first position
+                    this.data.hero.splice(index, 1);
+                    this.data.hero.unshift(item);
+                    this.renderHeroGallery();
+                    this.updateHeroDisplay();
+                }
+            },
+
+            updateHeroDisplay() {
+                const display = document.getElementById('heroMediaDisplay');
+                if (this.data.hero.length > 0) {
+                    const item = this.data.hero[0];
+                    const isVideo = item.type.startsWith('video/');
+                    display.innerHTML = isVideo ? 
+                        `<video src="${item.url}" autoplay muted loop></video>` : 
+                        `<img src="${item.url}" alt="Hero">`;
+                }
+            },
+
+            saveHero() {
+                this.updateHeroDisplay();
+                this.saveData();
+                this.showNotification('Hero media saved successfully!', 'success');
+            },
+
+            // Portfolio Management
+            handlePortfolioUpload(event) {
+                const files = Array.from(event.target.files);
+                this.processFiles(files, 'portfolio');
+            },
+
+            renderPortfolioGallery() {
+                const gallery = document.getElementById('portfolioGallery');
+                gallery.innerHTML = '';
+
+                this.data.portfolio.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'media-item';
+                    const isVideo = item.type.startsWith('video/');
+                    
+                    div.innerHTML = `
+                        ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
+                        <div class="media-item-controls">
+                            <button class="media-btn" onclick="MediaManager.editPortfolioItem(${index})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="media-btn" onclick="MediaManager.removeMedia('portfolio', ${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    gallery.appendChild(div);
+                });
+            },
+
+            editPortfolioItem(index) {
+                const item = this.data.portfolio[index];
+                const title = prompt('Enter title for this portfolio item:', item.title || '');
+                const description = prompt('Enter description:', item.description || '');
+                
+                if (title !== null) item.title = title;
+                if (description !== null) item.description = description;
+                
+                this.renderPortfolioGallery();
+            },
+
+            updatePortfolioDisplay() {
+                const display = document.getElementById('portfolioDisplay');
+                display.innerHTML = '';
+
+                this.data.portfolio.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'portfolio-item';
+                    const isVideo = item.type && item.type.startsWith('video/');
+                    
+                    div.innerHTML = `
+                        ${isVideo ? `<video src="${item.url}" muted loop></video>` : `<img src="${item.url}" alt="${item.title || 'Portfolio'}">`}
+                        <div class="portfolio-overlay">
+                            <h3>${item.title || 'Portfolio Item'}</h3>
+                            <p>${item.description || ''}</p>
+                        </div>
+                    `;
+                    
+                    // Add hover effect for videos
+                    if (isVideo) {
+                        div.addEventListener('mouseenter', () => {
+                            div.querySelector('video').play();
+                        });
+                        div.addEventListener('mouseleave', () => {
+                            div.querySelector('video').pause();
+                        });
+                    }
+                    
+                    display.appendChild(div);
+                });
+            },
+
+            savePortfolio() {
+                this.updatePortfolioDisplay();
+                this.saveData();
+                this.showNotification('Portfolio saved successfully!', 'success');
+            },
+
+            // Services Management
+            addService() {
+                this.data.services.push({
+                    icon: '⭐',
+                    title: 'New Service',
+                    description: 'Service description'
+                });
+                this.renderServices();
+            },
+
+            renderServices() {
+                const container = document.getElementById('servicesContainer');
+                container.innerHTML = '';
+
+                this.data.services.forEach((service, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'control-group';
+                    div.style.padding = '1rem';
+                    div.style.background = 'var(--bg-secondary)';
+                    div.style.borderRadius = '8px';
+                    div.style.marginBottom = '1rem';
+                    
+                    div.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4>Service ${index + 1}</h4>
+                            <button class="media-btn" onclick="MediaManager.removeService(${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="control-input" placeholder="Icon (emoji)" value="${service.icon}" 
+                               onchange="MediaManager.updateService(${index}, 'icon', this.value)" style="margin: 0.5rem 0;">
+                        <input type="text" class="control-input" placeholder="Title" value="${service.title}" 
+                               onchange="MediaManager.updateService(${index}, 'title', this.value)" style="margin: 0.5rem 0;">
+                        <textarea class="control-input" placeholder="Description" 
+                                  onchange="MediaManager.updateService(${index}, 'description', this.value)" 
+                                  style="margin: 0.5rem 0; min-height: 80px;">${service.description}</textarea>
+                    `;
+                    container.appendChild(div);
+                });
+            },
+
+            updateService(index, field, value) {
+                this.data.services[index][field] = value;
+            },
+
+            removeService(index) {
+                if (confirm('Remove this service?')) {
+                    this.data.services.splice(index, 1);
+                    this.renderServices();
+                }
+            },
+
+            updateServicesDisplay() {
+                const display = document.getElementById('servicesDisplay');
+                display.innerHTML = '';
+
+                this.data.services.forEach(service => {
+                    const div = document.createElement('div');
+                    div.className = 'service-card';
+                    div.innerHTML = `
+                        <div class="service-icon">${service.icon}</div>
+                        <h3>${service.title}</h3>
+                        <p>${service.description}</p>
+                    `;
+                    display.appendChild(div);
+                });
+            },
+
+            saveServices() {
+                this.updateServicesDisplay();
+                this.saveData();
+                this.showNotification('Services saved successfully!', 'success');
+            },
+
+            // Drag and Drop
+            handleDragOver(event) {
+                event.preventDefault();
+                event.currentTarget.classList.add('dragging');
+            },
+
+            handleDragLeave(event) {
+                event.currentTarget.classList.remove('dragging');
+            },
+
+            handleDrop(event, type) {
+                event.preventDefault();
+                event.currentTarget.classList.remove('dragging');
+                
+                const files = Array.from(event.dataTransfer.files);
+                this.processFiles(files, type);
+            },
+
+            // Utility Functions
+            removeMedia(type, index) {
+                if (confirm('Remove this item?')) {
+                    this.data[type].splice(index, 1);
+                    if (type === 'hero') {
+                        this.renderHeroGallery();
+                    } else if (type === 'portfolio') {
+                        this.renderPortfolioGallery();
+                    }
+                }
+            },
+
+            saveData() {
+                localStorage.setItem('refitData', JSON.stringify(this.data));
+            },
+
+            applyAllSettings() {
+                // Apply logo
+                if (this.data.logo.type === 'text') {
+                    document.getElementById('logoTextDisplay').style.display = 'block';
+                    document.getElementById('logoImageDisplay').style.display = 'none';
+                    document.getElementById('logoTextDisplay').textContent = this.data.logo.text;
+                } else if (this.data.logo.image) {
+                    document.getElementById('logoTextDisplay').style.display = 'none';
+                    document.getElementById('logoImageDisplay').style.display = 'block';
+                    document.getElementById('logoImageDisplay').src = this.data.logo.image;
+                }
+
+                // Apply hero
+                this.updateHeroDisplay();
+
+                // Apply portfolio
+                this.updatePortfolioDisplay();
+
+                // Apply services
+                this.updateServicesDisplay();
+            },
+
+            showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
             }
         };
 
-        // Check authentication status on load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuthStatus();
-            loadServices();
-            loadPortfolio();
-            setupSmoothScrolling();
-            checkMobileMenu();
-            initializeMediaManagement();
-            loadSavedConfig();
-            updateAllContactDisplay();
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            MediaManager.init();
         });
 
-        // Load saved configuration
-        function loadSavedConfig() {
-            const saved = localStorage.getItem('siteConfig');
-            if (saved) {
-                Object.assign(siteConfig, JSON.parse(saved));
-                applyAllSettings();
-            }
-        }
-
-        // Update Contact Information
-        function updateContactInfo(type, value) {
-            siteConfig.contact[type] = value;
-            
-            if (type === 'phone') {
-                document.getElementById('contactPhone').textContent = value;
-            } else if (type === 'whatsapp') {
-                document.getElementById('contactWhatsapp').textContent = value;
-                const whatsappNumber = value.replace(/[^0-9]/g, '');
-                document.getElementById('whatsappFloat').href = `https://wa.me/${whatsappNumber}?text=Hi%20REFIT%20Interior!%20I'm%20interested%20in%20your%20services.`;
-                document.getElementById('footerWhatsapp').href = `https://wa.me/${whatsappNumber}`;
-            } else if (type === 'email') {
-                document.getElementById('contactEmail').textContent = value;
-                document.getElementById('emailFloat').href = `mailto:${value}?subject=Inquiry%20about%20REFIT%20Interior%20Services`;
-                document.getElementById('footerEmail').href = `mailto:${value}`;
-            }
-        }
-
-        // Update Social Media Links
-        function updateSocialMedia(platform, url) {
-            siteConfig.contact[platform] = url;
-            
-            // Update all instances of the social media links
-            const elements = {
-                facebook: ['navFacebook', 'footerFacebook'],
-                instagram: ['navInstagram', 'footerInstagram'],
-                tiktok: ['navTiktok', 'footerTiktok']
-            };
-            
-            if (elements[platform]) {
-                elements[platform].forEach(id => {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        element.href = url;
-                    }
-                });
-            }
-        }
-
-        // Update all contact display on load
-        function updateAllContactDisplay() {
-            // Update phone
-            document.getElementById('contactPhone').textContent = siteConfig.contact.phone;
-            
-            // Update WhatsApp
-            document.getElementById('contactWhatsapp').textContent = siteConfig.contact.whatsapp;
-            const whatsappNumber = siteConfig.contact.whatsapp.replace(/[^0-9]/g, '');
-            document.getElementById('whatsappFloat').href = `https://wa.me/${whatsappNumber}?text=Hi%20REFIT%20Interior!%20I'm%20interested%20in%20your%20services.`;
-            document.getElementById('footerWhatsapp').href = `https://wa.me/${whatsappNumber}`;
-            
-            // Update Email
-            document.getElementById('contactEmail').textContent = siteConfig.contact.email;
-            document.getElementById('emailFloat').href = `mailto:${siteConfig.contact.email}?subject=Inquiry%20about%20REFIT%20Interior%20Services`;
-            document.getElementById('footerEmail').href = `mailto:${siteConfig.contact.email}`;
-            
-            // Update social media links
-            ['facebook', 'instagram', 'tiktok'].forEach(platform => {
-                const elements = {
-                    facebook: ['navFacebook', 'footerFacebook'],
-                    instagram: ['navInstagram', 'footerInstagram'],
-                    tiktok: ['navTiktok', 'footerTiktok']
-                };
-                
-                if (elements[platform]) {
-                    elements[platform].forEach(id => {
-                        const element = document.getElementById(id);
-                        if (element) {
-                            element.href = siteConfig.contact[platform];
-                        }
-                    });
-                }
-            });
-            
-            // Update input fields in control panel
-            if (document.getElementById('phoneInput')) {
-                document.getElementById('phoneInput').value = siteConfig.contact.phone;
-            }
-            if (document.getElementById('whatsappInput')) {
-                document.getElementById('whatsappInput').value = siteConfig.contact.whatsapp;
-            }
-            if (document.getElementById('emailInput')) {
-                document.getElementById('emailInput').value = siteConfig.contact.email;
-            }
-            if (document.getElementById('facebookInput')) {
-                document.getElementById('facebookInput').value = siteConfig.contact.facebook;
-            }
-            if (document.getElementById('instagramInput')) {
-                document.getElementById('instagramInput').value = siteConfig.contact.instagram;
-            }
-            if (document.getElementById('tiktokInput')) {
-                document.getElementById('tiktokInput').value = siteConfig.contact.tiktok;
-            }
-        }
-
-        // Authentication System
-        function checkAuthStatus() {
-            const isLoggedIn = localStorage.getItem('isAuthenticated') === 'true';
-            if (isLoggedIn) {
-                siteConfig.isAuthenticated = true;
-                showAdminControls();
-            }
-        }
-
-        function showLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
-
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const errorDiv = document.getElementById('loginError');
-            
-            if (username === 'admin' && password === 'refit2024') {
-                siteConfig.isAuthenticated = true;
-                localStorage.setItem('isAuthenticated', 'true');
-                closeModal('loginModal');
-                showAdminControls();
-                showNotification('✅ Login successful! Master Control Panel is now accessible.', 'success');
-                initializeEditableElements();
-            } else {
-                errorDiv.style.display = 'block';
-                setTimeout(() => {
-                    errorDiv.style.display = 'none';
-                }, 3000);
-            }
-        }
-
-        function handleLogout() {
-            siteConfig.isAuthenticated = false;
-            localStorage.removeItem('isAuthenticated');
-            hideAdminControls();
-            showNotification('👋 Logged out successfully', 'info');
-        }
-
-        function showAdminControls() {
-            document.getElementById('adminLoginBtn').style.display = 'none';
-            document.getElementById('adminLogoutBtn').style.display = 'flex';
-            document.getElementById('masterPanelToggle').style.display = 'flex';
-            initializeEditableElements();
-        }
-
-        function hideAdminControls() {
-            document.getElementById('adminLoginBtn').style.display = 'flex';
-            document.getElementById('adminLogoutBtn').style.display = 'none';
-            document.getElementById('masterPanelToggle').style.display = 'none';
-            closeMasterPanel();
-            disableEditableElements();
-        }
-
-        // Initialize Editable Elements
-        function initializeEditableElements() {
-            if (!siteConfig.isAuthenticated) return;
-            
-            document.querySelectorAll('.editable-element').forEach(element => {
-                element.style.cursor = 'pointer';
-                element.title = 'Click to edit';
-                
-                element.addEventListener('dblclick', function(e) {
-                    if (!siteConfig.isAuthenticated) return;
-                    e.preventDefault();
-                    e.stopPropagation();
-                    makeElementEditable(this);
-                });
-            });
-        }
-
-        function disableEditableElements() {
-            document.querySelectorAll('.editable-element').forEach(element => {
-                element.style.cursor = 'default';
-                element.title = '';
-                element.contentEditable = false;
-            });
-        }
-
-        function makeElementEditable(element) {
-            element.contentEditable = true;
-            element.focus();
-            
-            // Select all text
-            const range = document.createRange();
-            range.selectNodeContents(element);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            
-            element.addEventListener('blur', function() {
-                this.contentEditable = false;
-                saveElementContent(this);
-            });
-            
-            element.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    this.blur();
-                }
-            });
-        }
-
-        function saveElementContent(element) {
-            const elementId = element.getAttribute('data-element');
-            if (elementId) {
-                localStorage.setItem(`element_${elementId}`, element.innerHTML);
-            }
-            showNotification('✅ Content saved', 'success');
-        }
-
-        // Master Panel Controls
-        function openMasterPanel() {
-            if (!siteConfig.isAuthenticated) return;
-            document.getElementById('masterControlPanel').classList.add('active');
-            loadMediaGalleries();
-            updateAllContactDisplay();
-        }
-
-        function closeMasterPanel() {
-            document.getElementById('masterControlPanel').classList.remove('active');
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.style.display = 'none';
-            });
-            
-            document.querySelectorAll('.mcp-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            document.getElementById(tabName + '-tab').style.display = 'block';
-            event.target.classList.add('active');
-            
-            if (tabName === 'media') {
-                loadMediaGalleries();
-            } else if (tabName === 'contact') {
-                updateAllContactDisplay();
-            }
-        }
-
-        // Media Management Functions
-        function initializeMediaManagement() {
-            if (!siteConfig.media.services || siteConfig.media.services.length === 0) {
-                siteConfig.media.services = [
-                    { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties.' },
-                    { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services.' },
-                    { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions.' }
-                ];
-            }
-        }
-
-        function changeLogo() {
-            const logoType = document.getElementById('logoType').value;
-            const textSettings = document.getElementById('logoTextSettings');
-            const mediaSettings = document.getElementById('logoMediaSettings');
-            
-            if (logoType === 'text') {
-                textSettings.style.display = 'block';
-                mediaSettings.style.display = 'none';
-            } else {
-                textSettings.style.display = 'none';
-                mediaSettings.style.display = 'block';
-            }
-            
-            siteConfig.media.logo.type = logoType;
-            applyLogo();
-        }
-
-        function updateLogoText(value) {
-            document.getElementById('logoText').textContent = value;
-            siteConfig.media.logo.value = value;
-        }
-
-        function handleLogoUpload(event) {
-            const files = Array.from(event.target.files);
-            const gallery = document.getElementById('logoGallery');
-            
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const mediaItem = {
-                        type: file.type,
-                        url: e.target.result,
-                        name: file.name,
-                        id: Date.now() + Math.random()
-                    };
-                    
-                    siteConfig.media.logo.files.push(mediaItem);
-                    renderLogoGallery();
-                    applyLogo();
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function renderLogoGallery() {
-            const gallery = document.getElementById('logoGallery');
-            gallery.innerHTML = '';
-            
-            siteConfig.media.logo.files.forEach((item, index) => {
-                const mediaDiv = createMediaItem(item, index, 'logo');
-                gallery.appendChild(mediaDiv);
-            });
-        }
-
-        function handleHeroMediaUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const mediaItem = {
-                        type: file.type,
-                        url: e.target.result,
-                        name: file.name,
-                        id: Date.now() + Math.random()
-                    };
-                    
-                    siteConfig.media.hero.files.push(mediaItem);
-                    renderHeroGallery();
-                    applyHeroMedia();
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function renderHeroGallery() {
-            const gallery = document.getElementById('heroGallery');
-            gallery.innerHTML = '';
-            
-            siteConfig.media.hero.files.forEach((item, index) => {
-                const mediaDiv = createMediaItem(item, index, 'hero');
-                gallery.appendChild(mediaDiv);
-            });
-        }
-
-        function createMediaItem(item, index, type) {
-            const div = document.createElement('div');
-            div.className = 'media-item';
-            div.setAttribute('data-index', index);
-            
-            if (item.type.startsWith('image/')) {
-                div.innerHTML = `
-                    <img src="${item.url}" alt="${item.name}">
-                    <div class="media-item-controls">
-                        <button class="media-btn link" onclick="setMediaLink('${type}', ${index})" title="Add Link">
-                            <i class="fas fa-link"></i>
-                        </button>
-                        <button class="media-btn edit" onclick="editMediaItem('${type}', ${index})" title="Edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="media-btn delete" onclick="deleteMediaItem('${type}', ${index})" title="Delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-            } else if (item.type.startsWith('video/')) {
-                div.innerHTML = `
-                    <video src="${item.url}" muted></video>
-                    <div class="media-item-controls">
-                        <button class="media-btn link" onclick="setMediaLink('${type}', ${index})" title="Add Link">
-                            <i class="fas fa-link"></i>
-                        </button>
-                        <button class="media-btn edit" onclick="editMediaItem('${type}', ${index})" title="Edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="media-btn delete" onclick="deleteMediaItem('${type}', ${index})" title="Delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-            }
-            
-            return div;
-        }
-
-        function deleteMediaItem(type, index) {
-            if (confirm('Are you sure you want to delete this item?')) {
-                if (type === 'logo') {
-                    siteConfig.media.logo.files.splice(index, 1);
-                    renderLogoGallery();
-                    applyLogo();
-                } else if (type === 'hero') {
-                    siteConfig.media.hero.files.splice(index, 1);
-                    renderHeroGallery();
-                    applyHeroMedia();
-                }
-                showNotification('✅ Item deleted', 'success');
-            }
-        }
-
-        function setMediaLink(type, index) {
-            const link = prompt('Enter the link URL:');
-            if (link) {
-                if (type === 'logo') {
-                    siteConfig.media.logo.files[index].link = link;
-                } else if (type === 'hero') {
-                    siteConfig.media.hero.files[index].link = link;
-                }
-                showNotification('✅ Link added', 'success');
-            }
-        }
-
-        function editMediaItem(type, index) {
-            const item = type === 'logo' ? siteConfig.media.logo.files[index] : siteConfig.media.hero.files[index];
-            const newName = prompt('Enter new name for this item:', item.name);
-            if (newName) {
-                item.name = newName;
-                showNotification('✅ Item updated', 'success');
-            }
-        }
-
-        // Portfolio Management
-        function handlePortfolioUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const portfolioItem = {
-                        id: Date.now() + Math.random(),
-                        title: 'New Project',
-                        description: 'Project description',
-                        category: 'Interior Design',
-                        media: {
-                            type: file.type,
-                            url: e.target.result,
-                            name: file.name
-                        },
-                        link: ''
-                    };
-                    
-                    siteConfig.media.portfolio.push(portfolioItem);
-                    renderPortfolioManager();
-                    updatePortfolioDisplay();
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function addPortfolioItem() {
-            const portfolioItem = {
-                id: Date.now() + Math.random(),
-                title: 'New Project',
-                description: 'Enter project description',
-                category: 'Interior Design',
-                media: null,
-                link: ''
-            };
-            
-            siteConfig.media.portfolio.push(portfolioItem);
-            renderPortfolioManager();
-            updatePortfolioDisplay();
-        }
-
-        function renderPortfolioManager() {
-            const manager = document.getElementById('portfolioManager');
-            manager.innerHTML = '';
-            
-            siteConfig.media.portfolio.forEach((item, index) => {
-                const itemEditor = document.createElement('div');
-                itemEditor.className = 'portfolio-item-editor';
-                itemEditor.innerHTML = `
-                    <div class="item-header">
-                        <div class="item-number">${index + 1}</div>
-                        <div class="item-controls">
-                            <button class="media-btn delete" onclick="deletePortfolioItem(${index})" title="Delete">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="media-thumbnail">
-                        ${item.media ? 
-                            (item.media.type.startsWith('image/') ? 
-                                `<img src="${item.media.url}" alt="${item.title}">` :
-                                `<video src="${item.media.url}" muted></video>`) :
-                            `<div class="media-thumbnail-placeholder">
-                                <i class="fas fa-image"></i>
-                                <p>No media uploaded</p>
-                            </div>`
-                        }
-                    </div>
-                    <div class="item-field">
-                        <label>Title</label>
-                        <input type="text" value="${item.title}" onchange="updatePortfolioItem(${index}, 'title', this.value)">
-                    </div>
-                    <div class="item-field">
-                        <label>Description</label>
-                        <textarea rows="3" onchange="updatePortfolioItem(${index}, 'description', this.value)">${item.description}</textarea>
-                    </div>
-                    <div class="item-field">
-                        <label>Category</label>
-                        <input type="text" value="${item.category}" onchange="updatePortfolioItem(${index}, 'category', this.value)">
-                    </div>
-                    <div class="item-field">
-                        <label>Link (Optional)</label>
-                        <input type="url" value="${item.link || ''}" placeholder="https://example.com" onchange="updatePortfolioItem(${index}, 'link', this.value)">
-                    </div>
-                `;
-                manager.appendChild(itemEditor);
-            });
-        }
-
-        function updatePortfolioItem(index, field, value) {
-            siteConfig.media.portfolio[index][field] = value;
-            updatePortfolioDisplay();
-            showNotification('✅ Portfolio item updated', 'success');
-        }
-
-        function deletePortfolioItem(index) {
-            if (confirm('Are you sure you want to delete this portfolio item?')) {
-                siteConfig.media.portfolio.splice(index, 1);
-                renderPortfolioManager();
-                updatePortfolioDisplay();
-                showNotification('✅ Portfolio item deleted', 'success');
-            }
-        }
-
-        function updatePortfolioDisplay() {
-            const grid = document.getElementById('portfolioGrid');
-            grid.innerHTML = '';
-            
-            siteConfig.media.portfolio.forEach((item, index) => {
-                const portfolioDiv = document.createElement('div');
-                portfolioDiv.className = 'portfolio-item editable-element media-container';
-                portfolioDiv.style.position = 'relative';
-                portfolioDiv.style.overflow = 'hidden';
-                portfolioDiv.style.borderRadius = 'var(--border-radius)';
-                portfolioDiv.style.boxShadow = 'var(--shadow-md)';
-                portfolioDiv.style.cursor = item.link ? 'pointer' : 'default';
-                
-                if (item.link) {
-                    portfolioDiv.onclick = () => window.open(item.link, '_blank');
-                }
-                
-                const mediaContent = item.media ? 
-                    (item.media.type.startsWith('image/') ? 
-                        `<img src="${item.media.url}" alt="${item.title}" style="width: 100%; height: 300px; object-fit: cover;">` :
-                        `<video src="${item.media.url}" autoplay muted loop style="width: 100%; height: 300px; object-fit: cover;"></video>`) :
-                    `<img src="https://via.placeholder.com/400x300/667eea/ffffff?text=${encodeURIComponent(item.title)}" alt="${item.title}" style="width: 100%; height: 300px; object-fit: cover;">`;
-                
-                portfolioDiv.innerHTML = `
-                    ${mediaContent}
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white;">
-                        <h4>${item.title}</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.9;">${item.description}</p>
-                        ${item.category ? `<span style="font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 12px;">${item.category}</span>` : ''}
-                    </div>
-                `;
-                grid.appendChild(portfolioDiv);
-            });
-        }
-
-        // Services Management
-        function addServiceItem() {
-            const serviceItem = {
-                id: Date.now() + Math.random(),
-                icon: '⭐',
-                title: 'New Service',
-                description: 'Service description'
-            };
-            
-            siteConfig.media.services.push(serviceItem);
-            renderServicesManager();
-            updateServicesDisplay();
-        }
-
-        function renderServicesManager() {
-            const manager = document.getElementById('servicesManager');
-            manager.innerHTML = '';
-            
-            siteConfig.media.services.forEach((item, index) => {
-                const itemEditor = document.createElement('div');
-                itemEditor.className = 'service-item-editor';
-                itemEditor.innerHTML = `
-                    <div class="item-header">
-                        <div class="item-number">${index + 1}</div>
-                        <div class="item-controls">
-                            <button class="media-btn delete" onclick="deleteServiceItem(${index})" title="Delete">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="item-field">
-                        <label>Icon (Emoji or Text)</label>
-                        <input type="text" value="${item.icon}" onchange="updateServiceItem(${index}, 'icon', this.value)" style="font-size: 1.5rem; text-align: center;">
-                    </div>
-                    <div class="item-field">
-                        <label>Title</label>
-                        <input type="text" value="${item.title}" onchange="updateServiceItem(${index}, 'title', this.value)">
-                    </div>
-                    <div class="item-field">
-                        <label>Description</label>
-                        <textarea rows="3" onchange="updateServiceItem(${index}, 'description', this.value)">${item.description}</textarea>
-                    </div>
-                `;
-                manager.appendChild(itemEditor);
-            });
-        }
-
-        function updateServiceItem(index, field, value) {
-            siteConfig.media.services[index][field] = value;
-            updateServicesDisplay();
-            showNotification('✅ Service updated', 'success');
-        }
-
-        function deleteServiceItem(index) {
-            if (confirm('Are you sure you want to delete this service?')) {
-                siteConfig.media.services.splice(index, 1);
-                renderServicesManager();
-                updateServicesDisplay();
-                showNotification('✅ Service deleted', 'success');
-            }
-        }
-
-        function updateServicesDisplay() {
-            const container = document.querySelector('.services-container');
-            container.innerHTML = '';
-            
-            siteConfig.media.services.forEach((service, index) => {
-                const card = document.createElement('div');
-                card.className = 'editable-element';
-                card.style.cssText = 'background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md); text-align: center; transition: all 0.3s ease;';
-                card.onmouseover = () => card.style.transform = 'translateY(-5px)';
-                card.onmouseout = () => card.style.transform = 'translateY(0)';
-                card.innerHTML = `
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">${service.icon}</div>
-                    <h4>${service.title}</h4>
-                    <p>${service.description}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function loadMediaGalleries() {
-            renderLogoGallery();
-            renderHeroGallery();
-            renderPortfolioManager();
-            renderServicesManager();
-        }
-
-        function updateHeroMediaType(value) {
-            siteConfig.media.hero.type = value;
-            applyHeroMedia();
-        }
-
-        function applyLogo() {
-            const logoType = siteConfig.media.logo.type;
-            const files = siteConfig.media.logo.files;
-            
-            // Hide all logo types
-            document.getElementById('logoText').style.display = 'none';
-            document.getElementById('logoImage').style.display = 'none';
-            document.getElementById('logoVideo').style.display = 'none';
-            document.getElementById('logoSlideshow').style.display = 'none';
-            
-            if (logoType === 'text') {
-                document.getElementById('logoText').style.display = 'block';
-            } else if (files.length > 0) {
-                if (logoType === 'image' || logoType === 'animation') {
-                    const logoImage = document.getElementById('logoImage');
-                    logoImage.src = files[0].url;
-                    logoImage.style.display = 'block';
-                } else if (logoType === 'video') {
-                    const logoVideo = document.getElementById('logoVideo');
-                    logoVideo.src = files[0].url;
-                    logoVideo.style.display = 'block';
-                } else if (logoType === 'slideshow') {
-                    const slideshow = document.getElementById('logoSlideshow');
-                    slideshow.style.display = 'block';
-                    slideshow.innerHTML = '';
-                    
-                    files.forEach((file, index) => {
-                        const slide = document.createElement('div');
-                        slide.className = 'logo-slide';
-                        if (index === 0) slide.classList.add('active');
-                        slide.innerHTML = `<img src="${file.url}" alt="Logo ${index + 1}" style="width: 100%; height: 100%; object-fit: contain;">`;
-                        slideshow.appendChild(slide);
-                    });
-                    
-                    if (files.length > 1) {
-                        startSlideshow('logo', 3000);
-                    }
-                }
-            }
-        }
-
-        function applyHeroMedia() {
-            const files = siteConfig.media.hero.files;
-            if (files.length === 0) return;
-            
-            const slideshow = document.getElementById('heroSlideshow');
-            slideshow.innerHTML = '';
-            
-            files.forEach((file, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'hero-slide';
-                if (index === 0) slide.classList.add('active');
-                
-                if (file.type.startsWith('image/')) {
-                    slide.innerHTML = `<img src="${file.url}" alt="Hero ${index + 1}">`;
-                } else if (file.type.startsWith('video/')) {
-                    slide.innerHTML = `<video src="${file.url}" autoplay muted loop></video>`;
-                }
-                
-                slideshow.appendChild(slide);
-            });
-            
-            if (files.length > 1) {
-                startSlideshow('hero', 5000);
-            }
-        }
-
-        let slideshows = {};
-        function startSlideshow(id, interval) {
-            if (slideshows[id]) {
-                clearInterval(slideshows[id]);
-            }
-            
-            let currentSlide = 0;
-            const slides = document.querySelectorAll(`#${id}Slideshow .${id}-slide`);
-            
-            slideshows[id] = setInterval(() => {
-                if (slides.length > 0) {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                }
-            }, interval);
-        }
-
-        // Save Settings Function with Enhanced Notification
-        function saveAllSettings() {
-            // Save to localStorage
-            localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
-            
-            // Animate save button
-            const saveBtn = document.querySelector('.save-settings-btn');
-            const originalContent = saveBtn.innerHTML;
-            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved Successfully!';
-            saveBtn.style.background = 'linear-gradient(135deg, #51cf66, #37b24d)';
-            
-            setTimeout(() => {
-                saveBtn.innerHTML = originalContent;
-            }, 2000);
-            
-            // Show enhanced success notification
-            showNotification('✅ All settings have been saved successfully!', 'success');
-            
-            // Add pulse animation to the panel
-            const panel = document.getElementById('masterControlPanel');
-            panel.style.animation = 'pulse 0.5s ease';
-            setTimeout(() => {
-                panel.style.animation = '';
-            }, 500);
-        }
-
-        // Edit Mode Toggle
-        function toggleEditMode() {
-            siteConfig.editMode = !siteConfig.editMode;
-            document.body.classList.toggle('edit-mode');
-            
-            if (siteConfig.editMode) {
-                event.target.innerHTML = '<i class="fas fa-pencil-alt"></i> Disable Direct Editing';
-                showNotification('✏️ Edit mode enabled - Double-click any element to edit', 'info');
-            } else {
-                event.target.innerHTML = '<i class="fas fa-pencil-alt"></i> Enable Direct Editing';
-                showNotification('✅ Edit mode disabled', 'info');
-            }
-        }
-
-        // Update Functions
-        function updateFontFamily(value) {
-            document.documentElement.style.setProperty('--font-family', value);
-            siteConfig.styles.fontFamily = value;
-        }
-
-        function updateFontSize(value) {
-            document.documentElement.style.setProperty('--font-size-base', value + 'px');
-            event.target.nextElementSibling.textContent = value + 'px';
-            siteConfig.styles.fontSize = value;
-        }
-
-        function updateColor(type, value) {
-            const root = document.documentElement;
-            
-            switch(type) {
-                case 'primary':
-                    root.style.setProperty('--primary-color', value);
-                    siteConfig.styles.primaryColor = value;
-                    break;
-                case 'secondary':
-                    root.style.setProperty('--secondary-color', value);
-                    siteConfig.styles.secondaryColor = value;
-                    break;
-            }
-        }
-
-        function updateBorderRadius(value) {
-            document.documentElement.style.setProperty('--border-radius', value + 'px');
-            event.target.nextElementSibling.textContent = value + 'px';
-            siteConfig.styles.borderRadius = value;
-        }
-
-        function updateContainerWidth(value) {
-            document.documentElement.style.setProperty('--container-width', value);
-        }
-
-        function updateAnimationDuration(value) {
-            document.documentElement.style.setProperty('--animation-duration', value + 's');
-            event.target.nextElementSibling.textContent = value + 's';
-            siteConfig.styles.animationDuration = value;
-        }
-
-        function toggleAnimations(enabled) {
-            siteConfig.animations = enabled;
-            if (!enabled) {
-                document.documentElement.style.setProperty('--animation-type', 'none');
-            } else {
-                document.documentElement.style.setProperty('--animation-type', 'fadeInUp');
-            }
-        }
-
-        function updateElementText(elementId, value) {
-            const element = document.querySelector(`[data-element="${elementId}"]`);
-            if (element) {
-                element.textContent = value;
-            }
-        }
-
-        function updateCustomCSS(css) {
-            let styleTag = document.getElementById('customStyles');
-            if (!styleTag) {
-                styleTag = document.createElement('style');
-                styleTag.id = 'customStyles';
-                document.head.appendChild(styleTag);
-            }
-            styleTag.textContent = css;
-        }
-
-        // Export/Import Settings
-        function exportSettings() {
-            const settings = JSON.stringify(siteConfig, null, 2);
-            const blob = new Blob([settings], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'refit-settings.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showNotification('✅ Settings exported successfully', 'success');
-        }
-
-        function importSettings() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    try {
-                        const settings = JSON.parse(event.target.result);
-                        Object.assign(siteConfig, settings);
-                        applyAllSettings();
-                        showNotification('✅ Settings imported successfully', 'success');
-                    } catch (e) {
-                        showNotification('❌ Error importing settings', 'error');
-                    }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
-        }
-
-        function applyAllSettings() {
-            updateFontFamily(siteConfig.styles.fontFamily);
-            updateColor('primary', siteConfig.styles.primaryColor);
-            updateColor('secondary', siteConfig.styles.secondaryColor);
-            document.documentElement.style.setProperty('--font-size-base', siteConfig.styles.fontSize + 'px');
-            document.documentElement.style.setProperty('--border-radius', siteConfig.styles.borderRadius + 'px');
-            applyLogo();
-            applyHeroMedia();
-            updatePortfolioDisplay();
-            updateServicesDisplay();
-            updateAllContactDisplay();
-        }
-
-        // Utility Functions
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
-
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-
-        // Load Services
-        function loadServices() {
-            updateServicesDisplay();
-        }
-
-        // Load Portfolio
-        function loadPortfolio() {
-            updatePortfolioDisplay();
-        }
-
-        // Setup smooth scrolling
-        function setupSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Check if mobile menu is needed
-        function checkMobileMenu() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (window.innerWidth <= 768) {
-                menuToggle.style.display = 'flex';
-            } else {
-                menuToggle.style.display = 'none';
-            }
-        }
-
-        // Window resize handler
-        window.addEventListener('resize', checkMobileMenu);
+        // Prevent default drag behavior on the entire document
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+        });
     </script>
 </body>
 </html>
