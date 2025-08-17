@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
     <meta name="description" content="REFIT Interior - Professional maintenance, renovation & interior design services in Malaysia. From concept to completion.">
     <meta name="keywords" content="interior design, renovation, maintenance, construction, Petaling Jaya, Malaysia, refit interior">
+    <meta name="author" content="REFIT Interior">
+    
     <title>REFIT Interior - Professional Maintenance & Design Services Malaysia</title>
     
     <!-- Google Fonts -->
@@ -28,9 +31,9 @@
             --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
             --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+            --github-color: #24292e;
             --success-color: #51cf66;
             --error-color: #ff6b6b;
-            --warning-color: #ffd43b;
         }
 
         * {
@@ -148,87 +151,108 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Control Panel */
-        .control-panel {
+        .admin-logout-btn {
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+        }
+
+        .master-panel-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* Master Control Panel */
+        .master-control-panel {
             position: fixed;
-            right: -700px;
             top: 0;
+            right: -700px;
             width: 700px;
             height: 100vh;
-            background: white;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-            transition: right 0.4s ease;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
             z-index: 10000;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             overflow-y: auto;
+            display: none;
         }
 
-        .control-panel.active {
+        .master-control-panel.active {
             right: 0;
+            display: block;
         }
 
-        .panel-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .mcp-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .panel-close {
+        .mcp-close {
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 2rem;
             background: none;
             border: none;
             color: white;
         }
 
-        .panel-tabs {
+        .mcp-tabs {
             display: flex;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid #ddd;
-            overflow-x: auto;
+            background: white;
+            border-bottom: 3px solid #dee2e6;
             position: sticky;
-            top: 73px;
+            top: 96px;
             z-index: 99;
+            overflow-x: auto;
         }
 
-        .panel-tab {
+        .mcp-tab {
             flex: 1;
-            min-width: 100px;
             padding: 1rem;
             background: none;
             border: none;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             transition: all var(--transition-speed);
-            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .panel-tab.active {
+        .mcp-tab.active {
             background: white;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
         }
 
-        .panel-content {
-            padding: 1.5rem;
+        .mcp-content {
+            padding: 2rem;
+            background: white;
         }
 
-        .tab-content {
-            display: none;
+        .mcp-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
-        .tab-content.active {
-            display: block;
+        .mcp-section h3 {
+            margin-bottom: 1.5rem;
+            color: #495057;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
-        /* GitHub Connection Status */
+        /* GitHub Integration Styles */
         .github-connection-status {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--github-color), #4a5568);
             color: white;
             padding: 1rem;
             border-radius: 12px;
@@ -262,242 +286,53 @@
             100% { opacity: 1; }
         }
 
-        /* Auto Upload Section */
-        .auto-upload-section {
-            background: rgba(81, 207, 102, 0.1);
-            border: 2px solid var(--success-color);
-            border-radius: 12px;
+        .github-auth-section {
+            background: #f8f9fa;
             padding: 1.5rem;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
         }
 
-        .auto-upload-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .auto-upload-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .toggle-switch {
-            position: relative;
-            width: 50px;
-            height: 26px;
-            background: #ccc;
-            border-radius: 13px;
-            cursor: pointer;
-            transition: background var(--transition-speed);
-        }
-
-        .toggle-switch.active {
-            background: var(--success-color);
-        }
-
-        .toggle-switch::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            transition: left var(--transition-speed);
-        }
-
-        .toggle-switch.active::after {
-            left: 27px;
-        }
-
-        /* Upload Queue */
-        .upload-queue {
-            background: var(--bg-secondary);
+        .github-upload-zone {
+            border: 2px dashed #667eea;
             border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .upload-queue-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .upload-queue-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.75rem;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            transition: all var(--transition-speed);
-        }
-
-        .upload-queue-item.uploading {
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        .upload-queue-item.success {
-            background: rgba(81, 207, 102, 0.1);
-        }
-
-        .upload-queue-item.error {
-            background: rgba(255, 107, 107, 0.1);
-        }
-
-        .upload-item-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .upload-item-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .upload-item-info {
-            flex: 1;
-        }
-
-        .upload-item-name {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .upload-item-status {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .upload-progress {
-            width: 100%;
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 4px;
-        }
-
-        .upload-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transition: width var(--transition-speed);
-        }
-
-        /* GitHub Auth Modal */
-        .github-auth-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 11000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .github-auth-modal.active {
-            display: flex;
-        }
-
-        .github-auth-content {
-            background: white;
             padding: 2rem;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .github-auth-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .github-auth-header i {
-            font-size: 2rem;
-        }
-
-        .github-token-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            background: var(--bg-secondary);
             margin-bottom: 1rem;
+            position: relative;
         }
 
-        .github-token-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        .github-upload-zone:hover {
+            background: rgba(102, 126, 234, 0.05);
+            border-color: #764ba2;
         }
 
-        /* GitHub Media Browser */
-        .github-media-browser {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            border-radius: 12px;
-            border: 2px solid rgba(102, 126, 234, 0.2);
+        .github-upload-zone.dragging {
+            background: rgba(81, 207, 102, 0.1);
+            border-color: var(--success-color);
         }
 
-        .github-browser-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .github-browser-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .github-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 5px 10px;
+        .github-connected-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--success-color);
+            color: white;
+            padding: 4px 8px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: none;
         }
 
-        .github-status.connected {
-            background: #d4f4dd;
-            color: #0f7938;
+        .github-upload-zone.github-connected .github-connected-badge {
+            display: block;
         }
 
-        .github-status.disconnected {
-            background: #ffd6d6;
-            color: #c92a2a;
-        }
-
-        .github-folders {
+        .github-folder-selector {
             display: flex;
             gap: 10px;
             margin-bottom: 1rem;
@@ -511,9 +346,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all var(--transition-speed);
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         .github-folder-btn:hover {
@@ -527,216 +359,142 @@
             border-color: var(--primary-color);
         }
 
-        .github-media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-
-        .github-media-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            aspect-ratio: 1;
-            cursor: pointer;
-            transition: all var(--transition-speed);
-            background: var(--bg-secondary);
-        }
-
-        .github-media-item:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-md);
-        }
-
-        .github-media-item.selected {
-            outline: 3px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        .github-media-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .github-media-item-name {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 4px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            font-size: 0.7rem;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .github-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 1rem;
-        }
-
-        .btn-github {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all var(--transition-speed);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-github-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-github-primary:hover {
-            background: #764ba2;
-        }
-
-        .btn-github-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-github-secondary:hover {
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        .btn-github-success {
-            background: var(--success-color);
-            color: white;
-        }
-
-        .btn-github-success:hover {
-            background: #37b24d;
-        }
-
-        /* Upload Zone */
-        .upload-zone {
-            border: 2px dashed var(--primary-color);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-speed);
-            background: var(--bg-secondary);
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .upload-zone:hover {
-            background: rgba(232, 160, 191, 0.05);
-            border-color: var(--secondary-color);
-        }
-
-        .upload-zone.dragging {
-            background: rgba(232, 160, 191, 0.1);
-            border-style: solid;
-        }
-
-        .upload-zone.auto-uploading {
-            border-color: var(--success-color);
-            background: rgba(81, 207, 102, 0.05);
-        }
-
-        .auto-upload-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--success-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .upload-progress {
             display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
 
-        .upload-zone.auto-uploading .auto-upload-badge {
+        .upload-progress.active {
             display: block;
         }
 
-        /* Media Gallery */
-        .media-gallery {
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .github-file-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .media-item {
+        .github-file-item {
             position: relative;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             aspect-ratio: 1;
             background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all var(--transition-speed);
         }
 
-        .media-item img,
-        .media-item video {
+        .github-file-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .github-file-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .media-item-controls {
+        .github-file-status {
             position: absolute;
-            top: 0;
-            right: 0;
-            padding: 0.25rem;
-            display: flex;
-            gap: 0.25rem;
-            opacity: 0;
-            transition: opacity var(--transition-speed);
-        }
-
-        .media-item:hover .media-item-controls {
-            opacity: 1;
-        }
-
-        .media-item-github-badge {
-            position: absolute;
-            bottom: 4px;
-            left: 4px;
-            background: #667eea;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.7rem;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 2px;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
         }
 
-        .media-btn {
-            background: white;
-            border: none;
-            border-radius: 4px;
-            padding: 0.25rem 0.5rem;
-            cursor: pointer;
-            font-size: 0.75rem;
+        .github-file-status.pending {
+            background: #ffc107;
+        }
+
+        .github-file-status.uploading {
+            background: #007bff;
+        }
+
+        .github-file-status.success {
+            background: var(--success-color);
+        }
+
+        .github-file-status.error {
+            background: var(--error-color);
+        }
+
+        .control-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 0.95rem;
             transition: all var(--transition-speed);
         }
 
-        .media-btn:hover {
-            background: var(--primary-color);
+        .control-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-github {
+            background: var(--github-color);
+            color: white;
+        }
+
+        .btn-github:hover {
+            background: #4a5568;
+        }
+
+        .btn-success {
+            background: var(--success-color);
             color: white;
         }
 
@@ -773,12 +531,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
         .hero-media {
             position: relative;
             height: 500px;
@@ -805,8 +557,7 @@
             opacity: 1;
         }
 
-        .hero-slide img,
-        .hero-slide video {
+        .hero-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -860,11 +611,6 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
         /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
@@ -887,27 +633,10 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .portfolio-item img,
-        .portfolio-item video {
+        .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform var(--transition-speed);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
         }
 
         /* Footer */
@@ -922,26 +651,25 @@
         .notification {
             position: fixed;
             top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 20px;
+            padding: 15px 20px;
             background: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow-lg);
-            z-index: 11000;
-            animation: slideDown 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
+            animation: slideIn 0.3s ease;
+            z-index: 11000;
         }
 
-        @keyframes slideDown {
+        @keyframes slideIn {
             from {
-                transform: translateX(-50%) translateY(-100%);
+                transform: translateX(100%);
                 opacity: 0;
             }
             to {
-                transform: translateX(-50%) translateY(0);
+                transform: translateX(0);
                 opacity: 1;
             }
         }
@@ -954,28 +682,56 @@
             border-left: 4px solid var(--error-color);
         }
 
-        .notification.warning {
-            border-left: 4px solid var(--warning-color);
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Loading Spinner */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,0.1);
-            border-top-color: var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .modal.active {
+            display: flex;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 400px;
+            width: 90%;
         }
 
-        /* Responsive */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 1;
+            background: var(--bg-secondary);
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         @media (max-width: 768px) {
-            .control-panel {
+            .master-control-panel {
                 width: 100%;
                 right: -100%;
             }
@@ -988,366 +744,180 @@
             .nav-menu {
                 display: none;
             }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .github-media-grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Admin Button -->
+    <!-- Admin Buttons -->
     <div class="admin-btn-container">
-        <button class="admin-btn" onclick="MediaManager.openPanel()">
-            <i class="fas fa-cog"></i> Admin Panel
+        <button id="adminLoginBtn" class="admin-btn" onclick="showLoginModal()">
+            <i class="fas fa-sign-in-alt"></i> Admin Login
+        </button>
+        <button id="adminLogoutBtn" class="admin-btn admin-logout-btn" style="display: none;" onclick="handleLogout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button id="masterPanelToggle" class="admin-btn master-panel-btn" style="display: none;" onclick="openMasterPanel()">
+            <i class="fas fa-cog"></i> Control Panel
         </button>
     </div>
 
-    <!-- GitHub Auth Modal -->
-    <div class="github-auth-modal" id="githubAuthModal">
-        <div class="github-auth-content">
-            <div class="github-auth-header">
-                <i class="fab fa-github"></i>
-                <div>
-                    <h2>Connect to GitHub</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Enter your GitHub personal access token</p>
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Admin Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div style="margin-bottom: 1rem;">
+                    <label>Username</label>
+                    <input type="text" class="control-input" id="loginUsername" required>
                 </div>
-            </div>
-            
-            <input type="password" class="github-token-input" id="githubToken" 
-                   placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
-            
-            <div style="margin-bottom: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 8px;">
-                <p style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <strong>Required permissions:</strong><br>
-                    • repo (Full control of private repositories)<br>
-                    • write:packages (Upload packages to GitHub Package Registry)
-                </p>
-                <a href="https://github.com/settings/tokens/new" target="_blank" 
-                   style="color: #667eea; font-size: 0.85rem;">Generate new token →</a>
-            </div>
-            
-            <div style="display: flex; gap: 10px;">
-                <button class="btn-github btn-github-primary" onclick="MediaManager.authenticateGitHub()" style="flex: 1;">
-                    <i class="fas fa-plug"></i> Connect
-                </button>
-                <button class="btn-github btn-github-secondary" onclick="MediaManager.closeAuthModal()" style="flex: 1;">
-                    Cancel
-                </button>
-            </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Password</label>
+                    <input type="password" class="control-input" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
         </div>
     </div>
 
-    <!-- Control Panel -->
-    <div class="control-panel" id="controlPanel">
-        <div class="panel-header">
-            <h2>Site Management</h2>
-            <button class="panel-close" onclick="MediaManager.closePanel()">
-                <i class="fas fa-times"></i>
+    <!-- Master Control Panel -->
+    <div class="master-control-panel" id="masterControlPanel">
+        <div class="mcp-header">
+            <h2>Master Control Panel</h2>
+            <button class="mcp-close" onclick="closeMasterPanel()">×</button>
+        </div>
+
+        <div class="mcp-tabs">
+            <button class="mcp-tab active" onclick="switchTab('content')">
+                <i class="fas fa-font"></i> Content
+            </button>
+            <button class="mcp-tab" onclick="switchTab('media')">
+                <i class="fas fa-photo-video"></i> Media
+            </button>
+            <button class="mcp-tab" onclick="switchTab('github')">
+                <i class="fab fa-github"></i> GitHub
+            </button>
+            <button class="mcp-tab" onclick="switchTab('settings')">
+                <i class="fas fa-cog"></i> Settings
             </button>
         </div>
 
-        <div class="panel-tabs">
-            <button class="panel-tab active" onclick="MediaManager.switchTab('logo')">Logo</button>
-            <button class="panel-tab" onclick="MediaManager.switchTab('hero')">Hero</button>
-            <button class="panel-tab" onclick="MediaManager.switchTab('portfolio')">Portfolio</button>
-            <button class="panel-tab" onclick="MediaManager.switchTab('services')">Services</button>
-            <button class="panel-tab" onclick="MediaManager.switchTab('github')">GitHub</button>
-            <button class="panel-tab" onclick="MediaManager.switchTab('uploads')">Uploads</button>
-        </div>
-
-        <div class="panel-content">
-            <!-- Logo Tab -->
-            <div class="tab-content active" id="logo-tab">
-                <h3>Logo Management</h3>
-                
-                <!-- Auto Upload Section -->
-                <div class="auto-upload-section">
-                    <div class="auto-upload-header">
-                        <div>
-                            <strong>Auto Upload to GitHub</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Automatically sync to repository</p>
-                        </div>
-                        <div class="auto-upload-toggle">
-                            <span id="autoUploadStatus">OFF</span>
-                            <div class="toggle-switch" id="autoUploadToggle" onclick="MediaManager.toggleAutoUpload()"></div>
-                        </div>
+        <div class="mcp-content">
+            <!-- Content Tab -->
+            <div id="content-tab" class="tab-content">
+                <div class="mcp-section">
+                    <h3>Hero Content</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <label>Title</label>
+                        <input type="text" class="control-input" id="heroTitle" value="FROM CONCEPT TO COMPLETION">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label>Tagline</label>
+                        <input type="text" class="control-input" id="heroTagline" value="WE GROW WITH PASSION, WE DO IT ALL">
                     </div>
                 </div>
-                
-                <!-- GitHub Media Browser for Logo -->
-                <div class="github-media-browser">
-                    <div class="github-browser-header">
-                        <div class="github-browser-title">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Media Library</span>
-                        </div>
-                        <span class="github-status" id="githubStatusLogo">
-                            <i class="fas fa-circle"></i> <span>Disconnected</span>
-                        </span>
-                    </div>
-                    
-                    <div class="github-folders">
-                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('logos')">
-                            <i class="fas fa-folder"></i> Logos
-                        </button>
-                    </div>
-                    
-                    <div class="github-media-grid" id="github-logo-grid">
-                        <!-- GitHub media items will be loaded here -->
-                    </div>
-                    
-                    <div class="github-actions">
-                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('logo')">
-                            <i class="fas fa-download"></i> Use Selected
-                        </button>
-                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('logo')">
-                            <i class="fas fa-sync"></i> Refresh
-                        </button>
-                    </div>
-                </div>
-
-                <div class="upload-zone" id="logoUploadZone" 
-                     onclick="document.getElementById('logoUpload').click()"
-                     ondrop="MediaManager.handleDrop(event, 'logo')"
-                     ondragover="MediaManager.handleDragOver(event)"
-                     ondragleave="MediaManager.handleDragLeave(event)">
-                    <span class="auto-upload-badge">AUTO UPLOAD ON</span>
-                    <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
-                    <p>Drop files or click to upload</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Files will be automatically uploaded to GitHub</p>
-                    <input type="file" id="logoUpload" accept="image/*" style="display: none;" onchange="MediaManager.handleLogoUpload(event)">
-                </div>
-                
-                <div class="media-gallery" id="logoGallery"></div>
             </div>
 
-            <!-- Hero Tab -->
-            <div class="tab-content" id="hero-tab">
-                <h3>Hero Media</h3>
-                
-                <!-- Auto Upload Section -->
-                <div class="auto-upload-section">
-                    <div class="auto-upload-header">
-                        <div>
-                            <strong>Auto Upload to GitHub</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Automatically sync to repository</p>
-                        </div>
-                        <div class="auto-upload-toggle">
-                            <span>Auto Upload</span>
-                            <div class="toggle-switch" onclick="MediaManager.toggleAutoUpload()"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- GitHub Media Browser for Hero -->
-                <div class="github-media-browser">
-                    <div class="github-browser-header">
-                        <div class="github-browser-title">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Media Library</span>
-                        </div>
-                        <span class="github-status" id="githubStatusHero">
-                            <i class="fas fa-circle"></i> <span>Disconnected</span>
-                        </span>
-                    </div>
+            <!-- Media Tab -->
+            <div id="media-tab" class="tab-content" style="display: none;">
+                <div class="mcp-section">
+                    <h3>GitHub Media Upload</h3>
                     
-                    <div class="github-folders">
-                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('hero')">
-                            <i class="fas fa-folder"></i> Hero Images
-                        </button>
-                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('banners')">
-                            <i class="fas fa-folder"></i> Banners
-                        </button>
-                    </div>
-                    
-                    <div class="github-media-grid" id="github-hero-grid">
-                        <!-- GitHub media items will be loaded here -->
-                    </div>
-                    
-                    <div class="github-actions">
-                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('hero')">
-                            <i class="fas fa-download"></i> Use Selected
-                        </button>
-                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('hero')">
-                            <i class="fas fa-sync"></i> Refresh
+                    <!-- GitHub Connection Status -->
+                    <div class="github-connection-status">
+                        <div class="github-status-info">
+                            <div class="github-status-indicator" id="githubIndicator"></div>
+                            <div>
+                                <strong id="githubConnectionText">Not Connected</strong>
+                                <p style="font-size: 0.85rem; margin: 0;" id="githubRepoInfo">No repository configured</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-github" onclick="connectGitHub()">
+                            <i class="fab fa-github"></i> Connect
                         </button>
                     </div>
+
+                    <!-- GitHub Upload Section -->
+                    <div class="github-folder-selector">
+                        <button class="github-folder-btn active" onclick="selectGitHubFolder('logo')">Logo</button>
+                        <button class="github-folder-btn" onclick="selectGitHubFolder('hero')">Hero</button>
+                        <button class="github-folder-btn" onclick="selectGitHubFolder('portfolio')">Portfolio</button>
+                        <button class="github-folder-btn" onclick="selectGitHubFolder('services')">Services</button>
+                    </div>
+
+                    <div class="github-upload-zone" id="githubUploadZone"
+                         onclick="document.getElementById('githubFileInput').click()"
+                         ondrop="handleGitHubDrop(event)"
+                         ondragover="handleGitHubDragOver(event)"
+                         ondragleave="handleGitHubDragLeave(event)">
+                        <span class="github-connected-badge">GitHub Connected</span>
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #667eea;"></i>
+                        <p>Drop files or click to upload to GitHub</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Folder: <strong id="selectedGithubFolder">logo</strong></p>
+                        <input type="file" id="githubFileInput" accept="image/*,video/*" multiple style="display: none;" onchange="handleGitHubFileSelect(event)">
+                    </div>
+
+                    <div class="upload-progress" id="uploadProgress">
+                        <p>Uploading to GitHub...</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p id="progressText">0%</p>
+                    </div>
+
+                    <div class="github-file-list" id="githubFileList"></div>
+
+                    <button class="btn btn-success" onclick="uploadToGitHub()" style="width: 100%; margin-top: 1rem;">
+                        <i class="fas fa-upload"></i> Upload All to GitHub
+                    </button>
                 </div>
 
-                <div class="upload-zone" id="heroUploadZone"
-                     onclick="document.getElementById('heroUpload').click()"
-                     ondrop="MediaManager.handleDrop(event, 'hero')"
-                     ondragover="MediaManager.handleDragOver(event)"
-                     ondragleave="MediaManager.handleDragLeave(event)">
-                    <span class="auto-upload-badge">AUTO UPLOAD ON</span>
-                    <i class="fas fa-image" style="font-size: 2rem; color: var(--primary-color);"></i>
-                    <p>Drop files or click to upload</p>
-                    <input type="file" id="heroUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handleHeroUpload(event)">
+                <!-- Local Media Management -->
+                <div class="mcp-section">
+                    <h3>Local Media Gallery</h3>
+                    <div class="media-gallery" id="localMediaGallery"></div>
                 </div>
-                
-                <div class="media-gallery" id="heroGallery"></div>
-            </div>
-
-            <!-- Portfolio Tab -->
-            <div class="tab-content" id="portfolio-tab">
-                <h3>Portfolio Projects</h3>
-                
-                <!-- Auto Upload Section -->
-                <div class="auto-upload-section">
-                    <div class="auto-upload-header">
-                        <div>
-                            <strong>Auto Upload to GitHub</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Automatically sync to repository</p>
-                        </div>
-                        <div class="auto-upload-toggle">
-                            <span>Auto Upload</span>
-                            <div class="toggle-switch" onclick="MediaManager.toggleAutoUpload()"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- GitHub Media Browser for Portfolio -->
-                <div class="github-media-browser">
-                    <div class="github-browser-header">
-                        <div class="github-browser-title">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Media Library</span>
-                        </div>
-                        <span class="github-status" id="githubStatusPortfolio">
-                            <i class="fas fa-circle"></i> <span>Disconnected</span>
-                        </span>
-                    </div>
-                    
-                    <div class="github-folders">
-                        <button class="github-folder-btn active" onclick="MediaManager.loadGitHubFolder('commercial')">
-                            <i class="fas fa-folder"></i> Commercial
-                        </button>
-                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('residential')">
-                            <i class="fas fa-folder"></i> Residential
-                        </button>
-                        <button class="github-folder-btn" onclick="MediaManager.loadGitHubFolder('3d-concepts')">
-                            <i class="fas fa-folder"></i> 3D Concepts
-                        </button>
-                    </div>
-                    
-                    <div class="github-media-grid" id="github-portfolio-grid">
-                        <!-- GitHub media items will be loaded here -->
-                    </div>
-                    
-                    <div class="github-actions">
-                        <button class="btn-github btn-github-primary" onclick="MediaManager.useSelectedGitHubMedia('portfolio')">
-                            <i class="fas fa-download"></i> Add to Portfolio
-                        </button>
-                        <button class="btn-github btn-github-secondary" onclick="MediaManager.selectAllGitHub('portfolio')">
-                            <i class="fas fa-check-square"></i> Select All
-                        </button>
-                        <button class="btn-github btn-github-secondary" onclick="MediaManager.refreshGitHub('portfolio')">
-                            <i class="fas fa-sync"></i> Refresh
-                        </button>
-                    </div>
-                </div>
-
-                <div class="upload-zone" id="portfolioUploadZone"
-                     onclick="document.getElementById('portfolioUpload').click()"
-                     ondrop="MediaManager.handleDrop(event, 'portfolio')"
-                     ondragover="MediaManager.handleDragOver(event)"
-                     ondragleave="MediaManager.handleDragLeave(event)">
-                    <span class="auto-upload-badge">AUTO UPLOAD ON</span>
-                    <i class="fas fa-folder-plus" style="font-size: 2rem; color: var(--primary-color);"></i>
-                    <p>Drop files or click to upload</p>
-                    <input type="file" id="portfolioUpload" accept="image/*,video/*" multiple style="display: none;" onchange="MediaManager.handlePortfolioUpload(event)">
-                </div>
-                
-                <div class="media-gallery" id="portfolioGallery"></div>
-            </div>
-
-            <!-- Services Tab -->
-            <div class="tab-content" id="services-tab">
-                <h3>Services Management</h3>
-                <button class="admin-btn" onclick="MediaManager.addService()" style="width: 100%; margin-bottom: 1rem;">
-                    <i class="fas fa-plus"></i> Add New Service
-                </button>
-                <div id="servicesContainer"></div>
             </div>
 
             <!-- GitHub Settings Tab -->
-            <div class="tab-content" id="github-tab">
-                <h3>GitHub Repository Settings</h3>
-                
-                <!-- Connection Status -->
-                <div class="github-connection-status">
-                    <div class="github-status-info">
-                        <div class="github-status-indicator" id="githubIndicator"></div>
-                        <div>
-                            <strong id="githubConnectionText">Not Connected</strong>
-                            <p style="font-size: 0.85rem; margin: 0;" id="githubRepoInfo">No repository configured</p>
+            <div id="github-tab" class="tab-content" style="display: none;">
+                <div class="mcp-section">
+                    <h3>GitHub Configuration</h3>
+                    <div class="github-auth-section">
+                        <div style="margin-bottom: 1rem;">
+                            <label>GitHub Token</label>
+                            <input type="password" class="control-input" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                            <small style="color: var(--text-secondary);">
+                                <a href="https://github.com/settings/tokens/new" target="_blank">Generate token</a> with 'repo' permissions
+                            </small>
                         </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label>Repository</label>
+                            <input type="text" class="control-input" id="githubRepo" value="lyode/refit-media">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label>Branch</label>
+                            <input type="text" class="control-input" id="githubBranch" value="main">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveGitHubConfig()" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Configuration
+                        </button>
                     </div>
-                    <button class="btn-github btn-github-primary" onclick="MediaManager.showAuthModal()">
-                        <i class="fas fa-plug"></i> Connect GitHub
-                    </button>
                 </div>
-                
-                <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; margin-bottom: 1rem;">
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Repository</label>
-                        <input type="text" id="githubRepo" value="lyode/refit-media" 
-                               style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;"
-                               placeholder="username/repository">
+
+                <div class="mcp-section">
+                    <h3>Repository Files</h3>
+                    <div id="repoFiles" style="max-height: 400px; overflow-y: auto;">
+                        <p style="text-align: center; color: var(--text-secondary);">Connect to GitHub to view files</p>
                     </div>
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Branch</label>
-                        <input type="text" id="githubBranch" value="main" 
-                               style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 8px;"
-                               placeholder="main">
-                    </div>
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Auto Upload Settings</label>
-                        <div style="display: flex; gap: 10px; align-items: center;">
-                            <input type="checkbox" id="optimizeImages" checked style="width: 20px; height: 20px;">
-                            <label for="optimizeImages">Optimize images before upload (reduce file size)</label>
-                        </div>
-                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
-                            <input type="checkbox" id="autoCommit" checked style="width: 20px; height: 20px;">
-                            <label for="autoCommit">Auto commit after upload</label>
-                        </div>
-                    </div>
-                    
-                    <button class="btn-github btn-github-success" onclick="MediaManager.saveGitHubSettings()" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save Settings
-                    </button>
                 </div>
             </div>
 
-            <!-- Uploads Tab -->
-            <div class="tab-content" id="uploads-tab">
-                <h3>Upload Queue</h3>
-                
-                <div class="upload-queue">
-                    <div class="upload-queue-header">
-                        <span><strong>Upload Status</strong></span>
-                        <button class="btn-github btn-github-secondary" onclick="MediaManager.clearUploadQueue()">
-                            <i class="fas fa-trash"></i> Clear All
-                        </button>
-                    </div>
-                    <div id="uploadQueueItems">
-                        <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No uploads in queue</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 1rem; display: flex; gap: 10px;">
-                    <button class="btn-github btn-github-success" onclick="MediaManager.processUploadQueue()" style="flex: 1;">
-                        <i class="fas fa-upload"></i> Upload All to GitHub
-                    </button>
-                    <button class="btn-github btn-github-secondary" onclick="MediaManager.retryFailed()" style="flex: 1;">
-                        <i class="fas fa-redo"></i> Retry Failed
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content" style="display: none;">
+                <div class="mcp-section">
+                    <h3>Site Settings</h3>
+                    <button class="btn btn-primary" onclick="saveAllSettings()" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save All Settings
                     </button>
                 </div>
             </div>
@@ -1358,11 +928,12 @@
     <header>
         <nav>
             <div class="logo-container">
-                <span class="logo-text" id="logoTextDisplay">refit</span>
-                <img class="logo-image" id="logoImageDisplay" alt="Logo">
+                <span class="logo-text" id="logoText">refit</span>
+                <img class="logo-image" id="logoImage" alt="Logo">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1374,16 +945,31 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>FROM CONCEPT TO COMPLETION</h1>
-                <p class="tagline">WE GROW WITH PASSION, WE DO IT ALL</p>
+                <h1 id="heroTitleDisplay">FROM CONCEPT TO COMPLETION</h1>
+                <p class="tagline" id="heroTaglineDisplay">WE GROW WITH PASSION, WE DO IT ALL</p>
                 <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
             </div>
             <div class="hero-media">
                 <div class="hero-slideshow" id="heroSlideshow">
                     <div class="hero-slide active">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23E8A0BF' width='600' height='400'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EREFIT Services%3C/text%3E%3C/svg%3E" alt="Hero">
+                        <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Services" alt="Hero">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Our Mission & Vision</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3>Mission</h3>
+                <p>To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
+            </div>
+            <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3>Vision</h3>
+                <p>To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
             </div>
         </div>
     </section>
@@ -1391,19 +977,19 @@
     <!-- Services Section -->
     <section id="services">
         <h2 class="section-title">Our Services</h2>
-        <div class="services-grid" id="servicesDisplay">
+        <div class="services-grid" id="servicesGrid">
             <div class="service-card">
-                <div class="service-icon">🔧</div>
+                <div style="font-size: 3rem;">🔧</div>
                 <h3>Maintenance Services</h3>
                 <p>Comprehensive maintenance solutions for all properties</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🏗️</div>
+                <div style="font-size: 3rem;">🏗️</div>
                 <h3>Interior Construction</h3>
                 <p>Expert construction and renovation services</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎨</div>
+                <div style="font-size: 3rem;">🎨</div>
                 <h3>Design Services</h3>
                 <p>Creative design and planning solutions</p>
             </div>
@@ -1413,8 +999,8 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
         <h2 class="section-title">Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioDisplay">
-            <!-- Portfolio items will be dynamically added here -->
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Portfolio items will be loaded here -->
         </div>
     </section>
 
@@ -1438,963 +1024,597 @@
     </footer>
 
     <script>
-        // Enhanced Media Manager with Auto Upload to GitHub
-        const MediaManager = {
-            // Data storage
-            data: {
-                logo: { type: 'text', text: 'refit', image: null },
-                hero: [],
-                portfolio: [],
-                services: [
-                    { icon: '🔧', title: 'Maintenance Services', description: 'Comprehensive maintenance solutions for all properties' },
-                    { icon: '🏗️', title: 'Interior Construction', description: 'Expert construction and renovation services' },
-                    { icon: '🎨', title: 'Design Services', description: 'Creative design and planning solutions' }
-                ],
-                github: {
-                    repo: 'lyode/refit-media',
-                    branch: 'main',
-                    token: null,
-                    connected: false,
-                    autoUpload: false,
-                    folders: {
-                        logos: [],
-                        hero: [],
-                        commercial: [],
-                        residential: [],
-                        '3d-concepts': [],
-                        banners: []
-                    }
-                },
+        // Site Configuration
+        const siteConfig = {
+            isAuthenticated: false,
+            github: {
+                token: '',
+                repo: 'lyode/refit-media',
+                branch: 'main',
+                connected: false,
+                currentFolder: 'logo',
                 uploadQueue: []
             },
+            media: {
+                logo: null,
+                hero: [],
+                portfolio: [],
+                services: []
+            }
+        };
 
-            selectedGitHubItems: new Set(),
-            currentGitHubFolder: '',
-            currentTab: '',
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedConfig();
+            updateHeroContent();
+            loadPortfolio();
+        });
 
-            // Initialize
-            init() {
-                // Load saved data from localStorage
-                const saved = localStorage.getItem('refitData');
-                if (saved) {
-                    try {
-                        const savedData = JSON.parse(saved);
-                        this.data = { ...this.data, ...savedData };
-                        // Don't persist token in localStorage for security
-                        this.data.github.token = null;
-                        this.applyAllSettings();
-                    } catch (e) {
-                        console.error('Error loading saved data:', e);
+        // Authentication
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (username === 'admin' && password === 'refit2024') {
+                siteConfig.isAuthenticated = true;
+                document.getElementById('loginModal').classList.remove('active');
+                document.getElementById('adminLoginBtn').style.display = 'none';
+                document.getElementById('adminLogoutBtn').style.display = 'flex';
+                document.getElementById('masterPanelToggle').style.display = 'flex';
+                showNotification('Login successful!', 'success');
+            } else {
+                showNotification('Invalid credentials', 'error');
+            }
+        }
+
+        function handleLogout() {
+            siteConfig.isAuthenticated = false;
+            document.getElementById('adminLoginBtn').style.display = 'flex';
+            document.getElementById('adminLogoutBtn').style.display = 'none';
+            document.getElementById('masterPanelToggle').style.display = 'none';
+            closeMasterPanel();
+            showNotification('Logged out successfully', 'success');
+        }
+
+        // Master Panel
+        function openMasterPanel() {
+            document.getElementById('masterControlPanel').classList.add('active');
+            loadGitHubConfig();
+        }
+
+        function closeMasterPanel() {
+            document.getElementById('masterControlPanel').classList.remove('active');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.querySelectorAll('.mcp-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        // GitHub Integration
+        function loadGitHubConfig() {
+            const savedToken = localStorage.getItem('github_token');
+            const savedRepo = localStorage.getItem('github_repo');
+            const savedBranch = localStorage.getItem('github_branch');
+            
+            if (savedToken) {
+                document.getElementById('githubToken').value = savedToken;
+                siteConfig.github.token = savedToken;
+            }
+            if (savedRepo) {
+                document.getElementById('githubRepo').value = savedRepo;
+                siteConfig.github.repo = savedRepo;
+            }
+            if (savedBranch) {
+                document.getElementById('githubBranch').value = savedBranch;
+                siteConfig.github.branch = savedBranch;
+            }
+            
+            if (savedToken && savedRepo) {
+                testGitHubConnection();
+            }
+        }
+
+        function saveGitHubConfig() {
+            const token = document.getElementById('githubToken').value;
+            const repo = document.getElementById('githubRepo').value;
+            const branch = document.getElementById('githubBranch').value;
+            
+            if (!token || !repo) {
+                showNotification('Please enter GitHub token and repository', 'error');
+                return;
+            }
+            
+            localStorage.setItem('github_token', token);
+            localStorage.setItem('github_repo', repo);
+            localStorage.setItem('github_branch', branch);
+            
+            siteConfig.github.token = token;
+            siteConfig.github.repo = repo;
+            siteConfig.github.branch = branch;
+            
+            testGitHubConnection();
+        }
+
+        async function testGitHubConnection() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${siteConfig.github.repo}`, {
+                    headers: {
+                        'Authorization': `token ${siteConfig.github.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
                     }
-                }
-                // Check GitHub connection
-                this.checkGitHubConnection();
-            },
-
-            // Auto Upload Functions
-            toggleAutoUpload() {
-                this.data.github.autoUpload = !this.data.github.autoUpload;
+                });
                 
-                const toggle = document.getElementById('autoUploadToggle');
-                const status = document.getElementById('autoUploadStatus');
-                const uploadZones = document.querySelectorAll('.upload-zone');
-                
-                if (this.data.github.autoUpload) {
-                    if (!this.data.github.connected) {
-                        this.showNotification('Please connect to GitHub first', 'warning');
-                        this.showAuthModal();
-                        this.data.github.autoUpload = false;
-                        return;
-                    }
-                    
-                    toggle.classList.add('active');
-                    if (status) status.textContent = 'ON';
-                    uploadZones.forEach(zone => zone.classList.add('auto-uploading'));
-                    this.showNotification('Auto upload enabled - Files will be uploaded to GitHub automatically', 'success');
+                if (response.ok) {
+                    siteConfig.github.connected = true;
+                    updateGitHubStatus(true);
+                    showNotification('Connected to GitHub!', 'success');
+                    loadRepoFiles();
                 } else {
-                    toggle.classList.remove('active');
-                    if (status) status.textContent = 'OFF';
-                    uploadZones.forEach(zone => zone.classList.remove('auto-uploading'));
-                    this.showNotification('Auto upload disabled', 'info');
+                    throw new Error('Connection failed');
                 }
-                
-                this.saveData();
-            },
+            } catch (error) {
+                siteConfig.github.connected = false;
+                updateGitHubStatus(false);
+                showNotification('Failed to connect to GitHub', 'error');
+            }
+        }
 
-            // GitHub Authentication
-            showAuthModal() {
-                document.getElementById('githubAuthModal').classList.add('active');
-            },
+        function connectGitHub() {
+            if (siteConfig.github.token && siteConfig.github.repo) {
+                testGitHubConnection();
+            } else {
+                switchTab('github');
+                showNotification('Please configure GitHub settings first', 'info');
+            }
+        }
 
-            closeAuthModal() {
-                document.getElementById('githubAuthModal').classList.remove('active');
-            },
+        function updateGitHubStatus(connected) {
+            const indicator = document.getElementById('githubIndicator');
+            const text = document.getElementById('githubConnectionText');
+            const info = document.getElementById('githubRepoInfo');
+            const uploadZone = document.getElementById('githubUploadZone');
+            
+            if (connected) {
+                indicator.classList.add('connected');
+                text.textContent = 'Connected';
+                info.textContent = `Repository: ${siteConfig.github.repo}`;
+                uploadZone.classList.add('github-connected');
+            } else {
+                indicator.classList.remove('connected');
+                text.textContent = 'Not Connected';
+                info.textContent = 'No repository configured';
+                uploadZone.classList.remove('github-connected');
+            }
+        }
 
-            async authenticateGitHub() {
-                const token = document.getElementById('githubToken').value;
-                
-                if (!token) {
-                    this.showNotification('Please enter a GitHub token', 'error');
-                    return;
-                }
-                
-                this.showNotification('Connecting to GitHub...', 'info');
-                
-                // Simulate API authentication (in production, validate token with GitHub API)
-                setTimeout(() => {
-                    this.data.github.token = token;
-                    this.data.github.connected = true;
-                    
-                    // Update UI
-                    this.updateGitHubStatus(true);
-                    this.closeAuthModal();
-                    this.loadGitHubMedia();
-                    
-                    this.showNotification('Successfully connected to GitHub!', 'success');
-                    this.saveData();
-                }, 1000);
-            },
+        // GitHub Folder Selection
+        function selectGitHubFolder(folder) {
+            siteConfig.github.currentFolder = folder;
+            document.getElementById('selectedGithubFolder').textContent = folder;
+            
+            document.querySelectorAll('.github-folder-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
 
-            checkGitHubConnection() {
-                // Check if we have a token (would validate with API in production)
-                if (this.data.github.token) {
-                    this.data.github.connected = true;
-                    this.updateGitHubStatus(true);
-                } else {
-                    this.updateGitHubStatus(false);
-                }
-            },
+        // GitHub File Upload
+        function handleGitHubDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragging');
+        }
 
-            updateGitHubStatus(connected) {
-                const indicators = document.querySelectorAll('.github-status');
-                const mainIndicator = document.getElementById('githubIndicator');
-                const connectionText = document.getElementById('githubConnectionText');
-                const repoInfo = document.getElementById('githubRepoInfo');
-                
-                indicators.forEach(indicator => {
-                    if (connected) {
-                        indicator.classList.add('connected');
-                        indicator.classList.remove('disconnected');
-                        indicator.querySelector('span').textContent = 'Connected';
-                    } else {
-                        indicator.classList.remove('connected');
-                        indicator.classList.add('disconnected');
-                        indicator.querySelector('span').textContent = 'Disconnected';
-                    }
-                });
-                
-                if (mainIndicator) {
-                    if (connected) {
-                        mainIndicator.classList.add('connected');
-                        connectionText.textContent = 'Connected to GitHub';
-                        repoInfo.textContent = `Repository: ${this.data.github.repo}`;
-                    } else {
-                        mainIndicator.classList.remove('connected');
-                        connectionText.textContent = 'Not Connected';
-                        repoInfo.textContent = 'No repository configured';
-                    }
-                }
-            },
+        function handleGitHubDragLeave(event) {
+            event.currentTarget.classList.remove('dragging');
+        }
 
-            // File Upload with Auto GitHub Upload
-            async handleFileUpload(files, type, folder) {
-                const processedFiles = [];
-                
-                for (const file of files) {
-                    // Optimize image if enabled
-                    let processedFile = file;
-                    if (document.getElementById('optimizeImages')?.checked && file.type.startsWith('image/')) {
-                        processedFile = await this.optimizeImage(file);
-                    }
-                    
-                    // Convert to base64
-                    const base64 = await this.fileToBase64(processedFile);
-                    
-                    const fileData = {
-                        id: Date.now() + Math.random(),
+        function handleGitHubDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragging');
+            
+            const files = Array.from(event.dataTransfer.files);
+            addToGitHubQueue(files);
+        }
+
+        function handleGitHubFileSelect(event) {
+            const files = Array.from(event.target.files);
+            addToGitHubQueue(files);
+        }
+
+        function addToGitHubQueue(files) {
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    siteConfig.github.uploadQueue.push({
+                        file: file,
                         name: file.name,
-                        type: file.type,
-                        size: processedFile.size,
-                        data: base64,
-                        folder: folder || type,
-                        status: 'pending',
-                        progress: 0
-                    };
-                    
-                    processedFiles.push(fileData);
-                    
-                    // Add to upload queue
-                    this.data.uploadQueue.push(fileData);
-                    
-                    // Add to local storage immediately
-                    const mediaItem = {
-                        url: base64,
-                        type: file.type,
-                        name: file.name,
-                        id: fileData.id,
-                        source: 'local'
-                    };
-                    
-                    if (type === 'logo') {
-                        this.data.logo.image = base64;
-                        this.renderLogoGallery();
-                        this.updateLogoDisplay();
-                    } else if (type === 'hero') {
-                        this.data.hero.push(mediaItem);
-                        this.renderHeroGallery();
-                        this.updateHeroDisplay();
-                    } else if (type === 'portfolio') {
-                        this.data.portfolio.push({
-                            ...mediaItem,
-                            title: file.name.replace(/\.[^/.]+$/, '').replace(/-/g, ' '),
-                            description: `New portfolio item`
-                        });
-                        this.renderPortfolioGallery();
-                        this.updatePortfolioDisplay();
-                    }
-                }
-                
-                // Update upload queue display
-                this.updateUploadQueue();
-                
-                // Auto upload if enabled
-                if (this.data.github.autoUpload && this.data.github.connected) {
-                    await this.processUploadQueue();
-                }
-                
-                this.saveData();
-            },
+                        data: e.target.result,
+                        folder: siteConfig.github.currentFolder,
+                        status: 'pending'
+                    });
+                    updateGitHubFileList();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
 
-            async fileToBase64(file) {
-                return new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => resolve(e.target.result);
-                    reader.readAsDataURL(file);
-                });
-            },
+        function updateGitHubFileList() {
+            const list = document.getElementById('githubFileList');
+            list.innerHTML = '';
+            
+            siteConfig.github.uploadQueue.forEach((item, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'github-file-item';
+                
+                const statusIcons = {
+                    pending: '⏳',
+                    uploading: '📤',
+                    success: '✅',
+                    error: '❌'
+                };
+                
+                fileItem.innerHTML = `
+                    ${item.data.startsWith('data:image') ? 
+                        `<img src="${item.data}" alt="${item.name}">` : 
+                        `<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f0f0f0;">📹</div>`}
+                    <div class="github-file-status ${item.status}">${statusIcons[item.status]}</div>
+                `;
+                
+                list.appendChild(fileItem);
+            });
+        }
 
-            async optimizeImage(file) {
-                // Simulate image optimization (in production, use canvas or image processing library)
-                return file;
-            },
-
-            // Upload Queue Management
-            updateUploadQueue() {
-                const container = document.getElementById('uploadQueueItems');
-                
-                if (this.data.uploadQueue.length === 0) {
-                    container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No uploads in queue</p>';
-                    return;
-                }
-                
-                container.innerHTML = '';
-                
-                this.data.uploadQueue.forEach((item, index) => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = `upload-queue-item ${item.status}`;
-                    
-                    const statusIcon = {
-                        pending: '⏳',
-                        uploading: '📤',
-                        success: '✅',
-                        error: '❌'
-                    }[item.status];
-                    
-                    itemDiv.innerHTML = `
-                        <div class="upload-item-icon">
-                            <img src="${item.data}" alt="${item.name}">
-                        </div>
-                        <div class="upload-item-info">
-                            <div class="upload-item-name">${item.name}</div>
-                            <div class="upload-item-status">
-                                ${statusIcon} ${item.status} - ${item.folder}
-                            </div>
-                            ${item.status === 'uploading' ? `
-                                <div class="upload-progress">
-                                    <div class="upload-progress-bar" style="width: ${item.progress}%"></div>
-                                </div>
-                            ` : ''}
-                        </div>
-                        ${item.status === 'pending' || item.status === 'error' ? `
-                            <button class="media-btn" onclick="MediaManager.removeFromQueue(${index})">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        ` : ''}
-                    `;
-                    
-                    container.appendChild(itemDiv);
-                });
-            },
-
-            async processUploadQueue() {
-                if (!this.data.github.connected) {
-                    this.showNotification('Please connect to GitHub first', 'error');
-                    this.showAuthModal();
-                    return;
-                }
-                
-                const pendingUploads = this.data.uploadQueue.filter(item => item.status === 'pending');
-                
-                if (pendingUploads.length === 0) {
-                    this.showNotification('No pending uploads', 'info');
-                    return;
-                }
-                
-                this.showNotification(`Uploading ${pendingUploads.length} files to GitHub...`, 'info');
-                
-                for (const item of pendingUploads) {
-                    await this.uploadToGitHub(item);
-                }
-                
-                // Refresh GitHub media
-                await this.loadGitHubMedia();
-                
-                this.showNotification('Upload complete!', 'success');
-            },
-
-            async uploadToGitHub(item) {
-                // Update status
+        async function uploadToGitHub() {
+            if (!siteConfig.github.connected) {
+                showNotification('Please connect to GitHub first', 'error');
+                return;
+            }
+            
+            if (siteConfig.github.uploadQueue.length === 0) {
+                showNotification('No files to upload', 'info');
+                return;
+            }
+            
+            const progressElement = document.getElementById('uploadProgress');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            progressElement.classList.add('active');
+            
+            let uploaded = 0;
+            const total = siteConfig.github.uploadQueue.length;
+            
+            for (let i = 0; i < siteConfig.github.uploadQueue.length; i++) {
+                const item = siteConfig.github.uploadQueue[i];
                 item.status = 'uploading';
-                item.progress = 0;
-                this.updateUploadQueue();
-                
-                // Simulate upload progress
-                const progressInterval = setInterval(() => {
-                    if (item.progress < 90) {
-                        item.progress += 10;
-                        this.updateUploadQueue();
-                    }
-                }, 200);
+                updateGitHubFileList();
                 
                 try {
-                    // Simulate GitHub API upload (in production, use actual GitHub API)
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    const base64Content = item.data.split(',')[1];
+                    const path = `images/${item.folder}/${item.name}`;
                     
-                    clearInterval(progressInterval);
-                    item.progress = 100;
-                    item.status = 'success';
+                    // Try to upload
+                    let response = await fetch(
+                        `https://api.github.com/repos/${siteConfig.github.repo}/contents/${path}`,
+                        {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${siteConfig.github.token}`,
+                                'Accept': 'application/vnd.github.v3+json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: `Add ${item.name} to ${item.folder}`,
+                                content: base64Content,
+                                branch: siteConfig.github.branch
+                            })
+                        }
+                    );
                     
-                    // Add to GitHub folders
-                    const githubItem = {
-                        name: item.name,
-                        url: `https://raw.githubusercontent.com/${this.data.github.repo}/${this.data.github.branch}/${item.folder}/${item.name}`,
-                        type: item.type.startsWith('image/') ? 'image' : 'video'
-                    };
-                    
-                    if (!this.data.github.folders[item.folder]) {
-                        this.data.github.folders[item.folder] = [];
-                    }
-                    this.data.github.folders[item.folder].push(githubItem);
-                    
-                    // Auto commit if enabled
-                    if (document.getElementById('autoCommit')?.checked) {
-                        await this.commitToGitHub(item);
-                    }
-                    
-                } catch (error) {
-                    clearInterval(progressInterval);
-                    item.status = 'error';
-                    item.error = error.message;
-                    this.showNotification(`Failed to upload ${item.name}`, 'error');
-                }
-                
-                this.updateUploadQueue();
-            },
-
-            async commitToGitHub(item) {
-                // Simulate GitHub commit (in production, use actual GitHub API)
-                console.log(`Committing ${item.name} to ${this.data.github.repo}`);
-            },
-
-            removeFromQueue(index) {
-                this.data.uploadQueue.splice(index, 1);
-                this.updateUploadQueue();
-                this.saveData();
-            },
-
-            clearUploadQueue() {
-                this.data.uploadQueue = this.data.uploadQueue.filter(item => item.status === 'uploading');
-                this.updateUploadQueue();
-                this.saveData();
-            },
-
-            retryFailed() {
-                this.data.uploadQueue.forEach(item => {
-                    if (item.status === 'error') {
-                        item.status = 'pending';
-                        item.progress = 0;
-                    }
-                });
-                this.updateUploadQueue();
-                this.processUploadQueue();
-            },
-
-            // Drag and Drop
-            handleDragOver(event) {
-                event.preventDefault();
-                event.currentTarget.classList.add('dragging');
-            },
-
-            handleDragLeave(event) {
-                event.currentTarget.classList.remove('dragging');
-            },
-
-            handleDrop(event, type) {
-                event.preventDefault();
-                event.currentTarget.classList.remove('dragging');
-                
-                const files = Array.from(event.dataTransfer.files);
-                this.handleFileUpload(files, type);
-            },
-
-            // GitHub Integration Methods
-            async loadGitHubMedia() {
-                const repo = document.getElementById('githubRepo')?.value || this.data.github.repo;
-                const branch = document.getElementById('githubBranch')?.value || this.data.github.branch;
-                
-                // Simulate loading GitHub media
-                this.simulateGitHubData();
-                
-                return Promise.resolve();
-            },
-
-            simulateGitHubData() {
-                // Add some sample data for demonstration
-                if (!this.data.github.folders.logos.length) {
-                    this.data.github.folders = {
-                        logos: [
-                            { name: 'refit-logo-pink.png', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/logos/refit-logo-pink.png', type: 'image' },
-                            { name: 'refit-logo-white.png', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/logos/refit-logo-white.png', type: 'image' }
-                        ],
-                        hero: [
-                            { name: 'modern-interior-1.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/hero/modern-interior-1.jpg', type: 'image' },
-                            { name: 'luxury-living.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/hero/luxury-living.jpg', type: 'image' }
-                        ],
-                        commercial: [
-                            { name: 'cath-kidston.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/cath-kidston.jpg', type: 'image' },
-                            { name: 'pie-face.jpg', url: 'https://raw.githubusercontent.com/lyode/refit-media/main/commercial/pie-face.jpg', type: 'image' }
-                        ],
-                        residential: [],
-                        '3d-concepts': [],
-                        banners: []
-                    };
-                }
-            },
-
-            loadGitHubFolder(folder) {
-                this.currentGitHubFolder = folder;
-                const gridId = `github-${this.currentTab}-grid`;
-                const grid = document.getElementById(gridId);
-                
-                if (!grid) return;
-                
-                // Update active folder button
-                const buttons = grid.parentElement.querySelectorAll('.github-folder-btn');
-                buttons.forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-                
-                // Clear previous selection
-                this.selectedGitHubItems.clear();
-                
-                // Load folder content
-                grid.innerHTML = '<div style="text-align: center; padding: 2rem;"><i class="loading-spinner"></i> Loading...</div>';
-                
-                setTimeout(() => {
-                    const files = this.data.github.folders[folder] || [];
-                    
-                    if (files.length === 0) {
-                        grid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No files in this folder</div>';
-                        return;
-                    }
-                    
-                    grid.innerHTML = '';
-                    files.forEach((file, index) => {
-                        const item = document.createElement('div');
-                        item.className = 'github-media-item';
-                        item.dataset.index = index;
-                        item.dataset.folder = folder;
-                        item.onclick = () => this.toggleGitHubSelection(item);
+                    // If file exists, update it
+                    if (response.status === 422) {
+                        const getResponse = await fetch(
+                            `https://api.github.com/repos/${siteConfig.github.repo}/contents/${path}`,
+                            {
+                                headers: {
+                                    'Authorization': `token ${siteConfig.github.token}`,
+                                    'Accept': 'application/vnd.github.v3+json'
+                                }
+                            }
+                        );
                         
-                        const imgSrc = file.url || this.generatePlaceholder(file.name);
-                        
-                        item.innerHTML = `
-                            <img src="${imgSrc}" alt="${file.name}" onerror="this.src='${this.generatePlaceholder(file.name)}'">
-                            <div class="github-media-item-name">${file.name}</div>
-                        `;
-                        grid.appendChild(item);
-                    });
-                }, 500);
-            },
-
-            toggleGitHubSelection(item) {
-                const key = `${item.dataset.folder}-${item.dataset.index}`;
-                
-                if (this.selectedGitHubItems.has(key)) {
-                    this.selectedGitHubItems.delete(key);
-                    item.classList.remove('selected');
-                } else {
-                    // For logo and hero, allow only single selection
-                    if (this.currentTab === 'logo' || this.currentTab === 'hero') {
-                        const grid = item.parentElement;
-                        grid.querySelectorAll('.github-media-item').forEach(el => {
-                            el.classList.remove('selected');
-                        });
-                        this.selectedGitHubItems.clear();
-                    }
-                    
-                    this.selectedGitHubItems.add(key);
-                    item.classList.add('selected');
-                }
-            },
-
-            selectAllGitHub(type) {
-                const gridId = `github-${type}-grid`;
-                const grid = document.getElementById(gridId);
-                
-                if (!grid) return;
-                
-                const items = grid.querySelectorAll('.github-media-item');
-                items.forEach(item => {
-                    const key = `${item.dataset.folder}-${item.dataset.index}`;
-                    this.selectedGitHubItems.add(key);
-                    item.classList.add('selected');
-                });
-            },
-
-            useSelectedGitHubMedia(type) {
-                if (this.selectedGitHubItems.size === 0) {
-                    this.showNotification('Please select media files to use', 'error');
-                    return;
-                }
-                
-                this.selectedGitHubItems.forEach(key => {
-                    const [folder, index] = key.split('-');
-                    const file = this.data.github.folders[folder][parseInt(index)];
-                    
-                    if (file) {
-                        const mediaItem = {
-                            url: file.url || this.generatePlaceholder(file.name),
-                            type: file.type || 'image',
-                            name: file.name,
-                            id: Date.now() + Math.random(),
-                            source: 'github'
-                        };
-                        
-                        if (type === 'logo') {
-                            this.data.logo.image = mediaItem.url;
-                            this.renderLogoGallery();
-                            this.updateLogoDisplay();
-                        } else if (type === 'hero') {
-                            this.data.hero.push(mediaItem);
-                            this.renderHeroGallery();
-                            this.updateHeroDisplay();
-                        } else if (type === 'portfolio') {
-                            this.data.portfolio.push({
-                                ...mediaItem,
-                                title: file.name.replace(/\.[^/.]+$/, '').replace(/-/g, ' '),
-                                description: `Project from ${folder} collection`
-                            });
-                            this.renderPortfolioGallery();
-                            this.updatePortfolioDisplay();
+                        if (getResponse.ok) {
+                            const fileData = await getResponse.json();
+                            
+                            response = await fetch(
+                                `https://api.github.com/repos/${siteConfig.github.repo}/contents/${path}`,
+                                {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Authorization': `token ${siteConfig.github.token}`,
+                                        'Accept': 'application/vnd.github.v3+json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        message: `Update ${item.name} in ${item.folder}`,
+                                        content: base64Content,
+                                        sha: fileData.sha,
+                                        branch: siteConfig.github.branch
+                                    })
+                                }
+                            );
                         }
                     }
-                });
-                
-                // Clear selection
-                this.selectedGitHubItems.clear();
-                const grid = document.getElementById(`github-${type}-grid`);
-                if (grid) {
-                    grid.querySelectorAll('.github-media-item').forEach(el => {
-                        el.classList.remove('selected');
-                    });
-                }
-                
-                this.showNotification(`Successfully added ${this.selectedGitHubItems.size || 1} item(s)`, 'success');
-                this.saveData();
-            },
-
-            refreshGitHub(type) {
-                this.loadGitHubMedia().then(() => {
-                    if (this.currentGitHubFolder) {
-                        this.loadGitHubFolder(this.currentGitHubFolder);
-                    }
-                    this.showNotification('GitHub media refreshed', 'success');
-                });
-            },
-
-            saveGitHubSettings() {
-                this.data.github.repo = document.getElementById('githubRepo').value;
-                this.data.github.branch = document.getElementById('githubBranch').value;
-                this.saveData();
-                this.showNotification('GitHub settings saved', 'success');
-            },
-
-            generatePlaceholder(name) {
-                return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23E8A0BF' width='400' height='300'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='18' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E${encodeURIComponent(name)}%3C/text%3E%3C/svg%3E`;
-            },
-
-            // Panel controls
-            openPanel() {
-                document.getElementById('controlPanel').classList.add('active');
-                this.checkGitHubConnection();
-                this.updateUploadQueue();
-            },
-
-            closePanel() {
-                document.getElementById('controlPanel').classList.remove('active');
-            },
-
-            // Tab switching
-            switchTab(tabName) {
-                this.currentTab = tabName;
-                
-                // Hide all tabs
-                document.querySelectorAll('.tab-content').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                document.querySelectorAll('.panel-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-
-                // Show selected tab
-                document.getElementById(tabName + '-tab').classList.add('active');
-                event.target.classList.add('active');
-
-                // Load content for the tab
-                if (tabName === 'services') {
-                    this.renderServices();
-                } else if (tabName === 'portfolio') {
-                    this.renderPortfolioGallery();
-                    setTimeout(() => this.loadGitHubFolder('commercial'), 100);
-                } else if (tabName === 'hero') {
-                    this.renderHeroGallery();
-                    setTimeout(() => this.loadGitHubFolder('hero'), 100);
-                } else if (tabName === 'logo') {
-                    this.renderLogoGallery();
-                    setTimeout(() => this.loadGitHubFolder('logos'), 100);
-                } else if (tabName === 'uploads') {
-                    this.updateUploadQueue();
-                }
-            },
-
-            // Logo Management
-            handleLogoUpload(event) {
-                const files = Array.from(event.target.files);
-                this.handleFileUpload(files, 'logo', 'logos');
-            },
-
-            renderLogoGallery() {
-                const gallery = document.getElementById('logoGallery');
-                gallery.innerHTML = '';
-
-                if (this.data.logo.image) {
-                    const item = document.createElement('div');
-                    item.className = 'media-item';
-                    item.innerHTML = `
-                        <img src="${this.data.logo.image}" alt="Logo">
-                        ${this.data.logo.source === 'github' ? '<div class="media-item-github-badge"><i class="fab fa-github"></i> GitHub</div>' : ''}
-                        <div class="media-item-controls">
-                            <button class="media-btn" onclick="MediaManager.removeLogo()">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    gallery.appendChild(item);
-                }
-            },
-
-            removeLogo() {
-                this.data.logo.image = null;
-                this.renderLogoGallery();
-                this.updateLogoDisplay();
-            },
-
-            updateLogoDisplay() {
-                if (this.data.logo.image) {
-                    document.getElementById('logoTextDisplay').style.display = 'none';
-                    document.getElementById('logoImageDisplay').style.display = 'block';
-                    document.getElementById('logoImageDisplay').src = this.data.logo.image;
-                } else {
-                    document.getElementById('logoTextDisplay').style.display = 'block';
-                    document.getElementById('logoImageDisplay').style.display = 'none';
-                }
-            },
-
-            // Hero Media Management
-            handleHeroUpload(event) {
-                const files = Array.from(event.target.files);
-                this.handleFileUpload(files, 'hero', 'hero');
-            },
-
-            renderHeroGallery() {
-                const gallery = document.getElementById('heroGallery');
-                gallery.innerHTML = '';
-
-                this.data.hero.forEach((item, index) => {
-                    const div = document.createElement('div');
-                    div.className = 'media-item';
-                    const isVideo = item.type && item.type.startsWith('video/');
                     
-                    div.innerHTML = `
-                        ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
-                        ${item.source === 'github' ? '<div class="media-item-github-badge"><i class="fab fa-github"></i></div>' : ''}
-                        <div class="media-item-controls">
-                            <button class="media-btn" onclick="MediaManager.setAsHeroMain(${index})">
-                                <i class="fas fa-star"></i>
-                            </button>
-                            <button class="media-btn" onclick="MediaManager.removeMedia('hero', ${index})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    gallery.appendChild(div);
-                });
-            },
-
-            setAsHeroMain(index) {
-                const item = this.data.hero[index];
-                if (item) {
-                    this.data.hero.splice(index, 1);
-                    this.data.hero.unshift(item);
-                    this.renderHeroGallery();
-                    this.updateHeroDisplay();
+                    if (response.ok) {
+                        item.status = 'success';
+                        uploaded++;
+                        
+                        // Add to appropriate media array
+                        const url = `https://raw.githubusercontent.com/${siteConfig.github.repo}/${siteConfig.github.branch}/images/${item.folder}/${item.name}`;
+                        
+                        if (item.folder === 'logo') {
+                            siteConfig.media.logo = url;
+                            updateLogo();
+                        } else if (item.folder === 'hero') {
+                            siteConfig.media.hero.push(url);
+                            updateHeroSlideshow();
+                        } else if (item.folder === 'portfolio') {
+                            siteConfig.media.portfolio.push({
+                                url: url,
+                                title: item.name.replace(/\.[^/.]+$/, '').replace(/-/g, ' ')
+                            });
+                            loadPortfolio();
+                        }
+                    } else {
+                        throw new Error('Upload failed');
+                    }
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    item.status = 'error';
                 }
-            },
+                
+                const progress = ((i + 1) / total) * 100;
+                progressFill.style.width = `${progress}%`;
+                progressText.textContent = `${Math.round(progress)}%`;
+                
+                updateGitHubFileList();
+            }
+            
+            progressElement.classList.remove('active');
+            
+            if (uploaded === total) {
+                showNotification(`Successfully uploaded ${uploaded} files!`, 'success');
+                setTimeout(() => {
+                    siteConfig.github.uploadQueue = [];
+                    updateGitHubFileList();
+                }, 2000);
+            } else {
+                showNotification(`Uploaded ${uploaded} of ${total} files`, 'error');
+            }
+            
+            saveAllSettings();
+        }
 
-            updateHeroDisplay() {
-                const slideshow = document.getElementById('heroSlideshow');
+        async function loadRepoFiles() {
+            if (!siteConfig.github.connected) return;
+            
+            try {
+                const folders = ['logo', 'hero', 'portfolio', 'services'];
+                const repoFilesDiv = document.getElementById('repoFiles');
+                repoFilesDiv.innerHTML = '<p>Loading repository files...</p>';
                 
-                if (this.data.hero.length === 0) return;
+                let allFiles = [];
                 
+                for (const folder of folders) {
+                    try {
+                        const response = await fetch(
+                            `https://api.github.com/repos/${siteConfig.github.repo}/contents/images/${folder}`,
+                            {
+                                headers: {
+                                    'Authorization': `token ${siteConfig.github.token}`,
+                                    'Accept': 'application/vnd.github.v3+json'
+                                }
+                            }
+                        );
+                        
+                        if (response.ok) {
+                            const files = await response.json();
+                            allFiles.push({ folder, files });
+                        }
+                    } catch (error) {
+                        console.error(`Error loading ${folder}:`, error);
+                    }
+                }
+                
+                // Display files
+                repoFilesDiv.innerHTML = '';
+                allFiles.forEach(({ folder, files }) => {
+                    const folderDiv = document.createElement('div');
+                    folderDiv.innerHTML = `<h4>${folder} (${files.length} files)</h4>`;
+                    
+                    const fileList = document.createElement('div');
+                    fileList.style.display = 'grid';
+                    fileList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(80px, 1fr))';
+                    fileList.style.gap = '10px';
+                    fileList.style.marginBottom = '20px';
+                    
+                    files.forEach(file => {
+                        if (file.type === 'file') {
+                            const fileItem = document.createElement('div');
+                            fileItem.style.textAlign = 'center';
+                            fileItem.style.cursor = 'pointer';
+                            
+                            const url = `https://raw.githubusercontent.com/${siteConfig.github.repo}/${siteConfig.github.branch}/images/${folder}/${file.name}`;
+                            
+                            fileItem.innerHTML = `
+                                <img src="${url}" alt="${file.name}" 
+                                     style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;"
+                                     onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\"><rect width=\"60\" height=\"60\" fill=\"%23f0f0f0\"/></svg>'">
+                                <small style="font-size: 0.7rem;">${file.name.substring(0, 10)}...</small>
+                            `;
+                            
+                            fileItem.onclick = () => {
+                                if (folder === 'logo') {
+                                    siteConfig.media.logo = url;
+                                    updateLogo();
+                                } else if (folder === 'hero') {
+                                    siteConfig.media.hero.push(url);
+                                    updateHeroSlideshow();
+                                }
+                                showNotification(`Added ${file.name} to ${folder}`, 'success');
+                            };
+                            
+                            fileList.appendChild(fileItem);
+                        }
+                    });
+                    
+                    folderDiv.appendChild(fileList);
+                    repoFilesDiv.appendChild(folderDiv);
+                });
+            } catch (error) {
+                console.error('Error loading repo files:', error);
+            }
+        }
+
+        // Update Display Functions
+        function updateLogo() {
+            if (siteConfig.media.logo) {
+                document.getElementById('logoText').style.display = 'none';
+                document.getElementById('logoImage').style.display = 'block';
+                document.getElementById('logoImage').src = siteConfig.media.logo;
+            } else {
+                document.getElementById('logoText').style.display = 'block';
+                document.getElementById('logoImage').style.display = 'none';
+            }
+        }
+
+        function updateHeroSlideshow() {
+            const slideshow = document.getElementById('heroSlideshow');
+            
+            if (siteConfig.media.hero.length > 0) {
                 slideshow.innerHTML = '';
                 
-                this.data.hero.forEach((item, index) => {
+                siteConfig.media.hero.forEach((url, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'hero-slide';
                     if (index === 0) slide.classList.add('active');
                     
-                    const isVideo = item.type && item.type.startsWith('video/');
-                    if (isVideo) {
-                        slide.innerHTML = `<video src="${item.url}" autoplay muted loop></video>`;
-                    } else {
-                        slide.innerHTML = `<img src="${item.url}" alt="Hero ${index + 1}">`;
-                    }
-                    
+                    slide.innerHTML = `<img src="${url}" alt="Hero ${index + 1}">`;
                     slideshow.appendChild(slide);
                 });
                 
-                if (this.data.hero.length > 1) {
-                    this.startSlideshow();
+                if (siteConfig.media.hero.length > 1) {
+                    startSlideshow();
                 }
-            },
-
-            startSlideshow() {
-                let currentSlide = 0;
-                const slides = document.querySelectorAll('.hero-slide');
-                
-                setInterval(() => {
-                    if (slides.length > 1) {
-                        slides[currentSlide].classList.remove('active');
-                        currentSlide = (currentSlide + 1) % slides.length;
-                        slides[currentSlide].classList.add('active');
-                    }
-                }, 5000);
-            },
-
-            // Portfolio Management
-            handlePortfolioUpload(event) {
-                const files = Array.from(event.target.files);
-                const folder = this.currentGitHubFolder || 'commercial';
-                this.handleFileUpload(files, 'portfolio', folder);
-            },
-
-            renderPortfolioGallery() {
-                const gallery = document.getElementById('portfolioGallery');
-                gallery.innerHTML = '';
-
-                this.data.portfolio.forEach((item, index) => {
-                    const div = document.createElement('div');
-                    div.className = 'media-item';
-                    const isVideo = item.type && item.type.startsWith('video/');
-                    
-                    div.innerHTML = `
-                        ${isVideo ? `<video src="${item.url}" muted></video>` : `<img src="${item.url}" alt="${item.name}">`}
-                        ${item.source === 'github' ? '<div class="media-item-github-badge"><i class="fab fa-github"></i></div>' : ''}
-                        <div class="media-item-controls">
-                            <button class="media-btn" onclick="MediaManager.editPortfolioItem(${index})">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="media-btn" onclick="MediaManager.removeMedia('portfolio', ${index})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    gallery.appendChild(div);
-                });
-            },
-
-            editPortfolioItem(index) {
-                const item = this.data.portfolio[index];
-                const title = prompt('Enter title for this portfolio item:', item.title || '');
-                const description = prompt('Enter description:', item.description || '');
-                
-                if (title !== null) item.title = title;
-                if (description !== null) item.description = description;
-                
-                this.renderPortfolioGallery();
-                this.updatePortfolioDisplay();
-            },
-
-            updatePortfolioDisplay() {
-                const display = document.getElementById('portfolioDisplay');
-                display.innerHTML = '';
-
-                this.data.portfolio.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'portfolio-item';
-                    const isVideo = item.type && item.type.startsWith('video/');
-                    
-                    div.innerHTML = `
-                        ${isVideo ? `<video src="${item.url}" muted loop></video>` : `<img src="${item.url}" alt="${item.title || 'Portfolio'}">`}
-                        <div class="portfolio-overlay">
-                            <h3>${item.title || 'Portfolio Item'}</h3>
-                            <p>${item.description || ''}</p>
-                        </div>
-                    `;
-                    
-                    if (isVideo) {
-                        div.addEventListener('mouseenter', () => {
-                            div.querySelector('video').play();
-                        });
-                        div.addEventListener('mouseleave', () => {
-                            div.querySelector('video').pause();
-                        });
-                    }
-                    
-                    display.appendChild(div);
-                });
-            },
-
-            // Services Management
-            addService() {
-                this.data.services.push({
-                    icon: '⭐',
-                    title: 'New Service',
-                    description: 'Service description'
-                });
-                this.renderServices();
-            },
-
-            renderServices() {
-                const container = document.getElementById('servicesContainer');
-                container.innerHTML = '';
-
-                this.data.services.forEach((service, index) => {
-                    const div = document.createElement('div');
-                    div.style.cssText = 'padding: 1rem; background: var(--bg-secondary); border-radius: 8px; margin-bottom: 1rem;';
-                    
-                    div.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h4>Service ${index + 1}</h4>
-                            <button class="media-btn" onclick="MediaManager.removeService(${index})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                        <input type="text" placeholder="Icon (emoji)" value="${service.icon}" 
-                               onchange="MediaManager.updateService(${index}, 'icon', this.value)" 
-                               style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                        <input type="text" placeholder="Title" value="${service.title}" 
-                               onchange="MediaManager.updateService(${index}, 'title', this.value)" 
-                               style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                        <textarea placeholder="Description" 
-                                  onchange="MediaManager.updateService(${index}, 'description', this.value)" 
-                                  style="width: 100%; margin: 0.5rem 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px; min-height: 80px;">${service.description}</textarea>
-                    `;
-                    container.appendChild(div);
-                });
-            },
-
-            updateService(index, field, value) {
-                this.data.services[index][field] = value;
-                this.updateServicesDisplay();
-            },
-
-            removeService(index) {
-                if (confirm('Remove this service?')) {
-                    this.data.services.splice(index, 1);
-                    this.renderServices();
-                    this.updateServicesDisplay();
-                }
-            },
-
-            updateServicesDisplay() {
-                const display = document.getElementById('servicesDisplay');
-                display.innerHTML = '';
-
-                this.data.services.forEach(service => {
-                    const div = document.createElement('div');
-                    div.className = 'service-card';
-                    div.innerHTML = `
-                        <div class="service-icon">${service.icon}</div>
-                        <h3>${service.title}</h3>
-                        <p>${service.description}</p>
-                    `;
-                    display.appendChild(div);
-                });
-            },
-
-            // Utility Functions
-            removeMedia(type, index) {
-                if (confirm('Remove this item?')) {
-                    this.data[type].splice(index, 1);
-                    if (type === 'hero') {
-                        this.renderHeroGallery();
-                        this.updateHeroDisplay();
-                    } else if (type === 'portfolio') {
-                        this.renderPortfolioGallery();
-                        this.updatePortfolioDisplay();
-                    }
-                }
-            },
-
-            saveData() {
-                // Don't save token for security
-                const dataToSave = { ...this.data };
-                dataToSave.github.token = null;
-                localStorage.setItem('refitData', JSON.stringify(dataToSave));
-            },
-
-            applyAllSettings() {
-                this.updateLogoDisplay();
-                this.updateHeroDisplay();
-                this.updatePortfolioDisplay();
-                this.updateServicesDisplay();
-            },
-
-            showNotification(message, type = 'success') {
-                const notification = document.createElement('div');
-                notification.className = `notification ${type}`;
-                
-                const icon = {
-                    success: '✅',
-                    error: '❌',
-                    warning: '⚠️',
-                    info: 'ℹ️'
-                }[type];
-                
-                notification.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
-                document.body.appendChild(notification);
-
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
             }
-        };
+        }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            MediaManager.init();
-        });
+        function startSlideshow() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.hero-slide');
+            
+            setInterval(() => {
+                if (slides.length > 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+            }, 5000);
+        }
+
+        function loadPortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+            
+            // Load from GitHub if available
+            if (siteConfig.media.portfolio.length > 0) {
+                siteConfig.media.portfolio.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = 'portfolio-item';
+                    portfolioItem.innerHTML = `
+                        <img src="${item.url}" alt="${item.title || 'Portfolio'}">
+                    `;
+                    grid.appendChild(portfolioItem);
+                });
+            } else {
+                // Default portfolio items
+                const defaultItems = [
+                    'https://raw.githubusercontent.com/lyode/refit-media/main/images/portfolio/cath-kidston.jpg',
+                    'https://raw.githubusercontent.com/lyode/refit-media/main/images/portfolio/pie-face.jpg',
+                    'https://raw.githubusercontent.com/lyode/refit-media/main/images/portfolio/tusan-ice-cream.jpg'
+                ];
+                
+                defaultItems.forEach((url, index) => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = 'portfolio-item';
+                    portfolioItem.innerHTML = `
+                        <img src="${url}" alt="Portfolio ${index + 1}" 
+                             onerror="this.src='https://via.placeholder.com/400x300/E8A0BF/ffffff?text=Portfolio+${index + 1}'">
+                    `;
+                    grid.appendChild(portfolioItem);
+                });
+            }
+        }
+
+        function updateHeroContent() {
+            const title = document.getElementById('heroTitle').value;
+            const tagline = document.getElementById('heroTagline').value;
+            
+            document.getElementById('heroTitleDisplay').textContent = title;
+            document.getElementById('heroTaglineDisplay').textContent = tagline;
+        }
+
+        function saveAllSettings() {
+            localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
+            updateHeroContent();
+            showNotification('Settings saved successfully!', 'success');
+        }
+
+        function loadSavedConfig() {
+            const saved = localStorage.getItem('siteConfig');
+            if (saved) {
+                Object.assign(siteConfig, JSON.parse(saved));
+                updateLogo();
+                updateHeroSlideshow();
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            
+            const icons = {
+                success: '✅',
+                error: '❌',
+                info: 'ℹ️'
+            };
+            
+            notification.innerHTML = `
+                <span>${icons[type]}</span>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
