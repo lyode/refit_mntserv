@@ -70,15 +70,15 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Admin Button - Round and 40% smaller */
+        /* Admin Settings Button - Round Shape, 40% Smaller */
         .admin-btn {
             position: fixed;
             top: 100px;
             right: 20px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 36px;  /* Reduced by 40% from 60px */
+            height: 36px;  /* Reduced by 40% from 60px */
             border-radius: 50%;
             cursor: pointer;
             border: none;
@@ -88,7 +88,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 0.9rem;  /* Reduced font size */
         }
 
         .admin-btn:hover {
@@ -98,6 +98,159 @@
 
         .admin-btn i {
             transition: all var(--transition-speed);
+        }
+
+        /* Login Modal */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .login-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 400px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .login-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all var(--transition-speed);
+        }
+
+        .login-close:hover {
+            background: var(--bg-secondary);
+            transform: rotate(90deg);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed);
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.85rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .login-error {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            position: fixed;
+            top: 100px;
+            right: 65px;  /* Positioned next to settings button */
+            background: linear-gradient(135deg, #ff6b6b, #ff4444);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: all var(--transition-speed);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn.visible {
+            display: flex;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(255, 68, 68, 0.4);
         }
 
         /* Control Panel */
@@ -246,6 +399,22 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         /* Header */
@@ -716,6 +885,13 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .admin-btn,
+            .logout-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -726,10 +902,35 @@
         <p style="margin-top: 1rem; color: var(--text-secondary);">Loading media from GitHub...</p>
     </div>
 
-    <!-- Admin Settings Button - Round Shape -->
-    <button class="admin-btn" onclick="openPanel()" title="Settings">
+    <!-- Admin Settings Button - Round Shape, Smaller Size -->
+    <button class="admin-btn" onclick="checkAuth()" title="Settings">
         <i class="fas fa-cog"></i>
     </button>
+
+    <!-- Logout Button -->
+    <button class="logout-btn" id="logoutBtn" onclick="logout()" title="Logout">
+        <i class="fas fa-sign-out-alt"></i>
+    </button>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <span class="login-close" onclick="closeLogin()">&times;</span>
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <h2>Admin Login</h2>
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="login-error" id="loginError">Invalid username or password!</div>
+            </form>
+        </div>
+    </div>
 
     <!-- Control Panel -->
     <div class="control-panel" id="controlPanel">
@@ -788,26 +989,6 @@
                         <input type="text" class="control-input" id="secondaryColorText" value="#BA5B7D" onchange="document.getElementById('secondaryColor').value = this.value" style="flex: 1;">
                     </div>
                 </div>
-                
-                <div class="control-group">
-                    <label class="control-label">
-                        <i class="fas fa-paint-brush"></i> Accent Color
-                    </label>
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="color" id="accentColor" value="#F5C99B" onchange="document.getElementById('accentColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
-                        <input type="text" class="control-input" id="accentColorText" value="#F5C99B" onchange="document.getElementById('accentColor').value = this.value" style="flex: 1;">
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <label class="control-label">
-                        <i class="fas fa-adjust"></i> Background Color
-                    </label>
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="color" id="bgColor" value="#f8f8f8" onchange="document.getElementById('bgColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
-                        <input type="text" class="control-input" id="bgColorText" value="#f8f8f8" onchange="document.getElementById('bgColor').value = this.value" style="flex: 1;">
-                    </div>
-                </div>
             </div>
 
             <!-- Contact Details -->
@@ -859,20 +1040,6 @@
                         <i class="fab fa-tiktok"></i> TikTok URL
                     </label>
                     <input type="url" class="control-input" id="tiktok" value="https://tiktok.com/@refitinterior" placeholder="https://tiktok.com/@yourhandle">
-                </div>
-                
-                <div class="control-group">
-                    <label class="control-label">
-                        <i class="fab fa-linkedin"></i> LinkedIn URL
-                    </label>
-                    <input type="url" class="control-input" id="linkedin" value="" placeholder="https://linkedin.com/company/yourcompany">
-                </div>
-                
-                <div class="control-group">
-                    <label class="control-label">
-                        <i class="fab fa-youtube"></i> YouTube URL
-                    </label>
-                    <input type="url" class="control-input" id="youtube" value="" placeholder="https://youtube.com/@yourchannel">
                 </div>
             </div>
 
@@ -1044,12 +1211,6 @@
                 <a href="" target="_blank" class="social-icon" id="footerTiktok" style="display: none;">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerLinkedin" style="display: none;">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" target="_blank" class="social-icon" id="footerYoutube" style="display: none;">
-                    <i class="fab fa-youtube"></i>
-                </a>
                 <a href="" class="social-icon" id="footerEmail">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -1078,6 +1239,12 @@
             services: []
         };
 
+        // Authentication Configuration
+        const AUTH_CONFIG = {
+            username: 'admin',
+            password: 'refit2024' // Change this to your desired password
+        };
+
         // Contact Configuration
         const config = {
             company: {
@@ -1093,32 +1260,87 @@
             social: {
                 facebook: 'https://facebook.com/refitinterior',
                 instagram: 'https://instagram.com/refitinterior',
-                tiktok: 'https://tiktok.com/@refitinterior',
-                linkedin: '',
-                youtube: ''
+                tiktok: 'https://tiktok.com/@refitinterior'
             },
             colors: {
                 primary: '#E8A0BF',
-                secondary: '#BA5B7D',
-                accent: '#F5C99B',
-                background: '#f8f8f8'
+                secondary: '#BA5B7D'
             },
             portfolioTitles: []
         };
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async function() {
+            checkAuthStatus();
             loadSettings();
-            applyColors(); // Apply saved colors
+            applyColors();
             updateDisplay();
             await loadAllMediaFromGitHub();
             hideLoadingIndicator();
         });
 
+        // Authentication Functions
+        function checkAuthStatus() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+            if (isAuthenticated) {
+                document.getElementById('logoutBtn').classList.add('visible');
+            }
+        }
+
+        function checkAuth() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+            if (isAuthenticated) {
+                openPanel();
+            } else {
+                openLogin();
+            }
+        }
+
+        function openLogin() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').classList.remove('show');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === AUTH_CONFIG.username && password === AUTH_CONFIG.password) {
+                sessionStorage.setItem('isAuthenticated', 'true');
+                document.getElementById('logoutBtn').classList.add('visible');
+                closeLogin();
+                openPanel();
+            } else {
+                document.getElementById('loginError').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('loginError').classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('isAuthenticated');
+            document.getElementById('logoutBtn').classList.remove('visible');
+            closePanel();
+            showNotification('Logged out successfully');
+        }
+
         // Settings Panel Functions
         function openPanel() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+            if (!isAuthenticated) {
+                openLogin();
+                return;
+            }
             document.getElementById('controlPanel').classList.add('active');
-            updatePortfolioTitleInputs(); // Load portfolio title inputs
+            updatePortfolioTitleInputs();
         }
 
         function closePanel() {
@@ -1142,14 +1364,10 @@
             config.social.facebook = document.getElementById('facebook').value;
             config.social.instagram = document.getElementById('instagram').value;
             config.social.tiktok = document.getElementById('tiktok').value;
-            config.social.linkedin = document.getElementById('linkedin').value;
-            config.social.youtube = document.getElementById('youtube').value;
 
             // Save colors
             config.colors.primary = document.getElementById('primaryColor').value;
             config.colors.secondary = document.getElementById('secondaryColor').value;
-            config.colors.accent = document.getElementById('accentColor').value;
-            config.colors.background = document.getElementById('bgColor').value;
 
             // Save portfolio titles
             const titleInputs = document.querySelectorAll('.portfolio-title-input');
@@ -1168,7 +1386,7 @@
 
             // Update display
             updateDisplay();
-            updatePortfolioGrid(); // Refresh portfolio with new titles
+            updatePortfolioGrid();
 
             // Show success animation
             setTimeout(() => {
@@ -1201,8 +1419,6 @@
                 document.getElementById('facebook').value = config.social.facebook || '';
                 document.getElementById('instagram').value = config.social.instagram || '';
                 document.getElementById('tiktok').value = config.social.tiktok || '';
-                document.getElementById('linkedin').value = config.social.linkedin || '';
-                document.getElementById('youtube').value = config.social.youtube || '';
 
                 // Load colors
                 if (config.colors) {
@@ -1210,10 +1426,6 @@
                     document.getElementById('primaryColorText').value = config.colors.primary || '#E8A0BF';
                     document.getElementById('secondaryColor').value = config.colors.secondary || '#BA5B7D';
                     document.getElementById('secondaryColorText').value = config.colors.secondary || '#BA5B7D';
-                    document.getElementById('accentColor').value = config.colors.accent || '#F5C99B';
-                    document.getElementById('accentColorText').value = config.colors.accent || '#F5C99B';
-                    document.getElementById('bgColor').value = config.colors.background || '#f8f8f8';
-                    document.getElementById('bgColorText').value = config.colors.background || '#f8f8f8';
                     
                     applyColors();
                 }
@@ -1224,42 +1436,8 @@
             if (config.colors) {
                 document.documentElement.style.setProperty('--primary-color', config.colors.primary);
                 document.documentElement.style.setProperty('--secondary-color', config.colors.secondary);
-                document.documentElement.style.setProperty('--accent-color', config.colors.accent);
-                document.documentElement.style.setProperty('--bg-secondary', config.colors.background);
             }
         }
-
-        // Update color inputs when color picker changes
-        document.addEventListener('DOMContentLoaded', function() {
-            // Color picker sync
-            document.getElementById('primaryColor')?.addEventListener('input', function(e) {
-                document.getElementById('primaryColorText').value = e.target.value;
-            });
-            document.getElementById('primaryColorText')?.addEventListener('input', function(e) {
-                document.getElementById('primaryColor').value = e.target.value;
-            });
-            
-            document.getElementById('secondaryColor')?.addEventListener('input', function(e) {
-                document.getElementById('secondaryColorText').value = e.target.value;
-            });
-            document.getElementById('secondaryColorText')?.addEventListener('input', function(e) {
-                document.getElementById('secondaryColor').value = e.target.value;
-            });
-            
-            document.getElementById('accentColor')?.addEventListener('input', function(e) {
-                document.getElementById('accentColorText').value = e.target.value;
-            });
-            document.getElementById('accentColorText')?.addEventListener('input', function(e) {
-                document.getElementById('accentColor').value = e.target.value;
-            });
-            
-            document.getElementById('bgColor')?.addEventListener('input', function(e) {
-                document.getElementById('bgColorText').value = e.target.value;
-            });
-            document.getElementById('bgColorText')?.addEventListener('input', function(e) {
-                document.getElementById('bgColor').value = e.target.value;
-            });
-        });
 
         function updateDisplay() {
             // Update logo and titles
@@ -1286,8 +1464,6 @@
             updateSocialLink('Facebook', config.social.facebook);
             updateSocialLink('Instagram', config.social.instagram);
             updateSocialLink('Tiktok', config.social.tiktok);
-            updateSocialLink('Linkedin', config.social.linkedin);
-            updateSocialLink('Youtube', config.social.youtube);
         }
 
         function updateSocialLink(platform, url) {
@@ -1305,8 +1481,9 @@
             }
         }
 
-        function showNotification() {
+        function showNotification(message = 'Settings saved successfully!') {
             const notification = document.getElementById('notification');
+            notification.querySelector('span').textContent = message;
             notification.classList.add('show');
             
             setTimeout(() => {
@@ -1314,7 +1491,6 @@
             }, 3000);
         }
 
-        // Hide loading indicator
         function hideLoadingIndicator() {
             const loader = document.getElementById('loadingIndicator');
             if (loader) {
@@ -1389,12 +1565,11 @@
         function loadFallbackMedia() {
             const fallbackFiles = {
                 logo: ['refit-logo.png', 'refit-logo-pink.png'],
-                hero: ['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg', 'modern-interior.jpg', 'luxury-living.jpg'],
+                hero: ['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg'],
                 portfolio: [
                     'cath-kidston.jpg', 'pie-face.jpg', 'tusan-ice-cream.jpg',
                     'bungkus-kaw-kaw.jpg', 'backhaus.jpg', 'furla.jpg',
-                    'topshop.jpg', 'topman.jpg', 'commercial-1.jpg',
-                    'commercial-2.jpg', 'residential-1.jpg', 'residential-2.jpg'
+                    'topshop.jpg', 'topman.jpg'
                 ],
                 services: ['maintenance.jpg', 'construction.jpg', 'design.jpg']
             };
@@ -1463,7 +1638,7 @@
                 case 'portfolio':
                     if (mediaStorage.portfolio.length > 0) {
                         updatePortfolioGrid();
-                        updatePortfolioTitleInputs(); // Update title inputs when portfolio loads
+                        updatePortfolioTitleInputs();
                     }
                     break;
             }
@@ -1530,7 +1705,6 @@
                 
                 const overlay = document.createElement('div');
                 overlay.className = 'overlay';
-                // Use custom title if available, otherwise use original
                 const customTitle = config.portfolioTitles && config.portfolioTitles[index] 
                     ? config.portfolioTitles[index] 
                     : item.title;
@@ -1573,6 +1747,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closePanel();
+                closeLogin();
             }
         });
     </script>
