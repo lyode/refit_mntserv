@@ -220,7 +220,7 @@
             width: 100%;
         }
 
-        /* Admin Button - Round Shape and 60% of Original Size (40% Smaller) */
+        /* Admin Button - Round Shape and 40% Smaller */
         .admin-btn-container {
             position: fixed;
             top: 100px;
@@ -228,15 +228,15 @@
             z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .admin-login-btn,
         .admin-logout-btn {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             border: none;
@@ -246,7 +246,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 18px;
         }
 
         .admin-login-btn:hover,
@@ -259,12 +259,12 @@
             background: linear-gradient(135deg, #ff6b6b, #c92a2a);
         }
 
-        /* Master Panel Button - Round and 60% of Original Size */
+        /* Master Panel Button - Round and Smaller */
         .master-panel-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             border: none;
@@ -276,7 +276,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            font-size: 12px;
+            font-size: 18px;
         }
 
         .master-panel-btn::before {
@@ -1219,9 +1219,9 @@
             .admin-login-btn,
             .admin-logout-btn,
             .master-panel-btn {
-                width: 25px;
-                height: 25px;
-                font-size: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
             }
 
             .floating-buttons {
@@ -1294,7 +1294,7 @@
 <body>
     <!-- Admin Buttons Container -->
     <div class="admin-btn-container" id="adminBtnContainer">
-        <button id="adminLoginBtn" class="admin-login-btn" onclick="showLoginModal()" title="Admin Login (Click to access settings)">
+        <button id="adminLoginBtn" class="admin-login-btn" onclick="showLoginModal()" title="Admin Login">
             <i class="fas fa-sign-in-alt"></i>
         </button>
         <button id="adminLogoutBtn" class="admin-logout-btn" style="display: none;" onclick="handleLogout()" title="Logout">
@@ -1887,7 +1887,7 @@
             const password = document.getElementById('loginPassword').value;
             const errorDiv = document.getElementById('loginError');
             
-            if (username === 'admin' && password === 'refit2025') {
+            if (username === 'admin' && password === 'refit2024') {
                 siteConfig.isAuthenticated = true;
                 localStorage.setItem('isAuthenticated', 'true');
                 closeModal('loginModal');
@@ -1982,11 +1982,7 @@
 
         // Master Panel Controls
         function openMasterPanel() {
-            if (!siteConfig.isAuthenticated) {
-                showLoginModal();
-                showNotification('⚠️ Please login to access the Control Panel', 'info');
-                return;
-            }
+            if (!siteConfig.isAuthenticated) return;
             document.getElementById('masterControlPanel').classList.add('active');
             updatePortfolioTitleInputs();
             updateAllContactDisplay();
@@ -2059,12 +2055,6 @@
 
         // Edit Mode Toggle
         function toggleEditMode() {
-            if (!siteConfig.isAuthenticated) {
-                showLoginModal();
-                showNotification('⚠️ Please login to enable editing mode', 'info');
-                return;
-            }
-            
             siteConfig.editMode = !siteConfig.editMode;
             document.body.classList.toggle('edit-mode');
             
