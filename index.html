@@ -26,6 +26,7 @@
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         * {
@@ -39,6 +40,207 @@
             color: var(--text-primary);
             background: var(--bg-secondary);
             line-height: 1.6;
+        }
+
+        /* Loading Indicator */
+        .loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(232, 160, 191, 0.3);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Admin Button */
+        .admin-btn {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            z-index: 999;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(232, 160, 191, 0.4);
+        }
+
+        /* Control Panel */
+        .control-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 500px;
+            height: 100vh;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .control-panel.active {
+            right: 0;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .panel-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-panel {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all var(--transition-speed);
+        }
+
+        .close-panel:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .panel-content {
+            padding: 2rem;
+        }
+
+        .control-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .control-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-group {
+            margin-bottom: 1rem;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .control-input, .control-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed);
+            font-family: inherit;
+        }
+
+        .control-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .control-input:focus, .control-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #51cf66, #37b24d);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.4);
+        }
+
+        .save-btn.saving {
+            background: linear-gradient(135deg, #ffd43b, #fab005);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         /* Header */
@@ -61,6 +263,12 @@
             margin: 0 auto;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 60px;
+        }
+
         .logo-text {
             font-size: 2.5rem;
             font-weight: 700;
@@ -68,6 +276,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .logo-image {
+            max-height: 60px;
+            width: auto;
+            display: none;
         }
 
         .nav-menu {
@@ -100,179 +314,31 @@
             width: 100%;
         }
 
-        /* Admin Button */
-        .admin-btn {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            border: none;
-            box-shadow: var(--shadow-md);
-            font-weight: 600;
-            z-index: 999;
-            transition: all var(--transition-speed);
-        }
-
-        .admin-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Control Panel */
-        .control-panel {
-            position: fixed;
-            top: 0;
-            right: -500px;
-            width: 500px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-            transition: right 0.3s ease;
-            z-index: 1001;
-            overflow-y: auto;
-        }
-
-        .control-panel.active {
-            right: 0;
-        }
-
-        .panel-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1.5rem;
+        /* Social Media Icons */
+        .social-media {
             display: flex;
-            justify-content: between;
-            align-items: center;
+            gap: 15px;
         }
 
-        .panel-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .close-panel {
-            position: absolute;
-            right: 1.5rem;
-            top: 1.5rem;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 30px;
-            height: 30px;
+        .social-icon {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            transition: all var(--transition-speed);
-        }
-
-        .close-panel:hover {
-            background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
-        }
-
-        .panel-content {
-            padding: 2rem;
-        }
-
-        .control-section {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .control-section:last-child {
-            border-bottom: none;
-        }
-
-        .control-section h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-
-        .control-group {
-            margin-bottom: 1rem;
-        }
-
-        .control-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            font-size: 0.9rem;
-        }
-
-        .control-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.95rem;
+            text-decoration: none;
             transition: all var(--transition-speed);
+            font-size: 18px;
         }
 
-        .control-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
-        }
-
-        .control-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            resize: vertical;
-            min-height: 100px;
-            font-family: inherit;
-        }
-
-        .control-textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
-        }
-
-        .save-btn {
-            background: linear-gradient(135deg, #51cf66, #37b24d);
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--primary-color);
             color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 1rem;
-            transition: all var(--transition-speed);
-        }
-
-        .save-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .save-btn.saving {
-            background: linear-gradient(135deg, #ffd43b, #fab005);
-            animation: pulse 1s infinite;
-        }
-
-        .save-btn.saved {
-            background: linear-gradient(135deg, #51cf66, #37b24d);
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
         }
 
         /* Hero Section */
@@ -340,8 +406,51 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Contact Section */
-        #contact {
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .hero-media {
+            position: relative;
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sections */
+        section {
             padding: 4rem 5%;
             max-width: 1400px;
             margin: 0 auto;
@@ -367,19 +476,100 @@
             border-radius: 2px;
         }
 
-        .contact-info {
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
             text-align: center;
+            transition: transform var(--transition-speed);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+            background: var(--bg-secondary);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+
+        .portfolio-item h4 {
+            text-transform: capitalize;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .contact-item {
-            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.1rem;
         }
 
         .contact-item i {
             color: var(--primary-color);
-            margin-right: 10px;
             width: 20px;
         }
 
@@ -391,6 +581,11 @@
             text-align: center;
         }
 
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         .footer-social {
             display: flex;
             justify-content: center;
@@ -398,22 +593,13 @@
             margin-bottom: 2rem;
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .footer-social .social-icon {
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            text-decoration: none;
-            transition: all var(--transition-speed);
         }
 
-        .social-icon:hover {
+        .footer-social .social-icon:hover {
             background: var(--primary-color);
-            transform: translateY(-3px);
         }
 
         /* Floating Buttons */
@@ -444,11 +630,17 @@
 
         .float-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-xl);
         }
 
         .whatsapp-btn {
             background: #25D366;
+            animation: whatsapp-pulse 2s infinite;
+        }
+
+        @keyframes whatsapp-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
         }
 
         .email-btn {
@@ -462,22 +654,21 @@
             right: 20px;
             padding: 1rem 1.5rem;
             background: white;
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-xl);
             z-index: 10000;
             display: none;
-            animation: slideIn 0.3s ease;
-        }
-
-        .notification.success {
+            animation: slideInRight 0.3s ease;
             border-left: 4px solid #51cf66;
         }
 
         .notification.show {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        @keyframes slideIn {
+        @keyframes slideInRight {
             from {
                 transform: translateX(100%);
                 opacity: 0;
@@ -507,11 +698,30 @@
             .nav-menu {
                 display: none;
             }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Admin Button -->
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <div class="spinner"></div>
+        <p style="margin-top: 1rem; color: var(--text-secondary);">Loading media from GitHub...</p>
+    </div>
+
+    <!-- Admin Settings Button -->
     <button class="admin-btn" onclick="openPanel()">
         <i class="fas fa-cog"></i> Settings
     </button>
@@ -519,7 +729,7 @@
     <!-- Control Panel -->
     <div class="control-panel" id="controlPanel">
         <div class="panel-header">
-            <h2>Contact Settings</h2>
+            <h2><i class="fas fa-sliders-h"></i> Contact Settings</h2>
             <button class="close-panel" onclick="closePanel()">×</button>
         </div>
         
@@ -529,37 +739,49 @@
                 <h3><i class="fas fa-building"></i> Company Information</h3>
                 
                 <div class="control-group">
-                    <label class="control-label">Company Name</label>
+                    <label class="control-label">
+                        <i class="fas fa-tag"></i> Company Name
+                    </label>
                     <input type="text" class="control-input" id="companyName" value="REFIT Interior">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label">Tagline</label>
+                    <label class="control-label">
+                        <i class="fas fa-quote-left"></i> Tagline
+                    </label>
                     <input type="text" class="control-input" id="tagline" value="FROM CONCEPT TO COMPLETION">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label">Full Address</label>
+                    <label class="control-label">
+                        <i class="fas fa-map-marker-alt"></i> Full Address
+                    </label>
                     <textarea class="control-textarea" id="address" rows="3">C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</textarea>
                 </div>
             </div>
 
             <!-- Contact Details -->
             <div class="control-section">
-                <h3><i class="fas fa-phone"></i> Contact Details</h3>
+                <h3><i class="fas fa-phone-alt"></i> Contact Details</h3>
                 
                 <div class="control-group">
-                    <label class="control-label">Phone Number</label>
+                    <label class="control-label">
+                        <i class="fas fa-phone"></i> Phone Number
+                    </label>
                     <input type="tel" class="control-input" id="phone" value="+60 12-345 6789" placeholder="+60 12-345 6789">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label">WhatsApp Number</label>
+                    <label class="control-label">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Number
+                    </label>
                     <input type="tel" class="control-input" id="whatsapp" value="+60 12-345 6789" placeholder="+60 12-345 6789">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label">Email Address</label>
+                    <label class="control-label">
+                        <i class="fas fa-envelope"></i> Email Address
+                    </label>
                     <input type="email" class="control-input" id="email" value="info@refitinterior.com" placeholder="info@refitinterior.com">
                 </div>
             </div>
@@ -569,27 +791,37 @@
                 <h3><i class="fas fa-share-alt"></i> Social Media Links</h3>
                 
                 <div class="control-group">
-                    <label class="control-label"><i class="fab fa-facebook"></i> Facebook URL</label>
+                    <label class="control-label">
+                        <i class="fab fa-facebook"></i> Facebook URL
+                    </label>
                     <input type="url" class="control-input" id="facebook" value="https://facebook.com/refitinterior" placeholder="https://facebook.com/yourpage">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label"><i class="fab fa-instagram"></i> Instagram URL</label>
+                    <label class="control-label">
+                        <i class="fab fa-instagram"></i> Instagram URL
+                    </label>
                     <input type="url" class="control-input" id="instagram" value="https://instagram.com/refitinterior" placeholder="https://instagram.com/yourprofile">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label"><i class="fab fa-tiktok"></i> TikTok URL</label>
+                    <label class="control-label">
+                        <i class="fab fa-tiktok"></i> TikTok URL
+                    </label>
                     <input type="url" class="control-input" id="tiktok" value="https://tiktok.com/@refitinterior" placeholder="https://tiktok.com/@yourhandle">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label"><i class="fab fa-linkedin"></i> LinkedIn URL</label>
+                    <label class="control-label">
+                        <i class="fab fa-linkedin"></i> LinkedIn URL
+                    </label>
                     <input type="url" class="control-input" id="linkedin" value="" placeholder="https://linkedin.com/company/yourcompany">
                 </div>
                 
                 <div class="control-group">
-                    <label class="control-label"><i class="fab fa-youtube"></i> YouTube URL</label>
+                    <label class="control-label">
+                        <i class="fab fa-youtube"></i> YouTube URL
+                    </label>
                     <input type="url" class="control-input" id="youtube" value="" placeholder="https://youtube.com/@yourchannel">
                 </div>
             </div>
@@ -603,7 +835,8 @@
 
     <!-- Notification -->
     <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i> Settings saved successfully!
+        <i class="fas fa-check-circle" style="color: #51cf66; font-size: 1.2rem;"></i>
+        <span>Settings saved successfully!</span>
     </div>
 
     <!-- Floating Buttons -->
@@ -621,6 +854,7 @@
         <nav>
             <div class="logo-container">
                 <span class="logo-text" id="logoText">refit</span>
+                <img class="logo-image" id="logoImage" alt="REFIT Logo">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -629,14 +863,14 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="social-media">
-                <a href="" target="_blank" class="social-icon" id="navFacebook">
+            <div class="social-media" id="navSocial">
+                <a href="" target="_blank" class="social-icon" id="navFacebook" style="display: none;">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="navInstagram">
+                <a href="" target="_blank" class="social-icon" id="navInstagram" style="display: none;">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="navTiktok">
+                <a href="" target="_blank" class="social-icon" id="navTiktok" style="display: none;">
                     <i class="fab fa-tiktok"></i>
                 </a>
             </div>
@@ -656,35 +890,84 @@
                 </div>
             </div>
             <div class="hero-media">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%23E8A0BF' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='24'%3EREFIT Interior%3C/text%3E%3C/svg%3E" alt="REFIT Interior">
+                <div class="hero-slideshow" id="heroSlideshow">
+                    <div class="hero-slide active">
+                        <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Loading+Hero+Images" alt="Hero">
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Our Mission & Vision</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Mission</h3>
+                <p>To provide responsible and professional quality services as well as components and materials sale, lease, exchange and building management by constantly improving and ensuring business growth.</p>
+            </div>
+            <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Vision</h3>
+                <p>To gain customer trust and become a leading and competitive business aviation service provider in East and West Malaysia by offering innovative micro solutions team work management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid" id="servicesGrid">
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>Maintenance Services</h3>
+                <p>Comprehensive maintenance solutions for all properties</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Interior Construction</h3>
+                <p>Expert construction and renovation services</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-palette"></i>
+                <h3>Design Services</h3>
+                <p>Creative design and planning solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Our Portfolio</h2>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Portfolio items will be loaded dynamically -->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
+        
         <div class="contact-info">
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to transform your space? Contact us today!</p>
-            
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <strong>Address:</strong> <span id="displayAddress">C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</span>
+                <span id="displayAddress">Loading...</span>
             </div>
             
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <strong>Phone:</strong> <span id="displayPhone">+60 12-345 6789</span>
+                <span id="displayPhone">Loading...</span>
             </div>
             
             <div class="contact-item">
                 <i class="fab fa-whatsapp"></i>
-                <strong>WhatsApp:</strong> <span id="displayWhatsapp">+60 12-345 6789</span>
+                <span id="displayWhatsapp">Loading...</span>
             </div>
             
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <strong>Email:</strong> <span id="displayEmail">info@refitinterior.com</span>
+                <span id="displayEmail">Loading...</span>
             </div>
         </div>
     </section>
@@ -693,28 +976,50 @@
     <footer>
         <div class="footer-content">
             <div class="footer-social">
-                <a href="" target="_blank" class="social-icon" id="footerFacebook">
+                <a href="" target="_blank" class="social-icon" id="footerFacebook" style="display: none;">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerInstagram">
+                <a href="" target="_blank" class="social-icon" id="footerInstagram" style="display: none;">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerTiktok">
+                <a href="" target="_blank" class="social-icon" id="footerTiktok" style="display: none;">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerLinkedin">
+                <a href="" target="_blank" class="social-icon" id="footerLinkedin" style="display: none;">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="" target="_blank" class="social-icon" id="footerYoutube">
+                <a href="" target="_blank" class="social-icon" id="footerYoutube" style="display: none;">
                     <i class="fab fa-youtube"></i>
                 </a>
+                <a href="" class="social-icon" id="footerEmail">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="" target="_blank" class="social-icon" id="footerWhatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
-            <p>&copy; 2024 REFIT Interior. All rights reserved.</p>
+            <p>&copy; 2024 <span id="footerCompanyName">REFIT Interior</span>. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Configuration object
+        // GitHub Repository Configuration
+        const GITHUB_CONFIG = {
+            owner: 'lyode',
+            repo: 'refit-media',
+            branch: 'main',
+            baseUrl: 'https://raw.githubusercontent.com/lyode/refit-media/main/images'
+        };
+
+        // Media storage
+        const mediaStorage = {
+            logo: [],
+            hero: [],
+            portfolio: [],
+            services: []
+        };
+
+        // Contact Configuration
         const config = {
             company: {
                 name: 'REFIT Interior',
@@ -735,23 +1040,23 @@
             }
         };
 
-        // Load saved settings on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async function() {
             loadSettings();
             updateDisplay();
+            await loadAllMediaFromGitHub();
+            hideLoadingIndicator();
         });
 
-        // Open control panel
+        // Settings Panel Functions
         function openPanel() {
             document.getElementById('controlPanel').classList.add('active');
         }
 
-        // Close control panel
         function closePanel() {
             document.getElementById('controlPanel').classList.remove('active');
         }
 
-        // Save settings
         function saveSettings() {
             const saveBtn = document.querySelector('.save-btn');
             saveBtn.classList.add('saving');
@@ -781,19 +1086,16 @@
             // Show success animation
             setTimeout(() => {
                 saveBtn.classList.remove('saving');
-                saveBtn.classList.add('saved');
                 saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved Successfully!';
                 
                 showNotification();
                 
                 setTimeout(() => {
-                    saveBtn.classList.remove('saved');
                     saveBtn.innerHTML = '<i class="fas fa-save"></i> Save All Settings';
                 }, 2000);
             }, 1000);
         }
 
-        // Load settings from localStorage
         function loadSettings() {
             const saved = localStorage.getItem('refitConfig');
             if (saved) {
@@ -809,20 +1111,19 @@
                 document.getElementById('whatsapp').value = config.contact.whatsapp;
                 document.getElementById('email').value = config.contact.email;
                 
-                document.getElementById('facebook').value = config.social.facebook;
-                document.getElementById('instagram').value = config.social.instagram;
-                document.getElementById('tiktok').value = config.social.tiktok;
+                document.getElementById('facebook').value = config.social.facebook || '';
+                document.getElementById('instagram').value = config.social.instagram || '';
+                document.getElementById('tiktok').value = config.social.tiktok || '';
                 document.getElementById('linkedin').value = config.social.linkedin || '';
                 document.getElementById('youtube').value = config.social.youtube || '';
             }
         }
 
-        // Update display elements
         function updateDisplay() {
             // Update logo and titles
             document.getElementById('logoText').textContent = config.company.name.toLowerCase().split(' ')[0];
             document.getElementById('heroTitle').textContent = config.company.tagline;
-            document.getElementById('heroTagline').textContent = 'WE GROW WITH PASSION, WE DO IT ALL';
+            document.getElementById('footerCompanyName').textContent = config.company.name;
             
             // Update contact display
             document.getElementById('displayAddress').textContent = config.company.address;
@@ -832,19 +1133,22 @@
             
             // Update floating buttons
             const whatsappNumber = config.contact.whatsapp.replace(/[^0-9]/g, '');
-            document.getElementById('whatsappFloat').href = `https://wa.me/${whatsappNumber}?text=Hi%20REFIT%20Interior!%20I'm%20interested%20in%20your%20services.`;
-            document.getElementById('emailFloat').href = `mailto:${config.contact.email}?subject=Inquiry%20about%20REFIT%20Interior%20Services`;
+            document.getElementById('whatsappFloat').href = `https://wa.me/${whatsappNumber}?text=Hi%20${encodeURIComponent(config.company.name)}!%20I'm%20interested%20in%20your%20services.`;
+            document.getElementById('emailFloat').href = `mailto:${config.contact.email}?subject=Inquiry%20about%20${encodeURIComponent(config.company.name)}%20Services`;
+            
+            // Update footer contact
+            document.getElementById('footerWhatsapp').href = `https://wa.me/${whatsappNumber}`;
+            document.getElementById('footerEmail').href = `mailto:${config.contact.email}`;
             
             // Update social media links
-            updateSocialLinks('Facebook', config.social.facebook);
-            updateSocialLinks('Instagram', config.social.instagram);
-            updateSocialLinks('Tiktok', config.social.tiktok);
-            updateSocialLinks('Linkedin', config.social.linkedin);
-            updateSocialLinks('Youtube', config.social.youtube);
+            updateSocialLink('Facebook', config.social.facebook);
+            updateSocialLink('Instagram', config.social.instagram);
+            updateSocialLink('Tiktok', config.social.tiktok);
+            updateSocialLink('Linkedin', config.social.linkedin);
+            updateSocialLink('Youtube', config.social.youtube);
         }
 
-        // Update social media links
-        function updateSocialLinks(platform, url) {
+        function updateSocialLink(platform, url) {
             const navLink = document.getElementById('nav' + platform);
             const footerLink = document.getElementById('footer' + platform);
             
@@ -859,7 +1163,6 @@
             }
         }
 
-        // Show notification
         function showNotification() {
             const notification = document.getElementById('notification');
             notification.classList.add('show');
@@ -869,15 +1172,230 @@
             }, 3000);
         }
 
-        // Handle input changes with auto-save (optional)
-        document.querySelectorAll('.control-input, .control-textarea').forEach(input => {
-            input.addEventListener('input', function() {
-                // You can add auto-save functionality here if needed
-                // For now, it requires clicking the save button
-            });
-        });
+        // Hide loading indicator
+        function hideLoadingIndicator() {
+            const loader = document.getElementById('loadingIndicator');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }
 
-        // Handle escape key to close panel
+        // Load all media from GitHub
+        async function loadAllMediaFromGitHub() {
+            try {
+                await Promise.all([
+                    loadFolderMedia('logo'),
+                    loadFolderMedia('hero'),
+                    loadFolderMedia('portfolio'),
+                    loadFolderMedia('services')
+                ]);
+            } catch (error) {
+                console.log('GitHub API not available, using direct URLs');
+                loadFallbackMedia();
+            }
+        }
+
+        // Load media from a specific folder
+        async function loadFolderMedia(folder) {
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/images/${folder}`,
+                    {
+                        headers: {
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+
+                if (response.ok) {
+                    const files = await response.json();
+                    
+                    files.forEach(file => {
+                        if (file.type === 'file' && isImageFile(file.name)) {
+                            const url = `${GITHUB_CONFIG.baseUrl}/${folder}/${file.name}`;
+                            mediaStorage[folder].push({
+                                url: url,
+                                name: file.name,
+                                title: formatFileName(file.name)
+                            });
+                        }
+                    });
+
+                    applyMediaToPage(folder);
+                }
+            } catch (error) {
+                console.error(`Error loading ${folder}:`, error);
+                loadFallbackMediaForFolder(folder);
+            }
+        }
+
+        // Check if file is an image
+        function isImageFile(filename) {
+            const extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+            return extensions.some(ext => filename.toLowerCase().endsWith(ext));
+        }
+
+        // Format file name for display
+        function formatFileName(filename) {
+            return filename
+                .replace(/\.[^/.]+$/, '')
+                .replace(/[-_]/g, ' ')
+                .replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Fallback media loading
+        function loadFallbackMedia() {
+            const fallbackFiles = {
+                logo: ['refit-logo.png', 'refit-logo-pink.png'],
+                hero: ['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg', 'modern-interior.jpg', 'luxury-living.jpg'],
+                portfolio: [
+                    'cath-kidston.jpg', 'pie-face.jpg', 'tusan-ice-cream.jpg',
+                    'bungkus-kaw-kaw.jpg', 'backhaus.jpg', 'furla.jpg',
+                    'topshop.jpg', 'topman.jpg', 'commercial-1.jpg',
+                    'commercial-2.jpg', 'residential-1.jpg', 'residential-2.jpg'
+                ],
+                services: ['maintenance.jpg', 'construction.jpg', 'design.jpg']
+            };
+
+            Object.keys(fallbackFiles).forEach(folder => {
+                fallbackFiles[folder].forEach(filename => {
+                    const url = `${GITHUB_CONFIG.baseUrl}/${folder}/${filename}`;
+                    mediaStorage[folder].push({
+                        url: url,
+                        name: filename,
+                        title: formatFileName(filename)
+                    });
+                });
+                applyMediaToPage(folder);
+            });
+        }
+
+        // Load fallback media for specific folder
+        function loadFallbackMediaForFolder(folder) {
+            const fallbackFiles = {
+                logo: ['refit-logo.png'],
+                hero: ['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg'],
+                portfolio: ['portfolio-1.jpg', 'portfolio-2.jpg', 'portfolio-3.jpg'],
+                services: ['services-1.jpg']
+            };
+
+            if (fallbackFiles[folder]) {
+                fallbackFiles[folder].forEach(filename => {
+                    const url = `${GITHUB_CONFIG.baseUrl}/${folder}/${filename}`;
+                    mediaStorage[folder].push({
+                        url: url,
+                        name: filename,
+                        title: formatFileName(filename)
+                    });
+                });
+                applyMediaToPage(folder);
+            }
+        }
+
+        // Apply loaded media to the page
+        function applyMediaToPage(folder) {
+            switch(folder) {
+                case 'logo':
+                    if (mediaStorage.logo.length > 0) {
+                        const logoImg = document.getElementById('logoImage');
+                        const logoText = document.getElementById('logoText');
+                        if (logoImg && logoText) {
+                            logoImg.src = mediaStorage.logo[0].url;
+                            logoImg.style.display = 'block';
+                            logoText.style.display = 'none';
+                            
+                            logoImg.onerror = function() {
+                                logoImg.style.display = 'none';
+                                logoText.style.display = 'block';
+                            };
+                        }
+                    }
+                    break;
+
+                case 'hero':
+                    if (mediaStorage.hero.length > 0) {
+                        updateHeroSlideshow();
+                    }
+                    break;
+
+                case 'portfolio':
+                    if (mediaStorage.portfolio.length > 0) {
+                        updatePortfolioGrid();
+                    }
+                    break;
+            }
+        }
+
+        // Update hero slideshow
+        function updateHeroSlideshow() {
+            const slideshow = document.getElementById('heroSlideshow');
+            if (!slideshow || mediaStorage.hero.length === 0) return;
+
+            slideshow.innerHTML = '';
+            
+            mediaStorage.hero.forEach((item, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
+                
+                const img = document.createElement('img');
+                img.src = item.url;
+                img.alt = item.title;
+                img.onerror = function() {
+                    this.src = 'https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Interior';
+                };
+                
+                slide.appendChild(img);
+                slideshow.appendChild(slide);
+            });
+
+            if (mediaStorage.hero.length > 1) {
+                startHeroSlideshow();
+            }
+        }
+
+        // Start hero slideshow animation
+        function startHeroSlideshow() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.hero-slide');
+            
+            setInterval(() => {
+                if (slides.length > 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+            }, 5000);
+        }
+
+        // Update portfolio grid
+        function updatePortfolioGrid() {
+            const grid = document.getElementById('portfolioGrid');
+            if (!grid || mediaStorage.portfolio.length === 0) return;
+
+            grid.innerHTML = '';
+            
+            mediaStorage.portfolio.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                
+                const img = document.createElement('img');
+                img.src = item.url;
+                img.alt = item.title;
+                img.onerror = function() {
+                    this.src = `https://via.placeholder.com/400x300/E8A0BF/ffffff?text=${encodeURIComponent(item.title)}`;
+                };
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                overlay.innerHTML = `<h4>${item.title}</h4>`;
+                
+                portfolioItem.appendChild(img);
+                portfolioItem.appendChild(overlay);
+                grid.appendChild(portfolioItem);
+            });
+        }
+
+        // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closePanel();
