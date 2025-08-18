@@ -70,29 +70,34 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Admin Button */
+        /* Admin Button - Round and 40% smaller */
         .admin-btn {
             position: fixed;
             top: 100px;
             right: 20px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             cursor: pointer;
             border: none;
             box-shadow: var(--shadow-lg);
-            font-weight: 600;
             z-index: 999;
             transition: all var(--transition-speed);
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .admin-btn:hover {
-            transform: translateY(-2px);
+            transform: rotate(90deg) scale(1.1);
             box-shadow: 0 15px 35px rgba(232, 160, 191, 0.4);
+        }
+
+        .admin-btn i {
+            transition: all var(--transition-speed);
         }
 
         /* Control Panel */
@@ -721,9 +726,9 @@
         <p style="margin-top: 1rem; color: var(--text-secondary);">Loading media from GitHub...</p>
     </div>
 
-    <!-- Admin Settings Button -->
-    <button class="admin-btn" onclick="openPanel()">
-        <i class="fas fa-cog"></i> Settings
+    <!-- Admin Settings Button - Round Shape -->
+    <button class="admin-btn" onclick="openPanel()" title="Settings">
+        <i class="fas fa-cog"></i>
     </button>
 
     <!-- Control Panel -->
@@ -757,6 +762,51 @@
                         <i class="fas fa-map-marker-alt"></i> Full Address
                     </label>
                     <textarea class="control-textarea" id="address" rows="3">C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.</textarea>
+                </div>
+            </div>
+
+            <!-- Color Scheme -->
+            <div class="control-section">
+                <h3><i class="fas fa-palette"></i> Color Scheme</h3>
+                
+                <div class="control-group">
+                    <label class="control-label">
+                        <i class="fas fa-paint-brush"></i> Primary Color
+                    </label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="color" id="primaryColor" value="#E8A0BF" onchange="document.getElementById('primaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="primaryColorText" value="#E8A0BF" onchange="document.getElementById('primaryColor').value = this.value" style="flex: 1;">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">
+                        <i class="fas fa-paint-brush"></i> Secondary Color
+                    </label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="color" id="secondaryColor" value="#BA5B7D" onchange="document.getElementById('secondaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="secondaryColorText" value="#BA5B7D" onchange="document.getElementById('secondaryColor').value = this.value" style="flex: 1;">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">
+                        <i class="fas fa-paint-brush"></i> Accent Color
+                    </label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="color" id="accentColor" value="#F5C99B" onchange="document.getElementById('accentColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="accentColorText" value="#F5C99B" onchange="document.getElementById('accentColor').value = this.value" style="flex: 1;">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">
+                        <i class="fas fa-adjust"></i> Background Color
+                    </label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="color" id="bgColor" value="#f8f8f8" onchange="document.getElementById('bgColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="bgColorText" value="#f8f8f8" onchange="document.getElementById('bgColor').value = this.value" style="flex: 1;">
+                    </div>
                 </div>
             </div>
 
@@ -826,6 +876,15 @@
                 </div>
             </div>
 
+            <!-- Portfolio Titles -->
+            <div class="control-section">
+                <h3><i class="fas fa-images"></i> Portfolio Project Titles</h3>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Customize project titles (will be applied in order)</p>
+                <div id="portfolioTitles">
+                    <!-- Portfolio title inputs will be added dynamically -->
+                </div>
+            </div>
+
             <!-- Save Button -->
             <button class="save-btn" onclick="saveSettings()">
                 <i class="fas fa-save"></i> Save All Settings
@@ -885,7 +944,7 @@
                 <p class="tagline" id="heroTagline">WE GROW WITH PASSION, WE DO IT ALL</p>
                 <p>Professional maintenance, interior construction & renovation services delivered with innovation and excellence.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
                     <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
                 </div>
             </div>
@@ -1037,12 +1096,20 @@
                 tiktok: 'https://tiktok.com/@refitinterior',
                 linkedin: '',
                 youtube: ''
-            }
+            },
+            colors: {
+                primary: '#E8A0BF',
+                secondary: '#BA5B7D',
+                accent: '#F5C99B',
+                background: '#f8f8f8'
+            },
+            portfolioTitles: []
         };
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async function() {
             loadSettings();
+            applyColors(); // Apply saved colors
             updateDisplay();
             await loadAllMediaFromGitHub();
             hideLoadingIndicator();
@@ -1051,6 +1118,7 @@
         // Settings Panel Functions
         function openPanel() {
             document.getElementById('controlPanel').classList.add('active');
+            updatePortfolioTitleInputs(); // Load portfolio title inputs
         }
 
         function closePanel() {
@@ -1077,11 +1145,30 @@
             config.social.linkedin = document.getElementById('linkedin').value;
             config.social.youtube = document.getElementById('youtube').value;
 
+            // Save colors
+            config.colors.primary = document.getElementById('primaryColor').value;
+            config.colors.secondary = document.getElementById('secondaryColor').value;
+            config.colors.accent = document.getElementById('accentColor').value;
+            config.colors.background = document.getElementById('bgColor').value;
+
+            // Save portfolio titles
+            const titleInputs = document.querySelectorAll('.portfolio-title-input');
+            config.portfolioTitles = [];
+            titleInputs.forEach(input => {
+                if (input.value.trim()) {
+                    config.portfolioTitles.push(input.value.trim());
+                }
+            });
+
+            // Apply colors
+            applyColors();
+
             // Save to localStorage
             localStorage.setItem('refitConfig', JSON.stringify(config));
 
             // Update display
             updateDisplay();
+            updatePortfolioGrid(); // Refresh portfolio with new titles
 
             // Show success animation
             setTimeout(() => {
@@ -1116,8 +1203,63 @@
                 document.getElementById('tiktok').value = config.social.tiktok || '';
                 document.getElementById('linkedin').value = config.social.linkedin || '';
                 document.getElementById('youtube').value = config.social.youtube || '';
+
+                // Load colors
+                if (config.colors) {
+                    document.getElementById('primaryColor').value = config.colors.primary || '#E8A0BF';
+                    document.getElementById('primaryColorText').value = config.colors.primary || '#E8A0BF';
+                    document.getElementById('secondaryColor').value = config.colors.secondary || '#BA5B7D';
+                    document.getElementById('secondaryColorText').value = config.colors.secondary || '#BA5B7D';
+                    document.getElementById('accentColor').value = config.colors.accent || '#F5C99B';
+                    document.getElementById('accentColorText').value = config.colors.accent || '#F5C99B';
+                    document.getElementById('bgColor').value = config.colors.background || '#f8f8f8';
+                    document.getElementById('bgColorText').value = config.colors.background || '#f8f8f8';
+                    
+                    applyColors();
+                }
             }
         }
+
+        function applyColors() {
+            if (config.colors) {
+                document.documentElement.style.setProperty('--primary-color', config.colors.primary);
+                document.documentElement.style.setProperty('--secondary-color', config.colors.secondary);
+                document.documentElement.style.setProperty('--accent-color', config.colors.accent);
+                document.documentElement.style.setProperty('--bg-secondary', config.colors.background);
+            }
+        }
+
+        // Update color inputs when color picker changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color picker sync
+            document.getElementById('primaryColor')?.addEventListener('input', function(e) {
+                document.getElementById('primaryColorText').value = e.target.value;
+            });
+            document.getElementById('primaryColorText')?.addEventListener('input', function(e) {
+                document.getElementById('primaryColor').value = e.target.value;
+            });
+            
+            document.getElementById('secondaryColor')?.addEventListener('input', function(e) {
+                document.getElementById('secondaryColorText').value = e.target.value;
+            });
+            document.getElementById('secondaryColorText')?.addEventListener('input', function(e) {
+                document.getElementById('secondaryColor').value = e.target.value;
+            });
+            
+            document.getElementById('accentColor')?.addEventListener('input', function(e) {
+                document.getElementById('accentColorText').value = e.target.value;
+            });
+            document.getElementById('accentColorText')?.addEventListener('input', function(e) {
+                document.getElementById('accentColor').value = e.target.value;
+            });
+            
+            document.getElementById('bgColor')?.addEventListener('input', function(e) {
+                document.getElementById('bgColorText').value = e.target.value;
+            });
+            document.getElementById('bgColorText')?.addEventListener('input', function(e) {
+                document.getElementById('bgColor').value = e.target.value;
+            });
+        });
 
         function updateDisplay() {
             // Update logo and titles
@@ -1321,6 +1463,7 @@
                 case 'portfolio':
                     if (mediaStorage.portfolio.length > 0) {
                         updatePortfolioGrid();
+                        updatePortfolioTitleInputs(); // Update title inputs when portfolio loads
                     }
                     break;
             }
@@ -1374,7 +1517,7 @@
 
             grid.innerHTML = '';
             
-            mediaStorage.portfolio.forEach(item => {
+            mediaStorage.portfolio.forEach((item, index) => {
                 const portfolioItem = document.createElement('div');
                 portfolioItem.className = 'portfolio-item';
                 
@@ -1387,11 +1530,42 @@
                 
                 const overlay = document.createElement('div');
                 overlay.className = 'overlay';
-                overlay.innerHTML = `<h4>${item.title}</h4>`;
+                // Use custom title if available, otherwise use original
+                const customTitle = config.portfolioTitles && config.portfolioTitles[index] 
+                    ? config.portfolioTitles[index] 
+                    : item.title;
+                overlay.innerHTML = `<h4>${customTitle}</h4>`;
                 
                 portfolioItem.appendChild(img);
                 portfolioItem.appendChild(overlay);
                 grid.appendChild(portfolioItem);
+            });
+        }
+
+        // Update portfolio title inputs when panel opens
+        function updatePortfolioTitleInputs() {
+            const container = document.getElementById('portfolioTitles');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            mediaStorage.portfolio.forEach((item, index) => {
+                const customTitle = config.portfolioTitles && config.portfolioTitles[index] 
+                    ? config.portfolioTitles[index] 
+                    : item.title;
+                
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'control-group';
+                inputGroup.innerHTML = `
+                    <label class="control-label" style="font-size: 0.85rem;">
+                        Project ${index + 1}
+                    </label>
+                    <input type="text" class="control-input portfolio-title-input" 
+                           value="${customTitle}" 
+                           placeholder="${item.title}"
+                           data-index="${index}">
+                `;
+                container.appendChild(inputGroup);
             });
         }
 
