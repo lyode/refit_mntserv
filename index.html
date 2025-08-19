@@ -35,6 +35,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-primary);
@@ -93,7 +97,7 @@
 
         .admin-btn:hover {
             transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 15px 35px rgba(232, 160, 191, 0.4);
+            box-shadow: 0 15px 35px rgba(64, 21, 5, 0.4);
         }
 
         .admin-btn i {
@@ -183,7 +187,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
+            box-shadow: 0 0 0 3px rgba(64, 21, 5, 0.1);
         }
 
         .login-btn {
@@ -365,7 +369,7 @@
         .control-input:focus, .control-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.1);
+            box-shadow: 0 0 0 3px rgba(64, 21, 5, 0.1);
         }
 
         .save-btn {
@@ -441,6 +445,12 @@
             display: flex;
             align-items: center;
             height: 60px;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
         }
 
         .logo-text {
@@ -450,12 +460,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            user-select: none;
         }
 
         .logo-image {
             max-height: 60px;
             width: auto;
             display: none;
+            user-select: none;
         }
 
         .nav-menu {
@@ -706,22 +718,6 @@
             object-fit: cover;
         }
 
-        .portfolio-item .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-        }
-
-        .portfolio-item h4 {
-            text-transform: capitalize;
-            margin: 0;
-            font-size: 1rem;
-        }
-
         /* Contact Section */
         #contact {
             text-align: center;
@@ -853,6 +849,36 @@
             }
         }
 
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 998;
+            transition: all var(--transition-speed);
+            box-shadow: var(--shadow-lg);
+            font-size: 1.2rem;
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .control-panel {
@@ -891,6 +917,14 @@
                 width: 32px;
                 height: 32px;
                 font-size: 0.8rem;
+            }
+
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 20px;
+                left: 20px;
             }
         }
     </style>
@@ -975,8 +1009,8 @@
                         <i class="fas fa-paint-brush"></i> Primary Color
                     </label>
                     <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="color" id="primaryColor" value="#E8A0BF" onchange="document.getElementById('primaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
-                        <input type="text" class="control-input" id="primaryColorText" value="#E8A0BF" onchange="document.getElementById('primaryColor').value = this.value" style="flex: 1;">
+                        <input type="color" id="primaryColor" value="#401505" onchange="document.getElementById('primaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="primaryColorText" value="#401505" onchange="document.getElementById('primaryColor').value = this.value" style="flex: 1;">
                     </div>
                 </div>
                 
@@ -985,8 +1019,8 @@
                         <i class="fas fa-paint-brush"></i> Secondary Color
                     </label>
                     <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="color" id="secondaryColor" value="#BA5B7D" onchange="document.getElementById('secondaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
-                        <input type="text" class="control-input" id="secondaryColorText" value="#BA5B7D" onchange="document.getElementById('secondaryColor').value = this.value" style="flex: 1;">
+                        <input type="color" id="secondaryColor" value="#401505" onchange="document.getElementById('secondaryColorText').value = this.value" style="width: 60px; height: 40px; border-radius: 8px; cursor: pointer;">
+                        <input type="text" class="control-input" id="secondaryColorText" value="#401505" onchange="document.getElementById('secondaryColor').value = this.value" style="flex: 1;">
                     </div>
                 </div>
             </div>
@@ -999,14 +1033,14 @@
                     <label class="control-label">
                         <i class="fas fa-phone"></i> Phone Number
                     </label>
-                    <input type="tel" class="control-input" id="phone" value="+60 12-345 6789" placeholder="+60 12-345 6789">
+                    <input type="tel" class="control-input" id="phone" value="012-214 5922" placeholder="012-214 5922">
                 </div>
                 
                 <div class="control-group">
                     <label class="control-label">
                         <i class="fab fa-whatsapp"></i> WhatsApp Number
                     </label>
-                    <input type="tel" class="control-input" id="whatsapp" value="+60 12-345 6789" placeholder="+60 12-345 6789">
+                    <input type="tel" class="control-input" id="whatsapp" value="012-214 5922" placeholder="012-214 5922">
                 </div>
                 
                 <div class="control-group">
@@ -1043,17 +1077,8 @@
                 </div>
             </div>
 
-            <!-- Portfolio Titles -->
-            <div class="control-section">
-                <h3><i class="fas fa-images"></i> Portfolio Project Titles</h3>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Customize project titles (will be applied in order)</p>
-                <div id="portfolioTitles">
-                    <!-- Portfolio title inputs will be added dynamically -->
-                </div>
-            </div>
-
             <!-- Save Button -->
-            <button class="save-btn" onclick="saveSettings()">
+            <button class="save-btn" onclick="saveSettings()">>
                 <i class="fas fa-save"></i> Save All Settings
             </button>
         </div>
@@ -1075,10 +1100,15 @@
         </a>
     </div>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo-container">
+            <div class="logo-container" onclick="scrollToTop()" title="Back to Top">
                 <span class="logo-text" id="logoText">refit</span>
                 <img class="logo-image" id="logoImage" alt="REFIT Logo">
             </div>
@@ -1118,7 +1148,7 @@
             <div class="hero-media">
                 <div class="hero-slideshow" id="heroSlideshow">
                     <div class="hero-slide active">
-                        <img src="https://via.placeholder.com/600x400/E8A0BF/ffffff?text=Loading+Hero+Images" alt="Hero">
+                        <img src="https://via.placeholder.com/600x400/401505/ffffff?text=Loading+Hero+Images" alt="Hero">
                     </div>
                 </div>
             </div>
@@ -1253,18 +1283,18 @@
                 address: 'C-08-34, Centum @ Oasis Corporate Park, Oasis Damansara, No.2 Jalan PJU 1A/2, Ara Damansara, 47301 Petaling Jaya, Selangor, Malaysia.'
             },
             contact: {
-                phone: '+60 12-214 5922',
-                whatsapp: '+60 12-214 5922',
+                phone: '012-214 5922',
+                whatsapp: '012-214 5922',
                 email: 'refitcs@gmail.com'
             },
             social: {
-                facebook: 'https://www.facebook.com/refitmntserv',
-                instagram: 'https://www.instagram.com/refit_mntserv/',
-                tiktok: 'https://www.tiktok.com/@refit.mntserv'
+                facebook: 'https://facebook.com/refitinterior',
+                instagram: 'https://instagram.com/refitinterior',
+                tiktok: 'https://tiktok.com/@refitinterior'
             },
             colors: {
-                primary: '#380416',
-                secondary: '#380416'
+                primary: '#401505',
+                secondary: '#401505'
             },
             portfolioTitles: []
         };
@@ -1277,7 +1307,21 @@
             updateDisplay();
             await loadAllMediaFromGitHub();
             hideLoadingIndicator();
+            initScrollToTop();
         });
+
+        // Initialize scroll to top button
+        function initScrollToTop() {
+            const scrollBtn = document.getElementById('scrollToTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('show');
+                } else {
+                    scrollBtn.classList.remove('show');
+                }
+            });
+        }
 
         // Authentication Functions
         function checkAuthStatus() {
@@ -1340,7 +1384,6 @@
                 return;
             }
             document.getElementById('controlPanel').classList.add('active');
-            updatePortfolioTitleInputs();
         }
 
         function closePanel() {
@@ -1368,15 +1411,6 @@
             // Save colors
             config.colors.primary = document.getElementById('primaryColor').value;
             config.colors.secondary = document.getElementById('secondaryColor').value;
-
-            // Save portfolio titles
-            const titleInputs = document.querySelectorAll('.portfolio-title-input');
-            config.portfolioTitles = [];
-            titleInputs.forEach(input => {
-                if (input.value.trim()) {
-                    config.portfolioTitles.push(input.value.trim());
-                }
-            });
 
             // Apply colors
             applyColors();
@@ -1422,10 +1456,10 @@
 
                 // Load colors
                 if (config.colors) {
-                    document.getElementById('primaryColor').value = config.colors.primary || '#E8A0BF';
-                    document.getElementById('primaryColorText').value = config.colors.primary || '#E8A0BF';
-                    document.getElementById('secondaryColor').value = config.colors.secondary || '#BA5B7D';
-                    document.getElementById('secondaryColorText').value = config.colors.secondary || '#BA5B7D';
+                    document.getElementById('primaryColor').value = config.colors.primary || '#401505';
+                    document.getElementById('primaryColorText').value = config.colors.primary || '#401505';
+                    document.getElementById('secondaryColor').value = config.colors.secondary || '#401505';
+                    document.getElementById('secondaryColorText').value = config.colors.secondary || '#401505';
                     
                     applyColors();
                 }
@@ -1453,11 +1487,12 @@
             
             // Update floating buttons
             const whatsappNumber = config.contact.whatsapp.replace(/[^0-9]/g, '');
-            document.getElementById('whatsappFloat').href = `https://wa.me/${whatsappNumber}?text=Hi%20${encodeURIComponent(config.company.name)}!%20I'm%20interested%20in%20your%20services.`;
+            const formattedWhatsappNumber = whatsappNumber.startsWith('0') ? '6' + whatsappNumber : whatsappNumber;
+            document.getElementById('whatsappFloat').href = `https://wa.me/${formattedWhatsappNumber}?text=Hi%20${encodeURIComponent(config.company.name)}!%20I'm%20interested%20in%20your%20services.`;
             document.getElementById('emailFloat').href = `mailto:${config.contact.email}?subject=Inquiry%20about%20${encodeURIComponent(config.company.name)}%20Services`;
             
             // Update footer contact
-            document.getElementById('footerWhatsapp').href = `https://wa.me/${whatsappNumber}`;
+            document.getElementById('footerWhatsapp').href = `https://wa.me/${formattedWhatsappNumber}`;
             document.getElementById('footerEmail').href = `mailto:${config.contact.email}`;
             
             // Update social media links
@@ -1638,7 +1673,6 @@
                 case 'portfolio':
                     if (mediaStorage.portfolio.length > 0) {
                         updatePortfolioGrid();
-                        updatePortfolioTitleInputs();
                     }
                     break;
             }
@@ -1659,7 +1693,7 @@
                 img.src = item.url;
                 img.alt = item.title;
                 img.onerror = function() {
-                    this.src = 'https://via.placeholder.com/600x400/E8A0BF/ffffff?text=REFIT+Interior';
+                    this.src = 'https://via.placeholder.com/600x400/401505/ffffff?text=REFIT+Interior';
                 };
                 
                 slide.appendChild(img);
@@ -1700,46 +1734,11 @@
                 img.src = item.url;
                 img.alt = item.title;
                 img.onerror = function() {
-                    this.src = `https://via.placeholder.com/400x300/E8A0BF/ffffff?text=${encodeURIComponent(item.title)}`;
+                    this.src = `https://via.placeholder.com/400x300/401505/ffffff?text=Portfolio`;
                 };
                 
-                const overlay = document.createElement('div');
-                overlay.className = 'overlay';
-                const customTitle = config.portfolioTitles && config.portfolioTitles[index] 
-                    ? config.portfolioTitles[index] 
-                    : item.title;
-                overlay.innerHTML = `<h4>${customTitle}</h4>`;
-                
                 portfolioItem.appendChild(img);
-                portfolioItem.appendChild(overlay);
                 grid.appendChild(portfolioItem);
-            });
-        }
-
-        // Update portfolio title inputs when panel opens
-        function updatePortfolioTitleInputs() {
-            const container = document.getElementById('portfolioTitles');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            
-            mediaStorage.portfolio.forEach((item, index) => {
-                const customTitle = config.portfolioTitles && config.portfolioTitles[index] 
-                    ? config.portfolioTitles[index] 
-                    : item.title;
-                
-                const inputGroup = document.createElement('div');
-                inputGroup.className = 'control-group';
-                inputGroup.innerHTML = `
-                    <label class="control-label" style="font-size: 0.85rem;">
-                        Project ${index + 1}
-                    </label>
-                    <input type="text" class="control-input portfolio-title-input" 
-                           value="${customTitle}" 
-                           placeholder="${item.title}"
-                           data-index="${index}">
-                `;
-                container.appendChild(inputGroup);
             });
         }
 
@@ -1750,6 +1749,23 @@
                 closeLogin();
             }
         });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Alternative method with animation
+        function animatedScrollToTop() {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+            if (c > 0) {
+                window.requestAnimationFrame(animatedScrollToTop);
+                window.scrollTo(0, c - c / 8);
+            }
+        }
     </script>
 </body>
 </html>
