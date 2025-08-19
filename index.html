@@ -1481,6 +1481,9 @@
             
             // Update contact display
             document.getElementById('displayAddress').textContent = config.company.address;
+           document.getElementById('displayPhone').textContent = config.contact.phone;
+            document.getElementById('displayWhatsapp').textContent = config.contact.whatsapp;
+            document.getElementById('displayEmail').textContent = config.contact.email;
             
             // Update floating buttons
             const whatsappNumber = config.contact.whatsapp.replace(/[^0-9]/g, '');
